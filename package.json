@@ -1,0 +1,30 @@
+{
+  "name": "react-expandable",
+  "version": "1.0.0",
+  "description": "\"Google images inspired grid system with preview drop down\"",
+  "main": "./client/components/expandable-preview/Index.js",
+  "dependencies": {
+    "babel-core": "^5.8.25",
+    "babel-loader": "^5.3.2",
+    "confidence": "^1.4.2",
+    "hapi-auth-cookie": "^3.1.0",
+    "lodash": "^3.10.1",
+    "hapi": "^10.4.1",
+    "alt": "^0.17.4",
+    "react": "^0.13.3",
+    "react-router": "^1.0.0-rc3",
+    "react-motion": "^0.3.0",
+    "handlebars": "^4.0.3",
+    "css-loader": "^0.19.0",
+    "webpack": "^1.12.2",
+    "node-libs-browser": "^0.5.3",
+    "react-addons-create-fragment": "^0.14.0",
+    "style-loader": "^0.12.4"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Lumen Learning",
+  "license": "MIT"
+}
