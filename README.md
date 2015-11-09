@@ -15,8 +15,17 @@ npm install react-expandable-preview --save
 
 ##Components & Props
 
-###1. Expandable:
+####1. Expandable:
+  - *Description*: This component is the base component for the expandable preview. Wrap everything in this.
+  - *Props*:
+    -
+####2. Item:
+  - *Description*: This component is the individual item in the grid you want to display. Wrap your image or grid item in here.
+  - *Props*:
 
-###2. Item:
-
-###3. Preview:
+####3. Preview:
+  - *Description*: This component is the preview item you want to display when clicking on its related item in the grid. Wrap this component around your preview data and pass it in as the `previewComponent` prop in the respective `<Item />` component.
+  - *Props*:
+    - `title`:
+      - type: String
+      - Description: Simple string title you want the preview to display when it expands.
