@@ -24752,7 +24752,7 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _libIndexJs = __webpack_require__(251);
+	var _libIndexJs = __webpack_require__(205);
 
 	var Index = (function (_React$Component) {
 	    _inherits(Index, _React$Component);
@@ -25119,11 +25119,673 @@
 	module.exports = exports['default'];
 
 /***/ },
-/* 205 */,
-/* 206 */,
-/* 207 */,
-/* 208 */,
-/* 209 */,
+/* 205 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, '__esModule', {
+	  value: true
+	});
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
+
+	var _ExpandableJsx = __webpack_require__(206);
+
+	var _ExpandableJsx2 = _interopRequireDefault(_ExpandableJsx);
+
+	var _ItemJsx = __webpack_require__(208);
+
+	var _ItemJsx2 = _interopRequireDefault(_ItemJsx);
+
+	var _PreviewJsx = __webpack_require__(209);
+
+	var _PreviewJsx2 = _interopRequireDefault(_PreviewJsx);
+
+	var _exports = {};
+
+	_exports.Expandable = _ExpandableJsx2['default'];
+	_exports.Item = _ItemJsx2['default'];
+	_exports.Preview = _PreviewJsx2['default'];
+
+	exports['default'] = _exports;
+	module.exports = exports['default'];
+
+/***/ },
+/* 206 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, '__esModule', {
+	    value: true
+	});
+
+	var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ('value' in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
+
+	var _get = function get(_x, _x2, _x3) { var _again = true; _function: while (_again) { var object = _x, property = _x2, receiver = _x3; desc = parent = getter = undefined; _again = false; if (object === null) object = Function.prototype; var desc = Object.getOwnPropertyDescriptor(object, property); if (desc === undefined) { var parent = Object.getPrototypeOf(object); if (parent === null) { return undefined; } else { _x = parent; _x2 = property; _x3 = receiver; _again = true; continue _function; } } else if ('value' in desc) { return desc.value; } else { var getter = desc.get; if (getter === undefined) { return undefined; } return getter.call(receiver); } } };
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError('Cannot call a class as a function'); } }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== 'function' && superClass !== null) { throw new TypeError('Super expression must either be null or a function, not ' + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+	var _react = __webpack_require__(2);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var _cssStyleJs = __webpack_require__(207);
+
+	var _cssStyleJs2 = _interopRequireDefault(_cssStyleJs);
+
+	var Expandable = (function (_React$Component) {
+	    _inherits(Expandable, _React$Component);
+
+	    function Expandable(props, state) {
+	        _classCallCheck(this, Expandable);
+
+	        _get(Object.getPrototypeOf(Expandable.prototype), 'constructor', this).call(this, props, state);
+
+	        this.state = {
+	            isOpen: false,
+	            rowIndex: null,
+	            childIndex: null,
+	            colWidth: 2,
+	            sItemCount: this.props.smallRowItemCount || 1,
+	            mItemCount: this.props.mediumRowItemCount || 2,
+	            lItemCount: this.props.largeRowItemCount || 3,
+	            xlItemCount: this.props.xlargeRowItemCount || 4,
+	            xxlItemCount: this.props.xxlargeRowItemCount || 5,
+	            beforePreviewOpen: this.props.beforePreviewOpen || function () {},
+	            afterPreviewOpen: this.props.afterPreviewOpen || function () {},
+	            currentItemRowCount: 2,
+	            settings: {
+	                current: -1,
+	                previewPos: -1,
+	                scrollExtra: 0,
+	                marginExpanded: 10
+	            }
+	        };
+
+	        this.handleClick = this.handleClick.bind(this);
+	        this.handleResize = this.handleResize.bind(this);
+	        this.getWindowSize = this.getWindowSize.bind(this);
+	    }
+
+	    _createClass(Expandable, [{
+	        key: 'componentWillMount',
+	        value: function componentWillMount() {
+	            console.log("window size:", this.getWindowSize(), window.screen.width);
+
+	            this.setState({
+	                currentItemRowCount: this.getWindowSize()
+	            });
+	        }
+	    }, {
+	        key: 'componentWillReceiveProps',
+	        value: function componentWillReceiveProps(nextProps) {
+
+	            if (nextProps.colWidth !== this.state.colWidth) {
+	                this.setState({
+	                    colWidth: nextProps.colWidth
+	                });
+	            }
+
+	            if (nextProps.forceClose && this.state.isOpen) {
+	                this.setState({
+	                    isOpen: false,
+	                    index: -1
+	                });
+	            }
+	        }
+	    }, {
+	        key: 'render',
+	        value: function render() {
+	            var _this = this;
+
+	            var preview = null;
+	            var style = _cssStyleJs2['default'].styles();
+
+	            console.log(this.state.childIndex, this.state.isOpen);
+
+	            var children = _react2['default'].Children.map(this.props.children, function (child, index) {
+	                //calculate child item width
+	                var colWidth = 100 / _this.state.currentItemRowCount + "%";
+	                var lastComponent = index === _this.props.children.length - 1 ? true : false;
+
+	                var ListComponent = _react2['default'].cloneElement(child, {
+	                    colWidth: colWidth,
+	                    onClick: _this.handleClick,
+	                    lastComponent: lastComponent
+	                });
+
+	                if (index === _this.state.childIndex) {
+	                    preview = child.props.previewComponent;
+	                }
+
+	                if (_this.state.isOpen && index === _this.state.rowIndex && preview !== null) {
+	                    var arr = [0, 1];
+
+	                    return arr.map(function (arrItem, aIndex) {
+	                        return aIndex == 0 ? ListComponent : _react2['default'].cloneElement(preview, { onClick: _this.handleClick, isOpen: true });
+	                    });
+	                }
+
+	                return ListComponent;
+	            });
+
+	            return _react2['default'].createElement(
+	                'ul',
+	                { className: 'small-12_columns', style: style.ulExpandable },
+	                children
+	            );
+	        }
+	    }, {
+	        key: 'handleClick',
+	        value: function handleClick(e) {
+	            var _this2 = this;
+
+	            if (e.currentTarget.tagName == "LI" && (e.currentTarget.className.indexOf("li-expandable") || e.currentTarget.className == "li-expandable") || e.currentTarget.tagName == "SPAN" && e.currentTarget.className == 'span-preview-close') {
+
+	                this.state.isOpen ? this.state.beforePreviewOpen(true) : this.state.beforePreviewOpen(false);
+
+	                if (!this.state.isOpen) {
+	                    (function () {
+	                        //isOpen: false
+	                        var target = e.currentTarget;
+	                        var parent = target.parentNode;
+	                        var children = _this2.toArray(parent.children);
+
+	                        var total = 0;
+	                        var hasTarget = false;
+	                        var childIndex = -1;
+
+	                        children.forEach(function (child, index) {
+	                            total++;
+	                            console.log("children loop", child, total, _this2.state.colWidth);
+
+	                            if (!hasTarget && child == target) {
+	                                hasTarget = true;
+	                                childIndex = index;
+	                            }
+
+	                            if (total == _this2.state.currentItemRowCount && hasTarget || total < _this2.state.currentItemRowCount && hasTarget && index == children.length - 1) {
+	                                return _this2.setState({
+	                                    isOpen: true,
+	                                    rowIndex: index,
+	                                    childIndex: childIndex
+	                                });
+	                            } else if (total == _this2.state.currentItemRowCount) {
+	                                total = 0;
+	                            }
+	                        }); // ./forEach
+	                    })();
+	                } else if (this.state.isOpen) {
+	                        //isOpen: true
+	                        var target = e.currentTarget;
+
+	                        if (target.tagName === "SPAN") {
+	                            //"X" button clicked
+	                            this.setState({
+	                                isOpen: false,
+	                                index: -1
+	                            });
+	                        } else if (target.tagName === "LI") {
+	                            (function () {
+	                                //<li> element clicked
+	                                var target = e.currentTarget;
+	                                var parent = target.parentNode;
+	                                var children = _this2.toArray(parent.children);
+
+	                                var total = 0;
+	                                var hasTarget = false;
+	                                var childIndex = -1;
+
+	                                children.splice(_this2.state.rowIndex + 1, 1);
+
+	                                children.forEach(function (child, index) {
+	                                    total++;
+
+	                                    if (!hasTarget && child == target) {
+	                                        hasTarget = true;
+	                                        childIndex = index;
+	                                    }
+
+	                                    if (total == _this2.state.currentItemRowCount && hasTarget || total < _this2.state.currentItemRowCount && hasTarget && index == children.length - 1) {
+	                                        return _this2.setState({
+	                                            isOpen: true,
+	                                            rowIndex: index,
+	                                            childIndex: childIndex
+	                                        });
+	                                    } else if (total == _this2.state.currentItemRowCount) {
+	                                        total = 0;
+	                                    }
+	                                });
+	                            })();
+	                        } // ./if & ./else if
+	                    }
+
+	                this.state.afterPreviewOpen(this.state.isOpen);
+	            } // ./if span or LI
+	        }
+	    }, {
+	        key: 'toArray',
+	        value: function toArray(list) {
+	            var arr = [];
+
+	            for (var i = 0; i < list.length; i++) {
+	                arr.push(list[i]);
+	            }
+
+	            return arr;
+	        }
+	    }, {
+	        key: 'getColWidth',
+	        value: function getColWidth(colNum) {
+	            var colWidth = undefined;
+
+	            switch (colNum) {
+	                case 1:
+	                    colWidth = 12;
+	                    break;
+	                case 2:
+	                    colWidth = 6;
+	                    break;
+	                case 3:
+	                    colWidth = 4;
+	                    break;
+	                case 4:
+	                    colWidth = 3;
+	                    break;
+	                case 6:
+	                    colWidth = 2;
+	                    break;
+	                case 12:
+	                    colWidth = 1;
+	                    break;
+	                default:
+	                    colWidth = 12;
+	                    break;
+	            }
+
+	            return colWidth;
+	        }
+	    }, {
+	        key: 'componentDidMount',
+	        value: function componentDidMount() {
+	            window.addEventListener('resize', this.handleResize); //binds window resize event listener
+	        }
+	    }, {
+	        key: 'componentWillUnmount',
+	        value: function componentWillUnmount() {
+	            window.removeEventListener('resize', this.handleResize);
+	        }
+	    }, {
+	        key: 'handleResize',
+	        value: function handleResize() {
+	            this.setState({
+	                currentItemRowCount: this.getWindowSize()
+	            });
+	        }
+	    }, {
+	        key: 'getWindowSize',
+	        value: function getWindowSize() {
+	            var windowWidth = window.innerWidth;
+
+	            if (windowWidth <= 640) {
+	                //small
+	                return this.state.sItemCount;
+	            } else if (windowWidth <= 1024) {
+	                //medium
+	                return this.state.mItemCount;
+	            } else if (windowWidth <= 1440) {
+	                //large
+	                return this.state.lItemCount;
+	            } else if (windowWidth <= 1920) {
+	                //extra large
+	                return this.state.xlItemCount;
+	            } else if (windowWidth > 1920) {
+	                //XXL
+	                return this.state.xxlItemCount;
+	            }
+	        }
+	    }]);
+
+	    return Expandable;
+	})(_react2['default'].Component);
+
+	exports['default'] = Expandable;
+	module.exports = exports['default'];
+
+/***/ },
+/* 207 */
+/***/ function(module, exports) {
+
+	"use strict";
+
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
+
+	var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	exports["default"] = new ((function () {
+	    function Style() {
+	        _classCallCheck(this, Style);
+
+	        this.style = {
+	            "ulExpandable": {
+	                listStyleType: "none",
+	                width: "100%",
+	                position: "relative",
+	                float: "left",
+	                padding: "0rem",
+	                margin: "0rem"
+	            },
+	            "liExpandable": {
+	                position: "relative",
+	                float: "left",
+	                marginBottom: "1rem"
+	            },
+	            "liPreview": {
+	                position: "relative",
+	                width: "100%",
+	                marginBottom: "1rem",
+	                backgroundColor: "#fafafa",
+	                float: "left"
+	            },
+	            "divPreviewInner": {
+	                width: "100%",
+	                height: "auto",
+	                padding: "0rem"
+	            },
+	            "divPreviewHeader": {
+	                width: "100%",
+	                fontFamily: '"Comic Sans MS", cursive, sans-serif',
+	                padding: ".5rem 1rem 0 .5rem",
+	                display: "flex"
+	            },
+	            "h2PreviewTitle": {
+	                width: "95%",
+	                fontWeight: 400,
+	                padding: "0rem",
+	                fontSize: "20px",
+	                float: "left",
+	                margin: "0rem"
+	            },
+	            "spanPreviewClose": {
+	                width: "5%",
+	                fontSize: "20px",
+	                padding: "0rem"
+
+	            },
+	            "aNullTag": {
+	                float: "right",
+	                transform: "scale(1.2,1)",
+	                color: "#8F9EAB"
+	            },
+	            "divPreviewContent": {
+	                width: "100%",
+	                padding: "0rem"
+	            }
+	        };
+	    }
+
+	    _createClass(Style, [{
+	        key: "styles",
+	        value: function styles() {
+	            return this.style;
+	        }
+	    }, {
+	        key: "createStyle",
+	        value: function createStyle(name, value) {
+	            if (typeof this.style[name] === 'undefined') {
+
+	                this.style[name] = value;
+
+	                return true;
+	            } else {
+	                return false;
+	            }
+	        }
+	    }, {
+	        key: "updateStyle",
+	        value: function updateStyle(name, value) {
+	            if (typeof this.style[name] !== 'undefined') {
+	                this.style[name] = value;
+
+	                return true;
+	            } else {
+	                return false;
+	            }
+	        }
+	    }]);
+
+	    return Style;
+	})())();
+	module.exports = exports["default"];
+
+/***/ },
+/* 208 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, '__esModule', {
+	    value: true
+	});
+
+	var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ('value' in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
+
+	var _get = function get(_x, _x2, _x3) { var _again = true; _function: while (_again) { var object = _x, property = _x2, receiver = _x3; desc = parent = getter = undefined; _again = false; if (object === null) object = Function.prototype; var desc = Object.getOwnPropertyDescriptor(object, property); if (desc === undefined) { var parent = Object.getPrototypeOf(object); if (parent === null) { return undefined; } else { _x = parent; _x2 = property; _x3 = receiver; _again = true; continue _function; } } else if ('value' in desc) { return desc.value; } else { var getter = desc.get; if (getter === undefined) { return undefined; } return getter.call(receiver); } } };
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError('Cannot call a class as a function'); } }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== 'function' && superClass !== null) { throw new TypeError('Super expression must either be null or a function, not ' + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+	var _react = __webpack_require__(2);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var _PreviewJsx = __webpack_require__(209);
+
+	var _PreviewJsx2 = _interopRequireDefault(_PreviewJsx);
+
+	var _cssStyleJs = __webpack_require__(207);
+
+	var _cssStyleJs2 = _interopRequireDefault(_cssStyleJs);
+
+	var _lodash = __webpack_require__(228);
+
+	var _lodash2 = _interopRequireDefault(_lodash);
+
+	var Item = (function (_React$Component) {
+	    _inherits(Item, _React$Component);
+
+	    function Item(props, state) {
+	        _classCallCheck(this, Item);
+
+	        _get(Object.getPrototypeOf(Item.prototype), 'constructor', this).call(this, props, state);
+
+	        this.state = {
+	            colWidth: this.props.colWidth || 1,
+	            isOpen: false,
+	            offsets: null
+	        };
+
+	        //bindings
+	    }
+
+	    _createClass(Item, [{
+	        key: 'render',
+	        value: function render() {
+	            var styles = _cssStyleJs2['default'].styles();
+	            var className = "li-expandable";
+	            var children = _react2['default'].Children.map(this.props.children, function (child, index) {
+
+	                return _react2['default'].cloneElement(child, { onClick: function onClick(e) {
+	                        e.preventDefault();
+	                    } });
+	            });
+
+	            var liExpandable = _lodash2['default'].merge(styles.liExpandable, { width: this.props.colWidth });
+
+	            return _react2['default'].createElement(
+	                'li',
+	                { className: className, onClick: this.props.onClick, 'data-col-width': this.props.colWidth, style: liExpandable },
+	                children
+	            );
+	        }
+	    }]);
+
+	    return Item;
+	})(_react2['default'].Component);
+
+	exports['default'] = Item;
+	module.exports = exports['default'];
+
+/***/ },
+/* 209 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+
+	Object.defineProperty(exports, '__esModule', {
+	    value: true
+	});
+
+	var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ('value' in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
+
+	var _get = function get(_x, _x2, _x3) { var _again = true; _function: while (_again) { var object = _x, property = _x2, receiver = _x3; desc = parent = getter = undefined; _again = false; if (object === null) object = Function.prototype; var desc = Object.getOwnPropertyDescriptor(object, property); if (desc === undefined) { var parent = Object.getPrototypeOf(object); if (parent === null) { return undefined; } else { _x = parent; _x2 = property; _x3 = receiver; _again = true; continue _function; } } else if ('value' in desc) { return desc.value; } else { var getter = desc.get; if (getter === undefined) { return undefined; } return getter.call(receiver); } } };
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError('Cannot call a class as a function'); } }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== 'function' && superClass !== null) { throw new TypeError('Super expression must either be null or a function, not ' + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+	var _reactAddons = __webpack_require__(210);
+
+	var _reactAddons2 = _interopRequireDefault(_reactAddons);
+
+	var _lodash = __webpack_require__(228);
+
+	var _lodash2 = _interopRequireDefault(_lodash);
+
+	var _cssStyleJs = __webpack_require__(207);
+
+	var _cssStyleJs2 = _interopRequireDefault(_cssStyleJs);
+
+	var Preview = (function (_React$Component) {
+	    _inherits(Preview, _React$Component);
+
+	    function Preview(props, state) {
+	        _classCallCheck(this, Preview);
+
+	        _get(Object.getPrototypeOf(Preview.prototype), 'constructor', this).call(this, props, state);
+
+	        this.state = {
+	            isOpen: false
+	        };
+	    }
+
+	    _createClass(Preview, [{
+	        key: 'previewStructure',
+	        value: function previewStructure() {
+	            var TransitionGroup = _reactAddons2['default'].addons.TransitionGroup;
+
+	            var that = this;
+	            var styles = _cssStyleJs2['default'].styles();
+	            var styleProp = typeof this.props.style !== 'undefined' ? this.props.styles : {};
+
+	            var liPreview = _lodash2['default'].merge(styles.liPreview, styleProp.liPreview || {});
+	            var divPreviewInner = _lodash2['default'].merge(styles.divPreviewInner, styleProp.divPreviewInner || {});
+	            var divPreviewHeader = _lodash2['default'].merge(styles.divPreviewHeader, styleProp.divPreviewHeader || {});
+	            var h2PreviewTitle = _lodash2['default'].merge(styles.h2PreviewTitle, styleProp.h2PreviewTitle || {});
+	            var spanPreviewClose = _lodash2['default'].merge(styles.spanPreviewClose, styleProp.spanPreviewClose || {});
+	            var aNullTag = _lodash2['default'].merge(styles.aNullTag, styleProp.aNullTag || {});
+	            var divPreviewContent = _lodash2['default'].merge(styles.divPreviewContent, styleProp.divPreviewContent || {});
+
+	            return _reactAddons2['default'].createElement(
+	                'li',
+	                { className: 'li-preview', style: liPreview },
+	                _reactAddons2['default'].createElement(
+	                    'div',
+	                    { className: 'div-preview-inner', styles: _lodash2['default'].merge(divPreviewInner, {}) },
+	                    _reactAddons2['default'].createElement(
+	                        'div',
+	                        { className: 'div-preview-header', style: divPreviewHeader },
+	                        _reactAddons2['default'].createElement(
+	                            'h2',
+	                            { className: 'h2-preview-title', style: h2PreviewTitle },
+	                            that.props.title
+	                        ),
+	                        _reactAddons2['default'].createElement(
+	                            'span',
+	                            { className: 'span-preview-close', style: spanPreviewClose, onClick: this.props.onClick },
+	                            _reactAddons2['default'].createElement(
+	                                'a',
+	                                { classname: 'a-null-tag', style: aNullTag },
+	                                'X'
+	                            )
+	                        )
+	                    ),
+	                    _reactAddons2['default'].createElement(
+	                        'div',
+	                        { className: 'div-preview-content', style: divPreviewContent },
+	                        that.props.children
+	                    )
+	                )
+	            );
+	        }
+	        //previewStructure()
+
+	        //if preview is mounted or updated && open, the scroll to it.
+	    }, {
+	        key: 'scrollToPreview',
+	        value: function scrollToPreview() {
+	            var body = document.body;
+	            var elem;
+	        }
+	    }, {
+	        key: 'render',
+	        value: function render() {
+	            return this.props.isOpen ? this.previewStructure() : null;
+	        }
+	    }, {
+	        key: 'componentDidMount',
+	        value: function componentDidMount() {
+
+	            if (this.props.isOpen && !this.state.isOpen) {
+	                this.setState({ isOpen: true });
+	            } else if (!this.props.isOpen) {
+	                this.setState({ isOpen: false });
+	            }
+	        }
+	    }, {
+	        key: 'componentDidUpdate',
+	        value: function componentDidUpdate() {
+
+	            if (this.props.isOpen && !this.state.isOpen) {
+	                this.setState({ isOpen: true });
+	            } else if (!this.props.isOpen) {
+	                this.setState({ isOpen: false });
+	            }
+	        }
+	    }]);
+
+	    return Preview;
+	})(_reactAddons2['default'].Component);
+
+	exports['default'] = Preview;
+	module.exports = exports['default'];
+
+/***/ },
 /* 210 */
 /***/ function(module, exports, __webpack_require__) {
 
@@ -27240,1343 +27902,6 @@
 
 /***/ },
 /* 228 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	exports.__esModule = true;
-
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
-
-	var _react = __webpack_require__(2);
-
-	var _react2 = _interopRequireDefault(_react);
-
-	var _components2 = __webpack_require__(229);
-
-	var _components3 = _interopRequireDefault(_components2);
-
-	var _reorderKeys = __webpack_require__(244);
-
-	var _reorderKeys2 = _interopRequireDefault(_reorderKeys);
-
-	var _components = _components3['default'](_react2['default']);
-
-	var Spring = _components.Spring;
-	var TransitionSpring = _components.TransitionSpring;
-	var Motion = _components.Motion;
-	var StaggeredMotion = _components.StaggeredMotion;
-	var TransitionMotion = _components.TransitionMotion;
-	exports.Spring = Spring;
-	exports.TransitionSpring = TransitionSpring;
-	exports.Motion = Motion;
-	exports.StaggeredMotion = StaggeredMotion;
-	exports.TransitionMotion = TransitionMotion;
-
-	var _spring2 = __webpack_require__(240);
-
-	var _spring3 = _interopRequireDefault(_spring2);
-
-	exports.spring = _spring3['default'];
-
-	var _presets2 = __webpack_require__(241);
-
-	var _presets3 = _interopRequireDefault(_presets2);
-
-	exports.presets = _presets3['default'];
-	var utils = {
-	  reorderKeys: _reorderKeys2['default']
-	};
-	exports.utils = utils;
-
-/***/ },
-/* 229 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	exports.__esModule = true;
-
-	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
-
-	exports['default'] = components;
-
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
-
-	var _noVelocity = __webpack_require__(230);
-
-	var _noVelocity2 = _interopRequireDefault(_noVelocity);
-
-	var _hasReachedStyle = __webpack_require__(231);
-
-	var _hasReachedStyle2 = _interopRequireDefault(_hasReachedStyle);
-
-	var _mergeDiff = __webpack_require__(232);
-
-	var _mergeDiff2 = _interopRequireDefault(_mergeDiff);
-
-	var _animationLoop = __webpack_require__(233);
-
-	var _animationLoop2 = _interopRequireDefault(_animationLoop);
-
-	var _zero = __webpack_require__(237);
-
-	var _zero2 = _interopRequireDefault(_zero);
-
-	var _updateTree = __webpack_require__(238);
-
-	var _deprecatedSprings2 = __webpack_require__(242);
-
-	var _deprecatedSprings3 = _interopRequireDefault(_deprecatedSprings2);
-
-	var _stripStyle = __webpack_require__(243);
-
-	var _stripStyle2 = _interopRequireDefault(_stripStyle);
-
-	var startAnimation = _animationLoop2['default']();
-
-	function mapObject(f, obj) {
-	  var ret = {};
-	  for (var key in obj) {
-	    if (!obj.hasOwnProperty(key)) {
-	      continue;
-	    }
-	    ret[key] = f(obj[key], key);
-	  }
-	  return ret;
-	}
-
-	function everyObj(f, obj) {
-	  for (var key in obj) {
-	    if (!obj.hasOwnProperty(key)) {
-	      continue;
-	    }
-	    if (!f(obj[key], key)) {
-	      return false;
-	    }
-	  }
-	  return true;
-	}
-
-	function components(React) {
-	  var PropTypes = React.PropTypes;
-
-	  var Motion = React.createClass({
-	    displayName: 'Motion',
-
-	    propTypes: {
-	      // TOOD: warn against putting a config in here
-	      defaultValue: function defaultValue(prop, propName) {
-	        if (prop[propName]) {
-	          return new Error('Spring\'s `defaultValue` has been changed to `defaultStyle`. ' + 'Its format received a few (easy to update!) changes as well.');
-	        }
-	      },
-	      endValue: function endValue(prop, propName) {
-	        if (prop[propName]) {
-	          return new Error('Spring\'s `endValue` has been changed to `style`. Its format ' + 'received a few (easy to update!) changes as well.');
-	        }
-	      },
-	      defaultStyle: PropTypes.object,
-	      style: PropTypes.object.isRequired,
-	      children: PropTypes.func.isRequired
-	    },
-
-	    getInitialState: function getInitialState() {
-	      var _props = this.props;
-	      var defaultStyle = _props.defaultStyle;
-	      var style = _props.style;
-
-	      var currentStyle = defaultStyle || style;
-	      return {
-	        currentStyle: currentStyle,
-	        currentVelocity: mapObject(_zero2['default'], currentStyle)
-	      };
-	    },
-
-	    componentDidMount: function componentDidMount() {
-	      this.startAnimating();
-	    },
-
-	    componentWillReceiveProps: function componentWillReceiveProps() {
-	      this.startAnimating();
-	    },
-
-	    animationStep: function animationStep(timestep, state) {
-	      var currentStyle = state.currentStyle;
-	      var currentVelocity = state.currentVelocity;
-	      var style = this.props.style;
-
-	      var newCurrentStyle = _updateTree.updateCurrentStyle(timestep, currentStyle, currentVelocity, style);
-	      var newCurrentVelocity = _updateTree.updateCurrentVelocity(timestep, currentStyle, currentVelocity, style);
-
-	      // TOOD: this isn't necessary anymore. It was used only against endValue func
-	      if (_noVelocity2['default'](currentVelocity, newCurrentStyle) && _noVelocity2['default'](newCurrentVelocity, newCurrentStyle)) {
-	        // check explanation in `Motion.animationRender`
-	        this.stopAnimation(); // Nasty side effects....
-	      }
-
-	      return {
-	        currentStyle: newCurrentStyle,
-	        currentVelocity: newCurrentVelocity
-	      };
-	    },
-
-	    stopAnimation: null,
-
-	    // used in animationRender
-	    hasUnmounted: false,
-
-	    componentWillUnmount: function componentWillUnmount() {
-	      this.stopAnimation();
-	      this.hasUnmounted = true;
-	    },
-
-	    startAnimating: function startAnimating() {
-	      // Is smart enough to not start it twice
-	      this.stopAnimation = startAnimation(this.state, this.animationStep, this.animationRender);
-	    },
-
-	    animationRender: function animationRender(alpha, nextState, prevState) {
-	      // `this.hasUnmounted` might be true in the following condition:
-	      // user does some checks in `style` and calls an owner handler
-	      // owner sets state in the callback, triggering a re-render
-	      // unmounts Motion
-	      if (!this.hasUnmounted) {
-	        this.setState({
-	          currentStyle: _updateTree.interpolateValue(alpha, nextState.currentStyle, prevState.currentStyle),
-	          currentVelocity: nextState.currentVelocity
-	        });
-	      }
-	    },
-
-	    render: function render() {
-	      var strippedStyle = _stripStyle2['default'](this.state.currentStyle);
-	      var renderedChildren = this.props.children(strippedStyle);
-	      return renderedChildren && React.Children.only(renderedChildren);
-	    }
-	  });
-
-	  var StaggeredMotion = React.createClass({
-	    displayName: 'StaggeredMotion',
-
-	    propTypes: {
-	      defaultStyle: function defaultStyle(prop, propName) {
-	        if (prop[propName]) {
-	          return new Error('You forgot the "s" for `StaggeredMotion`\'s `defaultStyles`.');
-	        }
-	      },
-	      style: function style(prop, propName) {
-	        if (prop[propName]) {
-	          return new Error('You forgot the "s" for `StaggeredMotion`\'s `styles`.');
-	        }
-	      },
-	      // TOOD: warn against putting configs in here
-	      defaultStyles: PropTypes.arrayOf(PropTypes.object),
-	      styles: PropTypes.func.isRequired,
-	      children: PropTypes.func.isRequired
-	    },
-
-	    getInitialState: function getInitialState() {
-	      var _props2 = this.props;
-	      var styles = _props2.styles;
-	      var defaultStyles = _props2.defaultStyles;
-
-	      var currentStyles = defaultStyles ? defaultStyles : styles();
-	      return {
-	        currentStyles: currentStyles,
-	        currentVelocities: currentStyles.map(function (s) {
-	          return mapObject(_zero2['default'], s);
-	        })
-	      };
-	    },
-
-	    componentDidMount: function componentDidMount() {
-	      this.startAnimating();
-	    },
-
-	    componentWillReceiveProps: function componentWillReceiveProps() {
-	      this.startAnimating();
-	    },
-
-	    animationStep: function animationStep(timestep, state) {
-	      var currentStyles = state.currentStyles;
-	      var currentVelocities = state.currentVelocities;
-
-	      var styles = this.props.styles(currentStyles.map(_stripStyle2['default']));
-
-	      var newCurrentStyles = currentStyles.map(function (currentStyle, i) {
-	        return _updateTree.updateCurrentStyle(timestep, currentStyle, currentVelocities[i], styles[i]);
-	      });
-	      var newCurrentVelocities = currentStyles.map(function (currentStyle, i) {
-	        return _updateTree.updateCurrentVelocity(timestep, currentStyle, currentVelocities[i], styles[i]);
-	      });
-
-	      // TODO: is this right?
-	      if (currentVelocities.every(function (v, k) {
-	        return _noVelocity2['default'](v, currentStyles[k]);
-	      }) && newCurrentVelocities.every(function (v, k) {
-	        return _noVelocity2['default'](v, newCurrentStyles[k]);
-	      })) {
-	        this.stopAnimation();
-	      }
-
-	      return {
-	        currentStyles: newCurrentStyles,
-	        currentVelocities: newCurrentVelocities
-	      };
-	    },
-
-	    stopAnimation: null,
-
-	    // used in animationRender
-	    hasUnmounted: false,
-
-	    componentWillUnmount: function componentWillUnmount() {
-	      this.stopAnimation();
-	      this.hasUnmounted = true;
-	    },
-
-	    startAnimating: function startAnimating() {
-	      this.stopAnimation = startAnimation(this.state, this.animationStep, this.animationRender);
-	    },
-
-	    animationRender: function animationRender(alpha, nextState, prevState) {
-	      // See comment in Motion.
-	      if (!this.hasUnmounted) {
-	        var currentStyles = nextState.currentStyles.map(function (style, i) {
-	          return _updateTree.interpolateValue(alpha, style, prevState.currentStyles[i]);
-	        });
-	        this.setState({
-	          currentStyles: currentStyles,
-	          currentVelocities: nextState.currentVelocities
-	        });
-	      }
-	    },
-
-	    render: function render() {
-	      var strippedStyle = this.state.currentStyles.map(_stripStyle2['default']);
-	      var renderedChildren = this.props.children(strippedStyle);
-	      return renderedChildren && React.Children.only(renderedChildren);
-	    }
-	  });
-
-	  var TransitionMotion = React.createClass({
-	    displayName: 'TransitionMotion',
-
-	    propTypes: {
-	      defaultValue: function defaultValue(prop, propName) {
-	        if (prop[propName]) {
-	          return new Error('TransitionSpring\'s `defaultValue` has been changed to ' + '`defaultStyles`. Its format received a few (easy to update!) ' + 'changes as well.');
-	        }
-	      },
-	      endValue: function endValue(prop, propName) {
-	        if (prop[propName]) {
-	          return new Error('TransitionSpring\'s `endValue` has been changed to `styles`. ' + 'Its format received a few (easy to update!) changes as well.');
-	        }
-	      },
-	      defaultStyle: function defaultStyle(prop, propName) {
-	        if (prop[propName]) {
-	          return new Error('You forgot the "s" for `TransitionMotion`\'s `defaultStyles`.');
-	        }
-	      },
-	      style: function style(prop, propName) {
-	        if (prop[propName]) {
-	          return new Error('You forgot the "s" for `TransitionMotion`\'s `styles`.');
-	        }
-	      },
-	      // TOOD: warn against putting configs in here
-	      defaultStyles: PropTypes.objectOf(PropTypes.any),
-	      styles: PropTypes.oneOfType([PropTypes.func, PropTypes.objectOf(PropTypes.any.isRequired)]).isRequired,
-	      willLeave: PropTypes.oneOfType([PropTypes.func]),
-	      // TOOD: warn against putting configs in here
-	      willEnter: PropTypes.oneOfType([PropTypes.func]),
-	      children: PropTypes.func.isRequired
-	    },
-
-	    getDefaultProps: function getDefaultProps() {
-	      return {
-	        willEnter: function willEnter(key, value) {
-	          return value;
-	        },
-	        willLeave: function willLeave() {
-	          return null;
-	        }
-	      };
-	    },
-
-	    getInitialState: function getInitialState() {
-	      var _props3 = this.props;
-	      var styles = _props3.styles;
-	      var defaultStyles = _props3.defaultStyles;
-
-	      var currentStyles = undefined;
-	      if (defaultStyles == null) {
-	        if (typeof styles === 'function') {
-	          currentStyles = styles();
-	        } else {
-	          currentStyles = styles;
-	        }
-	      } else {
-	        currentStyles = defaultStyles;
-	      }
-	      return {
-	        currentStyles: currentStyles,
-	        currentVelocities: mapObject(function (s) {
-	          return mapObject(_zero2['default'], s);
-	        }, currentStyles)
-	      };
-	    },
-
-	    componentDidMount: function componentDidMount() {
-	      this.startAnimating();
-	    },
-
-	    componentWillReceiveProps: function componentWillReceiveProps() {
-	      this.startAnimating();
-	    },
-
-	    animationStep: function animationStep(timestep, state) {
-	      var currentStyles = state.currentStyles;
-	      var currentVelocities = state.currentVelocities;
-	      var _props4 = this.props;
-	      var styles = _props4.styles;
-	      var willEnter = _props4.willEnter;
-	      var willLeave = _props4.willLeave;
-
-	      if (typeof styles === 'function') {
-	        styles = styles(currentStyles);
-	      }
-
-	      // TODO: huh?
-	      var mergedStyles = styles; // set mergedStyles to styles as the default
-	      var hasNewKey = false;
-
-	      mergedStyles = _mergeDiff2['default'](currentStyles, styles,
-	      // TODO: stop allocating like crazy in this whole code path
-	      function (key) {
-	        var res = willLeave(key, currentStyles[key], styles, currentStyles, currentVelocities);
-	        if (res == null) {
-	          // For legacy reason. We won't allow returning null soon
-	          // TODO: remove, after next release
-	          return null;
-	        }
-
-	        if (_noVelocity2['default'](currentVelocities[key], currentStyles[key]) && _hasReachedStyle2['default'](currentStyles[key], res)) {
-	          return null;
-	        }
-	        return res;
-	      });
-
-	      Object.keys(mergedStyles).filter(function (key) {
-	        return !currentStyles.hasOwnProperty(key);
-	      }).forEach(function (key) {
-	        var _extends2, _extends3;
-
-	        hasNewKey = true;
-	        var enterStyle = willEnter(key, mergedStyles[key], styles, currentStyles, currentVelocities);
-
-	        // We can mutate this here because mergeDiff returns a new Obj
-	        mergedStyles[key] = enterStyle;
-
-	        currentStyles = _extends({}, currentStyles, (_extends2 = {}, _extends2[key] = enterStyle, _extends2));
-	        currentVelocities = _extends({}, currentVelocities, (_extends3 = {}, _extends3[key] = mapObject(_zero2['default'], enterStyle), _extends3));
-	      });
-
-	      var newCurrentStyles = mapObject(function (mergedStyle, key) {
-	        return _updateTree.updateCurrentStyle(timestep, currentStyles[key], currentVelocities[key], mergedStyle);
-	      }, mergedStyles);
-	      var newCurrentVelocities = mapObject(function (mergedStyle, key) {
-	        return _updateTree.updateCurrentVelocity(timestep, currentStyles[key], currentVelocities[key], mergedStyle);
-	      }, mergedStyles);
-
-	      if (!hasNewKey && everyObj(function (v, k) {
-	        return _noVelocity2['default'](v, currentStyles[k]);
-	      }, currentVelocities) && everyObj(function (v, k) {
-	        return _noVelocity2['default'](v, newCurrentStyles[k]);
-	      }, newCurrentVelocities)) {
-	        // check explanation in `Motion.animationRender`
-	        this.stopAnimation(); // Nasty side effects....
-	      }
-
-	      return {
-	        currentStyles: newCurrentStyles,
-	        currentVelocities: newCurrentVelocities
-	      };
-	    },
-
-	    stopAnimation: null,
-
-	    // used in animationRender
-	    hasUnmounted: false,
-
-	    componentWillUnmount: function componentWillUnmount() {
-	      this.stopAnimation();
-	      this.hasUnmounted = true;
-	    },
-
-	    startAnimating: function startAnimating() {
-	      this.stopAnimation = startAnimation(this.state, this.animationStep, this.animationRender);
-	    },
-
-	    animationRender: function animationRender(alpha, nextState, prevState) {
-	      // See comment in Motion.
-	      if (!this.hasUnmounted) {
-	        var currentStyles = mapObject(function (style, key) {
-	          return _updateTree.interpolateValue(alpha, style, prevState.currentStyles[key]);
-	        }, nextState.currentStyles);
-	        this.setState({
-	          currentStyles: currentStyles,
-	          currentVelocities: nextState.currentVelocities
-	        });
-	      }
-	    },
-
-	    render: function render() {
-	      var strippedStyle = mapObject(_stripStyle2['default'], this.state.currentStyles);
-	      var renderedChildren = this.props.children(strippedStyle);
-	      return renderedChildren && React.Children.only(renderedChildren);
-	    }
-	  });
-
-	  var _deprecatedSprings = _deprecatedSprings3['default'](React);
-
-	  var Spring = _deprecatedSprings.Spring;
-	  var TransitionSpring = _deprecatedSprings.TransitionSpring;
-
-	  return { Spring: Spring, TransitionSpring: TransitionSpring, Motion: Motion, StaggeredMotion: StaggeredMotion, TransitionMotion: TransitionMotion };
-	}
-
-	module.exports = exports['default'];
-
-/***/ },
-/* 230 */
-/***/ function(module, exports) {
-
-	
-	// currentStyle keeps the info about whether a prop is configured as a spring
-	// or if it's just a random prop that happens to be present on the style
-
-	'use strict';
-
-	exports.__esModule = true;
-	exports['default'] = noVelocity;
-
-	function noVelocity(currentVelocity, currentStyle) {
-	  for (var key in currentVelocity) {
-	    if (!currentVelocity.hasOwnProperty(key)) {
-	      continue;
-	    }
-	    if (currentStyle[key] != null && currentStyle[key].config && currentVelocity[key] !== 0) {
-	      return false;
-	    }
-	  }
-	  return true;
-	}
-
-	module.exports = exports['default'];
-
-/***/ },
-/* 231 */
-/***/ function(module, exports) {
-
-	'use strict';
-
-	exports.__esModule = true;
-	exports['default'] = hasReachedStyle;
-
-	function hasReachedStyle(currentStyle, style) {
-	  for (var key in style) {
-	    if (!style.hasOwnProperty(key)) {
-	      continue;
-	    }
-	    var currentValue = currentStyle[key];
-	    var destValue = style[key];
-	    if (destValue == null || !destValue.config) {
-	      // not a spring config
-	      continue;
-	    }
-	    if (currentValue.config && currentValue.val !== destValue.val) {
-	      return false;
-	    }
-	    if (!currentValue.config && currentValue !== destValue.val) {
-	      return false;
-	    }
-	  }
-
-	  return true;
-	}
-
-	module.exports = exports['default'];
-
-/***/ },
-/* 232 */
-/***/ function(module, exports) {
-
-	
-
-	// this function is allocation-less thanks to babel, which transforms the tail
-	// calls into loops
-	'use strict';
-
-	exports.__esModule = true;
-	exports['default'] = mergeDiff;
-	function mergeDiffArr(_x, _x2, _x3, _x4, _x5, _x6, _x7) {
-	  var _again = true;
-
-	  _function: while (_again) {
-	    var arrA = _x,
-	        arrB = _x2,
-	        collB = _x3,
-	        indexA = _x4,
-	        indexB = _x5,
-	        onRemove = _x6,
-	        accum = _x7;
-	    endA = endB = keyA = keyB = fill = fill = undefined;
-	    _again = false;
-
-	    var endA = indexA === arrA.length;
-	    var endB = indexB === arrB.length;
-	    var keyA = arrA[indexA];
-	    var keyB = arrB[indexB];
-	    if (endA && endB) {
-	      // returning null here, otherwise lint complains that we're not expecting
-	      // a return value in subsequent calls. We know what we're doing.
-	      return null;
-	    }
-
-	    if (endA) {
-	      accum[keyB] = collB[keyB];
-	      _x = arrA;
-	      _x2 = arrB;
-	      _x3 = collB;
-	      _x4 = indexA;
-	      _x5 = indexB + 1;
-	      _x6 = onRemove;
-	      _x7 = accum;
-	      _again = true;
-	      continue _function;
-	    }
-
-	    if (endB) {
-	      var fill = onRemove(keyA);
-	      if (fill != null) {
-	        accum[keyA] = fill;
-	      }
-	      _x = arrA;
-	      _x2 = arrB;
-	      _x3 = collB;
-	      _x4 = indexA + 1;
-	      _x5 = indexB;
-	      _x6 = onRemove;
-	      _x7 = accum;
-	      _again = true;
-	      continue _function;
-	    }
-
-	    if (keyA === keyB) {
-	      accum[keyA] = collB[keyA];
-	      _x = arrA;
-	      _x2 = arrB;
-	      _x3 = collB;
-	      _x4 = indexA + 1;
-	      _x5 = indexB + 1;
-	      _x6 = onRemove;
-	      _x7 = accum;
-	      _again = true;
-	      continue _function;
-	    }
-
-	    if (!collB.hasOwnProperty(keyA)) {
-	      var fill = onRemove(keyA);
-	      if (fill != null) {
-	        accum[keyA] = fill;
-	      }
-	      _x = arrA;
-	      _x2 = arrB;
-	      _x3 = collB;
-	      _x4 = indexA + 1;
-	      _x5 = indexB;
-	      _x6 = onRemove;
-	      _x7 = accum;
-	      _again = true;
-	      continue _function;
-	    }
-
-	    _x = arrA;
-	    _x2 = arrB;
-	    _x3 = collB;
-	    _x4 = indexA + 1;
-	    _x5 = indexB;
-	    _x6 = onRemove;
-	    _x7 = accum;
-	    _again = true;
-	    continue _function;
-	  }
-	}
-
-	function mergeDiff(a, b, onRemove) {
-	  var ret = {};
-	  // if anyone can make this work without allocating the arrays here, we'll
-	  // give you a medal
-	  mergeDiffArr(Object.keys(a), Object.keys(b), b, 0, 0, onRemove, ret);
-	  return ret;
-	}
-
-	module.exports = exports['default'];
-
-/***/ },
-/* 233 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	exports.__esModule = true;
-	exports['default'] = configAnimation;
-
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
-
-	var _performanceNow = __webpack_require__(234);
-
-	var _performanceNow2 = _interopRequireDefault(_performanceNow);
-
-	var _raf = __webpack_require__(236);
-
-	var _raf2 = _interopRequireDefault(_raf);
-
-	function configAnimation() {
-	  var config = arguments.length <= 0 || arguments[0] === undefined ? {} : arguments[0];
-	  var _config$timeStep = config.timeStep;
-	  var timeStep = _config$timeStep === undefined ? 1 / 60 * 1000 : _config$timeStep;
-	  var _config$timeScale = config.timeScale;
-	  var timeScale = _config$timeScale === undefined ? 1 : _config$timeScale;
-	  var _config$maxSteps = config.maxSteps;
-	  var maxSteps = _config$maxSteps === undefined ? 10 : _config$maxSteps;
-	  var _config$raf = config.raf;
-	  var raf = _config$raf === undefined ? _raf2['default'] : _config$raf;
-	  var _config$now = config.now;
-	  var now = _config$now === undefined ? _performanceNow2['default'] : _config$now;
-
-	  var animRunning = [];
-	  var running = false;
-	  var prevTime = 0;
-	  var accumulatedTime = 0;
-
-	  function loop() {
-	    var currentTime = now();
-	    var frameTime = currentTime - prevTime; // delta
-
-	    prevTime = currentTime;
-	    accumulatedTime += frameTime * timeScale;
-
-	    if (accumulatedTime > timeStep * maxSteps) {
-	      accumulatedTime = 0;
-	    }
-
-	    var frameNumber = Math.ceil(accumulatedTime / timeStep);
-	    for (var i = 0; i < animRunning.length; i++) {
-	      var _animRunning$i = animRunning[i];
-	      var active = _animRunning$i.active;
-	      var animationStep = _animRunning$i.animationStep;
-	      var prevPrevState = _animRunning$i.prevState;
-	      var prevNextState = animRunning[i].nextState;
-
-	      if (!active) {
-	        continue;
-	      }
-
-	      // Seems like because the TS sets destVals as enterVals for the first
-	      // tick, we might render that value twice. We render it once, currValue is
-	      // enterVal and destVal is enterVal. The next tick is faster than 16ms,
-	      // so accumulatedTime (which would be about -16ms from the previous tick)
-	      // is negative (-16ms + any number less than 16ms < 0). So we just render
-	      // part ways towards the nextState, but that's enterVal still. We render
-	      // say 75% between currValue (=== enterVal) and destValue (=== enterVal).
-	      // So we render the same value a second time.
-	      // The solution below is to recalculate the destination state even when
-	      // you're moving partially towards it.
-	      if (accumulatedTime <= 0) {
-	        animRunning[i].nextState = animationStep(timeStep / 1000, prevPrevState);
-	      } else {
-	        for (var j = 0; j < frameNumber; j++) {
-	          animRunning[i].nextState = animationStep(timeStep / 1000, prevNextState);
-	          var _ref = [prevNextState, animRunning[i].nextState];
-	          animRunning[i].prevState = _ref[0];
-	          prevNextState = _ref[1];
-	        }
-	      }
-	    }
-
-	    accumulatedTime = accumulatedTime - frameNumber * timeStep;
-
-	    // Render and filter in one iteration.
-	    var alpha = 1 + accumulatedTime / timeStep;
-	    for (var i = 0; i < animRunning.length; i++) {
-	      var _animRunning$i2 = animRunning[i];
-	      var animationRender = _animRunning$i2.animationRender;
-	      var nextState = _animRunning$i2.nextState;
-	      var prevState = _animRunning$i2.prevState;
-
-	      // Might mutate animRunning........
-	      animationRender(alpha, nextState, prevState);
-	    }
-
-	    animRunning = animRunning.filter(function (_ref2) {
-	      var active = _ref2.active;
-	      return active;
-	    });
-
-	    if (animRunning.length === 0) {
-	      running = false;
-	    } else {
-	      raf(loop);
-	    }
-	  }
-
-	  function start() {
-	    if (!running) {
-	      running = true;
-	      prevTime = now();
-	      accumulatedTime = 0;
-	      raf(loop);
-	    }
-	  }
-
-	  return function startAnimation(state, animationStep, animationRender) {
-	    for (var i = 0; i < animRunning.length; i++) {
-	      var val = animRunning[i];
-	      if (val.animationStep === animationStep) {
-	        val.active = true;
-	        val.prevState = state;
-	        start();
-	        return val.stop;
-	      }
-	    }
-
-	    var newAnim = {
-	      animationStep: animationStep,
-	      animationRender: animationRender,
-	      prevState: state,
-	      nextState: state,
-	      active: true
-	    };
-
-	    newAnim.stop = function () {
-	      return newAnim.active = false;
-	    };
-	    animRunning.push(newAnim);
-
-	    start();
-
-	    return newAnim.stop;
-	  };
-	}
-
-	module.exports = exports['default'];
-
-/***/ },
-/* 234 */
-/***/ function(module, exports, __webpack_require__) {
-
-	/* WEBPACK VAR INJECTION */(function(process) {// Generated by CoffeeScript 1.7.1
-	(function() {
-	  var getNanoSeconds, hrtime, loadTime;
-
-	  if ((typeof performance !== "undefined" && performance !== null) && performance.now) {
-	    module.exports = function() {
-	      return performance.now();
-	    };
-	  } else if ((typeof process !== "undefined" && process !== null) && process.hrtime) {
-	    module.exports = function() {
-	      return (getNanoSeconds() - loadTime) / 1e6;
-	    };
-	    hrtime = process.hrtime;
-	    getNanoSeconds = function() {
-	      var hr;
-	      hr = hrtime();
-	      return hr[0] * 1e9 + hr[1];
-	    };
-	    loadTime = getNanoSeconds();
-	  } else if (Date.now) {
-	    module.exports = function() {
-	      return Date.now() - loadTime;
-	    };
-	    loadTime = Date.now();
-	  } else {
-	    module.exports = function() {
-	      return new Date().getTime() - loadTime;
-	    };
-	    loadTime = new Date().getTime();
-	  }
-
-	}).call(this);
-
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(235)))
-
-/***/ },
-/* 235 */
-/***/ function(module, exports) {
-
-	// shim for using process in browser
-
-	var process = module.exports = {};
-	var queue = [];
-	var draining = false;
-	var currentQueue;
-	var queueIndex = -1;
-
-	function cleanUpNextTick() {
-	    draining = false;
-	    if (currentQueue.length) {
-	        queue = currentQueue.concat(queue);
-	    } else {
-	        queueIndex = -1;
-	    }
-	    if (queue.length) {
-	        drainQueue();
-	    }
-	}
-
-	function drainQueue() {
-	    if (draining) {
-	        return;
-	    }
-	    var timeout = setTimeout(cleanUpNextTick);
-	    draining = true;
-
-	    var len = queue.length;
-	    while(len) {
-	        currentQueue = queue;
-	        queue = [];
-	        while (++queueIndex < len) {
-	            if (currentQueue) {
-	                currentQueue[queueIndex].run();
-	            }
-	        }
-	        queueIndex = -1;
-	        len = queue.length;
-	    }
-	    currentQueue = null;
-	    draining = false;
-	    clearTimeout(timeout);
-	}
-
-	process.nextTick = function (fun) {
-	    var args = new Array(arguments.length - 1);
-	    if (arguments.length > 1) {
-	        for (var i = 1; i < arguments.length; i++) {
-	            args[i - 1] = arguments[i];
-	        }
-	    }
-	    queue.push(new Item(fun, args));
-	    if (queue.length === 1 && !draining) {
-	        setTimeout(drainQueue, 0);
-	    }
-	};
-
-	// v8 likes predictible objects
-	function Item(fun, array) {
-	    this.fun = fun;
-	    this.array = array;
-	}
-	Item.prototype.run = function () {
-	    this.fun.apply(null, this.array);
-	};
-	process.title = 'browser';
-	process.browser = true;
-	process.env = {};
-	process.argv = [];
-	process.version = ''; // empty string to avoid regexp issues
-	process.versions = {};
-
-	function noop() {}
-
-	process.on = noop;
-	process.addListener = noop;
-	process.once = noop;
-	process.off = noop;
-	process.removeListener = noop;
-	process.removeAllListeners = noop;
-	process.emit = noop;
-
-	process.binding = function (name) {
-	    throw new Error('process.binding is not supported');
-	};
-
-	process.cwd = function () { return '/' };
-	process.chdir = function (dir) {
-	    throw new Error('process.chdir is not supported');
-	};
-	process.umask = function() { return 0; };
-
-
-/***/ },
-/* 236 */
-/***/ function(module, exports, __webpack_require__) {
-
-	var now = __webpack_require__(234)
-	  , global = typeof window === 'undefined' ? {} : window
-	  , vendors = ['moz', 'webkit']
-	  , suffix = 'AnimationFrame'
-	  , raf = global['request' + suffix]
-	  , caf = global['cancel' + suffix] || global['cancelRequest' + suffix]
-
-	for(var i = 0; i < vendors.length && !raf; i++) {
-	  raf = global[vendors[i] + 'Request' + suffix]
-	  caf = global[vendors[i] + 'Cancel' + suffix]
-	      || global[vendors[i] + 'CancelRequest' + suffix]
-	}
-
-	// Some versions of FF have rAF but not cAF
-	if(!raf || !caf) {
-	  var last = 0
-	    , id = 0
-	    , queue = []
-	    , frameDuration = 1000 / 60
-
-	  raf = function(callback) {
-	    if(queue.length === 0) {
-	      var _now = now()
-	        , next = Math.max(0, frameDuration - (_now - last))
-	      last = next + _now
-	      setTimeout(function() {
-	        var cp = queue.slice(0)
-	        // Clear queue here to prevent
-	        // callbacks from appending listeners
-	        // to the current frame's queue
-	        queue.length = 0
-	        for(var i = 0; i < cp.length; i++) {
-	          if(!cp[i].cancelled) {
-	            try{
-	              cp[i].callback(last)
-	            } catch(e) {
-	              setTimeout(function() { throw e }, 0)
-	            }
-	          }
-	        }
-	      }, Math.round(next))
-	    }
-	    queue.push({
-	      handle: ++id,
-	      callback: callback,
-	      cancelled: false
-	    })
-	    return id
-	  }
-
-	  caf = function(handle) {
-	    for(var i = 0; i < queue.length; i++) {
-	      if(queue[i].handle === handle) {
-	        queue[i].cancelled = true
-	      }
-	    }
-	  }
-	}
-
-	module.exports = function(fn) {
-	  // Wrap in a new function to prevent
-	  // `cancel` potentially being assigned
-	  // to the native rAF function
-	  return raf.call(global, fn)
-	}
-	module.exports.cancel = function() {
-	  caf.apply(global, arguments)
-	}
-
-
-/***/ },
-/* 237 */
-/***/ function(module, exports) {
-
-	
-	// used by the tree-walking updates and springs. Avoids some allocations
-	"use strict";
-
-	exports.__esModule = true;
-	exports["default"] = zero;
-
-	function zero() {
-	  return 0;
-	}
-
-	module.exports = exports["default"];
-
-/***/ },
-/* 238 */
-/***/ function(module, exports, __webpack_require__) {
-
-	
-
-	// TODO: refactor common logic with updateCurrValue and updateCurrVelocity
-	'use strict';
-
-	exports.__esModule = true;
-	exports.interpolateValue = interpolateValue;
-	exports.updateCurrentStyle = updateCurrentStyle;
-	exports.updateCurrentVelocity = updateCurrentVelocity;
-
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
-
-	var _stepper = __webpack_require__(239);
-
-	var _stepper2 = _interopRequireDefault(_stepper);
-
-	var _spring = __webpack_require__(240);
-
-	var _spring2 = _interopRequireDefault(_spring);
-
-	function interpolateValue(alpha, nextStyle, prevStyle) {
-	  // might be used by a TransitionMotion, where prevStyle might not exist anymore
-	  if (!prevStyle) {
-	    return nextStyle;
-	  }
-
-	  var ret = {};
-	  for (var key in nextStyle) {
-	    if (!nextStyle.hasOwnProperty(key)) {
-	      continue;
-	    }
-
-	    if (nextStyle[key] == null || !nextStyle[key].config) {
-	      ret[key] = nextStyle[key];
-	      // not a spring config, not something we want to interpolate
-	      continue;
-	    }
-	    var prevValue = prevStyle[key].config ? prevStyle[key].val : prevStyle[key];
-	    ret[key] = _spring2['default'](nextStyle[key].val * alpha + prevValue * (1 - alpha), nextStyle[key].config);
-	  }
-
-	  return ret;
-	}
-
-	// TODO: refactor common logic with updateCurrentVelocity
-
-	function updateCurrentStyle(frameRate, currentStyle, currentVelocity, style) {
-	  var ret = {};
-	  for (var key in style) {
-	    if (!style.hasOwnProperty(key)) {
-	      continue;
-	    }
-	    if (style[key] == null || !style[key].config) {
-	      ret[key] = style[key];
-	      // not a spring config, not something we want to interpolate
-	      continue;
-	    }
-	    var _style$key$config = style[key].config;
-	    var k = _style$key$config[0];
-	    var b = _style$key$config[1];
-
-	    var val = _stepper2['default'](frameRate,
-	    // might have been a non-springed prop that just became one
-	    currentStyle[key].val == null ? currentStyle[key] : currentStyle[key].val, currentVelocity[key], style[key].val, k, b)[0];
-	    ret[key] = _spring2['default'](val, style[key].config);
-	  }
-	  return ret;
-	}
-
-	function updateCurrentVelocity(frameRate, currentStyle, currentVelocity, style) {
-	  var ret = {};
-	  for (var key in style) {
-	    if (!style.hasOwnProperty(key)) {
-	      continue;
-	    }
-	    if (style[key] == null || !style[key].config) {
-	      // not a spring config, not something we want to interpolate
-	      ret[key] = 0;
-	      continue;
-	    }
-	    var _style$key$config2 = style[key].config;
-	    var k = _style$key$config2[0];
-	    var b = _style$key$config2[1];
-
-	    var val = _stepper2['default'](frameRate,
-	    // might have been a non-springed prop that just became one
-	    currentStyle[key].val == null ? currentStyle[key] : currentStyle[key].val, currentVelocity[key], style[key].val, k, b)[1];
-	    ret[key] = val;
-	  }
-	  return ret;
-	}
-
-/***/ },
-/* 239 */
-/***/ function(module, exports) {
-
-	"use strict";
-
-	exports.__esModule = true;
-	exports["default"] = stepper;
-
-	var errorMargin = 0.0001;
-
-	function stepper(frameRate, x, v, destX, k, b) {
-	  // Spring stiffness, in kg / s^2
-
-	  // for animations, destX is really spring length (spring at rest). initial
-	  // position is considered as the stretched/compressed position of a spring
-	  var Fspring = -k * (x - destX);
-
-	  // Damping, in kg / s
-	  var Fdamper = -b * v;
-
-	  // usually we put mass here, but for animation purposes, specifying mass is a
-	  // bit redundant. you could simply adjust k and b accordingly
-	  // let a = (Fspring + Fdamper) / mass;
-	  var a = Fspring + Fdamper;
-
-	  var newV = v + a * frameRate;
-	  var newX = x + newV * frameRate;
-
-	  if (Math.abs(newV - v) < errorMargin && Math.abs(newX - x) < errorMargin) {
-	    return [destX, 0];
-	  }
-
-	  return [newX, newV];
-	}
-
-	module.exports = exports["default"];
-
-/***/ },
-/* 240 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	exports.__esModule = true;
-	exports['default'] = spring;
-
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
-
-	var _presets = __webpack_require__(241);
-
-	var _presets2 = _interopRequireDefault(_presets);
-
-	function spring(val) {
-	  var config = arguments.length <= 1 || arguments[1] === undefined ? _presets2['default'].noWobble : arguments[1];
-
-	  return { val: val, config: config };
-	}
-
-	module.exports = exports['default'];
-
-/***/ },
-/* 241 */
-/***/ function(module, exports) {
-
-	
-	// [stiffness, damping]
-	"use strict";
-
-	exports.__esModule = true;
-	exports["default"] = {
-	  noWobble: [170, 26], // the default
-	  gentle: [120, 14],
-	  wobbly: [180, 12],
-	  stiff: [210, 20]
-	};
-	module.exports = exports["default"];
-
-/***/ },
-/* 242 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	exports.__esModule = true;
-	exports['default'] = deprecatedSprings;
-	var hasWarnedForSpring = {};
-	var hasWarnedForTransitionSpring = {};
-
-	function deprecatedSprings(React) {
-	  var Spring = React.createClass({
-	    displayName: 'Spring',
-
-	    componentWillMount: function componentWillMount() {
-	      if (true) {
-	        var ownerName = this._reactInternalInstance._currentElement._owner && this._reactInternalInstance._currentElement._owner.getName();
-	        if (!hasWarnedForSpring[ownerName]) {
-	          hasWarnedForSpring[ownerName] = true;
-	          console.error('Spring (used in %srender) has now been renamed to Motion. ' + 'Please see the release note for the upgrade path. Thank you!', ownerName ? ownerName + '\'s ' : 'React.');
-	        }
-	      }
-	    },
-
-	    render: function render() {
-	      return null;
-	    }
-	  });
-
-	  var TransitionSpring = React.createClass({
-	    displayName: 'TransitionSpring',
-
-	    componentWillMount: function componentWillMount() {
-	      if (true) {
-	        var ownerName = this._reactInternalInstance._currentElement._owner && this._reactInternalInstance._currentElement._owner.getName();
-	        if (!hasWarnedForTransitionSpring[ownerName]) {
-	          hasWarnedForTransitionSpring[ownerName] = true;
-	          console.error('TransitionSpring (used in %srender) has now been renamed to ' + 'TransitionMotion. Please see the release note for the upgrade ' + 'path. Thank you!', ownerName ? ownerName + '\'s ' : 'React.');
-	        }
-	      }
-	    },
-
-	    render: function render() {
-	      return null;
-	    }
-	  });
-
-	  return { Spring: Spring, TransitionSpring: TransitionSpring };
-	}
-
-	module.exports = exports['default'];
-
-/***/ },
-/* 243 */
-/***/ function(module, exports) {
-
-	
-	// turn {x: {val: 1, config: [1, 2]}, y: 2} generated by
-	// `{x: spring(1, [1, 2]), y: 2}` into {x: 1, y: 2}
-
-	'use strict';
-
-	exports.__esModule = true;
-	exports['default'] = stripStyle;
-
-	function stripStyle(style) {
-	  var ret = {};
-	  for (var key in style) {
-	    if (!style.hasOwnProperty(key)) {
-	      continue;
-	    }
-	    ret[key] = style[key] == null || style[key].val == null ? style[key] : style[key].val;
-	  }
-	  return ret;
-	}
-
-	module.exports = exports['default'];
-
-/***/ },
-/* 244 */
-/***/ function(module, exports) {
-
-	"use strict";
-
-	exports.__esModule = true;
-	exports["default"] = reorderKeys;
-
-	function reorderKeys(obj, f) {
-	  var newKeys = f(Object.keys(obj));
-	  var ret = {};
-	  for (var i = 0; i < newKeys.length; i++) {
-	    var key = newKeys[i];
-	    ret[key] = obj[key];
-	  }
-
-	  return ret;
-	}
-
-	module.exports = exports["default"];
-
-/***/ },
-/* 245 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_RESULT__;/* WEBPACK VAR INJECTION */(function(module, global) {/**
@@ -40931,10 +40256,10 @@
 	  }
 	}.call(this));
 
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(246)(module), (function() { return this; }())))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(229)(module), (function() { return this; }())))
 
 /***/ },
-/* 246 */
+/* 229 */
 /***/ function(module, exports) {
 
 	module.exports = function(module) {
@@ -40948,689 +40273,6 @@
 		return module;
 	}
 
-
-/***/ },
-/* 247 */,
-/* 248 */,
-/* 249 */,
-/* 250 */,
-/* 251 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	Object.defineProperty(exports, '__esModule', {
-	  value: true
-	});
-
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
-
-	var _ExpandableJsx = __webpack_require__(252);
-
-	var _ExpandableJsx2 = _interopRequireDefault(_ExpandableJsx);
-
-	var _ItemJsx = __webpack_require__(254);
-
-	var _ItemJsx2 = _interopRequireDefault(_ItemJsx);
-
-	var _PreviewJsx = __webpack_require__(255);
-
-	var _PreviewJsx2 = _interopRequireDefault(_PreviewJsx);
-
-	var _exports = {};
-
-	_exports.Expandable = _ExpandableJsx2['default'];
-	_exports.Item = _ItemJsx2['default'];
-	_exports.Preview = _PreviewJsx2['default'];
-
-	exports['default'] = _exports;
-	module.exports = exports['default'];
-
-/***/ },
-/* 252 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	Object.defineProperty(exports, '__esModule', {
-	    value: true
-	});
-
-	var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ('value' in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
-
-	var _get = function get(_x, _x2, _x3) { var _again = true; _function: while (_again) { var object = _x, property = _x2, receiver = _x3; desc = parent = getter = undefined; _again = false; if (object === null) object = Function.prototype; var desc = Object.getOwnPropertyDescriptor(object, property); if (desc === undefined) { var parent = Object.getPrototypeOf(object); if (parent === null) { return undefined; } else { _x = parent; _x2 = property; _x3 = receiver; _again = true; continue _function; } } else if ('value' in desc) { return desc.value; } else { var getter = desc.get; if (getter === undefined) { return undefined; } return getter.call(receiver); } } };
-
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
-
-	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError('Cannot call a class as a function'); } }
-
-	function _inherits(subClass, superClass) { if (typeof superClass !== 'function' && superClass !== null) { throw new TypeError('Super expression must either be null or a function, not ' + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-	var _react = __webpack_require__(2);
-
-	var _react2 = _interopRequireDefault(_react);
-
-	var _cssStyleJs = __webpack_require__(253);
-
-	var _cssStyleJs2 = _interopRequireDefault(_cssStyleJs);
-
-	var Expandable = (function (_React$Component) {
-	    _inherits(Expandable, _React$Component);
-
-	    function Expandable(props, state) {
-	        _classCallCheck(this, Expandable);
-
-	        _get(Object.getPrototypeOf(Expandable.prototype), 'constructor', this).call(this, props, state);
-
-	        //TODO: change the handleClick to account for window.innerWidth;
-
-	        this.state = {
-	            isOpen: false,
-	            rowIndex: null,
-	            childIndex: null,
-	            colWidth: 2,
-	            sItemCount: this.props.smallRowItemCount || 1,
-	            mItemCount: this.props.mediumRowItemCount || 2,
-	            lItemCount: this.props.largeRowItemCount || 3,
-	            xlItemCount: this.props.xlargeRowItemCount || 4,
-	            xxlItemCount: this.props.xxlargeRowItemCount || 5,
-	            currentItemRowCount: 2,
-	            settings: {
-	                current: -1,
-	                previewPos: -1,
-	                scrollExtra: 0,
-	                marginExpanded: 10
-	            }
-	        };
-
-	        this.handleClick = this.handleClick.bind(this);
-	        this.handleResize = this.handleResize.bind(this);
-	        this.getWindowSize = this.getWindowSize.bind(this);
-	    }
-
-	    _createClass(Expandable, [{
-	        key: 'componentWillMount',
-	        value: function componentWillMount() {
-	            console.log("window size:", this.getWindowSize(), window.screen.width);
-
-	            this.setState({
-	                currentItemRowCount: this.getWindowSize()
-	            });
-	        }
-	    }, {
-	        key: 'componentWillReceiveProps',
-	        value: function componentWillReceiveProps(nextProps) {
-
-	            if (nextProps.colWidth !== this.state.colWidth) {
-	                this.setState({
-	                    colWidth: nextProps.colWidth
-	                });
-	            }
-
-	            if (!nextProps.isOpen) {
-	                this.setState({
-	                    isOpen: false,
-	                    index: -1
-	                });
-	            }
-	        }
-	    }, {
-	        key: 'render',
-	        value: function render() {
-	            var _this = this;
-
-	            var Preview = null;
-	            var style = _cssStyleJs2['default'].styles();
-
-	            console.log(this.state.childIndex, this.state.isOpen);
-
-	            var children = _react2['default'].Children.map(this.props.children, function (child, index) {
-	                //const colWidth = this.getColWidth(this.props.colWidth);
-	                //calculate child item width
-	                var colWidth = 100 / _this.state.currentItemRowCount + "%";
-	                var lastComponent = index === _this.props.children.length - 1 ? true : false;
-
-	                if (index === _this.state.childIndex) {
-	                    Preview = child.props.previewComponent;
-	                }
-
-	                if (_this.state.isOpen && index === _this.state.rowIndex && Preview !== null) {
-	                    var arr = [0, 1];
-
-	                    return arr.map(function (arrItem, aIndex) {
-	                        return aIndex == 0 ? _react2['default'].cloneElement(child, { colWidth: colWidth, onClick: _this.handleClick, lastComponent: lastComponent }) : _react2['default'].cloneElement(Preview, { onClick: _this.handleClick, isOpen: true });
-	                    });
-	                }
-
-	                return _react2['default'].cloneElement(child, { colWidth: colWidth, onClick: _this.handleClick, lastComponent: lastComponent });
-	            });
-
-	            return _react2['default'].createElement(
-	                'ul',
-	                { className: 'small-12_columns', style: style.ulExpandable },
-	                children
-	            );
-	        }
-	    }, {
-	        key: 'handleClick',
-	        value: function handleClick(e) {
-	            var _this2 = this;
-
-	            console.log("click", e.currentTarget.tagName, e.currentTarget.className.indexOf("li-expandable"));
-
-	            if (e.currentTarget.tagName == "LI" && (e.currentTarget.className.indexOf("li-expandable") || e.currentTarget.className == "li-expandable") || e.currentTarget.tagName == "SPAN" && e.currentTarget.className == 'span-preview-close') {
-
-	                if (!this.state.isOpen) {
-	                    (function () {
-	                        //isOpen == false
-	                        console.log("is not open");
-	                        var target = e.currentTarget;
-	                        var parent = target.parentNode;
-	                        var children = _this2.toArray(parent.children);
-
-	                        var total = 0;
-	                        var hasTarget = false;
-	                        var childIndex = -1;
-
-	                        children.forEach(function (child, index) {
-	                            total++;
-	                            console.log("children loop", child, total, _this2.state.colWidth);
-
-	                            if (!hasTarget && child == target) {
-	                                console.log("set hasTarget to true");
-	                                hasTarget = true;
-	                                childIndex = index;
-	                            }
-
-	                            if (total == _this2.state.currentItemRowCount && hasTarget || total < _this2.state.currentItemRowCount && hasTarget && index == children.length - 1) {
-	                                console.log("has target & total 12");
-	                                return _this2.setState({
-	                                    isOpen: true,
-	                                    rowIndex: index,
-	                                    childIndex: childIndex
-	                                });
-	                            } else if (total == _this2.state.currentItemRowCount) {
-	                                console.log("reset to 0");
-	                                total = 0;
-	                            }
-	                        }); // ./forEach
-	                    })();
-	                } else if (this.state.isOpen) {
-	                        //isOpen true
-	                        console.log("is Open");
-	                        var target = e.currentTarget;
-
-	                        if (target.tagName === "SPAN") {
-	                            //"X" button clicked
-
-	                            this.setState({
-	                                isOpen: false,
-	                                index: -1
-	                            });
-	                        } else if (target.tagName === "LI") {
-	                            (function () {
-	                                //<li> button clicked
-	                                var target = e.currentTarget;
-	                                var parent = target.parentNode;
-	                                var children = _this2.toArray(parent.children);
-
-	                                var total = 0;
-	                                var hasTarget = false;
-	                                var childIndex = -1;
-
-	                                children.splice(_this2.state.rowIndex + 1, 1);
-
-	                                children.forEach(function (child, index) {
-	                                    total++;
-
-	                                    if (!hasTarget && child == target) {
-	                                        hasTarget = true;
-	                                        childIndex = index;
-	                                    }
-
-	                                    if (total == _this2.state.currentItemRowCount && hasTarget || total < _this2.state.currentItemRowCount && hasTarget && index == children.length - 1) {
-	                                        return _this2.setState({
-	                                            isOpen: true,
-	                                            rowIndex: index,
-	                                            childIndex: childIndex
-	                                        });
-	                                    } else if (total == _this2.state.currentItemRowCount) {
-	                                        total = 0;
-	                                    }
-	                                });
-	                            })();
-	                        } // ./if & ./else if
-	                    }
-	            } // ./if span or LI
-	        }
-	    }, {
-	        key: 'toArray',
-	        value: function toArray(list) {
-	            var arr = [];
-
-	            for (var i = 0; i < list.length; i++) {
-	                arr.push(list[i]);
-	            }
-
-	            return arr;
-	        }
-	    }, {
-	        key: 'getColWidth',
-	        value: function getColWidth(colNum) {
-	            var colWidth = undefined;
-
-	            switch (colNum) {
-	                case 1:
-	                    colWidth = 12;
-	                    break;
-	                case 2:
-	                    colWidth = 6;
-	                    break;
-	                case 3:
-	                    colWidth = 4;
-	                    break;
-	                case 4:
-	                    colWidth = 3;
-	                    break;
-	                case 6:
-	                    colWidth = 2;
-	                    break;
-	                case 12:
-	                    colWidth = 1;
-	                    break;
-	                default:
-	                    colWidth = 12;
-	                    break;
-	            }
-
-	            return colWidth;
-	        }
-	    }, {
-	        key: 'componentDidMount',
-	        value: function componentDidMount() {
-	            window.addEventListener('resize', this.handleResize); //binds window resize event listener
-	            //get all list items
-	            //get offset height and offset top
-	            //get window height
-	        }
-	    }, {
-	        key: 'componentWillUnmount',
-	        value: function componentWillUnmount() {
-	            window.removeEventListener('resize', this.handleResize);
-	        }
-	    }, {
-	        key: 'handleResize',
-	        value: function handleResize(e) {
-	            console.log("HANDLE RESIZE", this.getWindowSize());
-
-	            this.setState({
-	                currentItemRowCount: this.getWindowSize()
-	            });
-	        }
-	    }, {
-	        key: 'getWindowSize',
-	        value: function getWindowSize() {
-	            var windowWidth = window.innerWidth;
-
-	            console.log(windowWidth);
-
-	            if (windowWidth <= 640) {
-	                //set currentItemRowCount to small settings
-	                return this.state.sItemCount;
-	            } else if (windowWidth <= 1024) {
-	                //medium
-	                return this.state.mItemCount;
-	            } else if (windowWidth <= 1440) {
-	                //large
-	                return this.state.lItemCount;
-	            } else if (windowWidth <= 1920) {
-	                //extra large
-	                return this.state.xlItemCount;
-	            } else if (windowWidth > 1920) {
-	                //XXL
-	                return this.state.xxlItemCount;
-	            }
-	        }
-	    }]);
-
-	    return Expandable;
-	})(_react2['default'].Component);
-
-	exports['default'] = Expandable;
-	module.exports = exports['default'];
-
-/***/ },
-/* 253 */
-/***/ function(module, exports) {
-
-	"use strict";
-
-	Object.defineProperty(exports, "__esModule", {
-	    value: true
-	});
-
-	var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
-
-	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-	exports["default"] = new ((function () {
-	    function Style() {
-	        _classCallCheck(this, Style);
-
-	        this.style = {
-	            "ulExpandable": {
-	                listStyleType: "none",
-	                width: "100%",
-	                position: "relative",
-	                float: "left",
-	                padding: "0rem",
-	                margin: "0rem"
-	            },
-	            "liExpandable": {
-	                position: "relative",
-	                float: "left",
-	                marginBottom: "1rem"
-	            },
-	            "liPreview": {
-	                position: "relative",
-	                width: "100%",
-	                marginBottom: "1rem",
-	                backgroundColor: "#fafafa",
-	                float: "left"
-	            },
-	            "divPreviewInner": {
-	                width: "100%",
-	                height: "auto",
-	                //maxHeight: "0",
-	                padding: "0rem"
-	                //overflow: "hidden",
-	                //display: "block",
-	                //transition: "max-height 0.8s"
-	            },
-	            "divPreviewHeader": {
-	                width: "100%",
-	                padding: ".5rem 1rem 0 .5rem",
-	                display: "flex"
-	            },
-	            "h2PreviewTitle": {
-	                width: "95%",
-	                padding: "0rem",
-	                fontSize: "20px",
-	                float: "left",
-	                margin: "0rem"
-	            },
-	            "spanPreviewClose": {
-	                width: "5%",
-	                fontSize: "20px",
-	                padding: "0rem"
-
-	            },
-	            "aNullTag": {
-	                float: "right",
-	                transform: "scale(1.2,1)",
-	                color: "#8F9EAB"
-	            },
-	            "divPreviewContent": {
-	                width: "100%",
-	                padding: "0rem"
-	            }
-	        };
-	    }
-
-	    _createClass(Style, [{
-	        key: "styles",
-	        value: function styles() {
-	            return this.style;
-	        }
-	    }, {
-	        key: "createStyle",
-	        value: function createStyle(name, value) {
-	            if (typeof this.style[name] === 'undefined') {
-
-	                this.style[name] = value;
-
-	                return true;
-	            } else {
-	                return false;
-	            }
-	        }
-	    }, {
-	        key: "updateStyle",
-	        value: function updateStyle(name, value) {
-	            if (typeof this.style[name] !== 'undefined') {
-	                this.style[name] = value;
-
-	                return true;
-	            } else {
-	                return false;
-	            }
-	        }
-	    }]);
-
-	    return Style;
-	})())();
-	module.exports = exports["default"];
-
-/***/ },
-/* 254 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	Object.defineProperty(exports, '__esModule', {
-	    value: true
-	});
-
-	var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ('value' in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
-
-	var _get = function get(_x, _x2, _x3) { var _again = true; _function: while (_again) { var object = _x, property = _x2, receiver = _x3; desc = parent = getter = undefined; _again = false; if (object === null) object = Function.prototype; var desc = Object.getOwnPropertyDescriptor(object, property); if (desc === undefined) { var parent = Object.getPrototypeOf(object); if (parent === null) { return undefined; } else { _x = parent; _x2 = property; _x3 = receiver; _again = true; continue _function; } } else if ('value' in desc) { return desc.value; } else { var getter = desc.get; if (getter === undefined) { return undefined; } return getter.call(receiver); } } };
-
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
-
-	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError('Cannot call a class as a function'); } }
-
-	function _inherits(subClass, superClass) { if (typeof superClass !== 'function' && superClass !== null) { throw new TypeError('Super expression must either be null or a function, not ' + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-	var _react = __webpack_require__(2);
-
-	var _react2 = _interopRequireDefault(_react);
-
-	var _PreviewJsx = __webpack_require__(255);
-
-	var _PreviewJsx2 = _interopRequireDefault(_PreviewJsx);
-
-	var _cssStyleJs = __webpack_require__(253);
-
-	var _cssStyleJs2 = _interopRequireDefault(_cssStyleJs);
-
-	var _lodash = __webpack_require__(245);
-
-	var _lodash2 = _interopRequireDefault(_lodash);
-
-	var Item = (function (_React$Component) {
-	    _inherits(Item, _React$Component);
-
-	    function Item(props, state) {
-	        _classCallCheck(this, Item);
-
-	        _get(Object.getPrototypeOf(Item.prototype), 'constructor', this).call(this, props, state);
-
-	        this.state = {
-	            colWidth: this.props.colWidth || 1,
-	            isOpen: false,
-	            offsets: null
-	        };
-
-	        //bindings
-	    }
-
-	    _createClass(Item, [{
-	        key: 'render',
-	        value: function render() {
-	            var styles = _cssStyleJs2['default'].styles();
-	            var className = "li-expandable";
-	            var children = _react2['default'].Children.map(this.props.children, function (child, index) {
-
-	                return _react2['default'].cloneElement(child, { onClick: function onClick(e) {
-	                        e.preventDefault();
-	                    } });
-	            });
-
-	            var liExpandable = _lodash2['default'].merge(styles.liExpandable, { width: this.props.colWidth });
-
-	            return _react2['default'].createElement(
-	                'li',
-	                { className: className, onClick: this.props.onClick, 'data-col-width': this.props.colWidth, style: liExpandable },
-	                children
-	            );
-	        }
-	    }]);
-
-	    return Item;
-	})(_react2['default'].Component);
-
-	exports['default'] = Item;
-	module.exports = exports['default'];
-
-/***/ },
-/* 255 */
-/***/ function(module, exports, __webpack_require__) {
-
-	"use strict";
-
-	Object.defineProperty(exports, '__esModule', {
-	    value: true
-	});
-
-	var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ('value' in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
-
-	var _get = function get(_x, _x2, _x3) { var _again = true; _function: while (_again) { var object = _x, property = _x2, receiver = _x3; desc = parent = getter = undefined; _again = false; if (object === null) object = Function.prototype; var desc = Object.getOwnPropertyDescriptor(object, property); if (desc === undefined) { var parent = Object.getPrototypeOf(object); if (parent === null) { return undefined; } else { _x = parent; _x2 = property; _x3 = receiver; _again = true; continue _function; } } else if ('value' in desc) { return desc.value; } else { var getter = desc.get; if (getter === undefined) { return undefined; } return getter.call(receiver); } } };
-
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
-
-	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError('Cannot call a class as a function'); } }
-
-	function _inherits(subClass, superClass) { if (typeof superClass !== 'function' && superClass !== null) { throw new TypeError('Super expression must either be null or a function, not ' + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-	var _reactAddons = __webpack_require__(210);
-
-	var _reactAddons2 = _interopRequireDefault(_reactAddons);
-
-	var _reactMotion = __webpack_require__(228);
-
-	var _lodash = __webpack_require__(245);
-
-	var _lodash2 = _interopRequireDefault(_lodash);
-
-	var _cssStyleJs = __webpack_require__(253);
-
-	var _cssStyleJs2 = _interopRequireDefault(_cssStyleJs);
-
-	var Preview = (function (_React$Component) {
-	    _inherits(Preview, _React$Component);
-
-	    function Preview(props, state) {
-	        _classCallCheck(this, Preview);
-
-	        _get(Object.getPrototypeOf(Preview.prototype), 'constructor', this).call(this, props, state);
-
-	        this.state = {
-	            isOpen: false
-	        };
-	    }
-
-	    _createClass(Preview, [{
-	        key: 'previewStructure',
-	        value: function previewStructure() {
-	            console.log("PEW PEW", _reactAddons2['default'].addons);
-	            var TransitionGroup = _reactAddons2['default'].addons.TransitionGroup;
-
-	            var that = this;
-	            var styles = _cssStyleJs2['default'].styles();
-	            var styleProp = typeof this.props.style !== 'undefined' ? this.props.styles : {};
-
-	            var liPreview = _lodash2['default'].merge(styles.liPreview, styleProp.liPreview || {});
-	            var divPreviewInner = _lodash2['default'].merge(styles.divPreviewInner, styleProp.divPreviewInner || {});
-	            var divPreviewHeader = _lodash2['default'].merge(styles.divPreviewHeader, styleProp.divPreviewHeader || {});
-	            var h2PreviewTitle = _lodash2['default'].merge(styles.h2PreviewTitle, styleProp.h2PreviewTitle || {});
-	            var spanPreviewClose = _lodash2['default'].merge(styles.spanPreviewClose, styleProp.spanPreviewClose || {});
-	            var aNullTag = _lodash2['default'].merge(styles.aNullTag, styleProp.aNullTag || {});
-	            var divPreviewContent = _lodash2['default'].merge(styles.divPreviewContent, styleProp.divPreviewContent || {});
-
-	            var maxHeight = this.state.isOpen ? 400 + "px" : 0 + "px";
-	            //{maxHeight: maxHeight}
-
-	            return _reactAddons2['default'].createElement(
-	                'li',
-	                { className: 'li-preview', style: liPreview },
-	                _reactAddons2['default'].createElement(
-	                    'div',
-	                    { className: 'div-preview-inner', styles: _lodash2['default'].merge(divPreviewInner, {}) },
-	                    _reactAddons2['default'].createElement(
-	                        'div',
-	                        { className: 'div-preview-header', style: divPreviewHeader },
-	                        _reactAddons2['default'].createElement(
-	                            'h2',
-	                            { className: 'h2-preview-title', style: h2PreviewTitle },
-	                            that.props.title
-	                        ),
-	                        _reactAddons2['default'].createElement(
-	                            'span',
-	                            { className: 'span-preview-close', style: spanPreviewClose, onClick: this.props.onClick },
-	                            _reactAddons2['default'].createElement(
-	                                'a',
-	                                { classname: 'a-null-tag', style: aNullTag },
-	                                'X'
-	                            )
-	                        )
-	                    ),
-	                    _reactAddons2['default'].createElement(
-	                        'div',
-	                        { className: 'div-preview-content', style: divPreviewContent },
-	                        that.props.children
-	                    )
-	                )
-	            );
-	        }
-
-	        //if preview is mounted or updated && open, the scroll to it.
-	    }, {
-	        key: 'scrollToPreview',
-	        value: function scrollToPreview() {
-	            var body = document.body;
-	            var elem;
-	        }
-	    }, {
-	        key: 'render',
-	        value: function render() {
-	            return this.props.isOpen ? this.previewStructure() : null;
-	        }
-	    }, {
-	        key: 'componentDidMount',
-	        value: function componentDidMount() {
-
-	            if (this.props.isOpen && !this.state.isOpen) {
-	                this.setState({ isOpen: true });
-	            } else if (!this.props.isOpen) {
-	                this.setState({ isOpen: false });
-	            }
-	        }
-	    }, {
-	        key: 'componentDidUpdate',
-	        value: function componentDidUpdate() {
-	            if (this.props.isOpen && !this.state.isOpen) {
-	                this.setState({ isOpen: true });
-	            } else if (!this.props.isOpen) {
-	                this.setState({ isOpen: false });
-	            }
-	        }
-	    }]);
-
-	    return Preview;
-	})(_reactAddons2['default'].Component);
-
-	exports['default'] = Preview;
-	module.exports = exports['default'];
 
 /***/ }
 /******/ ]);

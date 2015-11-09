@@ -6,8 +6,6 @@ export default class Expandable extends React.Component{
     constructor(props, state){
         super(props, state);
 
-        //TODO: change the handleClick to account for window.innerWidth;
-
         this.state = {
             isOpen: false,
             rowIndex: null,
@@ -60,16 +58,16 @@ export default class Expandable extends React.Component{
     }
 
     render(){
-        var Preview = null;
+        var preview = null;
         var style = Style.styles();
 
         console.log(this.state.childIndex, this.state.isOpen);
 
         const children = React.Children.map(this.props.children, (child, index) => {
-            //const colWidth = this.getColWidth(this.props.colWidth);
             //calculate child item width
             const colWidth = (100 / this.state.currentItemRowCount) + "%";
             const lastComponent = (index === this.props.children.length - 1 ? true : false);
+
             const ListComponent = React.cloneElement(child, {
                 colWidth: colWidth,
                 onClick: this.handleClick,
@@ -77,14 +75,14 @@ export default class Expandable extends React.Component{
             });
 
             if(index === this.state.childIndex){
-                Preview = child.props.previewComponent
+                preview = child.props.previewComponent
             }
 
-            if(this.state.isOpen && (index === this.state.rowIndex) && Preview !== null){
+            if(this.state.isOpen && (index === this.state.rowIndex) && preview !== null){
                 const arr = [0,1];
 
                 return arr.map((arrItem, aIndex)=>{
-                    return aIndex == 0 ? ListComponent : React.cloneElement(Preview, {onClick: this.handleClick, isOpen: true});
+                    return aIndex == 0 ? ListComponent : React.cloneElement(preview, {onClick: this.handleClick, isOpen: true});
                 });
             }
 
@@ -100,15 +98,12 @@ export default class Expandable extends React.Component{
     }
 
     handleClick(e) {
-        console.log("click", e.currentTarget.tagName, e.currentTarget.className.indexOf("li-expandable"));
 
         if (((e.currentTarget.tagName == "LI") && (e.currentTarget.className.indexOf("li-expandable") || e.currentTarget.className == "li-expandable") ) || ((e.currentTarget.tagName == "SPAN") && (e.currentTarget.className == 'span-preview-close'))) {
 
-
             this.state.isOpen ? this.state.beforePreviewOpen(true) : this.state.beforePreviewOpen(false);
 
-            if (!this.state.isOpen) { //isOpen == false
-                console.log("is not open");
+            if (!this.state.isOpen) { //isOpen: false
                 const target = e.currentTarget;
                 const parent = target.parentNode;
                 const children = this.toArray(parent.children);
@@ -122,13 +117,11 @@ export default class Expandable extends React.Component{
                     console.log("children loop", child, total, this.state.colWidth);
 
                     if ((!hasTarget) && (child == target)) {
-                        console.log("set hasTarget to true");
                         hasTarget = true;
                         childIndex = index;
                     }
 
                     if ((total == this.state.currentItemRowCount && hasTarget) || (total < this.state.currentItemRowCount && hasTarget && index == (children.length - 1))){
-                        console.log("has target & total 12");
                         return this.setState({
                             isOpen: true,
                             rowIndex: index,
@@ -136,26 +129,22 @@ export default class Expandable extends React.Component{
                         });
                     }
                     else if (total == this.state.currentItemRowCount) {
-                        console.log("reset to 0");
                         total = 0;
                     }
 
                 }); // ./forEach
 
             }
-            else if (this.state.isOpen) {//isOpen true
-                console.log("is Open");
+            else if (this.state.isOpen) {//isOpen: true
                 let target = e.currentTarget;
 
                 if (target.tagName === "SPAN") {//"X" button clicked
-
                     this.setState({
                         isOpen: false,
                         index: -1
                     })
-
                 }
-                else if (target.tagName === "LI") {//<li> button clicked
+                else if (target.tagName === "LI") {//<li> element clicked
                     const target = e.currentTarget;
                     const parent = target.parentNode;
                     const children = this.toArray(parent.children);
@@ -238,18 +227,13 @@ export default class Expandable extends React.Component{
 
     componentDidMount(){
         window.addEventListener('resize', this.handleResize); //binds window resize event listener
-        //get all list items
-            //get offset height and offset top
-        //get window height
     }
 
     componentWillUnmount(){
         window.removeEventListener('resize', this.handleResize);
     }
 
-    handleResize(e){
-        console.log("HANDLE RESIZE", this.getWindowSize());
-
+    handleResize(){
         this.setState({
             currentItemRowCount: this.getWindowSize()
         });
@@ -258,10 +242,8 @@ export default class Expandable extends React.Component{
     getWindowSize(){
         let windowWidth = window.innerWidth;
 
-        console.log(windowWidth);
-
         if(windowWidth <= 640){
-            //set currentItemRowCount to small settings
+            //small
             return this.state.sItemCount
         }
         else if(windowWidth <= 1024){

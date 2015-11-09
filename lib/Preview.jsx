@@ -15,7 +15,6 @@ export default class Preview extends React.Component{
     }
 
     previewStructure(){
-        console.log("PEW PEW", React.addons);
         const TransitionGroup   = React.addons.TransitionGroup;
 
         const that                      = this;
@@ -30,11 +29,7 @@ export default class Preview extends React.Component{
         var aNullTag                    = _.merge(styles.aNullTag, styleProp.aNullTag || {});
         var divPreviewContent           = _.merge(styles.divPreviewContent, styleProp.divPreviewContent || {});
 
-        var maxHeight = this.state.isOpen ? 400 +"px" : 0 +"px";
-        //{maxHeight: maxHeight}
-
         return(
-
             <li className="li-preview" style={liPreview}>
                 <div className="div-preview-inner" styles={_.merge(divPreviewInner, {})}>
                     <div className="div-preview-header" style={divPreviewHeader}>
@@ -49,9 +44,9 @@ export default class Preview extends React.Component{
                     </div>
                 </div>
             </li>
-
         )
-    }
+
+    } //previewStructure()
 
     //if preview is mounted or updated && open, the scroll to it.
     scrollToPreview(){
@@ -72,14 +67,17 @@ export default class Preview extends React.Component{
         else if(!this.props.isOpen){
             this.setState({isOpen: false});
         }
+
     }
 
     componentDidUpdate(){
+
         if(this.props.isOpen && !this.state.isOpen){
             this.setState({isOpen: true})
         }
         else if(!this.props.isOpen){
             this.setState({isOpen: false});
         }
+
     }
 }
