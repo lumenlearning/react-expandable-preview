@@ -1,9 +1,6 @@
 import React            from 'react';
 
-import {Expandable, Item, Preview}       from './expandable-preview/Index.js';
-/*import TestComponent from './expandable-preview/Expandable.jsx';
-
-import Preview from './expandable-preview/Preview.jsx';*/
+import {Expandable, Item, Preview}       from '../../lib/Index.js';
 
 
 export default class Index extends React.Component{

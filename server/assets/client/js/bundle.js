@@ -24752,11 +24752,7 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _expandablePreviewIndexJs = __webpack_require__(205);
-
-	/*import TestComponent from './expandable-preview/Expandable.jsx';
-
-	import Preview from './expandable-preview/Preview.jsx';*/
+	var _libIndexJs = __webpack_require__(251);
 
 	var Index = (function (_React$Component) {
 	    _inherits(Index, _React$Component);
@@ -24777,13 +24773,13 @@
 	                'div',
 	                { style: { width: "100%" } },
 	                _react2['default'].createElement(
-	                    _expandablePreviewIndexJs.Expandable,
+	                    _libIndexJs.Expandable,
 	                    { colWidth: 4 },
 	                    _react2['default'].createElement(
-	                        _expandablePreviewIndexJs.Item,
+	                        _libIndexJs.Item,
 	                        {
 	                            previewComponent: _react2['default'].createElement(
-	                                _expandablePreviewIndexJs.Preview,
+	                                _libIndexJs.Preview,
 	                                { title: 'The Role of Business' },
 	                                _react2['default'].createElement(
 	                                    'p',
@@ -24944,10 +24940,10 @@
 	                        _react2['default'].createElement('img', { src: 'https://placekitten.com/300/201', alt: '' })
 	                    ),
 	                    _react2['default'].createElement(
-	                        _expandablePreviewIndexJs.Item,
+	                        _libIndexJs.Item,
 	                        {
 	                            previewComponent: _react2['default'].createElement(
-	                                _expandablePreviewIndexJs.Preview,
+	                                _libIndexJs.Preview,
 	                                { title: 'Why is Business content so boring?' },
 	                                _react2['default'].createElement(
 	                                    'div',
@@ -24968,10 +24964,10 @@
 	                        _react2['default'].createElement('img', { src: 'https://placekitten.com/300/201', alt: '' })
 	                    ),
 	                    _react2['default'].createElement(
-	                        _expandablePreviewIndexJs.Item,
+	                        _libIndexJs.Item,
 	                        {
 	                            previewComponent: _react2['default'].createElement(
-	                                _expandablePreviewIndexJs.Preview,
+	                                _libIndexJs.Preview,
 	                                { title: 'Component of the night' },
 	                                _react2['default'].createElement(
 	                                    'div',
@@ -24992,10 +24988,10 @@
 	                        _react2['default'].createElement('img', { src: 'https://placekitten.com/300/201', alt: '' })
 	                    ),
 	                    _react2['default'].createElement(
-	                        _expandablePreviewIndexJs.Item,
+	                        _libIndexJs.Item,
 	                        {
 	                            previewComponent: _react2['default'].createElement(
-	                                _expandablePreviewIndexJs.Preview,
+	                                _libIndexJs.Preview,
 	                                { title: 'Business Ethics: Good or Bad?' },
 	                                _react2['default'].createElement(
 	                                    'div',
@@ -25016,10 +25012,10 @@
 	                        _react2['default'].createElement('img', { src: 'https://placekitten.com/300/201', alt: '' })
 	                    ),
 	                    _react2['default'].createElement(
-	                        _expandablePreviewIndexJs.Item,
+	                        _libIndexJs.Item,
 	                        {
 	                            previewComponent: _react2['default'].createElement(
-	                                _expandablePreviewIndexJs.Preview,
+	                                _libIndexJs.Preview,
 	                                { title: 'Business Analytics: BI or BS?' },
 	                                _react2['default'].createElement(
 	                                    'div',
@@ -25040,10 +25036,10 @@
 	                        _react2['default'].createElement('img', { src: 'https://placekitten.com/300/201', alt: '' })
 	                    ),
 	                    _react2['default'].createElement(
-	                        _expandablePreviewIndexJs.Item,
+	                        _libIndexJs.Item,
 	                        {
 	                            previewComponent: _react2['default'].createElement(
-	                                _expandablePreviewIndexJs.Preview,
+	                                _libIndexJs.Preview,
 	                                { title: 'Component of the twilight' },
 	                                _react2['default'].createElement(
 	                                    'div',
@@ -25064,10 +25060,10 @@
 	                        _react2['default'].createElement('img', { src: 'https://placekitten.com/300/201', alt: '' })
 	                    ),
 	                    _react2['default'].createElement(
-	                        _expandablePreviewIndexJs.Item,
+	                        _libIndexJs.Item,
 	                        {
 	                            previewComponent: _react2['default'].createElement(
-	                                _expandablePreviewIndexJs.Preview,
+	                                _libIndexJs.Preview,
 	                                { title: '90\'s music: Great or Greatest' },
 	                                _react2['default'].createElement(
 	                                    'div',
@@ -25088,10 +25084,10 @@
 	                        _react2['default'].createElement('img', { src: 'https://placekitten.com/300/201', alt: '' })
 	                    ),
 	                    _react2['default'].createElement(
-	                        _expandablePreviewIndexJs.Item,
+	                        _libIndexJs.Item,
 	                        {
 	                            previewComponent: _react2['default'].createElement(
-	                                _expandablePreviewIndexJs.Preview,
+	                                _libIndexJs.Preview,
 	                                { title: 'I\'m just a poor Dillon' },
 	                                _react2['default'].createElement(
 	                                    'div',
@@ -25123,720 +25119,11 @@
 	module.exports = exports['default'];
 
 /***/ },
-/* 205 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	Object.defineProperty(exports, '__esModule', {
-	  value: true
-	});
-
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
-
-	var _ExpandableJsx = __webpack_require__(206);
-
-	var _ExpandableJsx2 = _interopRequireDefault(_ExpandableJsx);
-
-	var _ItemJsx = __webpack_require__(208);
-
-	var _ItemJsx2 = _interopRequireDefault(_ItemJsx);
-
-	var _PreviewJsx = __webpack_require__(209);
-
-	var _PreviewJsx2 = _interopRequireDefault(_PreviewJsx);
-
-	var _exports = {};
-
-	_exports.Expandable = _ExpandableJsx2['default'];
-	_exports.Item = _ItemJsx2['default'];
-	_exports.Preview = _PreviewJsx2['default'];
-
-	exports['default'] = _exports;
-	module.exports = exports['default'];
-
-/***/ },
-/* 206 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	Object.defineProperty(exports, '__esModule', {
-	    value: true
-	});
-
-	var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ('value' in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
-
-	var _get = function get(_x, _x2, _x3) { var _again = true; _function: while (_again) { var object = _x, property = _x2, receiver = _x3; desc = parent = getter = undefined; _again = false; if (object === null) object = Function.prototype; var desc = Object.getOwnPropertyDescriptor(object, property); if (desc === undefined) { var parent = Object.getPrototypeOf(object); if (parent === null) { return undefined; } else { _x = parent; _x2 = property; _x3 = receiver; _again = true; continue _function; } } else if ('value' in desc) { return desc.value; } else { var getter = desc.get; if (getter === undefined) { return undefined; } return getter.call(receiver); } } };
-
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
-
-	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError('Cannot call a class as a function'); } }
-
-	function _inherits(subClass, superClass) { if (typeof superClass !== 'function' && superClass !== null) { throw new TypeError('Super expression must either be null or a function, not ' + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-	var _react = __webpack_require__(2);
-
-	var _react2 = _interopRequireDefault(_react);
-
-	var _cssStyleJs = __webpack_require__(207);
-
-	var _cssStyleJs2 = _interopRequireDefault(_cssStyleJs);
-
-	var Expandable = (function (_React$Component) {
-	    _inherits(Expandable, _React$Component);
-
-	    function Expandable(props, state) {
-	        _classCallCheck(this, Expandable);
-
-	        _get(Object.getPrototypeOf(Expandable.prototype), 'constructor', this).call(this, props, state);
-
-	        //TODO: change the handleClick to account for window.innerWidth;
-
-	        this.state = {
-	            isOpen: false,
-	            rowIndex: null,
-	            childIndex: null,
-	            colWidth: 2,
-	            sItemCount: this.props.smallRowItemCount || 1,
-	            mItemCount: this.props.mediumRowItemCount || 2,
-	            lItemCount: this.props.largeRowItemCount || 3,
-	            xlItemCount: this.props.xlargeRowItemCount || 4,
-	            xxlItemCount: this.props.xxlargeRowItemCount || 5,
-	            currentItemRowCount: 2,
-	            settings: {
-	                current: -1,
-	                previewPos: -1,
-	                scrollExtra: 0,
-	                marginExpanded: 10
-	            }
-	        };
-
-	        this.handleClick = this.handleClick.bind(this);
-	        this.handleResize = this.handleResize.bind(this);
-	        this.getWindowSize = this.getWindowSize.bind(this);
-	    }
-
-	    _createClass(Expandable, [{
-	        key: 'componentWillMount',
-	        value: function componentWillMount() {
-	            console.log("window size:", this.getWindowSize(), window.screen.width);
-
-	            this.setState({
-	                currentItemRowCount: this.getWindowSize()
-	            });
-	        }
-	    }, {
-	        key: 'componentWillReceiveProps',
-	        value: function componentWillReceiveProps(nextProps) {
-
-	            if (nextProps.colWidth !== this.state.colWidth) {
-	                this.setState({
-	                    colWidth: nextProps.colWidth
-	                });
-	            }
-
-	            if (!nextProps.isOpen) {
-	                this.setState({
-	                    isOpen: false,
-	                    index: -1
-	                });
-	            }
-	        }
-	    }, {
-	        key: 'render',
-	        value: function render() {
-	            var _this = this;
-
-	            var Preview = null;
-	            var style = _cssStyleJs2['default'].styles();
-
-	            console.log(this.state.childIndex, this.state.isOpen);
-
-	            var children = _react2['default'].Children.map(this.props.children, function (child, index) {
-	                //const colWidth = this.getColWidth(this.props.colWidth);
-	                //calculate child item width
-	                var colWidth = 100 / _this.state.currentItemRowCount + "%";
-	                var lastComponent = index === _this.props.children.length - 1 ? true : false;
-
-	                if (index === _this.state.childIndex) {
-	                    Preview = child.props.previewComponent;
-	                }
-
-	                if (_this.state.isOpen && index === _this.state.rowIndex && Preview !== null) {
-	                    var arr = [0, 1];
-
-	                    return arr.map(function (arrItem, aIndex) {
-	                        return aIndex == 0 ? _react2['default'].cloneElement(child, { colWidth: colWidth, onClick: _this.handleClick, lastComponent: lastComponent }) : _react2['default'].cloneElement(Preview, { onClick: _this.handleClick, isOpen: true });
-	                    });
-	                }
-
-	                return _react2['default'].cloneElement(child, { colWidth: colWidth, onClick: _this.handleClick, lastComponent: lastComponent });
-	            });
-
-	            return _react2['default'].createElement(
-	                'ul',
-	                { className: 'small-12_columns', style: style.ulExpandable },
-	                children
-	            );
-	        }
-	    }, {
-	        key: 'handleClick',
-	        value: function handleClick(e) {
-	            var _this2 = this;
-
-	            console.log("click", e.currentTarget.tagName, e.currentTarget.className.indexOf("li-expandable"));
-
-	            if (e.currentTarget.tagName == "LI" && (e.currentTarget.className.indexOf("li-expandable") || e.currentTarget.className == "li-expandable") || e.currentTarget.tagName == "SPAN" && e.currentTarget.className == 'span-preview-close') {
-
-	                if (!this.state.isOpen) {
-	                    (function () {
-	                        //isOpen == false
-	                        console.log("is not open");
-	                        var target = e.currentTarget;
-	                        var parent = target.parentNode;
-	                        var children = _this2.toArray(parent.children);
-
-	                        var total = 0;
-	                        var hasTarget = false;
-	                        var childIndex = -1;
-
-	                        children.forEach(function (child, index) {
-	                            total++;
-	                            console.log("children loop", child, total, _this2.state.colWidth);
-
-	                            if (!hasTarget && child == target) {
-	                                console.log("set hasTarget to true");
-	                                hasTarget = true;
-	                                childIndex = index;
-	                            }
-
-	                            if (total == _this2.state.currentItemRowCount && hasTarget || total < _this2.state.currentItemRowCount && hasTarget && index == children.length - 1) {
-	                                console.log("has target & total 12");
-	                                return _this2.setState({
-	                                    isOpen: true,
-	                                    rowIndex: index,
-	                                    childIndex: childIndex
-	                                });
-	                            } else if (total == _this2.state.currentItemRowCount) {
-	                                console.log("reset to 0");
-	                                total = 0;
-	                            }
-	                        }); // ./forEach
-	                    })();
-	                } else if (this.state.isOpen) {
-	                        //isOpen true
-	                        console.log("is Open");
-	                        var target = e.currentTarget;
-
-	                        if (target.tagName === "SPAN") {
-	                            //"X" button clicked
-
-	                            this.setState({
-	                                isOpen: false,
-	                                index: -1
-	                            });
-	                        } else if (target.tagName === "LI") {
-	                            (function () {
-	                                //<li> button clicked
-	                                var target = e.currentTarget;
-	                                var parent = target.parentNode;
-	                                var children = _this2.toArray(parent.children);
-
-	                                var total = 0;
-	                                var hasTarget = false;
-	                                var childIndex = -1;
-
-	                                children.splice(_this2.state.rowIndex + 1, 1);
-
-	                                children.forEach(function (child, index) {
-	                                    total++;
-
-	                                    if (!hasTarget && child == target) {
-	                                        hasTarget = true;
-	                                        childIndex = index;
-	                                    }
-
-	                                    if (total == _this2.state.currentItemRowCount && hasTarget || total < _this2.state.currentItemRowCount && hasTarget && index == children.length - 1) {
-	                                        return _this2.setState({
-	                                            isOpen: true,
-	                                            rowIndex: index,
-	                                            childIndex: childIndex
-	                                        });
-	                                    } else if (total == _this2.state.currentItemRowCount) {
-	                                        total = 0;
-	                                    }
-	                                });
-	                            })();
-	                        } // ./if & ./else if
-	                    }
-	            } // ./if span or LI
-	        }
-	    }, {
-	        key: 'toArray',
-	        value: function toArray(list) {
-	            var arr = [];
-
-	            for (var i = 0; i < list.length; i++) {
-	                arr.push(list[i]);
-	            }
-
-	            return arr;
-	        }
-	    }, {
-	        key: 'getColWidth',
-	        value: function getColWidth(colNum) {
-	            var colWidth = undefined;
-
-	            switch (colNum) {
-	                case 1:
-	                    colWidth = 12;
-	                    break;
-	                case 2:
-	                    colWidth = 6;
-	                    break;
-	                case 3:
-	                    colWidth = 4;
-	                    break;
-	                case 4:
-	                    colWidth = 3;
-	                    break;
-	                case 6:
-	                    colWidth = 2;
-	                    break;
-	                case 12:
-	                    colWidth = 1;
-	                    break;
-	                default:
-	                    colWidth = 12;
-	                    break;
-	            }
-
-	            return colWidth;
-	        }
-	    }, {
-	        key: 'componentDidMount',
-	        value: function componentDidMount() {
-	            window.addEventListener('resize', this.handleResize); //binds window resize event listener
-	            //get all list items
-	            //get offset height and offset top
-	            //get window height
-	        }
-	    }, {
-	        key: 'componentWillUnmount',
-	        value: function componentWillUnmount() {
-	            window.removeEventListener('resize', this.handleResize);
-	        }
-	    }, {
-	        key: 'handleResize',
-	        value: function handleResize(e) {
-	            console.log("HANDLE RESIZE", this.getWindowSize());
-
-	            this.setState({
-	                currentItemRowCount: this.getWindowSize()
-	            });
-	        }
-	    }, {
-	        key: 'getWindowSize',
-	        value: function getWindowSize() {
-	            var windowWidth = window.innerWidth;
-
-	            console.log(windowWidth);
-
-	            if (windowWidth <= 640) {
-	                //set currentItemRowCount to small settings
-	                return this.state.sItemCount;
-	            } else if (windowWidth <= 1024) {
-	                //medium
-	                return this.state.mItemCount;
-	            } else if (windowWidth <= 1440) {
-	                //large
-	                return this.state.lItemCount;
-	            } else if (windowWidth <= 1920) {
-	                //extra large
-	                return this.state.xlItemCount;
-	            } else if (windowWidth > 1920) {
-	                //XXL
-	                return this.state.xxlItemCount;
-	            }
-	        }
-	    }]);
-
-	    return Expandable;
-	})(_react2['default'].Component);
-
-	exports['default'] = Expandable;
-	module.exports = exports['default'];
-
-/***/ },
-/* 207 */
-/***/ function(module, exports) {
-
-	"use strict";
-
-	Object.defineProperty(exports, "__esModule", {
-	    value: true
-	});
-
-	var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
-
-	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-	exports["default"] = new ((function () {
-	    function Style() {
-	        _classCallCheck(this, Style);
-
-	        this.style = {
-	            "ulExpandable": {
-	                listStyleType: "none",
-	                width: "100%",
-	                position: "relative",
-	                float: "left",
-	                padding: "0rem",
-	                margin: "0rem"
-	            },
-	            "liExpandable": {
-	                position: "relative",
-	                float: "left",
-	                marginBottom: "1rem"
-	            },
-	            "liPreview": {
-	                position: "relative",
-	                width: "100%",
-	                marginBottom: "1rem",
-	                backgroundColor: "#fafafa",
-	                float: "left"
-	            },
-	            "divPreviewInner": {
-	                width: "100%",
-	                height: "auto",
-	                //maxHeight: "0",
-	                padding: "0rem"
-	                //overflow: "hidden",
-	                //display: "block",
-	                //transition: "max-height 0.8s"
-	            },
-	            "divPreviewHeader": {
-	                width: "100%",
-	                padding: ".5rem 1rem 0 .5rem",
-	                display: "flex"
-	            },
-	            "h2PreviewTitle": {
-	                width: "95%",
-	                padding: "0rem",
-
-	                float: "left",
-	                margin: "0rem"
-	            },
-	            "spanPreviewClose": {
-	                width: "5%",
-	                fontWeight: "bolder",
-	                fontSize: "20px",
-	                padding: "0rem"
-
-	            },
-	            aNullTag: {
-	                float: "right"
-	            },
-	            "divPreviewContent": {
-	                width: "100%",
-	                padding: "0rem"
-	            }
-	        };
-	    }
-
-	    _createClass(Style, [{
-	        key: "styles",
-	        value: function styles() {
-	            return this.style;
-	        }
-	    }, {
-	        key: "createStyle",
-	        value: function createStyle(name, value) {
-	            if (typeof this.style[name] === 'undefined') {
-
-	                this.style[name] = value;
-
-	                return true;
-	            } else {
-	                return false;
-	            }
-	        }
-	    }, {
-	        key: "updateStyle",
-	        value: function updateStyle(name, value) {
-	            if (typeof this.style[name] !== 'undefined') {
-	                this.style[name] = value;
-
-	                return true;
-	            } else {
-	                return false;
-	            }
-	        }
-	    }]);
-
-	    return Style;
-	})())();
-	module.exports = exports["default"];
-
-/***/ },
-/* 208 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	Object.defineProperty(exports, '__esModule', {
-	    value: true
-	});
-
-	var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ('value' in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
-
-	var _get = function get(_x, _x2, _x3) { var _again = true; _function: while (_again) { var object = _x, property = _x2, receiver = _x3; desc = parent = getter = undefined; _again = false; if (object === null) object = Function.prototype; var desc = Object.getOwnPropertyDescriptor(object, property); if (desc === undefined) { var parent = Object.getPrototypeOf(object); if (parent === null) { return undefined; } else { _x = parent; _x2 = property; _x3 = receiver; _again = true; continue _function; } } else if ('value' in desc) { return desc.value; } else { var getter = desc.get; if (getter === undefined) { return undefined; } return getter.call(receiver); } } };
-
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
-
-	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError('Cannot call a class as a function'); } }
-
-	function _inherits(subClass, superClass) { if (typeof superClass !== 'function' && superClass !== null) { throw new TypeError('Super expression must either be null or a function, not ' + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-	var _react = __webpack_require__(2);
-
-	var _react2 = _interopRequireDefault(_react);
-
-	var _PreviewJsx = __webpack_require__(209);
-
-	var _PreviewJsx2 = _interopRequireDefault(_PreviewJsx);
-
-	var _cssStyleJs = __webpack_require__(207);
-
-	var _cssStyleJs2 = _interopRequireDefault(_cssStyleJs);
-
-	var _lodash = __webpack_require__(245);
-
-	var _lodash2 = _interopRequireDefault(_lodash);
-
-	var Item = (function (_React$Component) {
-	    _inherits(Item, _React$Component);
-
-	    function Item(props, state) {
-	        _classCallCheck(this, Item);
-
-	        _get(Object.getPrototypeOf(Item.prototype), 'constructor', this).call(this, props, state);
-
-	        this.state = {
-	            colWidth: this.props.colWidth || 1,
-	            isOpen: false,
-	            offsets: null
-	        };
-
-	        //bindings
-	    }
-
-	    _createClass(Item, [{
-	        key: 'render',
-	        value: function render() {
-	            var styles = _cssStyleJs2['default'].styles();
-	            var className = "li-expandable";
-	            var children = _react2['default'].Children.map(this.props.children, function (child, index) {
-
-	                return _react2['default'].cloneElement(child, { onClick: function onClick(e) {
-	                        e.preventDefault();
-	                    } });
-	            });
-
-	            var liExpandable = _lodash2['default'].merge(styles.liExpandable, { width: this.props.colWidth });
-
-	            return _react2['default'].createElement(
-	                'li',
-	                { className: className, onClick: this.props.onClick, 'data-col-width': this.props.colWidth, style: liExpandable },
-	                children
-	            );
-	        }
-
-	        /*componentDidMount(){
-	            window.addEventListener('resize', this.handleResize);
-	        }*/
-
-	        /*static getColWidth(colNum){
-	            let colWidth;
-	             switch (colNum){
-	                case 1:
-	                    colWidth = 12;
-	                break;
-	                case 2:
-	                    colWidth = 6;
-	                break;
-	                break;
-	         case 3:
-	         colWidth = 4;
-	         break;
-	         case 4:
-	         colWidth = 3;
-	         break;
-	         case 6:
-	         colWidth = 2;
-	         break;
-	         case 12:
-	         colWidth = 1;
-	                default:
-	                    colWidth = 12;
-	                break;
-	            }
-	             return colWidth;
-	        }*/
-
-	    }]);
-
-	    return Item;
-	})(_react2['default'].Component);
-
-	exports['default'] = Item;
-	module.exports = exports['default'];
-
-/***/ },
-/* 209 */
-/***/ function(module, exports, __webpack_require__) {
-
-	"use strict";
-
-	Object.defineProperty(exports, '__esModule', {
-	    value: true
-	});
-
-	var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ('value' in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
-
-	var _get = function get(_x, _x2, _x3) { var _again = true; _function: while (_again) { var object = _x, property = _x2, receiver = _x3; desc = parent = getter = undefined; _again = false; if (object === null) object = Function.prototype; var desc = Object.getOwnPropertyDescriptor(object, property); if (desc === undefined) { var parent = Object.getPrototypeOf(object); if (parent === null) { return undefined; } else { _x = parent; _x2 = property; _x3 = receiver; _again = true; continue _function; } } else if ('value' in desc) { return desc.value; } else { var getter = desc.get; if (getter === undefined) { return undefined; } return getter.call(receiver); } } };
-
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
-
-	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError('Cannot call a class as a function'); } }
-
-	function _inherits(subClass, superClass) { if (typeof superClass !== 'function' && superClass !== null) { throw new TypeError('Super expression must either be null or a function, not ' + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-	var _reactAddons = __webpack_require__(210);
-
-	var _reactAddons2 = _interopRequireDefault(_reactAddons);
-
-	var _reactMotion = __webpack_require__(228);
-
-	var _lodash = __webpack_require__(245);
-
-	var _lodash2 = _interopRequireDefault(_lodash);
-
-	var _cssStyleJs = __webpack_require__(207);
-
-	var _cssStyleJs2 = _interopRequireDefault(_cssStyleJs);
-
-	var _cssExpandableCss = __webpack_require__(247);
-
-	var _cssExpandableCss2 = _interopRequireDefault(_cssExpandableCss);
-
-	var Preview = (function (_React$Component) {
-	    _inherits(Preview, _React$Component);
-
-	    function Preview(props, state) {
-	        _classCallCheck(this, Preview);
-
-	        _get(Object.getPrototypeOf(Preview.prototype), 'constructor', this).call(this, props, state);
-
-	        this.state = {
-	            isOpen: false
-	        };
-	    }
-
-	    _createClass(Preview, [{
-	        key: 'previewStructure',
-	        value: function previewStructure() {
-	            console.log("PEW PEW", _reactAddons2['default'].addons);
-	            var TransitionGroup = _reactAddons2['default'].addons.TransitionGroup;
-
-	            var that = this;
-	            var styles = _cssStyleJs2['default'].styles();
-
-	            var liPreview = styles.liPreview;
-	            var divPreviewInner = styles.divPreviewInner;
-	            var divPreviewHeader = styles.divPreviewHeader;
-	            var h2PreviewTitle = styles.h2PreviewTitle;
-	            var spanPreviewClose = styles.spanPreviewClose;
-	            var aNullTag = styles.aNullTag;
-	            var divPreviewContent = styles.divPreviewContent;
-
-	            var maxHeight = this.state.isOpen ? 400 + "px" : 0 + "px";
-	            //{maxHeight: maxHeight}
-
-	            return _reactAddons2['default'].createElement(
-	                'li',
-	                { className: 'li-preview', style: liPreview },
-	                _reactAddons2['default'].createElement(
-	                    'div',
-	                    { className: 'div-preview-inner', styles: _lodash2['default'].merge(divPreviewInner, {}) },
-	                    _reactAddons2['default'].createElement(
-	                        'div',
-	                        { className: 'div-preview-header', style: divPreviewHeader },
-	                        _reactAddons2['default'].createElement(
-	                            'h2',
-	                            { className: 'h2-preview-title', style: h2PreviewTitle },
-	                            that.props.title
-	                        ),
-	                        _reactAddons2['default'].createElement(
-	                            'span',
-	                            { className: 'span-preview-close', style: spanPreviewClose, onClick: this.props.onClick },
-	                            _reactAddons2['default'].createElement(
-	                                'a',
-	                                { classname: 'a-null-tag', style: aNullTag },
-	                                'X'
-	                            )
-	                        )
-	                    ),
-	                    _reactAddons2['default'].createElement(
-	                        'div',
-	                        { className: 'div-preview-content', style: divPreviewContent },
-	                        that.props.children
-	                    )
-	                )
-	            );
-	        }
-
-	        //if preview is mounted or updated && open, the scroll to it.
-	    }, {
-	        key: 'scrollToPreview',
-	        value: function scrollToPreview() {
-	            var body = document.body;
-	            var elem;
-	        }
-	    }, {
-	        key: 'render',
-	        value: function render() {
-	            return this.props.isOpen ? this.previewStructure() : null;
-	        }
-	    }, {
-	        key: 'componentDidMount',
-	        value: function componentDidMount() {
-
-	            if (this.props.isOpen && !this.state.isOpen) {
-	                this.setState({ isOpen: true });
-	            } else if (!this.props.isOpen) {
-	                this.setState({ isOpen: false });
-	            }
-	        }
-	    }, {
-	        key: 'componentDidUpdate',
-	        value: function componentDidUpdate() {
-	            if (this.props.isOpen && !this.state.isOpen) {
-	                this.setState({ isOpen: true });
-	            } else if (!this.props.isOpen) {
-	                this.setState({ isOpen: false });
-	            }
-	        }
-	    }]);
-
-	    return Preview;
-	})(_reactAddons2['default'].Component);
-
-	exports['default'] = Preview;
-	module.exports = exports['default'];
-
-/***/ },
+/* 205 */,
+/* 206 */,
+/* 207 */,
+/* 208 */,
+/* 209 */,
 /* 210 */
 /***/ function(module, exports, __webpack_require__) {
 
@@ -41663,325 +40950,687 @@
 
 
 /***/ },
-/* 247 */
+/* 247 */,
+/* 248 */,
+/* 249 */,
+/* 250 */,
+/* 251 */
 /***/ function(module, exports, __webpack_require__) {
 
-	// style-loader: Adds some css to the DOM by adding a <style> tag
+	'use strict';
 
-	// load the styles
-	var content = __webpack_require__(248);
-	if(typeof content === 'string') content = [[module.id, content, '']];
-	// add the styles to the DOM
-	var update = __webpack_require__(250)(content, {});
-	if(content.locals) module.exports = content.locals;
-	// Hot Module Replacement
-	if(false) {
-		// When the styles change, update the <style> tags
-		if(!content.locals) {
-			module.hot.accept("!!./../../../../node_modules/css-loader/index.js!./expandable.css", function() {
-				var newContent = require("!!./../../../../node_modules/css-loader/index.js!./expandable.css");
-				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
-				update(newContent);
-			});
-		}
-		// When the module is disposed, remove the <style> tags
-		module.hot.dispose(function() { update(); });
-	}
+	Object.defineProperty(exports, '__esModule', {
+	  value: true
+	});
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
+
+	var _ExpandableJsx = __webpack_require__(252);
+
+	var _ExpandableJsx2 = _interopRequireDefault(_ExpandableJsx);
+
+	var _ItemJsx = __webpack_require__(254);
+
+	var _ItemJsx2 = _interopRequireDefault(_ItemJsx);
+
+	var _PreviewJsx = __webpack_require__(255);
+
+	var _PreviewJsx2 = _interopRequireDefault(_PreviewJsx);
+
+	var _exports = {};
+
+	_exports.Expandable = _ExpandableJsx2['default'];
+	_exports.Item = _ItemJsx2['default'];
+	_exports.Preview = _PreviewJsx2['default'];
+
+	exports['default'] = _exports;
+	module.exports = exports['default'];
 
 /***/ },
-/* 248 */
+/* 252 */
 /***/ function(module, exports, __webpack_require__) {
 
-	exports = module.exports = __webpack_require__(249)();
-	// imports
+	'use strict';
 
+	Object.defineProperty(exports, '__esModule', {
+	    value: true
+	});
 
-	// module
-	exports.push([module.id, ".preview-transition-appear{\n    max-height: 0;\n}\n\n.preview-transition-appear.preview-transition-appear-active{\n    max-height: 500px;\n    transition: max-height .5s ease-in;\n}", ""]);
+	var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ('value' in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
 
-	// exports
+	var _get = function get(_x, _x2, _x3) { var _again = true; _function: while (_again) { var object = _x, property = _x2, receiver = _x3; desc = parent = getter = undefined; _again = false; if (object === null) object = Function.prototype; var desc = Object.getOwnPropertyDescriptor(object, property); if (desc === undefined) { var parent = Object.getPrototypeOf(object); if (parent === null) { return undefined; } else { _x = parent; _x2 = property; _x3 = receiver; _again = true; continue _function; } } else if ('value' in desc) { return desc.value; } else { var getter = desc.get; if (getter === undefined) { return undefined; } return getter.call(receiver); } } };
 
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError('Cannot call a class as a function'); } }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== 'function' && superClass !== null) { throw new TypeError('Super expression must either be null or a function, not ' + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+	var _react = __webpack_require__(2);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var _cssStyleJs = __webpack_require__(253);
+
+	var _cssStyleJs2 = _interopRequireDefault(_cssStyleJs);
+
+	var Expandable = (function (_React$Component) {
+	    _inherits(Expandable, _React$Component);
+
+	    function Expandable(props, state) {
+	        _classCallCheck(this, Expandable);
+
+	        _get(Object.getPrototypeOf(Expandable.prototype), 'constructor', this).call(this, props, state);
+
+	        //TODO: change the handleClick to account for window.innerWidth;
+
+	        this.state = {
+	            isOpen: false,
+	            rowIndex: null,
+	            childIndex: null,
+	            colWidth: 2,
+	            sItemCount: this.props.smallRowItemCount || 1,
+	            mItemCount: this.props.mediumRowItemCount || 2,
+	            lItemCount: this.props.largeRowItemCount || 3,
+	            xlItemCount: this.props.xlargeRowItemCount || 4,
+	            xxlItemCount: this.props.xxlargeRowItemCount || 5,
+	            currentItemRowCount: 2,
+	            settings: {
+	                current: -1,
+	                previewPos: -1,
+	                scrollExtra: 0,
+	                marginExpanded: 10
+	            }
+	        };
+
+	        this.handleClick = this.handleClick.bind(this);
+	        this.handleResize = this.handleResize.bind(this);
+	        this.getWindowSize = this.getWindowSize.bind(this);
+	    }
+
+	    _createClass(Expandable, [{
+	        key: 'componentWillMount',
+	        value: function componentWillMount() {
+	            console.log("window size:", this.getWindowSize(), window.screen.width);
+
+	            this.setState({
+	                currentItemRowCount: this.getWindowSize()
+	            });
+	        }
+	    }, {
+	        key: 'componentWillReceiveProps',
+	        value: function componentWillReceiveProps(nextProps) {
+
+	            if (nextProps.colWidth !== this.state.colWidth) {
+	                this.setState({
+	                    colWidth: nextProps.colWidth
+	                });
+	            }
+
+	            if (!nextProps.isOpen) {
+	                this.setState({
+	                    isOpen: false,
+	                    index: -1
+	                });
+	            }
+	        }
+	    }, {
+	        key: 'render',
+	        value: function render() {
+	            var _this = this;
+
+	            var Preview = null;
+	            var style = _cssStyleJs2['default'].styles();
+
+	            console.log(this.state.childIndex, this.state.isOpen);
+
+	            var children = _react2['default'].Children.map(this.props.children, function (child, index) {
+	                //const colWidth = this.getColWidth(this.props.colWidth);
+	                //calculate child item width
+	                var colWidth = 100 / _this.state.currentItemRowCount + "%";
+	                var lastComponent = index === _this.props.children.length - 1 ? true : false;
+
+	                if (index === _this.state.childIndex) {
+	                    Preview = child.props.previewComponent;
+	                }
+
+	                if (_this.state.isOpen && index === _this.state.rowIndex && Preview !== null) {
+	                    var arr = [0, 1];
+
+	                    return arr.map(function (arrItem, aIndex) {
+	                        return aIndex == 0 ? _react2['default'].cloneElement(child, { colWidth: colWidth, onClick: _this.handleClick, lastComponent: lastComponent }) : _react2['default'].cloneElement(Preview, { onClick: _this.handleClick, isOpen: true });
+	                    });
+	                }
+
+	                return _react2['default'].cloneElement(child, { colWidth: colWidth, onClick: _this.handleClick, lastComponent: lastComponent });
+	            });
+
+	            return _react2['default'].createElement(
+	                'ul',
+	                { className: 'small-12_columns', style: style.ulExpandable },
+	                children
+	            );
+	        }
+	    }, {
+	        key: 'handleClick',
+	        value: function handleClick(e) {
+	            var _this2 = this;
+
+	            console.log("click", e.currentTarget.tagName, e.currentTarget.className.indexOf("li-expandable"));
+
+	            if (e.currentTarget.tagName == "LI" && (e.currentTarget.className.indexOf("li-expandable") || e.currentTarget.className == "li-expandable") || e.currentTarget.tagName == "SPAN" && e.currentTarget.className == 'span-preview-close') {
+
+	                if (!this.state.isOpen) {
+	                    (function () {
+	                        //isOpen == false
+	                        console.log("is not open");
+	                        var target = e.currentTarget;
+	                        var parent = target.parentNode;
+	                        var children = _this2.toArray(parent.children);
+
+	                        var total = 0;
+	                        var hasTarget = false;
+	                        var childIndex = -1;
+
+	                        children.forEach(function (child, index) {
+	                            total++;
+	                            console.log("children loop", child, total, _this2.state.colWidth);
+
+	                            if (!hasTarget && child == target) {
+	                                console.log("set hasTarget to true");
+	                                hasTarget = true;
+	                                childIndex = index;
+	                            }
+
+	                            if (total == _this2.state.currentItemRowCount && hasTarget || total < _this2.state.currentItemRowCount && hasTarget && index == children.length - 1) {
+	                                console.log("has target & total 12");
+	                                return _this2.setState({
+	                                    isOpen: true,
+	                                    rowIndex: index,
+	                                    childIndex: childIndex
+	                                });
+	                            } else if (total == _this2.state.currentItemRowCount) {
+	                                console.log("reset to 0");
+	                                total = 0;
+	                            }
+	                        }); // ./forEach
+	                    })();
+	                } else if (this.state.isOpen) {
+	                        //isOpen true
+	                        console.log("is Open");
+	                        var target = e.currentTarget;
+
+	                        if (target.tagName === "SPAN") {
+	                            //"X" button clicked
+
+	                            this.setState({
+	                                isOpen: false,
+	                                index: -1
+	                            });
+	                        } else if (target.tagName === "LI") {
+	                            (function () {
+	                                //<li> button clicked
+	                                var target = e.currentTarget;
+	                                var parent = target.parentNode;
+	                                var children = _this2.toArray(parent.children);
+
+	                                var total = 0;
+	                                var hasTarget = false;
+	                                var childIndex = -1;
+
+	                                children.splice(_this2.state.rowIndex + 1, 1);
+
+	                                children.forEach(function (child, index) {
+	                                    total++;
+
+	                                    if (!hasTarget && child == target) {
+	                                        hasTarget = true;
+	                                        childIndex = index;
+	                                    }
+
+	                                    if (total == _this2.state.currentItemRowCount && hasTarget || total < _this2.state.currentItemRowCount && hasTarget && index == children.length - 1) {
+	                                        return _this2.setState({
+	                                            isOpen: true,
+	                                            rowIndex: index,
+	                                            childIndex: childIndex
+	                                        });
+	                                    } else if (total == _this2.state.currentItemRowCount) {
+	                                        total = 0;
+	                                    }
+	                                });
+	                            })();
+	                        } // ./if & ./else if
+	                    }
+	            } // ./if span or LI
+	        }
+	    }, {
+	        key: 'toArray',
+	        value: function toArray(list) {
+	            var arr = [];
+
+	            for (var i = 0; i < list.length; i++) {
+	                arr.push(list[i]);
+	            }
+
+	            return arr;
+	        }
+	    }, {
+	        key: 'getColWidth',
+	        value: function getColWidth(colNum) {
+	            var colWidth = undefined;
+
+	            switch (colNum) {
+	                case 1:
+	                    colWidth = 12;
+	                    break;
+	                case 2:
+	                    colWidth = 6;
+	                    break;
+	                case 3:
+	                    colWidth = 4;
+	                    break;
+	                case 4:
+	                    colWidth = 3;
+	                    break;
+	                case 6:
+	                    colWidth = 2;
+	                    break;
+	                case 12:
+	                    colWidth = 1;
+	                    break;
+	                default:
+	                    colWidth = 12;
+	                    break;
+	            }
+
+	            return colWidth;
+	        }
+	    }, {
+	        key: 'componentDidMount',
+	        value: function componentDidMount() {
+	            window.addEventListener('resize', this.handleResize); //binds window resize event listener
+	            //get all list items
+	            //get offset height and offset top
+	            //get window height
+	        }
+	    }, {
+	        key: 'componentWillUnmount',
+	        value: function componentWillUnmount() {
+	            window.removeEventListener('resize', this.handleResize);
+	        }
+	    }, {
+	        key: 'handleResize',
+	        value: function handleResize(e) {
+	            console.log("HANDLE RESIZE", this.getWindowSize());
+
+	            this.setState({
+	                currentItemRowCount: this.getWindowSize()
+	            });
+	        }
+	    }, {
+	        key: 'getWindowSize',
+	        value: function getWindowSize() {
+	            var windowWidth = window.innerWidth;
+
+	            console.log(windowWidth);
+
+	            if (windowWidth <= 640) {
+	                //set currentItemRowCount to small settings
+	                return this.state.sItemCount;
+	            } else if (windowWidth <= 1024) {
+	                //medium
+	                return this.state.mItemCount;
+	            } else if (windowWidth <= 1440) {
+	                //large
+	                return this.state.lItemCount;
+	            } else if (windowWidth <= 1920) {
+	                //extra large
+	                return this.state.xlItemCount;
+	            } else if (windowWidth > 1920) {
+	                //XXL
+	                return this.state.xxlItemCount;
+	            }
+	        }
+	    }]);
+
+	    return Expandable;
+	})(_react2['default'].Component);
+
+	exports['default'] = Expandable;
+	module.exports = exports['default'];
 
 /***/ },
-/* 249 */
+/* 253 */
 /***/ function(module, exports) {
 
-	/*
-		MIT License http://www.opensource.org/licenses/mit-license.php
-		Author Tobias Koppers @sokra
-	*/
-	// css base code, injected by the css-loader
-	module.exports = function() {
-		var list = [];
+	"use strict";
 
-		// return the list of modules as css string
-		list.toString = function toString() {
-			var result = [];
-			for(var i = 0; i < this.length; i++) {
-				var item = this[i];
-				if(item[2]) {
-					result.push("@media " + item[2] + "{" + item[1] + "}");
-				} else {
-					result.push(item[1]);
-				}
-			}
-			return result.join("");
-		};
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
 
-		// import a list of modules into the list
-		list.i = function(modules, mediaQuery) {
-			if(typeof modules === "string")
-				modules = [[null, modules, ""]];
-			var alreadyImportedModules = {};
-			for(var i = 0; i < this.length; i++) {
-				var id = this[i][0];
-				if(typeof id === "number")
-					alreadyImportedModules[id] = true;
-			}
-			for(i = 0; i < modules.length; i++) {
-				var item = modules[i];
-				// skip already imported module
-				// this implementation is not 100% perfect for weird media query combinations
-				//  when a module is imported multiple times with different media queries.
-				//  I hope this will never occur (Hey this way we have smaller bundles)
-				if(typeof item[0] !== "number" || !alreadyImportedModules[item[0]]) {
-					if(mediaQuery && !item[2]) {
-						item[2] = mediaQuery;
-					} else if(mediaQuery) {
-						item[2] = "(" + item[2] + ") and (" + mediaQuery + ")";
-					}
-					list.push(item);
-				}
-			}
-		};
-		return list;
-	};
+	var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
 
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	exports["default"] = new ((function () {
+	    function Style() {
+	        _classCallCheck(this, Style);
+
+	        this.style = {
+	            "ulExpandable": {
+	                listStyleType: "none",
+	                width: "100%",
+	                position: "relative",
+	                float: "left",
+	                padding: "0rem",
+	                margin: "0rem"
+	            },
+	            "liExpandable": {
+	                position: "relative",
+	                float: "left",
+	                marginBottom: "1rem"
+	            },
+	            "liPreview": {
+	                position: "relative",
+	                width: "100%",
+	                marginBottom: "1rem",
+	                backgroundColor: "#fafafa",
+	                float: "left"
+	            },
+	            "divPreviewInner": {
+	                width: "100%",
+	                height: "auto",
+	                //maxHeight: "0",
+	                padding: "0rem"
+	                //overflow: "hidden",
+	                //display: "block",
+	                //transition: "max-height 0.8s"
+	            },
+	            "divPreviewHeader": {
+	                width: "100%",
+	                padding: ".5rem 1rem 0 .5rem",
+	                display: "flex"
+	            },
+	            "h2PreviewTitle": {
+	                width: "95%",
+	                padding: "0rem",
+	                fontSize: "20px",
+	                float: "left",
+	                margin: "0rem"
+	            },
+	            "spanPreviewClose": {
+	                width: "5%",
+	                fontSize: "20px",
+	                padding: "0rem"
+
+	            },
+	            "aNullTag": {
+	                float: "right",
+	                transform: "scale(1.2,1)",
+	                color: "#8F9EAB"
+	            },
+	            "divPreviewContent": {
+	                width: "100%",
+	                padding: "0rem"
+	            }
+	        };
+	    }
+
+	    _createClass(Style, [{
+	        key: "styles",
+	        value: function styles() {
+	            return this.style;
+	        }
+	    }, {
+	        key: "createStyle",
+	        value: function createStyle(name, value) {
+	            if (typeof this.style[name] === 'undefined') {
+
+	                this.style[name] = value;
+
+	                return true;
+	            } else {
+	                return false;
+	            }
+	        }
+	    }, {
+	        key: "updateStyle",
+	        value: function updateStyle(name, value) {
+	            if (typeof this.style[name] !== 'undefined') {
+	                this.style[name] = value;
+
+	                return true;
+	            } else {
+	                return false;
+	            }
+	        }
+	    }]);
+
+	    return Style;
+	})())();
+	module.exports = exports["default"];
 
 /***/ },
-/* 250 */
+/* 254 */
 /***/ function(module, exports, __webpack_require__) {
 
-	/*
-		MIT License http://www.opensource.org/licenses/mit-license.php
-		Author Tobias Koppers @sokra
-	*/
-	var stylesInDom = {},
-		memoize = function(fn) {
-			var memo;
-			return function () {
-				if (typeof memo === "undefined") memo = fn.apply(this, arguments);
-				return memo;
-			};
-		},
-		isOldIE = memoize(function() {
-			return /msie [6-9]\b/.test(window.navigator.userAgent.toLowerCase());
-		}),
-		getHeadElement = memoize(function () {
-			return document.head || document.getElementsByTagName("head")[0];
-		}),
-		singletonElement = null,
-		singletonCounter = 0;
+	'use strict';
 
-	module.exports = function(list, options) {
-		if(false) {
-			if(typeof document !== "object") throw new Error("The style-loader cannot be used in a non-browser environment");
-		}
+	Object.defineProperty(exports, '__esModule', {
+	    value: true
+	});
 
-		options = options || {};
-		// Force single-tag solution on IE6-9, which has a hard limit on the # of <style>
-		// tags it will allow on a page
-		if (typeof options.singleton === "undefined") options.singleton = isOldIE();
+	var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ('value' in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
 
-		var styles = listToStyles(list);
-		addStylesToDom(styles, options);
+	var _get = function get(_x, _x2, _x3) { var _again = true; _function: while (_again) { var object = _x, property = _x2, receiver = _x3; desc = parent = getter = undefined; _again = false; if (object === null) object = Function.prototype; var desc = Object.getOwnPropertyDescriptor(object, property); if (desc === undefined) { var parent = Object.getPrototypeOf(object); if (parent === null) { return undefined; } else { _x = parent; _x2 = property; _x3 = receiver; _again = true; continue _function; } } else if ('value' in desc) { return desc.value; } else { var getter = desc.get; if (getter === undefined) { return undefined; } return getter.call(receiver); } } };
 
-		return function update(newList) {
-			var mayRemove = [];
-			for(var i = 0; i < styles.length; i++) {
-				var item = styles[i];
-				var domStyle = stylesInDom[item.id];
-				domStyle.refs--;
-				mayRemove.push(domStyle);
-			}
-			if(newList) {
-				var newStyles = listToStyles(newList);
-				addStylesToDom(newStyles, options);
-			}
-			for(var i = 0; i < mayRemove.length; i++) {
-				var domStyle = mayRemove[i];
-				if(domStyle.refs === 0) {
-					for(var j = 0; j < domStyle.parts.length; j++)
-						domStyle.parts[j]();
-					delete stylesInDom[domStyle.id];
-				}
-			}
-		};
-	}
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
 
-	function addStylesToDom(styles, options) {
-		for(var i = 0; i < styles.length; i++) {
-			var item = styles[i];
-			var domStyle = stylesInDom[item.id];
-			if(domStyle) {
-				domStyle.refs++;
-				for(var j = 0; j < domStyle.parts.length; j++) {
-					domStyle.parts[j](item.parts[j]);
-				}
-				for(; j < item.parts.length; j++) {
-					domStyle.parts.push(addStyle(item.parts[j], options));
-				}
-			} else {
-				var parts = [];
-				for(var j = 0; j < item.parts.length; j++) {
-					parts.push(addStyle(item.parts[j], options));
-				}
-				stylesInDom[item.id] = {id: item.id, refs: 1, parts: parts};
-			}
-		}
-	}
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError('Cannot call a class as a function'); } }
 
-	function listToStyles(list) {
-		var styles = [];
-		var newStyles = {};
-		for(var i = 0; i < list.length; i++) {
-			var item = list[i];
-			var id = item[0];
-			var css = item[1];
-			var media = item[2];
-			var sourceMap = item[3];
-			var part = {css: css, media: media, sourceMap: sourceMap};
-			if(!newStyles[id])
-				styles.push(newStyles[id] = {id: id, parts: [part]});
-			else
-				newStyles[id].parts.push(part);
-		}
-		return styles;
-	}
+	function _inherits(subClass, superClass) { if (typeof superClass !== 'function' && superClass !== null) { throw new TypeError('Super expression must either be null or a function, not ' + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-	function createStyleElement() {
-		var styleElement = document.createElement("style");
-		var head = getHeadElement();
-		styleElement.type = "text/css";
-		head.appendChild(styleElement);
-		return styleElement;
-	}
+	var _react = __webpack_require__(2);
 
-	function createLinkElement() {
-		var linkElement = document.createElement("link");
-		var head = getHeadElement();
-		linkElement.rel = "stylesheet";
-		head.appendChild(linkElement);
-		return linkElement;
-	}
+	var _react2 = _interopRequireDefault(_react);
 
-	function addStyle(obj, options) {
-		var styleElement, update, remove;
+	var _PreviewJsx = __webpack_require__(255);
 
-		if (options.singleton) {
-			var styleIndex = singletonCounter++;
-			styleElement = singletonElement || (singletonElement = createStyleElement());
-			update = applyToSingletonTag.bind(null, styleElement, styleIndex, false);
-			remove = applyToSingletonTag.bind(null, styleElement, styleIndex, true);
-		} else if(obj.sourceMap &&
-			typeof URL === "function" &&
-			typeof URL.createObjectURL === "function" &&
-			typeof URL.revokeObjectURL === "function" &&
-			typeof Blob === "function" &&
-			typeof btoa === "function") {
-			styleElement = createLinkElement();
-			update = updateLink.bind(null, styleElement);
-			remove = function() {
-				styleElement.parentNode.removeChild(styleElement);
-				if(styleElement.href)
-					URL.revokeObjectURL(styleElement.href);
-			};
-		} else {
-			styleElement = createStyleElement();
-			update = applyToTag.bind(null, styleElement);
-			remove = function() {
-				styleElement.parentNode.removeChild(styleElement);
-			};
-		}
+	var _PreviewJsx2 = _interopRequireDefault(_PreviewJsx);
 
-		update(obj);
+	var _cssStyleJs = __webpack_require__(253);
 
-		return function updateStyle(newObj) {
-			if(newObj) {
-				if(newObj.css === obj.css && newObj.media === obj.media && newObj.sourceMap === obj.sourceMap)
-					return;
-				update(obj = newObj);
-			} else {
-				remove();
-			}
-		};
-	}
+	var _cssStyleJs2 = _interopRequireDefault(_cssStyleJs);
 
-	var replaceText = (function () {
-		var textStore = [];
+	var _lodash = __webpack_require__(245);
 
-		return function (index, replacement) {
-			textStore[index] = replacement;
-			return textStore.filter(Boolean).join('\n');
-		};
-	})();
+	var _lodash2 = _interopRequireDefault(_lodash);
 
-	function applyToSingletonTag(styleElement, index, remove, obj) {
-		var css = remove ? "" : obj.css;
+	var Item = (function (_React$Component) {
+	    _inherits(Item, _React$Component);
 
-		if (styleElement.styleSheet) {
-			styleElement.styleSheet.cssText = replaceText(index, css);
-		} else {
-			var cssNode = document.createTextNode(css);
-			var childNodes = styleElement.childNodes;
-			if (childNodes[index]) styleElement.removeChild(childNodes[index]);
-			if (childNodes.length) {
-				styleElement.insertBefore(cssNode, childNodes[index]);
-			} else {
-				styleElement.appendChild(cssNode);
-			}
-		}
-	}
+	    function Item(props, state) {
+	        _classCallCheck(this, Item);
 
-	function applyToTag(styleElement, obj) {
-		var css = obj.css;
-		var media = obj.media;
-		var sourceMap = obj.sourceMap;
+	        _get(Object.getPrototypeOf(Item.prototype), 'constructor', this).call(this, props, state);
 
-		if(media) {
-			styleElement.setAttribute("media", media)
-		}
+	        this.state = {
+	            colWidth: this.props.colWidth || 1,
+	            isOpen: false,
+	            offsets: null
+	        };
 
-		if(styleElement.styleSheet) {
-			styleElement.styleSheet.cssText = css;
-		} else {
-			while(styleElement.firstChild) {
-				styleElement.removeChild(styleElement.firstChild);
-			}
-			styleElement.appendChild(document.createTextNode(css));
-		}
-	}
+	        //bindings
+	    }
 
-	function updateLink(linkElement, obj) {
-		var css = obj.css;
-		var media = obj.media;
-		var sourceMap = obj.sourceMap;
+	    _createClass(Item, [{
+	        key: 'render',
+	        value: function render() {
+	            var styles = _cssStyleJs2['default'].styles();
+	            var className = "li-expandable";
+	            var children = _react2['default'].Children.map(this.props.children, function (child, index) {
 
-		if(sourceMap) {
-			// http://stackoverflow.com/a/26603875
-			css += "\n/*# sourceMappingURL=data:application/json;base64," + btoa(unescape(encodeURIComponent(JSON.stringify(sourceMap)))) + " */";
-		}
+	                return _react2['default'].cloneElement(child, { onClick: function onClick(e) {
+	                        e.preventDefault();
+	                    } });
+	            });
 
-		var blob = new Blob([css], { type: "text/css" });
+	            var liExpandable = _lodash2['default'].merge(styles.liExpandable, { width: this.props.colWidth });
 
-		var oldSrc = linkElement.href;
+	            return _react2['default'].createElement(
+	                'li',
+	                { className: className, onClick: this.props.onClick, 'data-col-width': this.props.colWidth, style: liExpandable },
+	                children
+	            );
+	        }
+	    }]);
 
-		linkElement.href = URL.createObjectURL(blob);
+	    return Item;
+	})(_react2['default'].Component);
 
-		if(oldSrc)
-			URL.revokeObjectURL(oldSrc);
-	}
+	exports['default'] = Item;
+	module.exports = exports['default'];
 
+/***/ },
+/* 255 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+
+	Object.defineProperty(exports, '__esModule', {
+	    value: true
+	});
+
+	var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ('value' in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
+
+	var _get = function get(_x, _x2, _x3) { var _again = true; _function: while (_again) { var object = _x, property = _x2, receiver = _x3; desc = parent = getter = undefined; _again = false; if (object === null) object = Function.prototype; var desc = Object.getOwnPropertyDescriptor(object, property); if (desc === undefined) { var parent = Object.getPrototypeOf(object); if (parent === null) { return undefined; } else { _x = parent; _x2 = property; _x3 = receiver; _again = true; continue _function; } } else if ('value' in desc) { return desc.value; } else { var getter = desc.get; if (getter === undefined) { return undefined; } return getter.call(receiver); } } };
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError('Cannot call a class as a function'); } }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== 'function' && superClass !== null) { throw new TypeError('Super expression must either be null or a function, not ' + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+	var _reactAddons = __webpack_require__(210);
+
+	var _reactAddons2 = _interopRequireDefault(_reactAddons);
+
+	var _reactMotion = __webpack_require__(228);
+
+	var _lodash = __webpack_require__(245);
+
+	var _lodash2 = _interopRequireDefault(_lodash);
+
+	var _cssStyleJs = __webpack_require__(253);
+
+	var _cssStyleJs2 = _interopRequireDefault(_cssStyleJs);
+
+	var Preview = (function (_React$Component) {
+	    _inherits(Preview, _React$Component);
+
+	    function Preview(props, state) {
+	        _classCallCheck(this, Preview);
+
+	        _get(Object.getPrototypeOf(Preview.prototype), 'constructor', this).call(this, props, state);
+
+	        this.state = {
+	            isOpen: false
+	        };
+	    }
+
+	    _createClass(Preview, [{
+	        key: 'previewStructure',
+	        value: function previewStructure() {
+	            console.log("PEW PEW", _reactAddons2['default'].addons);
+	            var TransitionGroup = _reactAddons2['default'].addons.TransitionGroup;
+
+	            var that = this;
+	            var styles = _cssStyleJs2['default'].styles();
+	            var styleProp = typeof this.props.style !== 'undefined' ? this.props.styles : {};
+
+	            var liPreview = _lodash2['default'].merge(styles.liPreview, styleProp.liPreview || {});
+	            var divPreviewInner = _lodash2['default'].merge(styles.divPreviewInner, styleProp.divPreviewInner || {});
+	            var divPreviewHeader = _lodash2['default'].merge(styles.divPreviewHeader, styleProp.divPreviewHeader || {});
+	            var h2PreviewTitle = _lodash2['default'].merge(styles.h2PreviewTitle, styleProp.h2PreviewTitle || {});
+	            var spanPreviewClose = _lodash2['default'].merge(styles.spanPreviewClose, styleProp.spanPreviewClose || {});
+	            var aNullTag = _lodash2['default'].merge(styles.aNullTag, styleProp.aNullTag || {});
+	            var divPreviewContent = _lodash2['default'].merge(styles.divPreviewContent, styleProp.divPreviewContent || {});
+
+	            var maxHeight = this.state.isOpen ? 400 + "px" : 0 + "px";
+	            //{maxHeight: maxHeight}
+
+	            return _reactAddons2['default'].createElement(
+	                'li',
+	                { className: 'li-preview', style: liPreview },
+	                _reactAddons2['default'].createElement(
+	                    'div',
+	                    { className: 'div-preview-inner', styles: _lodash2['default'].merge(divPreviewInner, {}) },
+	                    _reactAddons2['default'].createElement(
+	                        'div',
+	                        { className: 'div-preview-header', style: divPreviewHeader },
+	                        _reactAddons2['default'].createElement(
+	                            'h2',
+	                            { className: 'h2-preview-title', style: h2PreviewTitle },
+	                            that.props.title
+	                        ),
+	                        _reactAddons2['default'].createElement(
+	                            'span',
+	                            { className: 'span-preview-close', style: spanPreviewClose, onClick: this.props.onClick },
+	                            _reactAddons2['default'].createElement(
+	                                'a',
+	                                { classname: 'a-null-tag', style: aNullTag },
+	                                'X'
+	                            )
+	                        )
+	                    ),
+	                    _reactAddons2['default'].createElement(
+	                        'div',
+	                        { className: 'div-preview-content', style: divPreviewContent },
+	                        that.props.children
+	                    )
+	                )
+	            );
+	        }
+
+	        //if preview is mounted or updated && open, the scroll to it.
+	    }, {
+	        key: 'scrollToPreview',
+	        value: function scrollToPreview() {
+	            var body = document.body;
+	            var elem;
+	        }
+	    }, {
+	        key: 'render',
+	        value: function render() {
+	            return this.props.isOpen ? this.previewStructure() : null;
+	        }
+	    }, {
+	        key: 'componentDidMount',
+	        value: function componentDidMount() {
+
+	            if (this.props.isOpen && !this.state.isOpen) {
+	                this.setState({ isOpen: true });
+	            } else if (!this.props.isOpen) {
+	                this.setState({ isOpen: false });
+	            }
+	        }
+	    }, {
+	        key: 'componentDidUpdate',
+	        value: function componentDidUpdate() {
+	            if (this.props.isOpen && !this.state.isOpen) {
+	                this.setState({ isOpen: true });
+	            } else if (!this.props.isOpen) {
+	                this.setState({ isOpen: false });
+	            }
+	        }
+	    }]);
+
+	    return Preview;
+	})(_reactAddons2['default'].Component);
+
+	exports['default'] = Preview;
+	module.exports = exports['default'];
 
 /***/ }
 /******/ ]);

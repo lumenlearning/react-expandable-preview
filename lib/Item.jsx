@@ -36,39 +36,5 @@ export default class Item extends React.Component{
         );
     }
 
-    /*componentDidMount(){
-        window.addEventListener('resize', this.handleResize);
-    }*/
-
-    /*static getColWidth(colNum){
-        let colWidth;
-
-        switch (colNum){
-            case 1:
-                colWidth = 12;
-            break;
-            case 2:
-                colWidth = 6;
-            break;
-            break;
-     case 3:
-     colWidth = 4;
-     break;
-     case 4:
-     colWidth = 3;
-     break;
-     case 6:
-     colWidth = 2;
-     break;
-     case 12:
-     colWidth = 1;
-            default:
-                colWidth = 12;
-            break;
-        }
-
-        return colWidth;
-    }*/
-
 
 }

@@ -1,10 +1,8 @@
 "use strict";
 
 import React                from 'react/addons';
-import {Motion, Spring}     from 'react-motion';
 import _                    from 'lodash';
 import Styles               from './css/style.js';
-import ExpandableCss        from './css/expandable.css'
 
 
 export default class Preview extends React.Component{
@@ -22,14 +20,15 @@ export default class Preview extends React.Component{
 
         const that                      = this;
         const styles                    = Styles.styles();
+        const styleProp                 = typeof this.props.style !== 'undefined' ? this.props.styles : {};
 
-        var liPreview                   = styles.liPreview;
-        var divPreviewInner             = styles.divPreviewInner;
-        var divPreviewHeader            = styles.divPreviewHeader;
-        var h2PreviewTitle              = styles.h2PreviewTitle;
-        var spanPreviewClose            = styles.spanPreviewClose;
-        var aNullTag                    = styles.aNullTag;
-        var divPreviewContent           = styles.divPreviewContent;
+        var liPreview                   = _.merge(styles.liPreview, styleProp.liPreview || {} );
+        var divPreviewInner             = _.merge(styles.divPreviewInner, styleProp.divPreviewInner || {});
+        var divPreviewHeader            = _.merge(styles.divPreviewHeader, styleProp.divPreviewHeader || {});
+        var h2PreviewTitle              = _.merge(styles.h2PreviewTitle, styleProp.h2PreviewTitle || {});
+        var spanPreviewClose            = _.merge(styles.spanPreviewClose, styleProp.spanPreviewClose || {});
+        var aNullTag                    = _.merge(styles.aNullTag, styleProp.aNullTag || {});
+        var divPreviewContent           = _.merge(styles.divPreviewContent, styleProp.divPreviewContent || {});
 
         var maxHeight = this.state.isOpen ? 400 +"px" : 0 +"px";
         //{maxHeight: maxHeight}

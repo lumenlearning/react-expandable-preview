@@ -18,6 +18,8 @@ export default class Expandable extends React.Component{
             lItemCount: this.props.largeRowItemCount || 3,
             xlItemCount: this.props.xlargeRowItemCount || 4,
             xxlItemCount: this.props.xxlargeRowItemCount || 5,
+            beforePreviewOpen: this.props.beforePreviewOpen || function(){},
+            afterPreviewOpen: this.props.afterPreviewOpen || function(){},
             currentItemRowCount: 2,
             settings: {
                 current: -1,
@@ -48,7 +50,7 @@ export default class Expandable extends React.Component{
             });
         }
 
-        if(!nextProps.isOpen){
+        if(nextProps.forceClose && this.state.isOpen){
             this.setState({
                 isOpen: false,
                 index: -1
@@ -68,6 +70,11 @@ export default class Expandable extends React.Component{
             //calculate child item width
             const colWidth = (100 / this.state.currentItemRowCount) + "%";
             const lastComponent = (index === this.props.children.length - 1 ? true : false);
+            const ListComponent = React.cloneElement(child, {
+                colWidth: colWidth,
+                onClick: this.handleClick,
+                lastComponent: lastComponent
+            });
 
             if(index === this.state.childIndex){
                 Preview = child.props.previewComponent
@@ -77,11 +84,11 @@ export default class Expandable extends React.Component{
                 const arr = [0,1];
 
                 return arr.map((arrItem, aIndex)=>{
-                    return aIndex == 0 ? React.cloneElement(child, {colWidth: colWidth, onClick: this.handleClick, lastComponent: lastComponent}) : React.cloneElement(Preview, {onClick: this.handleClick, isOpen: true});
+                    return aIndex == 0 ? ListComponent : React.cloneElement(Preview, {onClick: this.handleClick, isOpen: true});
                 });
             }
 
-            return React.cloneElement(child, {colWidth: colWidth, onClick: this.handleClick, lastComponent: lastComponent});
+            return ListComponent;
 
         });
 
@@ -96,6 +103,9 @@ export default class Expandable extends React.Component{
         console.log("click", e.currentTarget.tagName, e.currentTarget.className.indexOf("li-expandable"));
 
         if (((e.currentTarget.tagName == "LI") && (e.currentTarget.className.indexOf("li-expandable") || e.currentTarget.className == "li-expandable") ) || ((e.currentTarget.tagName == "SPAN") && (e.currentTarget.className == 'span-preview-close'))) {
+
+
+            this.state.isOpen ? this.state.beforePreviewOpen(true) : this.state.beforePreviewOpen(false);
 
             if (!this.state.isOpen) { //isOpen == false
                 console.log("is not open");
@@ -179,6 +189,8 @@ export default class Expandable extends React.Component{
                 }// ./if & ./else if
 
             }
+
+            this.state.afterPreviewOpen(this.state.isOpen);
 
         }// ./if span or LI
 
