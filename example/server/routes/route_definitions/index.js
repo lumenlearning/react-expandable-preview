@@ -5,13 +5,7 @@ module.exports  = new class Index{
         this.options = {
             method: ['GET'],
             path: "/",
-            handler: {index:{}},
-            config:{
-                /*auth:{
-                    strategy: "hapi-auth-cookie",
-                    mode: "try"
-                }*/
-            }
+            handler: {index:{}}
         }
 
     }
@@ -28,7 +22,8 @@ module.exports  = new class Index{
 
                     let index = fs.readFileSync(dir);
 
-                    res(index).type('text/html')
+                    res(index)
+                        .type('text/html')
                         .header('X-Custom', 'some-value');
 
                 }

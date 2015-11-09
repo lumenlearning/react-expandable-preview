@@ -4,14 +4,8 @@ module.exports  = new class Scripts{
 
         this.options = {
             method: ['GET'],
-            path: "/css/{stylesheet}",
-            handler: {styles:{}},
-            config:{
-                /*auth:{
-                 strategy: "hapi-auth-cookie",
-                 mode: "try"
-                 }*/
-            }
+            path: "/js/{script}",
+            handler: {scripts:{}}
         }
 
     }
@@ -25,23 +19,20 @@ module.exports  = new class Scripts{
 
                 return function (req, res){
 
-                    let file = fs.readFileSync(__dirname + '/../../assets/client/css/' + req.params.stylesheet);
+                    let file = fs.readFileSync(__dirname + '/../../assets/client/js/' + req.params.script);
 
-                    //console.log(file.toString());
-
-
-                    res(file).type("text/css");
+                    res(file).type("application/javascript");
 
                 }
 
             };
 
-            Server.handler("styles", handler);
+            Server.handler("scripts", handler);
             next();
         };
 
         register.attributes = {
-            name: "handler-styles",
+            name: "handler-scripts",
             version: "1.0.0"
         };
 

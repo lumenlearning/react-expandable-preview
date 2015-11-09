@@ -2,9 +2,9 @@
 var webpack = require('webpack');
 
 let webpackConfig = {
-    entry: "./client/app.js",
+    entry: "./example/client/app.js",
     output: {
-        filename: "./server/assets/client/js/bundle.js"
+        filename: "./example/server/assets/client/js/bundle.js"
     },
     module:{
         loaders: [
@@ -12,10 +12,6 @@ let webpackConfig = {
                 test: /\.jsx?$/,
                 exclude: /(node_modules|bower_components)/,
                 loader: 'babel-loader'
-            },
-            {
-                test: /\.css$/,
-                loader: "style-loader!css-loader"
             }
         ]
     },
