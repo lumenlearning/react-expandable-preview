@@ -17,12 +17,12 @@ npm install react-expandable-preview --save
   <Item
     previewComponent={
       <Preview title="The Cutest Cat Ever">
-        <img src="https://placekitten.com/300/201" alt=""/>
+        <img src="https://placekitten.com/300/201" />
         <p>Place your custom Components inside the preview</p>
       </Preview>
     }
   >
-    <img src="https://placekitten.com/300/201" alt=""/>
+    <img src="https://placekitten.com/300/201" />
   </Item>
   {... more <Item /> Components Here}
 </Expandable>
@@ -34,38 +34,38 @@ npm install react-expandable-preview --save
 ####1. Expandable:
   - **Description**: This component is the base component for the expandable preview. Wrap everything in this.
   - **Props**:
-    - Custom Grid System:
+    - *Custom Grid System*:
       - react expandable preview contains a custom grid system to be as platform agnostic as possible. You can specify how many items you want per row based on the screen size by using the following props
-      - `smallRowItemCount`:
-        - Type: Number
-        - Default: `1`
-        - Description: for screens less than or equal to 640px wide
-      - `mediumRowItemCount`:
-        - Type: Number
-        - Default: `2`
-        - Description: for screens less than or equal to 1024px wide
-      - `largeRowItemCount`
-        - Type: Number
-        - Default: `3`
-        - Description: for screens less than or equal to 1440px wide
-      - `xlargeRowItemCount`
-        - Type: Number
-        - Default: `4`
-        - Description: for screens less than or equal to 1920px wide
-      - `xxlargeRowItemCount`
-        - Type: Number
-        - Default: `5`
-        - Description: for screens greater than 1920px wide
+        - `smallRowItemCount`:
+          - Type: Number
+          - Default: `1`
+          - Description: for screens less than or equal to 640px wide
+        - `mediumRowItemCount`:
+          - Type: Number
+          - Default: `2`
+          - Description: for screens less than or equal to 1024px wide
+        - `largeRowItemCount`
+          - Type: Number
+          - Default: `3`
+          - Description: for screens less than or equal to 1440px wide
+        - `xlargeRowItemCount`
+          - Type: Number
+          - Default: `4`
+          - Description: for screens less than or equal to 1920px wide
+        - `xxlargeRowItemCount`
+          - Type: Number
+          - Default: `5`
+          - Description: for screens greater than 1920px wide
         
-    - Callbacks:
+    - *Callbacks*:
       - React Expandable Preview contains an event callback system that fires callbacks before, after or during* certain events. These callbacks can be accessed via props sent through the expandable component.
-      - `beforePreviewOpen`:
-        - Type: function
-        - Description: This callback fires after a preview is clicked but before the preview displays itself.
-      - `afterPreviewOpen`:
-        - Type: function
-        - Description: This callback fires after a preview has been displayed.
-      - *more callbacks coming soon*
+        - `beforePreviewOpen`:
+          - Type: function
+          - Description: This callback fires after a preview is clicked but before the preview displays itself.
+        - `afterPreviewOpen`:
+          - Type: function
+          - Description: This callback fires after a preview has been displayed.
+        - *more callbacks coming soon...*
   
 ####2. Item:
   - **Description**: This component is the individual item in the grid you want to display. Wrap your image or grid item in here.
@@ -81,9 +81,11 @@ npm install react-expandable-preview --save
       - Type: String
       - Description: Simple string title you want the preview to display when it expands.
       
-      
 ####4. Todo / In Progress:
 
-  - animated open / close
-  - custom grid widths
+  - Animated open / close
+  - Custom grid widths
+  - Additional callback support.
+  - custom styling support.
+  
   
