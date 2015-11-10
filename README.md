@@ -39,19 +39,19 @@ npm install react-expandable-preview --save
         - `smallRowItemCount`:
           - Type: Number
           - Default: `1`
-          - Description: for screens less than or equal to 640px wide
+          - Description: for screens less than or equal to `640px` wide
         - `mediumRowItemCount`:
           - Type: Number
           - Default: `2`
-          - Description: for screens less than or equal to 1024px wide
+          - Description: for screens less than or equal to `1024px` wide
         - `largeRowItemCount`
           - Type: Number
           - Default: `3`
-          - Description: for screens less than or equal to 1440px wide
+          - Description: for screens less than or equal to `1440px` wide
         - `xlargeRowItemCount`
           - Type: Number
           - Default: `4`
-          - Description: for screens less than or equal to 1920px wide
+          - Description: for screens less than or equal to `1920px` wide
         - `xxlargeRowItemCount`
           - Type: Number
           - Default: `5`
@@ -61,7 +61,7 @@ npm install react-expandable-preview --save
       - React Expandable Preview contains an event callback system that fires callbacks before, after or during* certain events. These callbacks can be accessed via props sent through the expandable component.
         - `beforePreviewOpen`:
           - Type: function
-          - Description: This callback fires after a preview is clicked but before the preview displays itself.
+          - Description: This callback fires after a grid element is clicked but before the preview displays itself.
         - `afterPreviewOpen`:
           - Type: function
           - Description: This callback fires after a preview has been displayed.
