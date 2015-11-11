@@ -25191,7 +25191,6 @@
 	            isOpen: false,
 	            rowIndex: null,
 	            childIndex: null,
-	            colWidth: 2,
 	            sItemCount: this.props.smallRowItemCount || 1,
 	            mItemCount: this.props.mediumRowItemCount || 2,
 	            lItemCount: this.props.largeRowItemCount || 3,
@@ -25199,13 +25198,7 @@
 	            xxlItemCount: this.props.xxlargeRowItemCount || 5,
 	            beforePreviewOpen: this.props.beforePreviewOpen || function () {},
 	            afterPreviewOpen: this.props.afterPreviewOpen || function () {},
-	            currentItemRowCount: 2,
-	            settings: {
-	                current: -1,
-	                previewPos: -1,
-	                scrollExtra: 0,
-	                marginExpanded: 10
-	            }
+	            currentItemRowCount: 2
 	        };
 
 	        this.handleClick = this.handleClick.bind(this);
@@ -25216,8 +25209,6 @@
 	    _createClass(Expandable, [{
 	        key: 'componentWillMount',
 	        value: function componentWillMount() {
-	            console.log("window size:", this.getWindowSize(), window.screen.width);
-
 	            this.setState({
 	                currentItemRowCount: this.getWindowSize()
 	            });
@@ -25225,191 +25216,21 @@
 	    }, {
 	        key: 'componentWillReceiveProps',
 	        value: function componentWillReceiveProps(nextProps) {
-
-	            if (nextProps.colWidth !== this.state.colWidth) {
-	                this.setState({
-	                    colWidth: nextProps.colWidth
-	                });
-	            }
-
 	            if (nextProps.forceClose && this.state.isOpen) {
-	                this.setState({
-	                    isOpen: false,
-	                    index: -1
-	                });
+	                this.closePreview();
 	            }
 	        }
 	    }, {
 	        key: 'render',
 	        value: function render() {
-	            var _this = this;
-
-	            var preview = null;
 	            var style = _cssStyleJs2['default'].styles();
-
-	            console.log(this.state.childIndex, this.state.isOpen);
-
-	            var children = _react2['default'].Children.map(this.props.children, function (child, index) {
-	                //calculate child item width
-	                var colWidth = 100 / _this.state.currentItemRowCount + "%";
-	                var lastComponent = index === _this.props.children.length - 1 ? true : false;
-
-	                var ListComponent = _react2['default'].cloneElement(child, {
-	                    colWidth: colWidth,
-	                    onClick: _this.handleClick,
-	                    lastComponent: lastComponent
-	                });
-
-	                if (index === _this.state.childIndex) {
-	                    preview = child.props.previewComponent;
-	                }
-
-	                if (_this.state.isOpen && index === _this.state.rowIndex && preview !== null) {
-	                    var arr = [0, 1];
-
-	                    return arr.map(function (arrItem, aIndex) {
-	                        return aIndex == 0 ? ListComponent : _react2['default'].cloneElement(preview, { onClick: _this.handleClick, isOpen: true });
-	                    });
-	                }
-
-	                return ListComponent;
-	            });
+	            var children = this.buildChildren();
 
 	            return _react2['default'].createElement(
 	                'ul',
 	                { className: 'small-12_columns', style: style.ulExpandable },
 	                children
 	            );
-	        }
-	    }, {
-	        key: 'handleClick',
-	        value: function handleClick(e) {
-	            var _this2 = this;
-
-	            if (e.currentTarget.tagName == "LI" && (e.currentTarget.className.indexOf("li-expandable") || e.currentTarget.className == "li-expandable") || e.currentTarget.tagName == "SPAN" && e.currentTarget.className == 'span-preview-close') {
-
-	                this.state.isOpen ? this.state.beforePreviewOpen(true) : this.state.beforePreviewOpen(false);
-
-	                if (!this.state.isOpen) {
-	                    (function () {
-	                        //isOpen: false
-	                        var target = e.currentTarget;
-	                        var parent = target.parentNode;
-	                        var children = _this2.toArray(parent.children);
-
-	                        var total = 0;
-	                        var hasTarget = false;
-	                        var childIndex = -1;
-
-	                        children.forEach(function (child, index) {
-	                            total++;
-	                            console.log("children loop", child, total, _this2.state.colWidth);
-
-	                            if (!hasTarget && child == target) {
-	                                hasTarget = true;
-	                                childIndex = index;
-	                            }
-
-	                            if (total == _this2.state.currentItemRowCount && hasTarget || total < _this2.state.currentItemRowCount && hasTarget && index == children.length - 1) {
-	                                return _this2.setState({
-	                                    isOpen: true,
-	                                    rowIndex: index,
-	                                    childIndex: childIndex
-	                                });
-	                            } else if (total == _this2.state.currentItemRowCount) {
-	                                total = 0;
-	                            }
-	                        }); // ./forEach
-	                    })();
-	                } else if (this.state.isOpen) {
-	                        //isOpen: true
-	                        var target = e.currentTarget;
-
-	                        if (target.tagName === "SPAN") {
-	                            //"X" button clicked
-	                            this.setState({
-	                                isOpen: false,
-	                                index: -1
-	                            });
-	                        } else if (target.tagName === "LI") {
-	                            (function () {
-	                                //<li> element clicked
-	                                var target = e.currentTarget;
-	                                var parent = target.parentNode;
-	                                var children = _this2.toArray(parent.children);
-
-	                                var total = 0;
-	                                var hasTarget = false;
-	                                var childIndex = -1;
-
-	                                children.splice(_this2.state.rowIndex + 1, 1);
-
-	                                children.forEach(function (child, index) {
-	                                    total++;
-
-	                                    if (!hasTarget && child == target) {
-	                                        hasTarget = true;
-	                                        childIndex = index;
-	                                    }
-
-	                                    if (total == _this2.state.currentItemRowCount && hasTarget || total < _this2.state.currentItemRowCount && hasTarget && index == children.length - 1) {
-	                                        return _this2.setState({
-	                                            isOpen: true,
-	                                            rowIndex: index,
-	                                            childIndex: childIndex
-	                                        });
-	                                    } else if (total == _this2.state.currentItemRowCount) {
-	                                        total = 0;
-	                                    }
-	                                });
-	                            })();
-	                        } // ./if & ./else if
-	                    }
-
-	                this.state.afterPreviewOpen(this.state.isOpen);
-	            } // ./if span or LI
-	        }
-	    }, {
-	        key: 'toArray',
-	        value: function toArray(list) {
-	            var arr = [];
-
-	            for (var i = 0; i < list.length; i++) {
-	                arr.push(list[i]);
-	            }
-
-	            return arr;
-	        }
-	    }, {
-	        key: 'getColWidth',
-	        value: function getColWidth(colNum) {
-	            var colWidth = undefined;
-
-	            switch (colNum) {
-	                case 1:
-	                    colWidth = 12;
-	                    break;
-	                case 2:
-	                    colWidth = 6;
-	                    break;
-	                case 3:
-	                    colWidth = 4;
-	                    break;
-	                case 4:
-	                    colWidth = 3;
-	                    break;
-	                case 6:
-	                    colWidth = 2;
-	                    break;
-	                case 12:
-	                    colWidth = 1;
-	                    break;
-	                default:
-	                    colWidth = 12;
-	                    break;
-	            }
-
-	            return colWidth;
 	        }
 	    }, {
 	        key: 'componentDidMount',
@@ -25422,11 +25243,127 @@
 	            window.removeEventListener('resize', this.handleResize);
 	        }
 	    }, {
+	        key: 'handleClick',
+	        value: function handleClick(e) {
+
+	            if (e.currentTarget.tagName == "LI" && (e.currentTarget.className.indexOf("li-expandable") || e.currentTarget.className == "li-expandable") || e.currentTarget.tagName == "SPAN" && e.currentTarget.className == 'span-preview-close') {
+
+	                this.state.isOpen ? this.state.beforePreviewOpen(true) : this.state.beforePreviewOpen(false);
+
+	                if (!this.state.isOpen) {
+	                    //isOpen: false
+	                    this.setPreviewIndex(e, this.state.isOpen);
+	                } else if (this.state.isOpen) {
+	                    //isOpen: true
+	                    var target = e.currentTarget;
+
+	                    if (target.tagName === "SPAN") {
+	                        //"X" button clicked
+	                        this.closePreview();
+	                    } else if (target.tagName === "LI") {
+	                        //<li> element clicked
+	                        this.setPreviewIndex(e, this.state.isOpen);
+	                    } // ./if & ./else if
+	                }
+	                this.state.afterPreviewOpen(this.state.isOpen);
+	            } // ./if span or LI
+	        }
+	    }, {
 	        key: 'handleResize',
 	        value: function handleResize() {
 	            this.setState({
 	                currentItemRowCount: this.getWindowSize()
 	            });
+	        }
+	    }, {
+	        key: 'setPreviewIndex',
+	        value: function setPreviewIndex(e, isOpen) {
+	            var _this = this;
+
+	            var target = e.currentTarget;
+	            var parent = target.parentNode;
+	            var children = this.toArray(parent.children);
+
+	            var total = 0;
+	            var hasTarget = false;
+	            var childIndex = -1;
+
+	            if (isOpen) {
+	                children.splice(this.state.rowIndex + 1, 1);
+	            }
+
+	            children.forEach(function (child, index) {
+	                total++;
+
+	                if (!hasTarget && child == target) {
+	                    hasTarget = true;
+	                    childIndex = index;
+	                }
+
+	                if (total == _this.state.currentItemRowCount && hasTarget || total < _this.state.currentItemRowCount && hasTarget && index == children.length - 1) {
+	                    return _this.setState({
+	                        isOpen: true,
+	                        rowIndex: index,
+	                        childIndex: childIndex
+	                    });
+	                } else if (total == _this.state.currentItemRowCount) {
+	                    total = 0;
+	                }
+	            }); // ./forEach
+	        }
+	    }, {
+	        key: 'closePreview',
+	        value: function closePreview() {
+	            this.setState({
+	                isOpen: false,
+	                index: -1
+	            });
+	        }
+	    }, {
+	        key: 'buildChildren',
+	        value: function buildChildren() {
+	            var _this2 = this;
+
+	            var preview = null;
+
+	            var children = _react2['default'].Children.map(this.props.children, function (child, index) {
+	                //calculate child item width
+	                var colWidth = 100 / _this2.state.currentItemRowCount + "%";
+	                var lastComponent = index === _this2.props.children.length - 1 ? true : false;
+
+	                var ListComponent = _react2['default'].cloneElement(child, {
+	                    colWidth: colWidth,
+	                    onClick: _this2.handleClick,
+	                    lastComponent: lastComponent
+	                });
+
+	                if (index === _this2.state.childIndex) {
+	                    preview = child.props.previewComponent;
+	                }
+
+	                if (_this2.state.isOpen && index === _this2.state.rowIndex && preview !== null) {
+	                    var arr = [0, 1];
+
+	                    return arr.map(function (arrItem, aIndex) {
+	                        return aIndex == 0 ? ListComponent : _react2['default'].cloneElement(preview, { onClick: _this2.handleClick, isOpen: true });
+	                    });
+	                }
+
+	                return ListComponent;
+	            });
+
+	            return children;
+	        }
+	    }, {
+	        key: 'toArray',
+	        value: function toArray(list) {
+	            var arr = [];
+
+	            for (var i = 0; i < list.length; i++) {
+	                arr.push(list[i]);
+	            }
+
+	            return arr;
 	        }
 	    }, {
 	        key: 'getWindowSize',
