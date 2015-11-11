@@ -114,7 +114,6 @@ export default class Expandable extends React.Component{
 
                 children.forEach((child, index)=> {
                     total ++;
-                    console.log("children loop", child, total, this.state.colWidth);
 
                     if ((!hasTarget) && (child == target)) {
                         hasTarget = true;
@@ -185,46 +184,6 @@ export default class Expandable extends React.Component{
 
     };
 
-    toArray(list){
-        let arr = [];
-
-        for(let i = 0; i < list.length; i++){
-            arr.push(list[i]);
-        }
-
-        return arr;
-    }
-
-    getColWidth(colNum){
-        let colWidth;
-
-        switch (colNum){
-            case 1:
-                colWidth = 12;
-            break;
-            case 2:
-                colWidth = 6;
-            break;
-            case 3:
-                colWidth = 4;
-            break;
-            case 4:
-                colWidth = 3;
-            break;
-            case 6:
-                colWidth = 2;
-            break;
-            case 12:
-                colWidth = 1;
-            break;
-            default:
-                colWidth = 12;
-            break;
-        }
-
-        return colWidth;
-    }
-
     componentDidMount(){
         window.addEventListener('resize', this.handleResize); //binds window resize event listener
     }
@@ -237,6 +196,16 @@ export default class Expandable extends React.Component{
         this.setState({
             currentItemRowCount: this.getWindowSize()
         });
+    }
+
+    toArray(list){
+        let arr = [];
+
+        for(let i = 0; i < list.length; i++){
+            arr.push(list[i]);
+        }
+
+        return arr;
     }
 
     getWindowSize(){

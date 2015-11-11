@@ -59,11 +59,19 @@ npm install react-expandable-preview --save
         
     - *Callbacks*:
       - React Expandable Preview contains an event callback system that fires callbacks before, after or during* certain events. These callbacks can be accessed via props sent through the expandable component.
-        - `beforePreviewOpen`:
+        - `beforePreviewOpen(isOpen)`:
           - Type: function
+          - Parameters:
+            - `isOpen`:
+              - Type: Boolean
+              - Returns true if a preview is already open.
           - Description: This callback fires after a grid element is clicked but before the preview displays itself.
         - `afterPreviewOpen`:
           - Type: function
+          - Parameters:
+            - `isOpen`:
+              - Type: Boolean
+              - Returns true if a preview is already open.
           - Description: This callback fires after a preview has been displayed.
         - *more callbacks coming soon...*
   
@@ -86,6 +94,7 @@ npm install react-expandable-preview --save
   - Animated open / close
   - Custom grid widths
   - Additional callback support.
-  - custom styling support.
+  - Custom styling support.
+  - Live Demo.
   
   
