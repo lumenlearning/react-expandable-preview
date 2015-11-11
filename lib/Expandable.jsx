@@ -10,13 +10,13 @@ export default class Expandable extends React.Component{
             isOpen:                 false,
             rowIndex:               null,
             childIndex:             null,
-            sItemCount:             this.props.smallRowItemCount || 1,
-            mItemCount:             this.props.mediumRowItemCount || 2,
-            lItemCount:             this.props.largeRowItemCount || 3,
-            xlItemCount:            this.props.xlargeRowItemCount || 4,
-            xxlItemCount:           this.props.xxlargeRowItemCount || 5,
-            beforePreviewOpen:      this.props.beforePreviewOpen || function(){},
-            afterPreviewOpen:       this.props.afterPreviewOpen || function(){},
+            sItemCount:             this.props.smallRowItemCount    || 1,
+            mItemCount:             this.props.mediumRowItemCount   || 2,
+            lItemCount:             this.props.largeRowItemCount    || 3,
+            xlItemCount:            this.props.xlargeRowItemCount   || 4,
+            xxlItemCount:           this.props.xxlargeRowItemCount  || 5,
+            beforePreviewOpen:      this.props.beforePreviewOpen    || function(){},
+            afterPreviewOpen:       this.props.afterPreviewOpen     || function(){},
             currentItemRowCount:    2
         };
 
@@ -56,6 +56,7 @@ export default class Expandable extends React.Component{
         window.removeEventListener('resize', this.handleResize);
     }
 
+    //custom functions here.
     handleClick(e) {
 
         if (((e.currentTarget.tagName == "LI") && (e.currentTarget.className.indexOf("li-expandable") || e.currentTarget.className == "li-expandable") ) || ((e.currentTarget.tagName == "SPAN") && (e.currentTarget.className == 'span-preview-close'))) {
@@ -81,9 +82,13 @@ export default class Expandable extends React.Component{
     };
 
     handleResize(){
-        this.setState({
-            currentItemRowCount: this.getWindowSize()
-        });
+        var windowSize = this.getWindowSize();
+
+        if(windowSize !== this.state.currentItemRowCount){
+            this.setState({
+                currentItemRowCount: windowSize
+            });
+        }
     }
 
     setPreviewIndex(e, isOpen){

@@ -25242,6 +25242,8 @@
 	        value: function componentWillUnmount() {
 	            window.removeEventListener('resize', this.handleResize);
 	        }
+
+	        //custom functions here.
 	    }, {
 	        key: 'handleClick',
 	        value: function handleClick(e) {
@@ -25271,9 +25273,13 @@
 	    }, {
 	        key: 'handleResize',
 	        value: function handleResize() {
-	            this.setState({
-	                currentItemRowCount: this.getWindowSize()
-	            });
+	            var windowSize = this.getWindowSize();
+
+	            if (windowSize !== this.state.currentItemRowCount) {
+	                this.setState({
+	                    currentItemRowCount: windowSize
+	                });
+	            }
 	        }
 	    }, {
 	        key: 'setPreviewIndex',
@@ -25435,14 +25441,13 @@
 	                float: "left"
 	            },
 	            "divPreviewInner": {
-	                width: "100%",
 	                height: "auto",
-	                padding: "0rem"
+	                padding: "0.5rem"
 	            },
 	            "divPreviewHeader": {
 	                width: "100%",
 	                fontFamily: '"Comic Sans MS", cursive, sans-serif',
-	                padding: ".5rem 1rem 0 .5rem",
+	                //padding: ".5rem 1rem 0 .5rem",
 	                display: "flex"
 	            },
 	            "h2PreviewTitle": {
@@ -25648,12 +25653,14 @@
 	            var aNullTag = _lodash2['default'].merge(styles.aNullTag, styleProp.aNullTag || {});
 	            var divPreviewContent = _lodash2['default'].merge(styles.divPreviewContent, styleProp.divPreviewContent || {});
 
+	            console.log("DIV PREVIEW INNER:", divPreviewInner);
+
 	            return _reactAddons2['default'].createElement(
 	                'li',
 	                { className: 'li-preview', style: liPreview },
 	                _reactAddons2['default'].createElement(
 	                    'div',
-	                    { className: 'div-preview-inner', styles: _lodash2['default'].merge(divPreviewInner, {}) },
+	                    { className: 'div-preview-inner', style: divPreviewInner },
 	                    _reactAddons2['default'].createElement(
 	                        'div',
 	                        { className: 'div-preview-header', style: divPreviewHeader },

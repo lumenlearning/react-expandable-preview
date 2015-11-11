@@ -29,9 +29,11 @@ export default class Preview extends React.Component{
         var aNullTag                    = _.merge(styles.aNullTag, styleProp.aNullTag || {});
         var divPreviewContent           = _.merge(styles.divPreviewContent, styleProp.divPreviewContent || {});
 
+        console.log("DIV PREVIEW INNER:", divPreviewInner);
+
         return(
             <li className="li-preview" style={liPreview}>
-                <div className="div-preview-inner" styles={_.merge(divPreviewInner, {})}>
+                <div className="div-preview-inner" style={divPreviewInner}>
                     <div className="div-preview-header" style={divPreviewHeader}>
                         <h2 className="h2-preview-title" style={h2PreviewTitle}>{that.props.title}</h2>
                         <span className="span-preview-close" style={spanPreviewClose} onClick={this.props.onClick}>
