@@ -25435,10 +25435,12 @@
 	            },
 	            "liPreview": {
 	                position: "relative",
+	                overflow: "hidden",
 	                width: "100%",
 	                marginBottom: "1rem",
 	                backgroundColor: "#fafafa",
-	                float: "left"
+	                float: "left",
+	                transition: "max-height .3s ease"
 	            },
 	            "divPreviewInner": {
 	                height: "auto",
@@ -25570,9 +25572,7 @@
 	            var className = "li-expandable";
 	            var children = _react2['default'].Children.map(this.props.children, function (child, index) {
 
-	                return _react2['default'].cloneElement(child, { onClick: function onClick(e) {
-	                        e.preventDefault();
-	                    } });
+	                return _react2['default'].cloneElement(child, {});
 	            });
 
 	            var liExpandable = _lodash2['default'].merge(styles.liExpandable, { width: this.props.colWidth });
@@ -25632,8 +25632,12 @@
 	        _get(Object.getPrototypeOf(Preview.prototype), 'constructor', this).call(this, props, state);
 
 	        this.state = {
-	            isOpen: false
+	            isOpen: this.props.isOpen ? true : false,
+	            maxHeight: 0,
+	            overflow: "hidden"
 	        };
+
+	        this.togglePreview = this.togglePreview.bind(this);
 	    }
 
 	    _createClass(Preview, [{
@@ -25645,7 +25649,7 @@
 	            var styles = _cssStyleJs2['default'].styles();
 	            var styleProp = typeof this.props.style !== 'undefined' ? this.props.styles : {};
 
-	            var liPreview = _lodash2['default'].merge(styles.liPreview, styleProp.liPreview || {});
+	            var liPreview = _lodash2['default'].merge(styles.liPreview, styleProp.liPreview || {}, { maxHeight: this.state.maxHeight, overflow: this.state.overflow });
 	            var divPreviewInner = _lodash2['default'].merge(styles.divPreviewInner, styleProp.divPreviewInner || {});
 	            var divPreviewHeader = _lodash2['default'].merge(styles.divPreviewHeader, styleProp.divPreviewHeader || {});
 	            var h2PreviewTitle = _lodash2['default'].merge(styles.h2PreviewTitle, styleProp.h2PreviewTitle || {});
@@ -25653,11 +25657,11 @@
 	            var aNullTag = _lodash2['default'].merge(styles.aNullTag, styleProp.aNullTag || {});
 	            var divPreviewContent = _lodash2['default'].merge(styles.divPreviewContent, styleProp.divPreviewContent || {});
 
-	            console.log("DIV PREVIEW INNER:", divPreviewInner);
+	            console.log("DIV PREVIEW INNER:", this.state.maxHeight);
 
 	            return _reactAddons2['default'].createElement(
 	                'li',
-	                { className: 'li-preview', style: liPreview },
+	                { className: 'li-preview', ref: 'preview', style: liPreview },
 	                _reactAddons2['default'].createElement(
 	                    'div',
 	                    { className: 'div-preview-inner', style: divPreviewInner },
@@ -25689,36 +25693,78 @@
 	        }
 	        //previewStructure()
 
-	        //if preview is mounted or updated && open, the scroll to it.
-	    }, {
-	        key: 'scrollToPreview',
-	        value: function scrollToPreview() {
-	            var body = document.body;
-	            var elem;
-	        }
 	    }, {
 	        key: 'render',
 	        value: function render() {
 	            return this.props.isOpen ? this.previewStructure() : null;
 	        }
 	    }, {
+	        key: 'componentWillReceiveProps',
+	        value: function componentWillReceiveProps() {
+	            console.log("will receive props");
+	            this.updateMaxHeight();
+	        }
+	    }, {
 	        key: 'componentDidMount',
 	        value: function componentDidMount() {
-
-	            if (this.props.isOpen && !this.state.isOpen) {
-	                this.setState({ isOpen: true });
-	            } else if (!this.props.isOpen) {
-	                this.setState({ isOpen: false });
-	            }
+	            this.updateMaxHeight();
 	        }
 	    }, {
 	        key: 'componentDidUpdate',
 	        value: function componentDidUpdate() {
+	            console.log("did update", this.state, this.maxHeight);
 
+	            if (this.state.maxHeight !== this.findMaxHeight()) {
+
+	                this.updateMaxHeight();
+	            }
+
+	            if (this.state.isOpen && this.state.maxHeight === 0) {
+	                this.setState({
+	                    overflow: "visible"
+	                });
+	            } else if (!this.state.isOpen) {
+	                this.setState({
+	                    overflow: "hidden"
+	                });
+	            }
+	        }
+	    }, {
+	        key: 'componentWillUnmount',
+	        value: function componentWillUnmount() {
+	            console.log("UNMOUNTING PREVIEW!");
+	            this.setState({
+	                isOpen: false,
+	                maxHeight: 0
+	            });
+	        }
+	    }, {
+	        key: 'updateMaxHeight',
+	        value: function updateMaxHeight() {
+	            this.setState({
+	                maxHeight: this.props.isOpen ? this.findMaxHeight() : 0
+	            });
+	        }
+	    }, {
+	        key: 'findMaxHeight',
+	        value: function findMaxHeight() {
+	            var previewNode = _reactAddons2['default'].findDOMNode(this.refs.preview);
+
+	            return previewNode.scrollHeight + "px";
+	        }
+	    }, {
+	        key: 'togglePreview',
+	        value: function togglePreview() {
 	            if (this.props.isOpen && !this.state.isOpen) {
-	                this.setState({ isOpen: true });
+	                this.setState({
+	                    isOpen: true,
+	                    maxHeight: "1000px"
+	                });
 	            } else if (!this.props.isOpen) {
-	                this.setState({ isOpen: false });
+	                this.setState({
+	                    isOpen: false,
+	                    maxHeight: 0
+	                });
 	            }
 	        }
 	    }]);

@@ -23,7 +23,7 @@ export default class Item extends React.Component{
         const className = "li-expandable";
         const children = React.Children.map(this.props.children, (child, index)=>{
 
-            return React.cloneElement(child, {onClick: (e)=>{e.preventDefault()}});
+            return React.cloneElement(child, {});
 
         });
 
