@@ -1,4 +1,5 @@
 import React        from 'react';
+import _            from 'lodash';
 
 import Style        from './css/style.js';
 
@@ -8,6 +9,7 @@ export default class Expandable extends React.Component{
 
         this.state = {
             isOpen:                 false,
+            forceClose:             false,
             rowIndex:               null,
             childIndex:             null,
             sItemCount:             this.props.smallRowItemCount    || 1,
@@ -20,9 +22,10 @@ export default class Expandable extends React.Component{
             currentItemRowCount:    2
         };
 
-        this.handleClick    = this.handleClick.bind(this);
-        this.handleResize   = this.handleResize.bind(this);
-        this.getWindowSize  = this.getWindowSize.bind(this);
+        this.handleClick            = this.handleClick.bind(this);
+        this.handleResize           = this.handleResize.bind(this);
+        this.getWindowSize          = this.getWindowSize.bind(this);
+        this.previewCloseCallback   = this.previewCloseCallback.bind(this);
     }
 
     componentWillMount(){
@@ -73,7 +76,9 @@ export default class Expandable extends React.Component{
                     this.closePreview();
                 }
                 else if (target.tagName === "LI") {//<li> element clicked
+
                     this.setPreviewIndex(e, this.state.isOpen);
+
                 }// ./if & ./else if
             }
             this.state.afterPreviewOpen(this.state.isOpen);
@@ -94,7 +99,7 @@ export default class Expandable extends React.Component{
     setPreviewIndex(e, isOpen){
         const target    = e.currentTarget;
         const parent    = target.parentNode;
-        const children  = this.toArray(parent.children);
+        const children  = _.toArray(parent.children);
 
         let total       = 0;
         let hasTarget   = false;
@@ -115,6 +120,7 @@ export default class Expandable extends React.Component{
             if ((total == this.state.currentItemRowCount && hasTarget) || (total < this.state.currentItemRowCount && hasTarget && index == (children.length - 1))) {
                 return this.setState({
                     isOpen: true,
+                    forceClose: false,
                     rowIndex: index,
                     childIndex: childIndex
                 });
@@ -128,9 +134,20 @@ export default class Expandable extends React.Component{
 
     closePreview(){
         this.setState({
-            isOpen: false,
-            index: -1
+            forceClose: true
         });
+    }
+
+    previewCloseCallback(){
+        console.log("CALLBACK");
+
+        setTimeout(()=>{
+            this.setState({
+                isOpen: false,
+                index: -1
+            });
+        }, 300);
+
     }
 
     buildChildren(){
@@ -155,7 +172,7 @@ export default class Expandable extends React.Component{
                 const arr = [0,1];
 
                 return arr.map((arrItem, aIndex)=>{
-                    return aIndex == 0 ? ListComponent : React.cloneElement(preview, {onClick: this.handleClick, isOpen: true});
+                    return aIndex == 0 ? ListComponent : React.cloneElement(preview, {onClick: this.handleClick, isOpen: this.state.isOpen, forceClose: this.state.forceClose, previewCloseCallback: this.previewCloseCallback});
                 });
             }
 

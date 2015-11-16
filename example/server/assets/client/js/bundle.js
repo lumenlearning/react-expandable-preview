@@ -25175,6 +25175,10 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
+	var _lodash = __webpack_require__(228);
+
+	var _lodash2 = _interopRequireDefault(_lodash);
+
 	var _cssStyleJs = __webpack_require__(207);
 
 	var _cssStyleJs2 = _interopRequireDefault(_cssStyleJs);
@@ -25189,6 +25193,7 @@
 
 	        this.state = {
 	            isOpen: false,
+	            forceClose: false,
 	            rowIndex: null,
 	            childIndex: null,
 	            sItemCount: this.props.smallRowItemCount || 1,
@@ -25204,6 +25209,7 @@
 	        this.handleClick = this.handleClick.bind(this);
 	        this.handleResize = this.handleResize.bind(this);
 	        this.getWindowSize = this.getWindowSize.bind(this);
+	        this.previewCloseCallback = this.previewCloseCallback.bind(this);
 	    }
 
 	    _createClass(Expandable, [{
@@ -25264,6 +25270,7 @@
 	                        this.closePreview();
 	                    } else if (target.tagName === "LI") {
 	                        //<li> element clicked
+
 	                        this.setPreviewIndex(e, this.state.isOpen);
 	                    } // ./if & ./else if
 	                }
@@ -25288,7 +25295,7 @@
 
 	            var target = e.currentTarget;
 	            var parent = target.parentNode;
-	            var children = this.toArray(parent.children);
+	            var children = _lodash2['default'].toArray(parent.children);
 
 	            var total = 0;
 	            var hasTarget = false;
@@ -25309,6 +25316,7 @@
 	                if (total == _this.state.currentItemRowCount && hasTarget || total < _this.state.currentItemRowCount && hasTarget && index == children.length - 1) {
 	                    return _this.setState({
 	                        isOpen: true,
+	                        forceClose: false,
 	                        rowIndex: index,
 	                        childIndex: childIndex
 	                    });
@@ -25321,37 +25329,50 @@
 	        key: 'closePreview',
 	        value: function closePreview() {
 	            this.setState({
-	                isOpen: false,
-	                index: -1
+	                forceClose: true
 	            });
+	        }
+	    }, {
+	        key: 'previewCloseCallback',
+	        value: function previewCloseCallback() {
+	            var _this2 = this;
+
+	            console.log("CALLBACK");
+
+	            setTimeout(function () {
+	                _this2.setState({
+	                    isOpen: false,
+	                    index: -1
+	                });
+	            }, 300);
 	        }
 	    }, {
 	        key: 'buildChildren',
 	        value: function buildChildren() {
-	            var _this2 = this;
+	            var _this3 = this;
 
 	            var preview = null;
 
 	            var children = _react2['default'].Children.map(this.props.children, function (child, index) {
 	                //calculate child item width
-	                var colWidth = 100 / _this2.state.currentItemRowCount + "%";
-	                var lastComponent = index === _this2.props.children.length - 1 ? true : false;
+	                var colWidth = 100 / _this3.state.currentItemRowCount + "%";
+	                var lastComponent = index === _this3.props.children.length - 1 ? true : false;
 
 	                var ListComponent = _react2['default'].cloneElement(child, {
 	                    colWidth: colWidth,
-	                    onClick: _this2.handleClick,
+	                    onClick: _this3.handleClick,
 	                    lastComponent: lastComponent
 	                });
 
-	                if (index === _this2.state.childIndex) {
+	                if (index === _this3.state.childIndex) {
 	                    preview = child.props.previewComponent;
 	                }
 
-	                if (_this2.state.isOpen && index === _this2.state.rowIndex && preview !== null) {
+	                if (_this3.state.isOpen && index === _this3.state.rowIndex && preview !== null) {
 	                    var arr = [0, 1];
 
 	                    return arr.map(function (arrItem, aIndex) {
-	                        return aIndex == 0 ? ListComponent : _react2['default'].cloneElement(preview, { onClick: _this2.handleClick, isOpen: true });
+	                        return aIndex == 0 ? ListComponent : _react2['default'].cloneElement(preview, { onClick: _this3.handleClick, isOpen: _this3.state.isOpen, forceClose: _this3.state.forceClose, previewCloseCallback: _this3.previewCloseCallback });
 	                    });
 	                }
 
@@ -25636,15 +25657,11 @@
 	            maxHeight: 0,
 	            overflow: "hidden"
 	        };
-
-	        this.togglePreview = this.togglePreview.bind(this);
 	    }
 
 	    _createClass(Preview, [{
 	        key: 'previewStructure',
 	        value: function previewStructure() {
-	            var TransitionGroup = _reactAddons2['default'].addons.TransitionGroup;
-
 	            var that = this;
 	            var styles = _cssStyleJs2['default'].styles();
 	            var styleProp = typeof this.props.style !== 'undefined' ? this.props.styles : {};
@@ -25656,8 +25673,6 @@
 	            var spanPreviewClose = _lodash2['default'].merge(styles.spanPreviewClose, styleProp.spanPreviewClose || {});
 	            var aNullTag = _lodash2['default'].merge(styles.aNullTag, styleProp.aNullTag || {});
 	            var divPreviewContent = _lodash2['default'].merge(styles.divPreviewContent, styleProp.divPreviewContent || {});
-
-	            console.log("DIV PREVIEW INNER:", this.state.maxHeight);
 
 	            return _reactAddons2['default'].createElement(
 	                'li',
@@ -25700,9 +25715,16 @@
 	        }
 	    }, {
 	        key: 'componentWillReceiveProps',
-	        value: function componentWillReceiveProps() {
-	            console.log("will receive props");
-	            this.updateMaxHeight();
+	        value: function componentWillReceiveProps(nextProps) {
+	            console.log("receiving props:", nextProps.isOpen, nextProps.forceClose);
+	            if (nextProps.forceClose && nextProps.isOpen) {
+	                this.setState({
+	                    isOpen: false,
+	                    maxHeight: "0px"
+	                });
+	            } else if (!nextProps.forceClose) {
+	                this.updateMaxHeight();
+	            }
 	        }
 	    }, {
 	        key: 'componentDidMount',
@@ -25712,27 +25734,17 @@
 	    }, {
 	        key: 'componentDidUpdate',
 	        value: function componentDidUpdate() {
-	            console.log("did update", this.state, this.maxHeight);
-
-	            if (this.state.maxHeight !== this.findMaxHeight()) {
-
+	            if (this.state.isOpen && this.state.maxHeight !== this.findMaxHeight()) {
+	                console.log("did update maxHeight", this.state.maxHeight, this.findMaxHeight());
 	                this.updateMaxHeight();
 	            }
 
-	            if (this.state.isOpen && this.state.maxHeight === 0) {
-	                this.setState({
-	                    overflow: "visible"
-	                });
-	            } else if (!this.state.isOpen) {
-	                this.setState({
-	                    overflow: "hidden"
-	                });
-	            }
+	            this.handlePreviewVisibility(this);
 	        }
 	    }, {
 	        key: 'componentWillUnmount',
 	        value: function componentWillUnmount() {
-	            console.log("UNMOUNTING PREVIEW!");
+	            console.log("unmounting");
 	            this.setState({
 	                isOpen: false,
 	                maxHeight: 0
@@ -25741,6 +25753,7 @@
 	    }, {
 	        key: 'updateMaxHeight',
 	        value: function updateMaxHeight() {
+	            console.log("update maxheight");
 	            this.setState({
 	                maxHeight: this.props.isOpen ? this.findMaxHeight() : 0
 	            });
@@ -25752,19 +25765,19 @@
 
 	            return previewNode.scrollHeight + "px";
 	        }
-	    }, {
-	        key: 'togglePreview',
-	        value: function togglePreview() {
-	            if (this.props.isOpen && !this.state.isOpen) {
-	                this.setState({
-	                    isOpen: true,
-	                    maxHeight: "1000px"
+	    }], [{
+	        key: 'handlePreviewVisibility',
+	        value: function handlePreviewVisibility(self) {
+	            if (self.state.isOpen && self.state.maxHeight === 0) {
+	                self.setState({
+	                    overflow: "visible"
 	                });
-	            } else if (!this.props.isOpen) {
-	                this.setState({
-	                    isOpen: false,
-	                    maxHeight: 0
+	            } else if (!self.state.isOpen && self.state.overflow !== 'hidden') {
+	                self.setState({
+	                    overflow: "hidden"
 	                });
+	            } else if (!self.state.isOpen && self.state.overflow === 'hidden' && self.props.forceClose) {
+	                self.props.previewCloseCallback();
 	            }
 	        }
 	    }]);
