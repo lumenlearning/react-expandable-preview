@@ -75,12 +75,13 @@ export default class Preview extends React.Component{
             this.updateMaxHeight();
         }
 
-        this.handlePreviewVisibility(this);
+        //this.handlePreviewVisibility(this);
 
     }
 
     static handlePreviewVisibility(self){
-        if(self.state.isOpen && self.state.maxHeight === 0) {
+        console.log("PEW PEW");
+        /*if(self.state.isOpen && self.state.maxHeight === 0) {
             self.setState({
                 overflow: "visible"
             });
@@ -92,21 +93,21 @@ export default class Preview extends React.Component{
         }
         else if(!self.state.isOpen && self.state.overflow === 'hidden' && self.props.forceClose){
             self.props.previewCloseCallback();
-        }
+        }*/
     }
 
     componentWillUnmount(){
         console.log("unmounting");
         this.setState({
             isOpen: false,
-            maxHeight: 0
+            maxHeight: "0px"
         });
     }
 
     updateMaxHeight(){
         console.log("update maxheight");
         this.setState({
-            maxHeight: this.props.isOpen ? this.findMaxHeight() : 0
+            maxHeight: this.props.isOpen ? this.findMaxHeight() : "0px"
         });
     }
 

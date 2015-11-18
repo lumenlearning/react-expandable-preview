@@ -112,6 +112,10 @@ export default class Expandable extends React.Component{
         children.forEach((child, index)=> {
             total ++;
 
+            if(child == target && index === this.state.childIndex){
+                return this.closePreview();
+            }
+
             if ((!hasTarget) && (child == target)) {
                 hasTarget   = true;
                 childIndex  = index;

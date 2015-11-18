@@ -25308,6 +25308,10 @@
 	            children.forEach(function (child, index) {
 	                total++;
 
+	                if (child == target && index === _this.state.childIndex) {
+	                    return _this.closePreview();
+	                }
+
 	                if (!hasTarget && child == target) {
 	                    hasTarget = true;
 	                    childIndex = index;
@@ -25739,15 +25743,29 @@
 	                this.updateMaxHeight();
 	            }
 
-	            this.handlePreviewVisibility(this);
+	            //this.handlePreviewVisibility(this);
 	        }
 	    }, {
 	        key: 'componentWillUnmount',
+
+	        /*if(self.state.isOpen && self.state.maxHeight === 0) {
+	            self.setState({
+	                overflow: "visible"
+	            });
+	        }
+	        else if(!self.state.isOpen && self.state.overflow !== 'hidden'){
+	            self.setState({
+	                overflow: "hidden"
+	            });
+	        }
+	        else if(!self.state.isOpen && self.state.overflow === 'hidden' && self.props.forceClose){
+	            self.props.previewCloseCallback();
+	        }*/
 	        value: function componentWillUnmount() {
 	            console.log("unmounting");
 	            this.setState({
 	                isOpen: false,
-	                maxHeight: 0
+	                maxHeight: "0px"
 	            });
 	        }
 	    }, {
@@ -25755,7 +25773,7 @@
 	        value: function updateMaxHeight() {
 	            console.log("update maxheight");
 	            this.setState({
-	                maxHeight: this.props.isOpen ? this.findMaxHeight() : 0
+	                maxHeight: this.props.isOpen ? this.findMaxHeight() : "0px"
 	            });
 	        }
 	    }, {
@@ -25768,17 +25786,7 @@
 	    }], [{
 	        key: 'handlePreviewVisibility',
 	        value: function handlePreviewVisibility(self) {
-	            if (self.state.isOpen && self.state.maxHeight === 0) {
-	                self.setState({
-	                    overflow: "visible"
-	                });
-	            } else if (!self.state.isOpen && self.state.overflow !== 'hidden') {
-	                self.setState({
-	                    overflow: "hidden"
-	                });
-	            } else if (!self.state.isOpen && self.state.overflow === 'hidden' && self.props.forceClose) {
-	                self.props.previewCloseCallback();
-	            }
+	            console.log("PEW PEW");
 	        }
 	    }]);
 

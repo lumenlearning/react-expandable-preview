@@ -91,10 +91,10 @@ npm install react-expandable-preview --save
       
 ####4. Todo / In Progress:
 
-  - Animated open / close
-  - Custom grid widths
-  - Additional callback support.
-  - Custom styling support.
-  - Live Demo.
+  - Animated open / close (90% complete)
+  - Custom grid widths (75% complete)
+  - Additional callback support. (30% complete)
+  - Custom styling support. (30% complete)
+  - Live Demo. (0% complete)
   
   
