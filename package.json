@@ -1,6 +1,6 @@
 {
   "name": "react-expandable-preview",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "\"Google images inspired grid system with preview drop down\"",
   "main": "./lib/Index.js",
   "repository": {
