@@ -145,8 +145,6 @@ export default class Expandable extends React.Component{
     }
 
     previewCloseCallback(){
-        console.log("CALLBACK");
-
         setTimeout(()=>{
             this.setState({
                 isOpen: false,

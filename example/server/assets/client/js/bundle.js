@@ -25343,8 +25343,6 @@
 	        value: function previewCloseCallback() {
 	            var _this2 = this;
 
-	            console.log("CALLBACK");
-
 	            setTimeout(function () {
 	                _this2.setState({
 	                    isOpen: false,

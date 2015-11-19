@@ -2,7 +2,7 @@
   "name": "react-expandable-preview",
   "version": "1.0.1",
   "description": "\"Google images inspired grid system with preview drop down\"",
-  "main": "./lib/Index.js",
+  "main": "./lib/Index.jsx",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/lumenlearning/react-expandable-preview.git"
