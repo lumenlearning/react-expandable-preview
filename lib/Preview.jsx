@@ -70,30 +70,31 @@ export default class Preview extends React.Component{
     }
 
     componentDidUpdate(){
+        console.log("did update");
         if((this.state.isOpen) && (this.state.maxHeight !== this.findMaxHeight())){
             console.log("did update maxHeight", this.state.maxHeight, this.findMaxHeight());
             this.updateMaxHeight();
         }
 
-        //this.handlePreviewVisibility(this);
+        this.handlePreviewVisibility(this);
 
     }
 
-    static handlePreviewVisibility(self){
+     handlePreviewVisibility(){
         console.log("PEW PEW");
-        /*if(self.state.isOpen && self.state.maxHeight === 0) {
-            self.setState({
+        if(this.state.isOpen && this.state.maxHeight === 0) {
+            this.setState({
                 overflow: "visible"
             });
         }
-        else if(!self.state.isOpen && self.state.overflow !== 'hidden'){
-            self.setState({
+        else if(!this.state.isOpen && this.state.overflow !== 'hidden'){
+            this.setState({
                 overflow: "hidden"
             });
         }
-        else if(!self.state.isOpen && self.state.overflow === 'hidden' && self.props.forceClose){
-            self.props.previewCloseCallback();
-        }*/
+        else if(!this.state.isOpen && this.state.overflow === 'hidden' && this.props.forceClose){
+            this.props.previewCloseCallback();
+        }
     }
 
     componentWillUnmount(){

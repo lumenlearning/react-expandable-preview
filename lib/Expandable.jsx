@@ -61,6 +61,7 @@ export default class Expandable extends React.Component{
 
     //custom functions here.
     handleClick(e) {
+        console.log("click");
 
         if (((e.currentTarget.tagName == "LI") && (e.currentTarget.className.indexOf("li-expandable") || e.currentTarget.className == "li-expandable") ) || ((e.currentTarget.tagName == "SPAN") && (e.currentTarget.className == 'span-preview-close'))) {
 
@@ -97,6 +98,7 @@ export default class Expandable extends React.Component{
     }
 
     setPreviewIndex(e, isOpen){
+        console.log("set preview index", isOpen, this.state.forceClose, this.state.childIndex);
         const target    = e.currentTarget;
         const parent    = target.parentNode;
         const children  = _.toArray(parent.children);
@@ -112,7 +114,7 @@ export default class Expandable extends React.Component{
         children.forEach((child, index)=> {
             total ++;
 
-            if(child == target && index === this.state.childIndex){
+            if(child == target && index === this.state.childIndex && isOpen){
                 return this.closePreview();
             }
 
@@ -148,6 +150,7 @@ export default class Expandable extends React.Component{
         setTimeout(()=>{
             this.setState({
                 isOpen: false,
+                forceClose: false,
                 index: -1
             });
         }, 300);
