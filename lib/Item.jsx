@@ -15,23 +15,26 @@ export default class Item extends React.Component{
             offsets: null
         };
 
+        console.log("CONSTRUCT ITEM");
+
         //bindings
     }
 
     render(){
+        console.log("RENDER ITEM");
         const styles = Styles.styles();
         const className = "li-expandable";
-        const children = React.Children.map(this.props.children, (child, index)=>{
+        /*const children = React.Children.map(this.props.children, (child, index)=>{
 
             return React.cloneElement(child, {});
 
-        });
+        });*/
 
         var liExpandable = _.merge(styles.liExpandable, {width: this.props.colWidth});
 
         return(
             <li className={className} onClick={this.props.onClick} data-col-width={this.props.colWidth} style={liExpandable} >
-                {children}
+                {this.props.children}
             </li>
         );
     }

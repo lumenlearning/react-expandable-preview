@@ -1,6 +1,7 @@
 "use strict";
 
-import React                from 'react/addons';
+import React                from 'react';
+import ReactDOM             from 'react-dom';
 import _                    from 'lodash';
 import Styles               from './css/style.js';
 
@@ -49,6 +50,7 @@ export default class Preview extends React.Component{
     } //previewStructure()
 
     render(){
+        console.log("RENDER PREVIEW");
         return this.props.isOpen ? this.previewStructure() : null;
     }
 
@@ -113,7 +115,7 @@ export default class Preview extends React.Component{
     }
 
     findMaxHeight(){
-        var previewNode = React.findDOMNode(this.refs.preview);
+        var previewNode = ReactDOM.findDOMNode(this.refs.preview);
 
         return previewNode.scrollHeight + "px";
     }

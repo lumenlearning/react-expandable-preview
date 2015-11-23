@@ -46,42 +46,53 @@
 
 	'use strict';
 
-	var router = __webpack_require__(1);
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
 
-	var Router = new router();
+	var _routerJsx = __webpack_require__(1);
+
+	var _routerJsx2 = _interopRequireDefault(_routerJsx);
+
+	var Router = new _routerJsx2['default']();
+
+	console.log(Router);
 	Router.run();
 
 /***/ },
 /* 1 */
 /***/ function(module, exports, __webpack_require__) {
 
+	//import dependencies.
 	'use strict';
 
-	var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })(); //import dependencies.
-
-	//import Components
-
-	Object.defineProperty(exports, "__esModule", {
+	Object.defineProperty(exports, '__esModule', {
 	    value: true
 	});
+
+	var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ('value' in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError('Cannot call a class as a function'); } }
 
 	var _react = __webpack_require__(2);
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _reactRouter = __webpack_require__(158);
+	var _reactDom = __webpack_require__(158);
 
-	var _app = __webpack_require__(204);
+	var _reactDom2 = _interopRequireDefault(_reactDom);
 
-	var _app2 = _interopRequireDefault(_app);
+	var _reactRouter = __webpack_require__(159);
 
-	var _index = __webpack_require__(205);
+	//import Components
 
-	var _index2 = _interopRequireDefault(_index);
+	var _componentsAppJsx = __webpack_require__(205);
 
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	var _componentsAppJsx2 = _interopRequireDefault(_componentsAppJsx);
 
-	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+	var _componentsIndexJsx = __webpack_require__(206);
+
+	var _componentsIndexJsx2 = _interopRequireDefault(_componentsIndexJsx);
 
 	var ReactRouter = (function () {
 	    function ReactRouter() {
@@ -92,13 +103,13 @@
 	        key: 'run',
 	        value: function run() {
 
-	            _react2.default.render(_react2.default.createElement(
+	            _reactDom2['default'].render(_react2['default'].createElement(
 	                _reactRouter.Router,
 	                null,
-	                _react2.default.createElement(
+	                _react2['default'].createElement(
 	                    _reactRouter.Route,
-	                    { path: '/', component: _app2.default },
-	                    _react2.default.createElement(_reactRouter.IndexRoute, { component: _index2.default })
+	                    { path: '/', component: _componentsAppJsx2['default'] },
+	                    _react2['default'].createElement(_reactRouter.IndexRoute, { component: _componentsIndexJsx2['default'] })
 	                )
 	            ), document.getElementById("App"));
 	        }
@@ -107,8 +118,9 @@
 	    return ReactRouter;
 	})();
 
-	exports.default = ReactRouter;
+	exports['default'] = ReactRouter;
 	;
+	module.exports = exports['default'];
 
 /***/ },
 /* 2 */
@@ -19532,6 +19544,15 @@
 /* 158 */
 /***/ function(module, exports, __webpack_require__) {
 
+	'use strict';
+
+	module.exports = __webpack_require__(4);
+
+
+/***/ },
+/* 159 */
+/***/ function(module, exports, __webpack_require__) {
+
 	/* components */
 	'use strict';
 
@@ -19539,19 +19560,19 @@
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
 
-	var _Router2 = __webpack_require__(159);
+	var _Router2 = __webpack_require__(160);
 
 	var _Router3 = _interopRequireDefault(_Router2);
 
 	exports.Router = _Router3['default'];
 
-	var _Link2 = __webpack_require__(192);
+	var _Link2 = __webpack_require__(193);
 
 	var _Link3 = _interopRequireDefault(_Link2);
 
 	exports.Link = _Link3['default'];
 
-	var _IndexLink2 = __webpack_require__(193);
+	var _IndexLink2 = __webpack_require__(194);
 
 	var _IndexLink3 = _interopRequireDefault(_IndexLink2);
 
@@ -19559,25 +19580,25 @@
 
 	/* components (configuration) */
 
-	var _IndexRedirect2 = __webpack_require__(194);
+	var _IndexRedirect2 = __webpack_require__(195);
 
 	var _IndexRedirect3 = _interopRequireDefault(_IndexRedirect2);
 
 	exports.IndexRedirect = _IndexRedirect3['default'];
 
-	var _IndexRoute2 = __webpack_require__(196);
+	var _IndexRoute2 = __webpack_require__(197);
 
 	var _IndexRoute3 = _interopRequireDefault(_IndexRoute2);
 
 	exports.IndexRoute = _IndexRoute3['default'];
 
-	var _Redirect2 = __webpack_require__(195);
+	var _Redirect2 = __webpack_require__(196);
 
 	var _Redirect3 = _interopRequireDefault(_Redirect2);
 
 	exports.Redirect = _Redirect3['default'];
 
-	var _Route2 = __webpack_require__(197);
+	var _Route2 = __webpack_require__(198);
 
 	var _Route3 = _interopRequireDefault(_Route2);
 
@@ -19585,19 +19606,19 @@
 
 	/* mixins */
 
-	var _History2 = __webpack_require__(198);
+	var _History2 = __webpack_require__(199);
 
 	var _History3 = _interopRequireDefault(_History2);
 
 	exports.History = _History3['default'];
 
-	var _Lifecycle2 = __webpack_require__(199);
+	var _Lifecycle2 = __webpack_require__(200);
 
 	var _Lifecycle3 = _interopRequireDefault(_Lifecycle2);
 
 	exports.Lifecycle = _Lifecycle3['default'];
 
-	var _RouteContext2 = __webpack_require__(200);
+	var _RouteContext2 = __webpack_require__(201);
 
 	var _RouteContext3 = _interopRequireDefault(_RouteContext2);
 
@@ -19605,29 +19626,29 @@
 
 	/* utils */
 
-	var _useRoutes2 = __webpack_require__(179);
+	var _useRoutes2 = __webpack_require__(180);
 
 	var _useRoutes3 = _interopRequireDefault(_useRoutes2);
 
 	exports.useRoutes = _useRoutes3['default'];
 
-	var _RouteUtils = __webpack_require__(175);
+	var _RouteUtils = __webpack_require__(176);
 
 	exports.createRoutes = _RouteUtils.createRoutes;
 
-	var _RoutingContext2 = __webpack_require__(176);
+	var _RoutingContext2 = __webpack_require__(177);
 
 	var _RoutingContext3 = _interopRequireDefault(_RoutingContext2);
 
 	exports.RoutingContext = _RoutingContext3['default'];
 
-	var _PropTypes2 = __webpack_require__(191);
+	var _PropTypes2 = __webpack_require__(192);
 
 	var _PropTypes3 = _interopRequireDefault(_PropTypes2);
 
 	exports.PropTypes = _PropTypes3['default'];
 
-	var _match2 = __webpack_require__(201);
+	var _match2 = __webpack_require__(202);
 
 	var _match3 = _interopRequireDefault(_match2);
 
@@ -19638,7 +19659,7 @@
 	exports['default'] = _Router4['default'];
 
 /***/ },
-/* 159 */
+/* 160 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -19657,25 +19678,25 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _warning = __webpack_require__(160);
+	var _warning = __webpack_require__(161);
 
 	var _warning2 = _interopRequireDefault(_warning);
 
-	var _historyLibCreateHashHistory = __webpack_require__(161);
+	var _historyLibCreateHashHistory = __webpack_require__(162);
 
 	var _historyLibCreateHashHistory2 = _interopRequireDefault(_historyLibCreateHashHistory);
 
-	var _RouteUtils = __webpack_require__(175);
+	var _RouteUtils = __webpack_require__(176);
 
-	var _RoutingContext = __webpack_require__(176);
+	var _RoutingContext = __webpack_require__(177);
 
 	var _RoutingContext2 = _interopRequireDefault(_RoutingContext);
 
-	var _useRoutes = __webpack_require__(179);
+	var _useRoutes = __webpack_require__(180);
 
 	var _useRoutes2 = _interopRequireDefault(_useRoutes);
 
-	var _PropTypes = __webpack_require__(191);
+	var _PropTypes = __webpack_require__(192);
 
 	var _React$PropTypes = _react2['default'].PropTypes;
 	var func = _React$PropTypes.func;
@@ -19791,7 +19812,7 @@
 	module.exports = exports['default'];
 
 /***/ },
-/* 160 */
+/* 161 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -19857,7 +19878,7 @@
 
 
 /***/ },
-/* 161 */
+/* 162 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -19868,23 +19889,23 @@
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
 
-	var _warning = __webpack_require__(160);
+	var _warning = __webpack_require__(161);
 
 	var _warning2 = _interopRequireDefault(_warning);
 
-	var _invariant = __webpack_require__(162);
+	var _invariant = __webpack_require__(163);
 
 	var _invariant2 = _interopRequireDefault(_invariant);
 
-	var _Actions = __webpack_require__(163);
+	var _Actions = __webpack_require__(164);
 
-	var _ExecutionEnvironment = __webpack_require__(164);
+	var _ExecutionEnvironment = __webpack_require__(165);
 
-	var _DOMUtils = __webpack_require__(165);
+	var _DOMUtils = __webpack_require__(166);
 
-	var _DOMStateStorage = __webpack_require__(166);
+	var _DOMStateStorage = __webpack_require__(167);
 
-	var _createDOMHistory = __webpack_require__(167);
+	var _createDOMHistory = __webpack_require__(168);
 
 	var _createDOMHistory2 = _interopRequireDefault(_createDOMHistory);
 
@@ -20086,7 +20107,7 @@
 	module.exports = exports['default'];
 
 /***/ },
-/* 162 */
+/* 163 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -20145,7 +20166,7 @@
 
 
 /***/ },
-/* 163 */
+/* 164 */
 /***/ function(module, exports) {
 
 	/**
@@ -20181,7 +20202,7 @@
 	};
 
 /***/ },
-/* 164 */
+/* 165 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -20191,7 +20212,7 @@
 	exports.canUseDOM = canUseDOM;
 
 /***/ },
-/* 165 */
+/* 166 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -20271,7 +20292,7 @@
 	}
 
 /***/ },
-/* 166 */
+/* 167 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -20282,7 +20303,7 @@
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
 
-	var _warning = __webpack_require__(160);
+	var _warning = __webpack_require__(161);
 
 	var _warning2 = _interopRequireDefault(_warning);
 
@@ -20324,7 +20345,7 @@
 	}
 
 /***/ },
-/* 167 */
+/* 168 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -20335,15 +20356,15 @@
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
 
-	var _invariant = __webpack_require__(162);
+	var _invariant = __webpack_require__(163);
 
 	var _invariant2 = _interopRequireDefault(_invariant);
 
-	var _ExecutionEnvironment = __webpack_require__(164);
+	var _ExecutionEnvironment = __webpack_require__(165);
 
-	var _DOMUtils = __webpack_require__(165);
+	var _DOMUtils = __webpack_require__(166);
 
-	var _createHistory = __webpack_require__(168);
+	var _createHistory = __webpack_require__(169);
 
 	var _createHistory2 = _interopRequireDefault(_createHistory);
 
@@ -20369,7 +20390,7 @@
 	module.exports = exports['default'];
 
 /***/ },
-/* 168 */
+/* 169 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -20380,23 +20401,23 @@
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
 
-	var _warning = __webpack_require__(160);
+	var _warning = __webpack_require__(161);
 
 	var _warning2 = _interopRequireDefault(_warning);
 
-	var _deepEqual = __webpack_require__(169);
+	var _deepEqual = __webpack_require__(170);
 
 	var _deepEqual2 = _interopRequireDefault(_deepEqual);
 
-	var _AsyncUtils = __webpack_require__(172);
+	var _AsyncUtils = __webpack_require__(173);
 
-	var _Actions = __webpack_require__(163);
+	var _Actions = __webpack_require__(164);
 
-	var _runTransitionHook = __webpack_require__(173);
+	var _runTransitionHook = __webpack_require__(174);
 
 	var _runTransitionHook2 = _interopRequireDefault(_runTransitionHook);
 
-	var _deprecate = __webpack_require__(174);
+	var _deprecate = __webpack_require__(175);
 
 	var _deprecate2 = _interopRequireDefault(_deprecate);
 
@@ -20648,12 +20669,12 @@
 	module.exports = exports['default'];
 
 /***/ },
-/* 169 */
+/* 170 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var pSlice = Array.prototype.slice;
-	var objectKeys = __webpack_require__(170);
-	var isArguments = __webpack_require__(171);
+	var objectKeys = __webpack_require__(171);
+	var isArguments = __webpack_require__(172);
 
 	var deepEqual = module.exports = function (actual, expected, opts) {
 	  if (!opts) opts = {};
@@ -20748,7 +20769,7 @@
 
 
 /***/ },
-/* 170 */
+/* 171 */
 /***/ function(module, exports) {
 
 	exports = module.exports = typeof Object.keys === 'function'
@@ -20763,7 +20784,7 @@
 
 
 /***/ },
-/* 171 */
+/* 172 */
 /***/ function(module, exports) {
 
 	var supportsArgumentsClass = (function(){
@@ -20789,7 +20810,7 @@
 
 
 /***/ },
-/* 172 */
+/* 173 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -20820,7 +20841,7 @@
 	}
 
 /***/ },
-/* 173 */
+/* 174 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -20829,7 +20850,7 @@
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
 
-	var _warning = __webpack_require__(160);
+	var _warning = __webpack_require__(161);
 
 	var _warning2 = _interopRequireDefault(_warning);
 
@@ -20849,7 +20870,7 @@
 	module.exports = exports['default'];
 
 /***/ },
-/* 174 */
+/* 175 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -20858,7 +20879,7 @@
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
 
-	var _warning = __webpack_require__(160);
+	var _warning = __webpack_require__(161);
 
 	var _warning2 = _interopRequireDefault(_warning);
 
@@ -20873,7 +20894,7 @@
 	module.exports = exports['default'];
 
 /***/ },
-/* 175 */
+/* 176 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -20893,7 +20914,7 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _warning = __webpack_require__(160);
+	var _warning = __webpack_require__(161);
 
 	var _warning2 = _interopRequireDefault(_warning);
 
@@ -20991,7 +21012,7 @@
 	}
 
 /***/ },
-/* 176 */
+/* 177 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -21010,11 +21031,11 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _invariant = __webpack_require__(162);
+	var _invariant = __webpack_require__(163);
 
 	var _invariant2 = _interopRequireDefault(_invariant);
 
-	var _getRouteParams = __webpack_require__(177);
+	var _getRouteParams = __webpack_require__(178);
 
 	var _getRouteParams2 = _interopRequireDefault(_getRouteParams);
 
@@ -21127,14 +21148,14 @@
 	module.exports = exports['default'];
 
 /***/ },
-/* 177 */
+/* 178 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
 	exports.__esModule = true;
 
-	var _PatternUtils = __webpack_require__(178);
+	var _PatternUtils = __webpack_require__(179);
 
 	/**
 	 * Extracts an object of params the given route cares about from
@@ -21156,7 +21177,7 @@
 	module.exports = exports['default'];
 
 /***/ },
-/* 178 */
+/* 179 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -21170,7 +21191,7 @@
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
 
-	var _invariant = __webpack_require__(162);
+	var _invariant = __webpack_require__(163);
 
 	var _invariant2 = _interopRequireDefault(_invariant);
 
@@ -21358,7 +21379,7 @@
 	}
 
 /***/ },
-/* 179 */
+/* 180 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -21371,31 +21392,31 @@
 
 	function _objectWithoutProperties(obj, keys) { var target = {}; for (var i in obj) { if (keys.indexOf(i) >= 0) continue; if (!Object.prototype.hasOwnProperty.call(obj, i)) continue; target[i] = obj[i]; } return target; }
 
-	var _warning = __webpack_require__(160);
+	var _warning = __webpack_require__(161);
 
 	var _warning2 = _interopRequireDefault(_warning);
 
-	var _historyLibActions = __webpack_require__(163);
+	var _historyLibActions = __webpack_require__(164);
 
-	var _historyLibUseQueries = __webpack_require__(180);
+	var _historyLibUseQueries = __webpack_require__(181);
 
 	var _historyLibUseQueries2 = _interopRequireDefault(_historyLibUseQueries);
 
-	var _computeChangedRoutes2 = __webpack_require__(185);
+	var _computeChangedRoutes2 = __webpack_require__(186);
 
 	var _computeChangedRoutes3 = _interopRequireDefault(_computeChangedRoutes2);
 
-	var _TransitionUtils = __webpack_require__(186);
+	var _TransitionUtils = __webpack_require__(187);
 
-	var _isActive2 = __webpack_require__(188);
+	var _isActive2 = __webpack_require__(189);
 
 	var _isActive3 = _interopRequireDefault(_isActive2);
 
-	var _getComponents = __webpack_require__(189);
+	var _getComponents = __webpack_require__(190);
 
 	var _getComponents2 = _interopRequireDefault(_getComponents);
 
-	var _matchRoutes = __webpack_require__(190);
+	var _matchRoutes = __webpack_require__(191);
 
 	var _matchRoutes2 = _interopRequireDefault(_matchRoutes);
 
@@ -21654,7 +21675,7 @@
 	module.exports = exports['default'];
 
 /***/ },
-/* 180 */
+/* 181 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -21667,11 +21688,11 @@
 
 	function _objectWithoutProperties(obj, keys) { var target = {}; for (var i in obj) { if (keys.indexOf(i) >= 0) continue; if (!Object.prototype.hasOwnProperty.call(obj, i)) continue; target[i] = obj[i]; } return target; }
 
-	var _qs = __webpack_require__(181);
+	var _qs = __webpack_require__(182);
 
 	var _qs2 = _interopRequireDefault(_qs);
 
-	var _runTransitionHook = __webpack_require__(173);
+	var _runTransitionHook = __webpack_require__(174);
 
 	var _runTransitionHook2 = _interopRequireDefault(_runTransitionHook);
 
@@ -21764,13 +21785,13 @@
 	module.exports = exports['default'];
 
 /***/ },
-/* 181 */
+/* 182 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// Load modules
 
-	var Stringify = __webpack_require__(182);
-	var Parse = __webpack_require__(184);
+	var Stringify = __webpack_require__(183);
+	var Parse = __webpack_require__(185);
 
 
 	// Declare internals
@@ -21785,12 +21806,12 @@
 
 
 /***/ },
-/* 182 */
+/* 183 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// Load modules
 
-	var Utils = __webpack_require__(183);
+	var Utils = __webpack_require__(184);
 
 
 	// Declare internals
@@ -21912,7 +21933,7 @@
 
 
 /***/ },
-/* 183 */
+/* 184 */
 /***/ function(module, exports) {
 
 	// Load modules
@@ -22108,12 +22129,12 @@
 
 
 /***/ },
-/* 184 */
+/* 185 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// Load modules
 
-	var Utils = __webpack_require__(183);
+	var Utils = __webpack_require__(184);
 
 
 	// Declare internals
@@ -22300,14 +22321,14 @@
 
 
 /***/ },
-/* 185 */
+/* 186 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
 	exports.__esModule = true;
 
-	var _PatternUtils = __webpack_require__(178);
+	var _PatternUtils = __webpack_require__(179);
 
 	function routeParamsChanged(route, prevState, nextState) {
 	  if (!route.path) return false;
@@ -22367,7 +22388,7 @@
 	module.exports = exports['default'];
 
 /***/ },
-/* 186 */
+/* 187 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -22376,7 +22397,7 @@
 	exports.runEnterHooks = runEnterHooks;
 	exports.runLeaveHooks = runLeaveHooks;
 
-	var _AsyncUtils = __webpack_require__(187);
+	var _AsyncUtils = __webpack_require__(188);
 
 	function createEnterHook(hook, route) {
 	  return function (a, b, callback) {
@@ -22444,7 +22465,7 @@
 	}
 
 /***/ },
-/* 187 */
+/* 188 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -22507,14 +22528,14 @@
 	}
 
 /***/ },
-/* 188 */
+/* 189 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
 	exports.__esModule = true;
 
-	var _PatternUtils = __webpack_require__(178);
+	var _PatternUtils = __webpack_require__(179);
 
 	function deepEqual(a, b) {
 	  if (a == b) return true;
@@ -22608,14 +22629,14 @@
 	module.exports = exports['default'];
 
 /***/ },
-/* 189 */
+/* 190 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
 	exports.__esModule = true;
 
-	var _AsyncUtils = __webpack_require__(187);
+	var _AsyncUtils = __webpack_require__(188);
 
 	function getComponentsForRoute(location, route, callback) {
 	  if (route.component || route.components) {
@@ -22646,18 +22667,18 @@
 	module.exports = exports['default'];
 
 /***/ },
-/* 190 */
+/* 191 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
 	exports.__esModule = true;
 
-	var _AsyncUtils = __webpack_require__(187);
+	var _AsyncUtils = __webpack_require__(188);
 
-	var _PatternUtils = __webpack_require__(178);
+	var _PatternUtils = __webpack_require__(179);
 
-	var _RouteUtils = __webpack_require__(175);
+	var _RouteUtils = __webpack_require__(176);
 
 	function getChildRoutes(route, location, callback) {
 	  if (route.childRoutes) {
@@ -22791,7 +22812,7 @@
 	module.exports = exports['default'];
 
 /***/ },
-/* 191 */
+/* 192 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -22849,7 +22870,7 @@
 	};
 
 /***/ },
-/* 192 */
+/* 193 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -23010,7 +23031,7 @@
 	module.exports = exports['default'];
 
 /***/ },
-/* 193 */
+/* 194 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -23029,7 +23050,7 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _Link = __webpack_require__(192);
+	var _Link = __webpack_require__(193);
 
 	var _Link2 = _interopRequireDefault(_Link);
 
@@ -23057,7 +23078,7 @@
 	module.exports = exports['default'];
 
 /***/ },
-/* 194 */
+/* 195 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -23076,19 +23097,19 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _invariant = __webpack_require__(162);
+	var _invariant = __webpack_require__(163);
 
 	var _invariant2 = _interopRequireDefault(_invariant);
 
-	var _warning = __webpack_require__(160);
+	var _warning = __webpack_require__(161);
 
 	var _warning2 = _interopRequireDefault(_warning);
 
-	var _Redirect = __webpack_require__(195);
+	var _Redirect = __webpack_require__(196);
 
 	var _Redirect2 = _interopRequireDefault(_Redirect);
 
-	var _PropTypes = __webpack_require__(191);
+	var _PropTypes = __webpack_require__(192);
 
 	var _React$PropTypes = _react2['default'].PropTypes;
 	var string = _React$PropTypes.string;
@@ -23138,7 +23159,7 @@
 	module.exports = exports['default'];
 
 /***/ },
-/* 195 */
+/* 196 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -23157,15 +23178,15 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _invariant = __webpack_require__(162);
+	var _invariant = __webpack_require__(163);
 
 	var _invariant2 = _interopRequireDefault(_invariant);
 
-	var _RouteUtils = __webpack_require__(175);
+	var _RouteUtils = __webpack_require__(176);
 
-	var _PatternUtils = __webpack_require__(178);
+	var _PatternUtils = __webpack_require__(179);
 
-	var _PropTypes = __webpack_require__(191);
+	var _PropTypes = __webpack_require__(192);
 
 	var _React$PropTypes = _react2['default'].PropTypes;
 	var string = _React$PropTypes.string;
@@ -23254,7 +23275,7 @@
 	module.exports = exports['default'];
 
 /***/ },
-/* 196 */
+/* 197 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -23273,17 +23294,17 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _invariant = __webpack_require__(162);
+	var _invariant = __webpack_require__(163);
 
 	var _invariant2 = _interopRequireDefault(_invariant);
 
-	var _warning = __webpack_require__(160);
+	var _warning = __webpack_require__(161);
 
 	var _warning2 = _interopRequireDefault(_warning);
 
-	var _RouteUtils = __webpack_require__(175);
+	var _RouteUtils = __webpack_require__(176);
 
-	var _PropTypes = __webpack_require__(191);
+	var _PropTypes = __webpack_require__(192);
 
 	var _React$PropTypes = _react2['default'].PropTypes;
 	var bool = _React$PropTypes.bool;
@@ -23334,7 +23355,7 @@
 	module.exports = exports['default'];
 
 /***/ },
-/* 197 */
+/* 198 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -23353,17 +23374,17 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _warning = __webpack_require__(160);
+	var _warning = __webpack_require__(161);
 
 	var _warning2 = _interopRequireDefault(_warning);
 
-	var _invariant = __webpack_require__(162);
+	var _invariant = __webpack_require__(163);
 
 	var _invariant2 = _interopRequireDefault(_invariant);
 
-	var _RouteUtils = __webpack_require__(175);
+	var _RouteUtils = __webpack_require__(176);
 
-	var _PropTypes = __webpack_require__(191);
+	var _PropTypes = __webpack_require__(192);
 
 	var _React$PropTypes = _react2['default'].PropTypes;
 	var string = _React$PropTypes.string;
@@ -23427,14 +23448,14 @@
 	module.exports = exports['default'];
 
 /***/ },
-/* 198 */
+/* 199 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
 	exports.__esModule = true;
 
-	var _PropTypes = __webpack_require__(191);
+	var _PropTypes = __webpack_require__(192);
 
 	var History = {
 
@@ -23450,7 +23471,7 @@
 	module.exports = exports['default'];
 
 /***/ },
-/* 199 */
+/* 200 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -23463,7 +23484,7 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _invariant = __webpack_require__(162);
+	var _invariant = __webpack_require__(163);
 
 	var _invariant2 = _interopRequireDefault(_invariant);
 
@@ -23519,7 +23540,7 @@
 	module.exports = exports['default'];
 
 /***/ },
-/* 200 */
+/* 201 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -23562,7 +23583,7 @@
 	module.exports = exports['default'];
 
 /***/ },
-/* 201 */
+/* 202 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -23573,21 +23594,21 @@
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
 
-	var _invariant = __webpack_require__(162);
+	var _invariant = __webpack_require__(163);
 
 	var _invariant2 = _interopRequireDefault(_invariant);
 
-	var _historyLibCreateMemoryHistory = __webpack_require__(202);
+	var _historyLibCreateMemoryHistory = __webpack_require__(203);
 
 	var _historyLibCreateMemoryHistory2 = _interopRequireDefault(_historyLibCreateMemoryHistory);
 
-	var _historyLibUseBasename = __webpack_require__(203);
+	var _historyLibUseBasename = __webpack_require__(204);
 
 	var _historyLibUseBasename2 = _interopRequireDefault(_historyLibUseBasename);
 
-	var _RouteUtils = __webpack_require__(175);
+	var _RouteUtils = __webpack_require__(176);
 
-	var _useRoutes = __webpack_require__(179);
+	var _useRoutes = __webpack_require__(180);
 
 	var _useRoutes2 = _interopRequireDefault(_useRoutes);
 
@@ -23630,7 +23651,7 @@
 	module.exports = exports['default'];
 
 /***/ },
-/* 202 */
+/* 203 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -23641,13 +23662,13 @@
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
 
-	var _invariant = __webpack_require__(162);
+	var _invariant = __webpack_require__(163);
 
 	var _invariant2 = _interopRequireDefault(_invariant);
 
-	var _Actions = __webpack_require__(163);
+	var _Actions = __webpack_require__(164);
 
-	var _createHistory = __webpack_require__(168);
+	var _createHistory = __webpack_require__(169);
 
 	var _createHistory2 = _interopRequireDefault(_createHistory);
 
@@ -23777,7 +23798,7 @@
 	module.exports = exports['default'];
 
 /***/ },
-/* 203 */
+/* 204 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -23790,7 +23811,7 @@
 
 	function _objectWithoutProperties(obj, keys) { var target = {}; for (var i in obj) { if (keys.indexOf(i) >= 0) continue; if (!Object.prototype.hasOwnProperty.call(obj, i)) continue; target[i] = obj[i]; } return target; }
 
-	var _runTransitionHook = __webpack_require__(173);
+	var _runTransitionHook = __webpack_require__(174);
 
 	var _runTransitionHook2 = _interopRequireDefault(_runTransitionHook);
 
@@ -23872,30 +23893,29 @@
 	module.exports = exports['default'];
 
 /***/ },
-/* 204 */
+/* 205 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
-
-	var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
-
-	Object.defineProperty(exports, "__esModule", {
+	Object.defineProperty(exports, '__esModule', {
 	    value: true
 	});
+
+	var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ('value' in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
+
+	var _get = function get(_x, _x2, _x3) { var _again = true; _function: while (_again) { var object = _x, property = _x2, receiver = _x3; _again = false; if (object === null) object = Function.prototype; var desc = Object.getOwnPropertyDescriptor(object, property); if (desc === undefined) { var parent = Object.getPrototypeOf(object); if (parent === null) { return undefined; } else { _x = parent; _x2 = property; _x3 = receiver; _again = true; desc = parent = undefined; continue _function; } } else if ('value' in desc) { return desc.value; } else { var getter = desc.get; if (getter === undefined) { return undefined; } return getter.call(receiver); } } };
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError('Cannot call a class as a function'); } }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== 'function' && superClass !== null) { throw new TypeError('Super expression must either be null or a function, not ' + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
 	var _react = __webpack_require__(2);
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _reactRouter = __webpack_require__(158);
-
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+	var _reactRouter = __webpack_require__(159);
 
 	//components
 
@@ -23905,13 +23925,13 @@
 	    function App(props, state) {
 	        _classCallCheck(this, App);
 
-	        return _possibleConstructorReturn(this, Object.getPrototypeOf(App).call(this, props, state));
+	        _get(Object.getPrototypeOf(App.prototype), 'constructor', this).call(this, props, state);
 	    }
 
 	    _createClass(App, [{
 	        key: 'render',
 	        value: function render() {
-	            return _react2.default.createElement(
+	            return _react2['default'].createElement(
 	                'div',
 	                { className: 'row' },
 	                this.props.children
@@ -23920,399 +23940,10 @@
 	    }]);
 
 	    return App;
-	})(_react2.default.Component);
+	})(_react2['default'].Component);
 
-	exports.default = App;
-
-/***/ },
-/* 205 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
-
-	Object.defineProperty(exports, "__esModule", {
-	    value: true
-	});
-
-	var _react = __webpack_require__(2);
-
-	var _react2 = _interopRequireDefault(_react);
-
-	var _Index = __webpack_require__(206);
-
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-	var Index = (function (_React$Component) {
-	    _inherits(Index, _React$Component);
-
-	    function Index(props, state) {
-	        _classCallCheck(this, Index);
-
-	        var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(Index).call(this, props, state));
-
-	        _this.state = {};
-	        return _this;
-	    }
-
-	    _createClass(Index, [{
-	        key: 'render',
-	        value: function render() {
-
-	            return _react2.default.createElement(
-	                'div',
-	                { style: { width: "100%" } },
-	                _react2.default.createElement(
-	                    _Index.Expandable,
-	                    { colWidth: 4 },
-	                    _react2.default.createElement(
-	                        _Index.Item,
-	                        {
-	                            previewComponent: _react2.default.createElement(
-	                                _Index.Preview,
-	                                { title: 'The Role of Business' },
-	                                _react2.default.createElement(
-	                                    'p',
-	                                    null,
-	                                    _react2.default.createElement(
-	                                        'span',
-	                                        null,
-	                                        'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eius itaque minima perferendis ratione. Aut beatae ea recusandae similique tempore vero voluptates? Assumenda autem dolore nesciunt quas similique ut voluptatem voluptatum?'
-	                                    ),
-	                                    _react2.default.createElement(
-	                                        'span',
-	                                        null,
-	                                        'A amet asperiores debitis dolorem harum hic id illo inventore labore minus, molestiae neque nulla, praesentium qui quo recusandae suscipit. Ad deleniti ducimus ipsum odit officiis placeat porro quam ut.'
-	                                    ),
-	                                    _react2.default.createElement(
-	                                        'span',
-	                                        null,
-	                                        'A adipisci, architecto blanditiis consequatur consequuntur deserunt doloremque eos et hic illum impedit incidunt ipsum itaque laborum minus nihil quae ratione recusandae reprehenderit rerum tenetur ullam unde, velit veniam voluptates.'
-	                                    ),
-	                                    _react2.default.createElement(
-	                                        'span',
-	                                        null,
-	                                        'A accusantium aspernatur aut cum, ea eius ex facilis laborum maiores quae recusandae repellendus, tenetur? Atque beatae iure ullam? Autem illo inventore ipsum minus obcaecati quae quasi quidem reiciendis ut.'
-	                                    ),
-	                                    _react2.default.createElement(
-	                                        'span',
-	                                        null,
-	                                        'Architecto autem laudantium velit. Autem dolorem doloremque eligendi est eum illum impedit incidunt ipsam magni placeat provident quas quos reiciendis sapiente vero voluptas, voluptate! Architecto dolor magnam molestias mollitia quas!'
-	                                    ),
-	                                    _react2.default.createElement(
-	                                        'span',
-	                                        null,
-	                                        'Asperiores consequuntur dolor error eum ipsa nam non perferendis, rerum. Aperiam assumenda consequuntur cumque eaque earum eligendi facere hic iste libero natus nesciunt obcaecati placeat possimus, sequi sunt voluptas voluptatem.'
-	                                    ),
-	                                    _react2.default.createElement(
-	                                        'span',
-	                                        null,
-	                                        'Commodi facere perspiciatis sequi? Aliquam amet commodi dolor est explicabo fugiat impedit ipsam laudantium nulla, omnis porro possimus quia recusandae saepe soluta totam ullam, velit. Asperiores maxime molestias nemo voluptatum?'
-	                                    ),
-	                                    _react2.default.createElement(
-	                                        'span',
-	                                        null,
-	                                        'Accusamus adipisci, aliquam aliquid animi cumque dicta dolor dolores, doloribus id ipsam magni placeat quaerat quam quas reiciendis totam ullam ut? Cumque eius fuga fugiat modi non placeat tempora ullam!'
-	                                    ),
-	                                    _react2.default.createElement(
-	                                        'span',
-	                                        null,
-	                                        'Accusamus ad aliquid beatae blanditiis corporis cum debitis distinctio doloribus eum explicabo, inventore magni modi, molestias nam nesciunt nisi perspiciatis possimus quaerat quibusdam quo quod repudiandae ullam unde vel vero.'
-	                                    ),
-	                                    _react2.default.createElement(
-	                                        'span',
-	                                        null,
-	                                        'Amet dolorem ducimus eius enim eos, esse, ex expedita fugit ipsam libero modi molestias nemo neque numquam omnis perferendis quam quas quo reiciendis sequi similique sint soluta, totam vero voluptate!'
-	                                    ),
-	                                    _react2.default.createElement(
-	                                        'span',
-	                                        null,
-	                                        'Error, modi, nostrum! Aperiam architecto ea esse illo neque odit omnis reprehenderit voluptas. Animi architecto delectus dicta fugiat iste optio quaerat reiciendis repellendus unde voluptates? Aliquam ducimus mollitia repellat unde.'
-	                                    ),
-	                                    _react2.default.createElement(
-	                                        'span',
-	                                        null,
-	                                        'A at fugit necessitatibus optio placeat quae quia saepe sit voluptas voluptatem? Accusantium atque corporis cum cupiditate deserunt esse, facere incidunt laboriosam, non numquam optio provident sequi temporibus vitae, voluptas!'
-	                                    ),
-	                                    _react2.default.createElement(
-	                                        'span',
-	                                        null,
-	                                        'Ab autem commodi cupiditate delectus ea eligendi error est eum in ipsam, maiores molestiae nihil obcaecati odit, placeat porro possimus quidem sapiente sed tempore tenetur ullam ut veritatis voluptates voluptatibus?'
-	                                    ),
-	                                    _react2.default.createElement(
-	                                        'span',
-	                                        null,
-	                                        'At deleniti porro quis. Aliquid, esse, ullam? Ab aliquam aperiam beatae commodi cum cumque error eum, excepturi incidunt libero neque nisi, officiis omnis praesentium quaerat quis repellendus veritatis vitae voluptate!'
-	                                    ),
-	                                    _react2.default.createElement(
-	                                        'span',
-	                                        null,
-	                                        'Corporis earum molestiae quas voluptates! Ab architecto blanditiis consectetur delectus dolor earum ipsa, maiores optio quidem rem repellendus, reprehenderit, saepe unde voluptates voluptatum? Accusantium aliquid consequuntur nihil quod veritatis, voluptas.'
-	                                    ),
-	                                    _react2.default.createElement(
-	                                        'span',
-	                                        null,
-	                                        'Ab accusantium animi aperiam assumenda atque beatae consectetur, consequatur cumque cupiditate deserunt dignissimos dolorum ducimus exercitationem facilis magnam maiores minima pariatur placeat quas qui quia quibusdam quos rem veniam veritatis!'
-	                                    ),
-	                                    _react2.default.createElement(
-	                                        'span',
-	                                        null,
-	                                        'Minima quas, quos? Laborum necessitatibus nisi, obcaecati officia omnis repudiandae voluptatum? A adipisci assumenda aut delectus ex fugiat illum, in iste itaque laborum minima officiis possimus quas quos repudiandae, tenetur?'
-	                                    ),
-	                                    _react2.default.createElement(
-	                                        'span',
-	                                        null,
-	                                        'Alias aliquid, beatae blanditiis dolor eaque error exercitationem expedita ipsa iure labore maxime, mollitia nihil nisi quis quo quod, sapiente totam voluptatum! Aliquid deleniti dolorem ipsa magni officiis recusandae repudiandae.'
-	                                    ),
-	                                    _react2.default.createElement(
-	                                        'span',
-	                                        null,
-	                                        'Aperiam magni natus sequi. Adipisci amet cum dolorem dolores excepturi explicabo facilis ipsum magnam molestiae perspiciatis quas quibusdam quisquam, reiciendis rerum, saepe sapiente temporibus totam ullam unde voluptas. A, aut.'
-	                                    ),
-	                                    _react2.default.createElement(
-	                                        'span',
-	                                        null,
-	                                        'A accusamus accusantium aliquam asperiores consequuntur deserunt dolorum, ducimus eos, ex ipsa laboriosam minima modi mollitia nemo optio praesentium quae quia quis rem voluptate. Facilis ipsa ipsam saepe sapiente similique!'
-	                                    ),
-	                                    _react2.default.createElement(
-	                                        'span',
-	                                        null,
-	                                        'Amet dignissimos enim eos ipsa. Accusantium at impedit nesciunt nobis porro ratione sequi veritatis? Cum cumque ea illum molestiae nobis nostrum placeat quibusdam? Asperiores deserunt dolore hic odio! Repellendus, totam.'
-	                                    ),
-	                                    _react2.default.createElement(
-	                                        'span',
-	                                        null,
-	                                        'Ab adipisci dignissimos dolor eaque eligendi et fugit, harum hic in ipsam, nobis nostrum numquam quibusdam quis recusandae sequi, vero voluptatum. Accusantium debitis distinctio dolorum impedit, incidunt praesentium quia vitae.'
-	                                    ),
-	                                    _react2.default.createElement(
-	                                        'span',
-	                                        null,
-	                                        'Atque deleniti fugiat nostrum sapiente ullam? Accusamus adipisci, aliquam animi consequuntur dolorum, ducimus enim nemo neque nesciunt, porro temporibus ut veniam voluptas? Animi consequuntur fuga, perferendis placeat quos sapiente voluptatem?'
-	                                    ),
-	                                    _react2.default.createElement(
-	                                        'span',
-	                                        null,
-	                                        'Accusantium dignissimos eaque, facere ipsam iure recusandae veritatis? At, modi, placeat. Aliquid architecto assumenda consectetur debitis dicta dolor eaque est, eveniet excepturi expedita harum laboriosam quo, quos, temporibus tenetur ullam?'
-	                                    ),
-	                                    _react2.default.createElement(
-	                                        'span',
-	                                        null,
-	                                        'Dolor dolores ea eum illo impedit inventore iusto, laborum laudantium nostrum praesentium provident quaerat quasi quibusdam quo rem tempora vero. Expedita nesciunt odio possimus quis vel. Aut mollitia reprehenderit repudiandae.'
-	                                    ),
-	                                    _react2.default.createElement(
-	                                        'span',
-	                                        null,
-	                                        'Accusantium aperiam dolorem earum eius harum hic itaque molestiae, nisi officia porro provident quisquam quo ratione sit sunt tempora tempore temporibus velit? Assumenda consectetur esse facere laboriosam laborum nesciunt ratione!'
-	                                    ),
-	                                    _react2.default.createElement(
-	                                        'span',
-	                                        null,
-	                                        'Accusamus, aliquam aliquid, animi aut deleniti dicta distinctio dolor ducimus esse et eveniet harum incidunt ipsum iusto optio perspiciatis provident quae, quam qui quibusdam quod quos recusandae. Facere, sed velit.'
-	                                    ),
-	                                    _react2.default.createElement(
-	                                        'span',
-	                                        null,
-	                                        'Consequuntur doloribus esse facere ipsa labore libero modi officia quibusdam quod recusandae reiciendis, sed similique sint! Assumenda beatae cumque cupiditate esse nemo perspiciatis quibusdam quos rem, sunt tenetur veritatis voluptatibus.'
-	                                    ),
-	                                    _react2.default.createElement(
-	                                        'span',
-	                                        null,
-	                                        'Cumque itaque labore quasi tempore vero? A, beatae deserunt doloremque eveniet facilis id illum in iure laborum magnam, maiores maxime nemo placeat sapiente tenetur? Ab asperiores delectus incidunt magnam qui.'
-	                                    ),
-	                                    _react2.default.createElement(
-	                                        'span',
-	                                        null,
-	                                        'Aspernatur, corporis fugit illum ipsam numquam soluta? A ab architecto eum fugiat nam, numquam officia ullam voluptate voluptatibus? Blanditiis deleniti dignissimos distinctio eligendi error fugiat illo nihil, quo sit voluptate!'
-	                                    )
-	                                )
-	                            )
-	                        },
-	                        _react2.default.createElement('img', { src: 'https://placekitten.com/300/201', alt: '' })
-	                    ),
-	                    _react2.default.createElement(
-	                        _Index.Item,
-	                        {
-	                            previewComponent: _react2.default.createElement(
-	                                _Index.Preview,
-	                                { title: 'Why is Business content so boring?' },
-	                                _react2.default.createElement(
-	                                    'div',
-	                                    { className: 'small-6 columns' },
-	                                    _react2.default.createElement('img', { src: 'https://placekitten.com/300/201', alt: '' })
-	                                ),
-	                                _react2.default.createElement(
-	                                    'div',
-	                                    { className: 'small-6 columns' },
-	                                    _react2.default.createElement(
-	                                        'p',
-	                                        null,
-	                                        'MORE Placeholder Text Goes here to describe some arbitrary image or content or what ever we want.'
-	                                    )
-	                                )
-	                            )
-	                        },
-	                        _react2.default.createElement('img', { src: 'https://placekitten.com/300/201', alt: '' })
-	                    ),
-	                    _react2.default.createElement(
-	                        _Index.Item,
-	                        {
-	                            previewComponent: _react2.default.createElement(
-	                                _Index.Preview,
-	                                { title: 'Component of the night' },
-	                                _react2.default.createElement(
-	                                    'div',
-	                                    { className: 'small-6 columns' },
-	                                    _react2.default.createElement('img', { src: 'https://placekitten.com/300/201', alt: '' })
-	                                ),
-	                                _react2.default.createElement(
-	                                    'div',
-	                                    { className: 'small-6 columns' },
-	                                    _react2.default.createElement(
-	                                        'p',
-	                                        null,
-	                                        'Whats going on here!? Where am I? Am I expanded or not!? Everything is so dark I can\'t tell.... aww thats a cute kitten'
-	                                    )
-	                                )
-	                            )
-	                        },
-	                        _react2.default.createElement('img', { src: 'https://placekitten.com/300/201', alt: '' })
-	                    ),
-	                    _react2.default.createElement(
-	                        _Index.Item,
-	                        {
-	                            previewComponent: _react2.default.createElement(
-	                                _Index.Preview,
-	                                { title: 'Business Ethics: Good or Bad?' },
-	                                _react2.default.createElement(
-	                                    'div',
-	                                    { className: 'small-6 columns' },
-	                                    _react2.default.createElement('img', { src: 'https://placekitten.com/300/201', alt: '' })
-	                                ),
-	                                _react2.default.createElement(
-	                                    'div',
-	                                    { className: 'small-6 columns' },
-	                                    _react2.default.createElement(
-	                                        'p',
-	                                        null,
-	                                        'Placeholder Text Goes here to describe some arbitrary image or content or what ever we want.'
-	                                    )
-	                                )
-	                            )
-	                        },
-	                        _react2.default.createElement('img', { src: 'https://placekitten.com/300/201', alt: '' })
-	                    ),
-	                    _react2.default.createElement(
-	                        _Index.Item,
-	                        {
-	                            previewComponent: _react2.default.createElement(
-	                                _Index.Preview,
-	                                { title: 'Business Analytics: BI or BS?' },
-	                                _react2.default.createElement(
-	                                    'div',
-	                                    { className: 'small-6 columns' },
-	                                    _react2.default.createElement('img', { src: 'https://placekitten.com/300/201', alt: '' })
-	                                ),
-	                                _react2.default.createElement(
-	                                    'div',
-	                                    { className: 'small-6 columns' },
-	                                    _react2.default.createElement(
-	                                        'p',
-	                                        null,
-	                                        'MORE Placeholder Text Goes here to describe some arbitrary image or content or what ever we want.'
-	                                    )
-	                                )
-	                            )
-	                        },
-	                        _react2.default.createElement('img', { src: 'https://placekitten.com/300/201', alt: '' })
-	                    ),
-	                    _react2.default.createElement(
-	                        _Index.Item,
-	                        {
-	                            previewComponent: _react2.default.createElement(
-	                                _Index.Preview,
-	                                { title: 'Component of the twilight' },
-	                                _react2.default.createElement(
-	                                    'div',
-	                                    { className: 'small-6 columns' },
-	                                    _react2.default.createElement('img', { src: 'https://placekitten.com/300/201', alt: '' })
-	                                ),
-	                                _react2.default.createElement(
-	                                    'div',
-	                                    { className: 'small-6 columns' },
-	                                    _react2.default.createElement(
-	                                        'p',
-	                                        null,
-	                                        'Whats going on here!? Where am I? Am I expanded or not!? Everything is so dark I can\'t tell.... aww thats a cute kitten'
-	                                    )
-	                                )
-	                            )
-	                        },
-	                        _react2.default.createElement('img', { src: 'https://placekitten.com/300/201', alt: '' })
-	                    ),
-	                    _react2.default.createElement(
-	                        _Index.Item,
-	                        {
-	                            previewComponent: _react2.default.createElement(
-	                                _Index.Preview,
-	                                { title: '90\'s music: Great or Greatest' },
-	                                _react2.default.createElement(
-	                                    'div',
-	                                    { className: 'small-6 columns' },
-	                                    _react2.default.createElement('img', { src: 'https://placekitten.com/300/201', alt: '' })
-	                                ),
-	                                _react2.default.createElement(
-	                                    'div',
-	                                    { className: 'small-6 columns' },
-	                                    _react2.default.createElement(
-	                                        'p',
-	                                        null,
-	                                        'Placeholder Text Goes here to describe some arbitrary image or content or what ever we want.'
-	                                    )
-	                                )
-	                            )
-	                        },
-	                        _react2.default.createElement('img', { src: 'https://placekitten.com/300/201', alt: '' })
-	                    ),
-	                    _react2.default.createElement(
-	                        _Index.Item,
-	                        {
-	                            previewComponent: _react2.default.createElement(
-	                                _Index.Preview,
-	                                { title: 'I\'m just a poor Dillon' },
-	                                _react2.default.createElement(
-	                                    'div',
-	                                    { className: 'small-6 columns' },
-	                                    _react2.default.createElement('img', { src: 'https://placekitten.com/300/201', alt: '' })
-	                                ),
-	                                _react2.default.createElement(
-	                                    'div',
-	                                    { className: 'small-6 columns' },
-	                                    _react2.default.createElement(
-	                                        'p',
-	                                        null,
-	                                        'From a poor Dillony. He\'s just a poor bryan, from a poor bryanily.'
-	                                    )
-	                                )
-	                            )
-	                        },
-	                        _react2.default.createElement('img', { src: 'https://placekitten.com/300/201', alt: '' })
-	                    )
-	                )
-	            );
-	        }
-	    }]);
-
-	    return Index;
-	})(_react2.default.Component);
-
-	exports.default = Index;
+	exports['default'] = App;
+	module.exports = exports['default'];
 
 /***/ },
 /* 206 */
@@ -24320,31 +23951,396 @@
 
 	'use strict';
 
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
+	Object.defineProperty(exports, '__esModule', {
+	    value: true
 	});
 
-	var _Expandable = __webpack_require__(207);
+	var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ('value' in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
 
-	var _Expandable2 = _interopRequireDefault(_Expandable);
+	var _get = function get(_x, _x2, _x3) { var _again = true; _function: while (_again) { var object = _x, property = _x2, receiver = _x3; _again = false; if (object === null) object = Function.prototype; var desc = Object.getOwnPropertyDescriptor(object, property); if (desc === undefined) { var parent = Object.getPrototypeOf(object); if (parent === null) { return undefined; } else { _x = parent; _x2 = property; _x3 = receiver; _again = true; desc = parent = undefined; continue _function; } } else if ('value' in desc) { return desc.value; } else { var getter = desc.get; if (getter === undefined) { return undefined; } return getter.call(receiver); } } };
 
-	var _Item = __webpack_require__(211);
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
 
-	var _Item2 = _interopRequireDefault(_Item);
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError('Cannot call a class as a function'); } }
 
-	var _Preview = __webpack_require__(212);
+	function _inherits(subClass, superClass) { if (typeof superClass !== 'function' && superClass !== null) { throw new TypeError('Super expression must either be null or a function, not ' + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-	var _Preview2 = _interopRequireDefault(_Preview);
+	var _react = __webpack_require__(2);
 
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	var _react2 = _interopRequireDefault(_react);
 
-	var _exports = {};
+	var _libExpandablePreviewJs = __webpack_require__(207);
 
-	_exports.Expandable = _Expandable2.default;
-	_exports.Item = _Item2.default;
-	_exports.Preview = _Preview2.default;
+	/*import Expandable   from '../../../lib/Expandable.jsx'
+	import Item         from '../../../lib/Item.jsx'
+	import Preview      from '../../../lib/Preview.jsx';*/
 
-	exports.default = _exports;
+	var Index = (function (_React$Component) {
+	    _inherits(Index, _React$Component);
+
+	    function Index(props, state) {
+	        _classCallCheck(this, Index);
+
+	        _get(Object.getPrototypeOf(Index.prototype), 'constructor', this).call(this, props, state);
+
+	        this.state = {};
+	    }
+
+	    _createClass(Index, [{
+	        key: 'render',
+	        value: function render() {
+
+	            console.log("RENDER INDEX", _libExpandablePreviewJs.Expandable, _libExpandablePreviewJs.Item, _libExpandablePreviewJs.Preview);
+
+	            return _react2['default'].createElement(
+	                'div',
+	                { style: { width: "100%" } },
+	                _react2['default'].createElement(
+	                    _libExpandablePreviewJs.Expandable,
+	                    { colWidth: 4 },
+	                    _react2['default'].createElement(
+	                        _libExpandablePreviewJs.Item,
+	                        {
+	                            previewComponent: _react2['default'].createElement(
+	                                _libExpandablePreviewJs.Preview,
+	                                { title: 'The Role of Business' },
+	                                _react2['default'].createElement(
+	                                    'p',
+	                                    null,
+	                                    _react2['default'].createElement(
+	                                        'span',
+	                                        null,
+	                                        'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eius itaque minima perferendis ratione. Aut beatae ea recusandae similique tempore vero voluptates? Assumenda autem dolore nesciunt quas similique ut voluptatem voluptatum?'
+	                                    ),
+	                                    _react2['default'].createElement(
+	                                        'span',
+	                                        null,
+	                                        'A amet asperiores debitis dolorem harum hic id illo inventore labore minus, molestiae neque nulla, praesentium qui quo recusandae suscipit. Ad deleniti ducimus ipsum odit officiis placeat porro quam ut.'
+	                                    ),
+	                                    _react2['default'].createElement(
+	                                        'span',
+	                                        null,
+	                                        'A adipisci, architecto blanditiis consequatur consequuntur deserunt doloremque eos et hic illum impedit incidunt ipsum itaque laborum minus nihil quae ratione recusandae reprehenderit rerum tenetur ullam unde, velit veniam voluptates.'
+	                                    ),
+	                                    _react2['default'].createElement(
+	                                        'span',
+	                                        null,
+	                                        'A accusantium aspernatur aut cum, ea eius ex facilis laborum maiores quae recusandae repellendus, tenetur? Atque beatae iure ullam? Autem illo inventore ipsum minus obcaecati quae quasi quidem reiciendis ut.'
+	                                    ),
+	                                    _react2['default'].createElement(
+	                                        'span',
+	                                        null,
+	                                        'Architecto autem laudantium velit. Autem dolorem doloremque eligendi est eum illum impedit incidunt ipsam magni placeat provident quas quos reiciendis sapiente vero voluptas, voluptate! Architecto dolor magnam molestias mollitia quas!'
+	                                    ),
+	                                    _react2['default'].createElement(
+	                                        'span',
+	                                        null,
+	                                        'Asperiores consequuntur dolor error eum ipsa nam non perferendis, rerum. Aperiam assumenda consequuntur cumque eaque earum eligendi facere hic iste libero natus nesciunt obcaecati placeat possimus, sequi sunt voluptas voluptatem.'
+	                                    ),
+	                                    _react2['default'].createElement(
+	                                        'span',
+	                                        null,
+	                                        'Commodi facere perspiciatis sequi? Aliquam amet commodi dolor est explicabo fugiat impedit ipsam laudantium nulla, omnis porro possimus quia recusandae saepe soluta totam ullam, velit. Asperiores maxime molestias nemo voluptatum?'
+	                                    ),
+	                                    _react2['default'].createElement(
+	                                        'span',
+	                                        null,
+	                                        'Accusamus adipisci, aliquam aliquid animi cumque dicta dolor dolores, doloribus id ipsam magni placeat quaerat quam quas reiciendis totam ullam ut? Cumque eius fuga fugiat modi non placeat tempora ullam!'
+	                                    ),
+	                                    _react2['default'].createElement(
+	                                        'span',
+	                                        null,
+	                                        'Accusamus ad aliquid beatae blanditiis corporis cum debitis distinctio doloribus eum explicabo, inventore magni modi, molestias nam nesciunt nisi perspiciatis possimus quaerat quibusdam quo quod repudiandae ullam unde vel vero.'
+	                                    ),
+	                                    _react2['default'].createElement(
+	                                        'span',
+	                                        null,
+	                                        'Amet dolorem ducimus eius enim eos, esse, ex expedita fugit ipsam libero modi molestias nemo neque numquam omnis perferendis quam quas quo reiciendis sequi similique sint soluta, totam vero voluptate!'
+	                                    ),
+	                                    _react2['default'].createElement(
+	                                        'span',
+	                                        null,
+	                                        'Error, modi, nostrum! Aperiam architecto ea esse illo neque odit omnis reprehenderit voluptas. Animi architecto delectus dicta fugiat iste optio quaerat reiciendis repellendus unde voluptates? Aliquam ducimus mollitia repellat unde.'
+	                                    ),
+	                                    _react2['default'].createElement(
+	                                        'span',
+	                                        null,
+	                                        'A at fugit necessitatibus optio placeat quae quia saepe sit voluptas voluptatem? Accusantium atque corporis cum cupiditate deserunt esse, facere incidunt laboriosam, non numquam optio provident sequi temporibus vitae, voluptas!'
+	                                    ),
+	                                    _react2['default'].createElement(
+	                                        'span',
+	                                        null,
+	                                        'Ab autem commodi cupiditate delectus ea eligendi error est eum in ipsam, maiores molestiae nihil obcaecati odit, placeat porro possimus quidem sapiente sed tempore tenetur ullam ut veritatis voluptates voluptatibus?'
+	                                    ),
+	                                    _react2['default'].createElement(
+	                                        'span',
+	                                        null,
+	                                        'At deleniti porro quis. Aliquid, esse, ullam? Ab aliquam aperiam beatae commodi cum cumque error eum, excepturi incidunt libero neque nisi, officiis omnis praesentium quaerat quis repellendus veritatis vitae voluptate!'
+	                                    ),
+	                                    _react2['default'].createElement(
+	                                        'span',
+	                                        null,
+	                                        'Corporis earum molestiae quas voluptates! Ab architecto blanditiis consectetur delectus dolor earum ipsa, maiores optio quidem rem repellendus, reprehenderit, saepe unde voluptates voluptatum? Accusantium aliquid consequuntur nihil quod veritatis, voluptas.'
+	                                    ),
+	                                    _react2['default'].createElement(
+	                                        'span',
+	                                        null,
+	                                        'Ab accusantium animi aperiam assumenda atque beatae consectetur, consequatur cumque cupiditate deserunt dignissimos dolorum ducimus exercitationem facilis magnam maiores minima pariatur placeat quas qui quia quibusdam quos rem veniam veritatis!'
+	                                    ),
+	                                    _react2['default'].createElement(
+	                                        'span',
+	                                        null,
+	                                        'Minima quas, quos? Laborum necessitatibus nisi, obcaecati officia omnis repudiandae voluptatum? A adipisci assumenda aut delectus ex fugiat illum, in iste itaque laborum minima officiis possimus quas quos repudiandae, tenetur?'
+	                                    ),
+	                                    _react2['default'].createElement(
+	                                        'span',
+	                                        null,
+	                                        'Alias aliquid, beatae blanditiis dolor eaque error exercitationem expedita ipsa iure labore maxime, mollitia nihil nisi quis quo quod, sapiente totam voluptatum! Aliquid deleniti dolorem ipsa magni officiis recusandae repudiandae.'
+	                                    ),
+	                                    _react2['default'].createElement(
+	                                        'span',
+	                                        null,
+	                                        'Aperiam magni natus sequi. Adipisci amet cum dolorem dolores excepturi explicabo facilis ipsum magnam molestiae perspiciatis quas quibusdam quisquam, reiciendis rerum, saepe sapiente temporibus totam ullam unde voluptas. A, aut.'
+	                                    ),
+	                                    _react2['default'].createElement(
+	                                        'span',
+	                                        null,
+	                                        'A accusamus accusantium aliquam asperiores consequuntur deserunt dolorum, ducimus eos, ex ipsa laboriosam minima modi mollitia nemo optio praesentium quae quia quis rem voluptate. Facilis ipsa ipsam saepe sapiente similique!'
+	                                    ),
+	                                    _react2['default'].createElement(
+	                                        'span',
+	                                        null,
+	                                        'Amet dignissimos enim eos ipsa. Accusantium at impedit nesciunt nobis porro ratione sequi veritatis? Cum cumque ea illum molestiae nobis nostrum placeat quibusdam? Asperiores deserunt dolore hic odio! Repellendus, totam.'
+	                                    ),
+	                                    _react2['default'].createElement(
+	                                        'span',
+	                                        null,
+	                                        'Ab adipisci dignissimos dolor eaque eligendi et fugit, harum hic in ipsam, nobis nostrum numquam quibusdam quis recusandae sequi, vero voluptatum. Accusantium debitis distinctio dolorum impedit, incidunt praesentium quia vitae.'
+	                                    ),
+	                                    _react2['default'].createElement(
+	                                        'span',
+	                                        null,
+	                                        'Atque deleniti fugiat nostrum sapiente ullam? Accusamus adipisci, aliquam animi consequuntur dolorum, ducimus enim nemo neque nesciunt, porro temporibus ut veniam voluptas? Animi consequuntur fuga, perferendis placeat quos sapiente voluptatem?'
+	                                    ),
+	                                    _react2['default'].createElement(
+	                                        'span',
+	                                        null,
+	                                        'Accusantium dignissimos eaque, facere ipsam iure recusandae veritatis? At, modi, placeat. Aliquid architecto assumenda consectetur debitis dicta dolor eaque est, eveniet excepturi expedita harum laboriosam quo, quos, temporibus tenetur ullam?'
+	                                    ),
+	                                    _react2['default'].createElement(
+	                                        'span',
+	                                        null,
+	                                        'Dolor dolores ea eum illo impedit inventore iusto, laborum laudantium nostrum praesentium provident quaerat quasi quibusdam quo rem tempora vero. Expedita nesciunt odio possimus quis vel. Aut mollitia reprehenderit repudiandae.'
+	                                    ),
+	                                    _react2['default'].createElement(
+	                                        'span',
+	                                        null,
+	                                        'Accusantium aperiam dolorem earum eius harum hic itaque molestiae, nisi officia porro provident quisquam quo ratione sit sunt tempora tempore temporibus velit? Assumenda consectetur esse facere laboriosam laborum nesciunt ratione!'
+	                                    ),
+	                                    _react2['default'].createElement(
+	                                        'span',
+	                                        null,
+	                                        'Accusamus, aliquam aliquid, animi aut deleniti dicta distinctio dolor ducimus esse et eveniet harum incidunt ipsum iusto optio perspiciatis provident quae, quam qui quibusdam quod quos recusandae. Facere, sed velit.'
+	                                    ),
+	                                    _react2['default'].createElement(
+	                                        'span',
+	                                        null,
+	                                        'Consequuntur doloribus esse facere ipsa labore libero modi officia quibusdam quod recusandae reiciendis, sed similique sint! Assumenda beatae cumque cupiditate esse nemo perspiciatis quibusdam quos rem, sunt tenetur veritatis voluptatibus.'
+	                                    ),
+	                                    _react2['default'].createElement(
+	                                        'span',
+	                                        null,
+	                                        'Cumque itaque labore quasi tempore vero? A, beatae deserunt doloremque eveniet facilis id illum in iure laborum magnam, maiores maxime nemo placeat sapiente tenetur? Ab asperiores delectus incidunt magnam qui.'
+	                                    ),
+	                                    _react2['default'].createElement(
+	                                        'span',
+	                                        null,
+	                                        'Aspernatur, corporis fugit illum ipsam numquam soluta? A ab architecto eum fugiat nam, numquam officia ullam voluptate voluptatibus? Blanditiis deleniti dignissimos distinctio eligendi error fugiat illo nihil, quo sit voluptate!'
+	                                    )
+	                                )
+	                            )
+	                        },
+	                        _react2['default'].createElement('img', { src: 'https://placekitten.com/300/201', alt: '' })
+	                    ),
+	                    _react2['default'].createElement(
+	                        _libExpandablePreviewJs.Item,
+	                        {
+	                            previewComponent: _react2['default'].createElement(
+	                                _libExpandablePreviewJs.Preview,
+	                                { title: 'Why is Business content so boring?' },
+	                                _react2['default'].createElement(
+	                                    'div',
+	                                    { className: 'small-6 columns' },
+	                                    _react2['default'].createElement('img', { src: 'https://placekitten.com/300/201', alt: '' })
+	                                ),
+	                                _react2['default'].createElement(
+	                                    'div',
+	                                    { className: 'small-6 columns' },
+	                                    _react2['default'].createElement(
+	                                        'p',
+	                                        null,
+	                                        'MORE Placeholder Text Goes here to describe some arbitrary image or content or what ever we want.'
+	                                    )
+	                                )
+	                            )
+	                        },
+	                        _react2['default'].createElement('img', { src: 'https://placekitten.com/300/201', alt: '' })
+	                    ),
+	                    _react2['default'].createElement(
+	                        _libExpandablePreviewJs.Item,
+	                        {
+	                            previewComponent: _react2['default'].createElement(
+	                                _libExpandablePreviewJs.Preview,
+	                                { title: 'Component of the night' },
+	                                _react2['default'].createElement(
+	                                    'div',
+	                                    { className: 'small-6 columns' },
+	                                    _react2['default'].createElement('img', { src: 'https://placekitten.com/300/201', alt: '' })
+	                                ),
+	                                _react2['default'].createElement(
+	                                    'div',
+	                                    { className: 'small-6 columns' },
+	                                    _react2['default'].createElement(
+	                                        'p',
+	                                        null,
+	                                        'Whats going on here!? Where am I? Am I expanded or not!? Everything is so dark I can\'t tell.... aww thats a cute kitten'
+	                                    )
+	                                )
+	                            )
+	                        },
+	                        _react2['default'].createElement('img', { src: 'https://placekitten.com/300/201', alt: '' })
+	                    ),
+	                    _react2['default'].createElement(
+	                        _libExpandablePreviewJs.Item,
+	                        {
+	                            previewComponent: _react2['default'].createElement(
+	                                _libExpandablePreviewJs.Preview,
+	                                { title: 'Business Ethics: Good or Bad?' },
+	                                _react2['default'].createElement(
+	                                    'div',
+	                                    { className: 'small-6 columns' },
+	                                    _react2['default'].createElement('img', { src: 'https://placekitten.com/300/201', alt: '' })
+	                                ),
+	                                _react2['default'].createElement(
+	                                    'div',
+	                                    { className: 'small-6 columns' },
+	                                    _react2['default'].createElement(
+	                                        'p',
+	                                        null,
+	                                        'Placeholder Text Goes here to describe some arbitrary image or content or what ever we want.'
+	                                    )
+	                                )
+	                            )
+	                        },
+	                        _react2['default'].createElement('img', { src: 'https://placekitten.com/300/201', alt: '' })
+	                    ),
+	                    _react2['default'].createElement(
+	                        _libExpandablePreviewJs.Item,
+	                        {
+	                            previewComponent: _react2['default'].createElement(
+	                                _libExpandablePreviewJs.Preview,
+	                                { title: 'Business Analytics: BI or BS?' },
+	                                _react2['default'].createElement(
+	                                    'div',
+	                                    { className: 'small-6 columns' },
+	                                    _react2['default'].createElement('img', { src: 'https://placekitten.com/300/201', alt: '' })
+	                                ),
+	                                _react2['default'].createElement(
+	                                    'div',
+	                                    { className: 'small-6 columns' },
+	                                    _react2['default'].createElement(
+	                                        'p',
+	                                        null,
+	                                        'MORE Placeholder Text Goes here to describe some arbitrary image or content or what ever we want.'
+	                                    )
+	                                )
+	                            )
+	                        },
+	                        _react2['default'].createElement('img', { src: 'https://placekitten.com/300/201', alt: '' })
+	                    ),
+	                    _react2['default'].createElement(
+	                        _libExpandablePreviewJs.Item,
+	                        {
+	                            previewComponent: _react2['default'].createElement(
+	                                _libExpandablePreviewJs.Preview,
+	                                { title: 'Component of the twilight' },
+	                                _react2['default'].createElement(
+	                                    'div',
+	                                    { className: 'small-6 columns' },
+	                                    _react2['default'].createElement('img', { src: 'https://placekitten.com/300/201', alt: '' })
+	                                ),
+	                                _react2['default'].createElement(
+	                                    'div',
+	                                    { className: 'small-6 columns' },
+	                                    _react2['default'].createElement(
+	                                        'p',
+	                                        null,
+	                                        'Whats going on here!? Where am I? Am I expanded or not!? Everything is so dark I can\'t tell.... aww thats a cute kitten'
+	                                    )
+	                                )
+	                            )
+	                        },
+	                        _react2['default'].createElement('img', { src: 'https://placekitten.com/300/201', alt: '' })
+	                    ),
+	                    _react2['default'].createElement(
+	                        _libExpandablePreviewJs.Item,
+	                        {
+	                            previewComponent: _react2['default'].createElement(
+	                                _libExpandablePreviewJs.Preview,
+	                                { title: '90\'s music: Great or Greatest' },
+	                                _react2['default'].createElement(
+	                                    'div',
+	                                    { className: 'small-6 columns' },
+	                                    _react2['default'].createElement('img', { src: 'https://placekitten.com/300/201', alt: '' })
+	                                ),
+	                                _react2['default'].createElement(
+	                                    'div',
+	                                    { className: 'small-6 columns' },
+	                                    _react2['default'].createElement(
+	                                        'p',
+	                                        null,
+	                                        'Placeholder Text Goes here to describe some arbitrary image or content or what ever we want.'
+	                                    )
+	                                )
+	                            )
+	                        },
+	                        _react2['default'].createElement('img', { src: 'https://placekitten.com/300/201', alt: '' })
+	                    ),
+	                    _react2['default'].createElement(
+	                        _libExpandablePreviewJs.Item,
+	                        {
+	                            previewComponent: _react2['default'].createElement(
+	                                _libExpandablePreviewJs.Preview,
+	                                { title: 'I\'m just a poor Dillon' },
+	                                _react2['default'].createElement(
+	                                    'div',
+	                                    { className: 'small-6 columns' },
+	                                    _react2['default'].createElement('img', { src: 'https://placekitten.com/300/201', alt: '' })
+	                                ),
+	                                _react2['default'].createElement(
+	                                    'div',
+	                                    { className: 'small-6 columns' },
+	                                    _react2['default'].createElement(
+	                                        'p',
+	                                        null,
+	                                        'From a poor Dillony. He\'s just a poor bryan, from a poor bryanily.'
+	                                    )
+	                                )
+	                            )
+	                        },
+	                        _react2['default'].createElement('img', { src: 'https://placekitten.com/300/201', alt: '' })
+	                    )
+	                )
+	            );
+	        }
+	        //render method
+	    }]);
+
+	    return Index;
+	})(_react2['default'].Component);
+
+	exports['default'] = Index;
+	module.exports = exports['default'];
 
 /***/ },
 /* 207 */
@@ -24352,31 +24348,47 @@
 
 	'use strict';
 
-	var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
+	Object.defineProperty(exports, '__esModule', {
+	  value: true
+	});
+	var Expandable = __webpack_require__(208);
+	exports.Expandable = Expandable;
+	var Item = __webpack_require__(212);
+	exports.Item = Item;
+	var Preview = __webpack_require__(213);
+	exports.Preview = Preview;
 
-	Object.defineProperty(exports, "__esModule", {
+/***/ },
+/* 208 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, '__esModule', {
 	    value: true
 	});
+
+	var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ('value' in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
+
+	var _get = function get(_x, _x2, _x3) { var _again = true; _function: while (_again) { var object = _x, property = _x2, receiver = _x3; _again = false; if (object === null) object = Function.prototype; var desc = Object.getOwnPropertyDescriptor(object, property); if (desc === undefined) { var parent = Object.getPrototypeOf(object); if (parent === null) { return undefined; } else { _x = parent; _x2 = property; _x3 = receiver; _again = true; desc = parent = undefined; continue _function; } } else if ('value' in desc) { return desc.value; } else { var getter = desc.get; if (getter === undefined) { return undefined; } return getter.call(receiver); } } };
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError('Cannot call a class as a function'); } }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== 'function' && superClass !== null) { throw new TypeError('Super expression must either be null or a function, not ' + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
 	var _react = __webpack_require__(2);
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _lodash = __webpack_require__(208);
+	var _lodash = __webpack_require__(209);
 
 	var _lodash2 = _interopRequireDefault(_lodash);
 
-	var _style = __webpack_require__(210);
+	var _cssStyleJs = __webpack_require__(211);
 
-	var _style2 = _interopRequireDefault(_style);
-
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+	var _cssStyleJs2 = _interopRequireDefault(_cssStyleJs);
 
 	var Expandable = (function (_React$Component) {
 	    _inherits(Expandable, _React$Component);
@@ -24384,28 +24396,29 @@
 	    function Expandable(props, state) {
 	        _classCallCheck(this, Expandable);
 
-	        var _this4 = _possibleConstructorReturn(this, Object.getPrototypeOf(Expandable).call(this, props, state));
+	        _get(Object.getPrototypeOf(Expandable.prototype), 'constructor', this).call(this, props, state);
 
-	        _this4.state = {
+	        console.log("INITIATE EXPANDABLE");
+
+	        this.state = {
 	            isOpen: false,
 	            forceClose: false,
 	            rowIndex: null,
 	            childIndex: null,
-	            sItemCount: _this4.props.smallRowItemCount || 1,
-	            mItemCount: _this4.props.mediumRowItemCount || 2,
-	            lItemCount: _this4.props.largeRowItemCount || 3,
-	            xlItemCount: _this4.props.xlargeRowItemCount || 4,
-	            xxlItemCount: _this4.props.xxlargeRowItemCount || 5,
-	            beforePreviewOpen: _this4.props.beforePreviewOpen || function () {},
-	            afterPreviewOpen: _this4.props.afterPreviewOpen || function () {},
+	            sItemCount: this.props.smallRowItemCount || 1,
+	            mItemCount: this.props.mediumRowItemCount || 2,
+	            lItemCount: this.props.largeRowItemCount || 3,
+	            xlItemCount: this.props.xlargeRowItemCount || 4,
+	            xxlItemCount: this.props.xxlargeRowItemCount || 5,
+	            beforePreviewOpen: this.props.beforePreviewOpen || function () {},
+	            afterPreviewOpen: this.props.afterPreviewOpen || function () {},
 	            currentItemRowCount: 2
 	        };
 
-	        _this4.handleClick = _this4.handleClick.bind(_this4);
-	        _this4.handleResize = _this4.handleResize.bind(_this4);
-	        _this4.getWindowSize = _this4.getWindowSize.bind(_this4);
-	        _this4.previewCloseCallback = _this4.previewCloseCallback.bind(_this4);
-	        return _this4;
+	        this.handleClick = this.handleClick.bind(this);
+	        this.handleResize = this.handleResize.bind(this);
+	        this.getWindowSize = this.getWindowSize.bind(this);
+	        this.previewCloseCallback = this.previewCloseCallback.bind(this);
 	    }
 
 	    _createClass(Expandable, [{
@@ -24425,10 +24438,11 @@
 	    }, {
 	        key: 'render',
 	        value: function render() {
-	            var style = _style2.default.styles();
+	            var style = _cssStyleJs2['default'].styles();
+	            console.log("PEW PEW");
 	            var children = this.buildChildren();
 
-	            return _react2.default.createElement(
+	            return _react2['default'].createElement(
 	                'ul',
 	                { className: 'small-12_columns', style: style.ulExpandable },
 	                children
@@ -24446,7 +24460,6 @@
 	        }
 
 	        //custom functions here.
-
 	    }, {
 	        key: 'handleClick',
 	        value: function handleClick(e) {
@@ -24494,7 +24507,7 @@
 	            console.log("set preview index", isOpen, this.state.forceClose, this.state.childIndex);
 	            var target = e.currentTarget;
 	            var parent = target.parentNode;
-	            var children = _lodash2.default.toArray(parent.children);
+	            var children = _lodash2['default'].toArray(parent.children);
 
 	            var total = 0;
 	            var hasTarget = false;
@@ -24555,12 +24568,13 @@
 
 	            var preview = null;
 
-	            var children = _react2.default.Children.map(this.props.children, function (child, index) {
+	            var children = _react2['default'].Children.map(this.props.children, function (child, index) {
 	                //calculate child item width
+	                console.log("child", child);
 	                var colWidth = 100 / _this3.state.currentItemRowCount + "%";
 	                var lastComponent = index === _this3.props.children.length - 1 ? true : false;
 
-	                var ListComponent = _react2.default.cloneElement(child, {
+	                var ListComponent = _react2['default'].cloneElement(child, {
 	                    colWidth: colWidth,
 	                    onClick: _this3.handleClick,
 	                    lastComponent: lastComponent
@@ -24574,7 +24588,7 @@
 	                    var arr = [0, 1];
 
 	                    return arr.map(function (arrItem, aIndex) {
-	                        return aIndex == 0 ? ListComponent : _react2.default.cloneElement(preview, { onClick: _this3.handleClick, isOpen: _this3.state.isOpen, forceClose: _this3.state.forceClose, previewCloseCallback: _this3.previewCloseCallback });
+	                        return aIndex == 0 ? ListComponent : _react2['default'].cloneElement(preview, { onClick: _this3.handleClick, isOpen: _this3.state.isOpen, forceClose: _this3.state.forceClose, previewCloseCallback: _this3.previewCloseCallback });
 	                    });
 	                }
 
@@ -24619,12 +24633,13 @@
 	    }]);
 
 	    return Expandable;
-	})(_react2.default.Component);
+	})(_react2['default'].Component);
 
-	exports.default = Expandable;
+	exports['default'] = Expandable;
+	module.exports = exports['default'];
 
 /***/ },
-/* 208 */
+/* 209 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_RESULT__;/* WEBPACK VAR INJECTION */(function(module, global) {/**
@@ -36979,10 +36994,10 @@
 	  }
 	}.call(this));
 
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(209)(module), (function() { return this; }())))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(210)(module), (function() { return this; }())))
 
 /***/ },
-/* 209 */
+/* 210 */
 /***/ function(module, exports) {
 
 	module.exports = function(module) {
@@ -36998,20 +37013,20 @@
 
 
 /***/ },
-/* 210 */
+/* 211 */
 /***/ function(module, exports) {
 
 	"use strict";
-
-	var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
 
 	Object.defineProperty(exports, "__esModule", {
 	    value: true
 	});
 
+	var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
+
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-	exports.default = new ((function () {
+	exports["default"] = new ((function () {
 	    function Style() {
 	        _classCallCheck(this, Style);
 
@@ -37106,42 +37121,43 @@
 
 	    return Style;
 	})())();
+	module.exports = exports["default"];
 
 /***/ },
-/* 211 */
+/* 212 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
-
-	Object.defineProperty(exports, "__esModule", {
+	Object.defineProperty(exports, '__esModule', {
 	    value: true
 	});
+
+	var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ('value' in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
+
+	var _get = function get(_x, _x2, _x3) { var _again = true; _function: while (_again) { var object = _x, property = _x2, receiver = _x3; _again = false; if (object === null) object = Function.prototype; var desc = Object.getOwnPropertyDescriptor(object, property); if (desc === undefined) { var parent = Object.getPrototypeOf(object); if (parent === null) { return undefined; } else { _x = parent; _x2 = property; _x3 = receiver; _again = true; desc = parent = undefined; continue _function; } } else if ('value' in desc) { return desc.value; } else { var getter = desc.get; if (getter === undefined) { return undefined; } return getter.call(receiver); } } };
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError('Cannot call a class as a function'); } }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== 'function' && superClass !== null) { throw new TypeError('Super expression must either be null or a function, not ' + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
 	var _react = __webpack_require__(2);
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _Preview = __webpack_require__(212);
+	var _PreviewJsx = __webpack_require__(213);
 
-	var _Preview2 = _interopRequireDefault(_Preview);
+	var _PreviewJsx2 = _interopRequireDefault(_PreviewJsx);
 
-	var _style = __webpack_require__(210);
+	var _cssStyleJs = __webpack_require__(211);
 
-	var _style2 = _interopRequireDefault(_style);
+	var _cssStyleJs2 = _interopRequireDefault(_cssStyleJs);
 
-	var _lodash = __webpack_require__(208);
+	var _lodash = __webpack_require__(209);
 
 	var _lodash2 = _interopRequireDefault(_lodash);
-
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
 	var Item = (function (_React$Component) {
 	    _inherits(Item, _React$Component);
@@ -37149,74 +37165,80 @@
 	    function Item(props, state) {
 	        _classCallCheck(this, Item);
 
-	        var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(Item).call(this, props, state));
+	        _get(Object.getPrototypeOf(Item.prototype), 'constructor', this).call(this, props, state);
 
-	        _this.state = {
-	            colWidth: _this.props.colWidth || 1,
+	        this.state = {
+	            colWidth: this.props.colWidth || 1,
 	            isOpen: false,
 	            offsets: null
 	        };
 
+	        console.log("CONSTRUCT ITEM");
+
 	        //bindings
-	        return _this;
 	    }
 
 	    _createClass(Item, [{
 	        key: 'render',
 	        value: function render() {
-	            var styles = _style2.default.styles();
+	            console.log("RENDER ITEM");
+	            var styles = _cssStyleJs2['default'].styles();
 	            var className = "li-expandable";
-	            var children = _react2.default.Children.map(this.props.children, function (child, index) {
+	            /*const children = React.Children.map(this.props.children, (child, index)=>{
+	                 return React.cloneElement(child, {});
+	             });*/
 
-	                return _react2.default.cloneElement(child, {});
-	            });
+	            var liExpandable = _lodash2['default'].merge(styles.liExpandable, { width: this.props.colWidth });
 
-	            var liExpandable = _lodash2.default.merge(styles.liExpandable, { width: this.props.colWidth });
-
-	            return _react2.default.createElement(
+	            return _react2['default'].createElement(
 	                'li',
 	                { className: className, onClick: this.props.onClick, 'data-col-width': this.props.colWidth, style: liExpandable },
-	                children
+	                this.props.children
 	            );
 	        }
 	    }]);
 
 	    return Item;
-	})(_react2.default.Component);
+	})(_react2['default'].Component);
 
-	exports.default = Item;
+	exports['default'] = Item;
+	module.exports = exports['default'];
 
 /***/ },
-/* 212 */
+/* 213 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
 
-	var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
-
-	Object.defineProperty(exports, "__esModule", {
+	Object.defineProperty(exports, '__esModule', {
 	    value: true
 	});
 
-	var _addons = __webpack_require__(213);
+	var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ('value' in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
 
-	var _addons2 = _interopRequireDefault(_addons);
+	var _get = function get(_x, _x2, _x3) { var _again = true; _function: while (_again) { var object = _x, property = _x2, receiver = _x3; _again = false; if (object === null) object = Function.prototype; var desc = Object.getOwnPropertyDescriptor(object, property); if (desc === undefined) { var parent = Object.getPrototypeOf(object); if (parent === null) { return undefined; } else { _x = parent; _x2 = property; _x3 = receiver; _again = true; desc = parent = undefined; continue _function; } } else if ('value' in desc) { return desc.value; } else { var getter = desc.get; if (getter === undefined) { return undefined; } return getter.call(receiver); } } };
 
-	var _lodash = __webpack_require__(208);
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError('Cannot call a class as a function'); } }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== 'function' && superClass !== null) { throw new TypeError('Super expression must either be null or a function, not ' + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+	var _react = __webpack_require__(2);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var _reactDom = __webpack_require__(158);
+
+	var _reactDom2 = _interopRequireDefault(_reactDom);
+
+	var _lodash = __webpack_require__(209);
 
 	var _lodash2 = _interopRequireDefault(_lodash);
 
-	var _style = __webpack_require__(210);
+	var _cssStyleJs = __webpack_require__(211);
 
-	var _style2 = _interopRequireDefault(_style);
-
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+	var _cssStyleJs2 = _interopRequireDefault(_cssStyleJs);
 
 	var Preview = (function (_React$Component) {
 	    _inherits(Preview, _React$Component);
@@ -37224,68 +37246,68 @@
 	    function Preview(props, state) {
 	        _classCallCheck(this, Preview);
 
-	        var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(Preview).call(this, props, state));
+	        _get(Object.getPrototypeOf(Preview.prototype), 'constructor', this).call(this, props, state);
 
-	        _this.state = {
-	            isOpen: _this.props.isOpen ? true : false,
+	        this.state = {
+	            isOpen: this.props.isOpen ? true : false,
 	            maxHeight: 0,
 	            overflow: "hidden"
 	        };
-
-	        return _this;
 	    }
 
 	    _createClass(Preview, [{
 	        key: 'previewStructure',
 	        value: function previewStructure() {
 	            var that = this;
-	            var styles = _style2.default.styles();
+	            var styles = _cssStyleJs2['default'].styles();
 	            var styleProp = typeof this.props.style !== 'undefined' ? this.props.styles : {};
 
-	            var liPreview = _lodash2.default.merge(styles.liPreview, styleProp.liPreview || {}, { maxHeight: this.state.maxHeight, overflow: this.state.overflow });
-	            var divPreviewInner = _lodash2.default.merge(styles.divPreviewInner, styleProp.divPreviewInner || {});
-	            var divPreviewHeader = _lodash2.default.merge(styles.divPreviewHeader, styleProp.divPreviewHeader || {});
-	            var h2PreviewTitle = _lodash2.default.merge(styles.h2PreviewTitle, styleProp.h2PreviewTitle || {});
-	            var spanPreviewClose = _lodash2.default.merge(styles.spanPreviewClose, styleProp.spanPreviewClose || {});
-	            var aNullTag = _lodash2.default.merge(styles.aNullTag, styleProp.aNullTag || {});
-	            var divPreviewContent = _lodash2.default.merge(styles.divPreviewContent, styleProp.divPreviewContent || {});
+	            var liPreview = _lodash2['default'].merge(styles.liPreview, styleProp.liPreview || {}, { maxHeight: this.state.maxHeight, overflow: this.state.overflow });
+	            var divPreviewInner = _lodash2['default'].merge(styles.divPreviewInner, styleProp.divPreviewInner || {});
+	            var divPreviewHeader = _lodash2['default'].merge(styles.divPreviewHeader, styleProp.divPreviewHeader || {});
+	            var h2PreviewTitle = _lodash2['default'].merge(styles.h2PreviewTitle, styleProp.h2PreviewTitle || {});
+	            var spanPreviewClose = _lodash2['default'].merge(styles.spanPreviewClose, styleProp.spanPreviewClose || {});
+	            var aNullTag = _lodash2['default'].merge(styles.aNullTag, styleProp.aNullTag || {});
+	            var divPreviewContent = _lodash2['default'].merge(styles.divPreviewContent, styleProp.divPreviewContent || {});
 
-	            return _addons2.default.createElement(
+	            return _react2['default'].createElement(
 	                'li',
 	                { className: 'li-preview', ref: 'preview', style: liPreview },
-	                _addons2.default.createElement(
+	                _react2['default'].createElement(
 	                    'div',
 	                    { className: 'div-preview-inner', style: divPreviewInner },
-	                    _addons2.default.createElement(
+	                    _react2['default'].createElement(
 	                        'div',
 	                        { className: 'div-preview-header', style: divPreviewHeader },
-	                        _addons2.default.createElement(
+	                        _react2['default'].createElement(
 	                            'h2',
 	                            { className: 'h2-preview-title', style: h2PreviewTitle },
 	                            that.props.title
 	                        ),
-	                        _addons2.default.createElement(
+	                        _react2['default'].createElement(
 	                            'span',
 	                            { className: 'span-preview-close', style: spanPreviewClose, onClick: this.props.onClick },
-	                            _addons2.default.createElement(
+	                            _react2['default'].createElement(
 	                                'a',
 	                                { classname: 'a-null-tag', style: aNullTag },
 	                                'X'
 	                            )
 	                        )
 	                    ),
-	                    _addons2.default.createElement(
+	                    _react2['default'].createElement(
 	                        'div',
 	                        { className: 'div-preview-content', style: divPreviewContent },
 	                        that.props.children
 	                    )
 	                )
 	            );
-	        } //previewStructure()
+	        }
+	        //previewStructure()
 
 	    }, {
 	        key: 'render',
 	        value: function render() {
+	            console.log("RENDER PREVIEW");
 	            return this.props.isOpen ? this.previewStructure() : null;
 	        }
 	    }, {
@@ -37353,2066 +37375,17 @@
 	    }, {
 	        key: 'findMaxHeight',
 	        value: function findMaxHeight() {
-	            var previewNode = _addons2.default.findDOMNode(this.refs.preview);
+	            var previewNode = _reactDom2['default'].findDOMNode(this.refs.preview);
 
 	            return previewNode.scrollHeight + "px";
 	        }
 	    }]);
 
 	    return Preview;
-	})(_addons2.default.Component);
+	})(_react2['default'].Component);
 
-	exports.default = Preview;
-
-/***/ },
-/* 213 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	var warning = __webpack_require__(25);
-	warning(
-	  false,
-	  // Require examples in this string must be split to prevent React's
-	  // build tools from mistaking them for real requires.
-	  // Otherwise the build tools will attempt to build a 'react-addons-{addon}' module.
-	  'require' + "('react/addons') is deprecated. " +
-	  'Access using require' + "('react-addons-{addon}') instead."
-	);
-
-	module.exports = __webpack_require__(214);
-
-
-/***/ },
-/* 214 */
-/***/ function(module, exports, __webpack_require__) {
-
-	/**
-	 * Copyright 2013-2015, Facebook, Inc.
-	 * All rights reserved.
-	 *
-	 * This source code is licensed under the BSD-style license found in the
-	 * LICENSE file in the root directory of this source tree. An additional grant
-	 * of patent rights can be found in the PATENTS file in the same directory.
-	 *
-	 * @providesModule ReactWithAddons
-	 */
-
-	/**
-	 * This module exists purely in the open source project, and is meant as a way
-	 * to create a separate standalone build of React. This build has "addons", or
-	 * functionality we've built and think might be useful but doesn't have a good
-	 * place to live inside React core.
-	 */
-
-	'use strict';
-
-	var LinkedStateMixin = __webpack_require__(215);
-	var React = __webpack_require__(3);
-	var ReactComponentWithPureRenderMixin = __webpack_require__(218);
-	var ReactCSSTransitionGroup = __webpack_require__(220);
-	var ReactFragment = __webpack_require__(226);
-	var ReactTransitionGroup = __webpack_require__(221);
-	var ReactUpdates = __webpack_require__(54);
-
-	var cloneWithProps = __webpack_require__(227);
-	var shallowCompare = __webpack_require__(219);
-	var update = __webpack_require__(230);
-	var warning = __webpack_require__(25);
-
-	var warnedAboutBatchedUpdates = false;
-
-	React.addons = {
-	  CSSTransitionGroup: ReactCSSTransitionGroup,
-	  LinkedStateMixin: LinkedStateMixin,
-	  PureRenderMixin: ReactComponentWithPureRenderMixin,
-	  TransitionGroup: ReactTransitionGroup,
-
-	  batchedUpdates: function () {
-	    if (true) {
-	       true ? warning(warnedAboutBatchedUpdates, 'React.addons.batchedUpdates is deprecated. Use ' + 'ReactDOM.unstable_batchedUpdates instead.') : undefined;
-	      warnedAboutBatchedUpdates = true;
-	    }
-	    return ReactUpdates.batchedUpdates.apply(this, arguments);
-	  },
-	  cloneWithProps: cloneWithProps,
-	  createFragment: ReactFragment.create,
-	  shallowCompare: shallowCompare,
-	  update: update
-	};
-
-	if (true) {
-	  React.addons.Perf = __webpack_require__(142);
-	  React.addons.TestUtils = __webpack_require__(231);
-	}
-
-	module.exports = React;
-
-/***/ },
-/* 215 */
-/***/ function(module, exports, __webpack_require__) {
-
-	/**
-	 * Copyright 2013-2015, Facebook, Inc.
-	 * All rights reserved.
-	 *
-	 * This source code is licensed under the BSD-style license found in the
-	 * LICENSE file in the root directory of this source tree. An additional grant
-	 * of patent rights can be found in the PATENTS file in the same directory.
-	 *
-	 * @providesModule LinkedStateMixin
-	 * @typechecks static-only
-	 */
-
-	'use strict';
-
-	var ReactLink = __webpack_require__(216);
-	var ReactStateSetters = __webpack_require__(217);
-
-	/**
-	 * A simple mixin around ReactLink.forState().
-	 */
-	var LinkedStateMixin = {
-	  /**
-	   * Create a ReactLink that's linked to part of this component's state. The
-	   * ReactLink will have the current value of this.state[key] and will call
-	   * setState() when a change is requested.
-	   *
-	   * @param {string} key state key to update. Note: you may want to use keyOf()
-	   * if you're using Google Closure Compiler advanced mode.
-	   * @return {ReactLink} ReactLink instance linking to the state.
-	   */
-	  linkState: function (key) {
-	    return new ReactLink(this.state[key], ReactStateSetters.createStateKeySetter(this, key));
-	  }
-	};
-
-	module.exports = LinkedStateMixin;
-
-/***/ },
-/* 216 */
-/***/ function(module, exports, __webpack_require__) {
-
-	/**
-	 * Copyright 2013-2015, Facebook, Inc.
-	 * All rights reserved.
-	 *
-	 * This source code is licensed under the BSD-style license found in the
-	 * LICENSE file in the root directory of this source tree. An additional grant
-	 * of patent rights can be found in the PATENTS file in the same directory.
-	 *
-	 * @providesModule ReactLink
-	 * @typechecks static-only
-	 */
-
-	'use strict';
-
-	/**
-	 * ReactLink encapsulates a common pattern in which a component wants to modify
-	 * a prop received from its parent. ReactLink allows the parent to pass down a
-	 * value coupled with a callback that, when invoked, expresses an intent to
-	 * modify that value. For example:
-	 *
-	 * React.createClass({
-	 *   getInitialState: function() {
-	 *     return {value: ''};
-	 *   },
-	 *   render: function() {
-	 *     var valueLink = new ReactLink(this.state.value, this._handleValueChange);
-	 *     return <input valueLink={valueLink} />;
-	 *   },
-	 *   _handleValueChange: function(newValue) {
-	 *     this.setState({value: newValue});
-	 *   }
-	 * });
-	 *
-	 * We have provided some sugary mixins to make the creation and
-	 * consumption of ReactLink easier; see LinkedValueUtils and LinkedStateMixin.
-	 */
-
-	var React = __webpack_require__(3);
-
-	/**
-	 * @param {*} value current value of the link
-	 * @param {function} requestChange callback to request a change
-	 */
-	function ReactLink(value, requestChange) {
-	  this.value = value;
-	  this.requestChange = requestChange;
-	}
-
-	/**
-	 * Creates a PropType that enforces the ReactLink API and optionally checks the
-	 * type of the value being passed inside the link. Example:
-	 *
-	 * MyComponent.propTypes = {
-	 *   tabIndexLink: ReactLink.PropTypes.link(React.PropTypes.number)
-	 * }
-	 */
-	function createLinkTypeChecker(linkType) {
-	  var shapes = {
-	    value: typeof linkType === 'undefined' ? React.PropTypes.any.isRequired : linkType.isRequired,
-	    requestChange: React.PropTypes.func.isRequired
-	  };
-	  return React.PropTypes.shape(shapes);
-	}
-
-	ReactLink.PropTypes = {
-	  link: createLinkTypeChecker
-	};
-
-	module.exports = ReactLink;
-
-/***/ },
-/* 217 */
-/***/ function(module, exports) {
-
-	/**
-	 * Copyright 2013-2015, Facebook, Inc.
-	 * All rights reserved.
-	 *
-	 * This source code is licensed under the BSD-style license found in the
-	 * LICENSE file in the root directory of this source tree. An additional grant
-	 * of patent rights can be found in the PATENTS file in the same directory.
-	 *
-	 * @providesModule ReactStateSetters
-	 */
-
-	'use strict';
-
-	var ReactStateSetters = {
-	  /**
-	   * Returns a function that calls the provided function, and uses the result
-	   * of that to set the component's state.
-	   *
-	   * @param {ReactCompositeComponent} component
-	   * @param {function} funcReturningState Returned callback uses this to
-	   *                                      determine how to update state.
-	   * @return {function} callback that when invoked uses funcReturningState to
-	   *                    determined the object literal to setState.
-	   */
-	  createStateSetter: function (component, funcReturningState) {
-	    return function (a, b, c, d, e, f) {
-	      var partialState = funcReturningState.call(component, a, b, c, d, e, f);
-	      if (partialState) {
-	        component.setState(partialState);
-	      }
-	    };
-	  },
-
-	  /**
-	   * Returns a single-argument callback that can be used to update a single
-	   * key in the component's state.
-	   *
-	   * Note: this is memoized function, which makes it inexpensive to call.
-	   *
-	   * @param {ReactCompositeComponent} component
-	   * @param {string} key The key in the state that you should update.
-	   * @return {function} callback of 1 argument which calls setState() with
-	   *                    the provided keyName and callback argument.
-	   */
-	  createStateKeySetter: function (component, key) {
-	    // Memoize the setters.
-	    var cache = component.__keySetters || (component.__keySetters = {});
-	    return cache[key] || (cache[key] = createStateKeySetter(component, key));
-	  }
-	};
-
-	function createStateKeySetter(component, key) {
-	  // Partial state is allocated outside of the function closure so it can be
-	  // reused with every call, avoiding memory allocation when this function
-	  // is called.
-	  var partialState = {};
-	  return function stateKeySetter(value) {
-	    partialState[key] = value;
-	    component.setState(partialState);
-	  };
-	}
-
-	ReactStateSetters.Mixin = {
-	  /**
-	   * Returns a function that calls the provided function, and uses the result
-	   * of that to set the component's state.
-	   *
-	   * For example, these statements are equivalent:
-	   *
-	   *   this.setState({x: 1});
-	   *   this.createStateSetter(function(xValue) {
-	   *     return {x: xValue};
-	   *   })(1);
-	   *
-	   * @param {function} funcReturningState Returned callback uses this to
-	   *                                      determine how to update state.
-	   * @return {function} callback that when invoked uses funcReturningState to
-	   *                    determined the object literal to setState.
-	   */
-	  createStateSetter: function (funcReturningState) {
-	    return ReactStateSetters.createStateSetter(this, funcReturningState);
-	  },
-
-	  /**
-	   * Returns a single-argument callback that can be used to update a single
-	   * key in the component's state.
-	   *
-	   * For example, these statements are equivalent:
-	   *
-	   *   this.setState({x: 1});
-	   *   this.createStateKeySetter('x')(1);
-	   *
-	   * Note: this is memoized function, which makes it inexpensive to call.
-	   *
-	   * @param {string} key The key in the state that you should update.
-	   * @return {function} callback of 1 argument which calls setState() with
-	   *                    the provided keyName and callback argument.
-	   */
-	  createStateKeySetter: function (key) {
-	    return ReactStateSetters.createStateKeySetter(this, key);
-	  }
-	};
-
-	module.exports = ReactStateSetters;
-
-/***/ },
-/* 218 */
-/***/ function(module, exports, __webpack_require__) {
-
-	/**
-	 * Copyright 2013-2015, Facebook, Inc.
-	 * All rights reserved.
-	 *
-	 * This source code is licensed under the BSD-style license found in the
-	 * LICENSE file in the root directory of this source tree. An additional grant
-	 * of patent rights can be found in the PATENTS file in the same directory.
-	 *
-	 * @providesModule ReactComponentWithPureRenderMixin
-	 */
-
-	'use strict';
-
-	var shallowCompare = __webpack_require__(219);
-
-	/**
-	 * If your React component's render function is "pure", e.g. it will render the
-	 * same result given the same props and state, provide this Mixin for a
-	 * considerable performance boost.
-	 *
-	 * Most React components have pure render functions.
-	 *
-	 * Example:
-	 *
-	 *   var ReactComponentWithPureRenderMixin =
-	 *     require('ReactComponentWithPureRenderMixin');
-	 *   React.createClass({
-	 *     mixins: [ReactComponentWithPureRenderMixin],
-	 *
-	 *     render: function() {
-	 *       return <div className={this.props.className}>foo</div>;
-	 *     }
-	 *   });
-	 *
-	 * Note: This only checks shallow equality for props and state. If these contain
-	 * complex data structures this mixin may have false-negatives for deeper
-	 * differences. Only mixin to components which have simple props and state, or
-	 * use `forceUpdate()` when you know deep data structures have changed.
-	 */
-	var ReactComponentWithPureRenderMixin = {
-	  shouldComponentUpdate: function (nextProps, nextState) {
-	    return shallowCompare(this, nextProps, nextState);
-	  }
-	};
-
-	module.exports = ReactComponentWithPureRenderMixin;
-
-/***/ },
-/* 219 */
-/***/ function(module, exports, __webpack_require__) {
-
-	/**
-	 * Copyright 2013-2015, Facebook, Inc.
-	 * All rights reserved.
-	 *
-	 * This source code is licensed under the BSD-style license found in the
-	 * LICENSE file in the root directory of this source tree. An additional grant
-	 * of patent rights can be found in the PATENTS file in the same directory.
-	 *
-	* @providesModule shallowCompare
-	*/
-
-	'use strict';
-
-	var shallowEqual = __webpack_require__(117);
-
-	/**
-	 * Does a shallow comparison for props and state.
-	 * See ReactComponentWithPureRenderMixin
-	 */
-	function shallowCompare(instance, nextProps, nextState) {
-	  return !shallowEqual(instance.props, nextProps) || !shallowEqual(instance.state, nextState);
-	}
-
-	module.exports = shallowCompare;
-
-/***/ },
-/* 220 */
-/***/ function(module, exports, __webpack_require__) {
-
-	/**
-	 * Copyright 2013-2015, Facebook, Inc.
-	 * All rights reserved.
-	 *
-	 * This source code is licensed under the BSD-style license found in the
-	 * LICENSE file in the root directory of this source tree. An additional grant
-	 * of patent rights can be found in the PATENTS file in the same directory.
-	 *
-	 * @typechecks
-	 * @providesModule ReactCSSTransitionGroup
-	 */
-
-	'use strict';
-
-	var React = __webpack_require__(3);
-
-	var assign = __webpack_require__(39);
-
-	var ReactTransitionGroup = __webpack_require__(221);
-	var ReactCSSTransitionGroupChild = __webpack_require__(223);
-
-	function createTransitionTimeoutPropValidator(transitionType) {
-	  var timeoutPropName = 'transition' + transitionType + 'Timeout';
-	  var enabledPropName = 'transition' + transitionType;
-
-	  return function (props) {
-	    // If the transition is enabled
-	    if (props[enabledPropName]) {
-	      // If no timeout duration is provided
-	      if (props[timeoutPropName] == null) {
-	        return new Error(timeoutPropName + ' wasn\'t supplied to ReactCSSTransitionGroup: ' + 'this can cause unreliable animations and won\'t be supported in ' + 'a future version of React. See ' + 'https://fb.me/react-animation-transition-group-timeout for more ' + 'information.');
-
-	        // If the duration isn't a number
-	      } else if (typeof props[timeoutPropName] !== 'number') {
-	          return new Error(timeoutPropName + ' must be a number (in milliseconds)');
-	        }
-	    }
-	  };
-	}
-
-	var ReactCSSTransitionGroup = React.createClass({
-	  displayName: 'ReactCSSTransitionGroup',
-
-	  propTypes: {
-	    transitionName: ReactCSSTransitionGroupChild.propTypes.name,
-
-	    transitionAppear: React.PropTypes.bool,
-	    transitionEnter: React.PropTypes.bool,
-	    transitionLeave: React.PropTypes.bool,
-	    transitionAppearTimeout: createTransitionTimeoutPropValidator('Appear'),
-	    transitionEnterTimeout: createTransitionTimeoutPropValidator('Enter'),
-	    transitionLeaveTimeout: createTransitionTimeoutPropValidator('Leave')
-	  },
-
-	  getDefaultProps: function () {
-	    return {
-	      transitionAppear: false,
-	      transitionEnter: true,
-	      transitionLeave: true
-	    };
-	  },
-
-	  _wrapChild: function (child) {
-	    // We need to provide this childFactory so that
-	    // ReactCSSTransitionGroupChild can receive updates to name, enter, and
-	    // leave while it is leaving.
-	    return React.createElement(ReactCSSTransitionGroupChild, {
-	      name: this.props.transitionName,
-	      appear: this.props.transitionAppear,
-	      enter: this.props.transitionEnter,
-	      leave: this.props.transitionLeave,
-	      appearTimeout: this.props.transitionAppearTimeout,
-	      enterTimeout: this.props.transitionEnterTimeout,
-	      leaveTimeout: this.props.transitionLeaveTimeout
-	    }, child);
-	  },
-
-	  render: function () {
-	    return React.createElement(ReactTransitionGroup, assign({}, this.props, { childFactory: this._wrapChild }));
-	  }
-	});
-
-	module.exports = ReactCSSTransitionGroup;
-
-/***/ },
-/* 221 */
-/***/ function(module, exports, __webpack_require__) {
-
-	/**
-	 * Copyright 2013-2015, Facebook, Inc.
-	 * All rights reserved.
-	 *
-	 * This source code is licensed under the BSD-style license found in the
-	 * LICENSE file in the root directory of this source tree. An additional grant
-	 * of patent rights can be found in the PATENTS file in the same directory.
-	 *
-	 * @providesModule ReactTransitionGroup
-	 */
-
-	'use strict';
-
-	var React = __webpack_require__(3);
-	var ReactTransitionChildMapping = __webpack_require__(222);
-
-	var assign = __webpack_require__(39);
-	var emptyFunction = __webpack_require__(15);
-
-	var ReactTransitionGroup = React.createClass({
-	  displayName: 'ReactTransitionGroup',
-
-	  propTypes: {
-	    component: React.PropTypes.any,
-	    childFactory: React.PropTypes.func
-	  },
-
-	  getDefaultProps: function () {
-	    return {
-	      component: 'span',
-	      childFactory: emptyFunction.thatReturnsArgument
-	    };
-	  },
-
-	  getInitialState: function () {
-	    return {
-	      children: ReactTransitionChildMapping.getChildMapping(this.props.children)
-	    };
-	  },
-
-	  componentWillMount: function () {
-	    this.currentlyTransitioningKeys = {};
-	    this.keysToEnter = [];
-	    this.keysToLeave = [];
-	  },
-
-	  componentDidMount: function () {
-	    var initialChildMapping = this.state.children;
-	    for (var key in initialChildMapping) {
-	      if (initialChildMapping[key]) {
-	        this.performAppear(key);
-	      }
-	    }
-	  },
-
-	  componentWillReceiveProps: function (nextProps) {
-	    var nextChildMapping = ReactTransitionChildMapping.getChildMapping(nextProps.children);
-	    var prevChildMapping = this.state.children;
-
-	    this.setState({
-	      children: ReactTransitionChildMapping.mergeChildMappings(prevChildMapping, nextChildMapping)
-	    });
-
-	    var key;
-
-	    for (key in nextChildMapping) {
-	      var hasPrev = prevChildMapping && prevChildMapping.hasOwnProperty(key);
-	      if (nextChildMapping[key] && !hasPrev && !this.currentlyTransitioningKeys[key]) {
-	        this.keysToEnter.push(key);
-	      }
-	    }
-
-	    for (key in prevChildMapping) {
-	      var hasNext = nextChildMapping && nextChildMapping.hasOwnProperty(key);
-	      if (prevChildMapping[key] && !hasNext && !this.currentlyTransitioningKeys[key]) {
-	        this.keysToLeave.push(key);
-	      }
-	    }
-
-	    // If we want to someday check for reordering, we could do it here.
-	  },
-
-	  componentDidUpdate: function () {
-	    var keysToEnter = this.keysToEnter;
-	    this.keysToEnter = [];
-	    keysToEnter.forEach(this.performEnter);
-
-	    var keysToLeave = this.keysToLeave;
-	    this.keysToLeave = [];
-	    keysToLeave.forEach(this.performLeave);
-	  },
-
-	  performAppear: function (key) {
-	    this.currentlyTransitioningKeys[key] = true;
-
-	    var component = this.refs[key];
-
-	    if (component.componentWillAppear) {
-	      component.componentWillAppear(this._handleDoneAppearing.bind(this, key));
-	    } else {
-	      this._handleDoneAppearing(key);
-	    }
-	  },
-
-	  _handleDoneAppearing: function (key) {
-	    var component = this.refs[key];
-	    if (component.componentDidAppear) {
-	      component.componentDidAppear();
-	    }
-
-	    delete this.currentlyTransitioningKeys[key];
-
-	    var currentChildMapping = ReactTransitionChildMapping.getChildMapping(this.props.children);
-
-	    if (!currentChildMapping || !currentChildMapping.hasOwnProperty(key)) {
-	      // This was removed before it had fully appeared. Remove it.
-	      this.performLeave(key);
-	    }
-	  },
-
-	  performEnter: function (key) {
-	    this.currentlyTransitioningKeys[key] = true;
-
-	    var component = this.refs[key];
-
-	    if (component.componentWillEnter) {
-	      component.componentWillEnter(this._handleDoneEntering.bind(this, key));
-	    } else {
-	      this._handleDoneEntering(key);
-	    }
-	  },
-
-	  _handleDoneEntering: function (key) {
-	    var component = this.refs[key];
-	    if (component.componentDidEnter) {
-	      component.componentDidEnter();
-	    }
-
-	    delete this.currentlyTransitioningKeys[key];
-
-	    var currentChildMapping = ReactTransitionChildMapping.getChildMapping(this.props.children);
-
-	    if (!currentChildMapping || !currentChildMapping.hasOwnProperty(key)) {
-	      // This was removed before it had fully entered. Remove it.
-	      this.performLeave(key);
-	    }
-	  },
-
-	  performLeave: function (key) {
-	    this.currentlyTransitioningKeys[key] = true;
-
-	    var component = this.refs[key];
-	    if (component.componentWillLeave) {
-	      component.componentWillLeave(this._handleDoneLeaving.bind(this, key));
-	    } else {
-	      // Note that this is somewhat dangerous b/c it calls setState()
-	      // again, effectively mutating the component before all the work
-	      // is done.
-	      this._handleDoneLeaving(key);
-	    }
-	  },
-
-	  _handleDoneLeaving: function (key) {
-	    var component = this.refs[key];
-
-	    if (component.componentDidLeave) {
-	      component.componentDidLeave();
-	    }
-
-	    delete this.currentlyTransitioningKeys[key];
-
-	    var currentChildMapping = ReactTransitionChildMapping.getChildMapping(this.props.children);
-
-	    if (currentChildMapping && currentChildMapping.hasOwnProperty(key)) {
-	      // This entered again before it fully left. Add it again.
-	      this.performEnter(key);
-	    } else {
-	      this.setState(function (state) {
-	        var newChildren = assign({}, state.children);
-	        delete newChildren[key];
-	        return { children: newChildren };
-	      });
-	    }
-	  },
-
-	  render: function () {
-	    // TODO: we could get rid of the need for the wrapper node
-	    // by cloning a single child
-	    var childrenToRender = [];
-	    for (var key in this.state.children) {
-	      var child = this.state.children[key];
-	      if (child) {
-	        // You may need to apply reactive updates to a child as it is leaving.
-	        // The normal React way to do it won't work since the child will have
-	        // already been removed. In case you need this behavior you can provide
-	        // a childFactory function to wrap every child, even the ones that are
-	        // leaving.
-	        childrenToRender.push(React.cloneElement(this.props.childFactory(child), { ref: key, key: key }));
-	      }
-	    }
-	    return React.createElement(this.props.component, this.props, childrenToRender);
-	  }
-	});
-
-	module.exports = ReactTransitionGroup;
-
-/***/ },
-/* 222 */
-/***/ function(module, exports, __webpack_require__) {
-
-	/**
-	 * Copyright 2013-2015, Facebook, Inc.
-	 * All rights reserved.
-	 *
-	 * This source code is licensed under the BSD-style license found in the
-	 * LICENSE file in the root directory of this source tree. An additional grant
-	 * of patent rights can be found in the PATENTS file in the same directory.
-	 *
-	 * @typechecks static-only
-	 * @providesModule ReactTransitionChildMapping
-	 */
-
-	'use strict';
-
-	var flattenChildren = __webpack_require__(116);
-
-	var ReactTransitionChildMapping = {
-	  /**
-	   * Given `this.props.children`, return an object mapping key to child. Just
-	   * simple syntactic sugar around flattenChildren().
-	   *
-	   * @param {*} children `this.props.children`
-	   * @return {object} Mapping of key to child
-	   */
-	  getChildMapping: function (children) {
-	    if (!children) {
-	      return children;
-	    }
-	    return flattenChildren(children);
-	  },
-
-	  /**
-	   * When you're adding or removing children some may be added or removed in the
-	   * same render pass. We want to show *both* since we want to simultaneously
-	   * animate elements in and out. This function takes a previous set of keys
-	   * and a new set of keys and merges them with its best guess of the correct
-	   * ordering. In the future we may expose some of the utilities in
-	   * ReactMultiChild to make this easy, but for now React itself does not
-	   * directly have this concept of the union of prevChildren and nextChildren
-	   * so we implement it here.
-	   *
-	   * @param {object} prev prev children as returned from
-	   * `ReactTransitionChildMapping.getChildMapping()`.
-	   * @param {object} next next children as returned from
-	   * `ReactTransitionChildMapping.getChildMapping()`.
-	   * @return {object} a key set that contains all keys in `prev` and all keys
-	   * in `next` in a reasonable order.
-	   */
-	  mergeChildMappings: function (prev, next) {
-	    prev = prev || {};
-	    next = next || {};
-
-	    function getValueForKey(key) {
-	      if (next.hasOwnProperty(key)) {
-	        return next[key];
-	      } else {
-	        return prev[key];
-	      }
-	    }
-
-	    // For each key of `next`, the list of keys to insert before that key in
-	    // the combined list
-	    var nextKeysPending = {};
-
-	    var pendingKeys = [];
-	    for (var prevKey in prev) {
-	      if (next.hasOwnProperty(prevKey)) {
-	        if (pendingKeys.length) {
-	          nextKeysPending[prevKey] = pendingKeys;
-	          pendingKeys = [];
-	        }
-	      } else {
-	        pendingKeys.push(prevKey);
-	      }
-	    }
-
-	    var i;
-	    var childMapping = {};
-	    for (var nextKey in next) {
-	      if (nextKeysPending.hasOwnProperty(nextKey)) {
-	        for (i = 0; i < nextKeysPending[nextKey].length; i++) {
-	          var pendingNextKey = nextKeysPending[nextKey][i];
-	          childMapping[nextKeysPending[nextKey][i]] = getValueForKey(pendingNextKey);
-	        }
-	      }
-	      childMapping[nextKey] = getValueForKey(nextKey);
-	    }
-
-	    // Finally, add the keys which didn't appear before any key in `next`
-	    for (i = 0; i < pendingKeys.length; i++) {
-	      childMapping[pendingKeys[i]] = getValueForKey(pendingKeys[i]);
-	    }
-
-	    return childMapping;
-	  }
-	};
-
-	module.exports = ReactTransitionChildMapping;
-
-/***/ },
-/* 223 */
-/***/ function(module, exports, __webpack_require__) {
-
-	/**
-	 * Copyright 2013-2015, Facebook, Inc.
-	 * All rights reserved.
-	 *
-	 * This source code is licensed under the BSD-style license found in the
-	 * LICENSE file in the root directory of this source tree. An additional grant
-	 * of patent rights can be found in the PATENTS file in the same directory.
-	 *
-	 * @typechecks
-	 * @providesModule ReactCSSTransitionGroupChild
-	 */
-
-	'use strict';
-
-	var React = __webpack_require__(3);
-	var ReactDOM = __webpack_require__(4);
-
-	var CSSCore = __webpack_require__(224);
-	var ReactTransitionEvents = __webpack_require__(225);
-
-	var onlyChild = __webpack_require__(156);
-
-	// We don't remove the element from the DOM until we receive an animationend or
-	// transitionend event. If the user screws up and forgets to add an animation
-	// their node will be stuck in the DOM forever, so we detect if an animation
-	// does not start and if it doesn't, we just call the end listener immediately.
-	var TICK = 17;
-
-	var ReactCSSTransitionGroupChild = React.createClass({
-	  displayName: 'ReactCSSTransitionGroupChild',
-
-	  propTypes: {
-	    name: React.PropTypes.oneOfType([React.PropTypes.string, React.PropTypes.shape({
-	      enter: React.PropTypes.string,
-	      leave: React.PropTypes.string,
-	      active: React.PropTypes.string
-	    }), React.PropTypes.shape({
-	      enter: React.PropTypes.string,
-	      enterActive: React.PropTypes.string,
-	      leave: React.PropTypes.string,
-	      leaveActive: React.PropTypes.string,
-	      appear: React.PropTypes.string,
-	      appearActive: React.PropTypes.string
-	    })]).isRequired,
-
-	    // Once we require timeouts to be specified, we can remove the
-	    // boolean flags (appear etc.) and just accept a number
-	    // or a bool for the timeout flags (appearTimeout etc.)
-	    appear: React.PropTypes.bool,
-	    enter: React.PropTypes.bool,
-	    leave: React.PropTypes.bool,
-	    appearTimeout: React.PropTypes.number,
-	    enterTimeout: React.PropTypes.number,
-	    leaveTimeout: React.PropTypes.number
-	  },
-
-	  transition: function (animationType, finishCallback, userSpecifiedDelay) {
-	    var node = ReactDOM.findDOMNode(this);
-
-	    if (!node) {
-	      if (finishCallback) {
-	        finishCallback();
-	      }
-	      return;
-	    }
-
-	    var className = this.props.name[animationType] || this.props.name + '-' + animationType;
-	    var activeClassName = this.props.name[animationType + 'Active'] || className + '-active';
-	    var timeout = null;
-
-	    var endListener = function (e) {
-	      if (e && e.target !== node) {
-	        return;
-	      }
-
-	      clearTimeout(timeout);
-
-	      CSSCore.removeClass(node, className);
-	      CSSCore.removeClass(node, activeClassName);
-
-	      ReactTransitionEvents.removeEndEventListener(node, endListener);
-
-	      // Usually this optional callback is used for informing an owner of
-	      // a leave animation and telling it to remove the child.
-	      if (finishCallback) {
-	        finishCallback();
-	      }
-	    };
-
-	    CSSCore.addClass(node, className);
-
-	    // Need to do this to actually trigger a transition.
-	    this.queueClass(activeClassName);
-
-	    // If the user specified a timeout delay.
-	    if (userSpecifiedDelay) {
-	      // Clean-up the animation after the specified delay
-	      timeout = setTimeout(endListener, userSpecifiedDelay);
-	      this.transitionTimeouts.push(timeout);
-	    } else {
-	      // DEPRECATED: this listener will be removed in a future version of react
-	      ReactTransitionEvents.addEndEventListener(node, endListener);
-	    }
-	  },
-
-	  queueClass: function (className) {
-	    this.classNameQueue.push(className);
-
-	    if (!this.timeout) {
-	      this.timeout = setTimeout(this.flushClassNameQueue, TICK);
-	    }
-	  },
-
-	  flushClassNameQueue: function () {
-	    if (this.isMounted()) {
-	      this.classNameQueue.forEach(CSSCore.addClass.bind(CSSCore, ReactDOM.findDOMNode(this)));
-	    }
-	    this.classNameQueue.length = 0;
-	    this.timeout = null;
-	  },
-
-	  componentWillMount: function () {
-	    this.classNameQueue = [];
-	    this.transitionTimeouts = [];
-	  },
-
-	  componentWillUnmount: function () {
-	    if (this.timeout) {
-	      clearTimeout(this.timeout);
-	    }
-	    this.transitionTimeouts.forEach(function (timeout) {
-	      clearTimeout(timeout);
-	    });
-	  },
-
-	  componentWillAppear: function (done) {
-	    if (this.props.appear) {
-	      this.transition('appear', done, this.props.appearTimeout);
-	    } else {
-	      done();
-	    }
-	  },
-
-	  componentWillEnter: function (done) {
-	    if (this.props.enter) {
-	      this.transition('enter', done, this.props.enterTimeout);
-	    } else {
-	      done();
-	    }
-	  },
-
-	  componentWillLeave: function (done) {
-	    if (this.props.leave) {
-	      this.transition('leave', done, this.props.leaveTimeout);
-	    } else {
-	      done();
-	    }
-	  },
-
-	  render: function () {
-	    return onlyChild(this.props.children);
-	  }
-	});
-
-	module.exports = ReactCSSTransitionGroupChild;
-
-/***/ },
-/* 224 */
-/***/ function(module, exports, __webpack_require__) {
-
-	/**
-	 * Copyright 2013-2015, Facebook, Inc.
-	 * All rights reserved.
-	 *
-	 * This source code is licensed under the BSD-style license found in the
-	 * LICENSE file in the root directory of this source tree. An additional grant
-	 * of patent rights can be found in the PATENTS file in the same directory.
-	 *
-	 * @providesModule CSSCore
-	 * @typechecks
-	 */
-
-	'use strict';
-
-	var invariant = __webpack_require__(13);
-
-	/**
-	 * The CSSCore module specifies the API (and implements most of the methods)
-	 * that should be used when dealing with the display of elements (via their
-	 * CSS classes and visibility on screen. It is an API focused on mutating the
-	 * display and not reading it as no logical state should be encoded in the
-	 * display of elements.
-	 */
-
-	var CSSCore = {
-
-	  /**
-	   * Adds the class passed in to the element if it doesn't already have it.
-	   *
-	   * @param {DOMElement} element the element to set the class on
-	   * @param {string} className the CSS className
-	   * @return {DOMElement} the element passed in
-	   */
-	  addClass: function (element, className) {
-	    !!/\s/.test(className) ?  true ? invariant(false, 'CSSCore.addClass takes only a single class name. "%s" contains ' + 'multiple classes.', className) : invariant(false) : undefined;
-
-	    if (className) {
-	      if (element.classList) {
-	        element.classList.add(className);
-	      } else if (!CSSCore.hasClass(element, className)) {
-	        element.className = element.className + ' ' + className;
-	      }
-	    }
-	    return element;
-	  },
-
-	  /**
-	   * Removes the class passed in from the element
-	   *
-	   * @param {DOMElement} element the element to set the class on
-	   * @param {string} className the CSS className
-	   * @return {DOMElement} the element passed in
-	   */
-	  removeClass: function (element, className) {
-	    !!/\s/.test(className) ?  true ? invariant(false, 'CSSCore.removeClass takes only a single class name. "%s" contains ' + 'multiple classes.', className) : invariant(false) : undefined;
-
-	    if (className) {
-	      if (element.classList) {
-	        element.classList.remove(className);
-	      } else if (CSSCore.hasClass(element, className)) {
-	        element.className = element.className.replace(new RegExp('(^|\\s)' + className + '(?:\\s|$)', 'g'), '$1').replace(/\s+/g, ' ') // multiple spaces to one
-	        .replace(/^\s*|\s*$/g, ''); // trim the ends
-	      }
-	    }
-	    return element;
-	  },
-
-	  /**
-	   * Helper to add or remove a class from an element based on a condition.
-	   *
-	   * @param {DOMElement} element the element to set the class on
-	   * @param {string} className the CSS className
-	   * @param {*} bool condition to whether to add or remove the class
-	   * @return {DOMElement} the element passed in
-	   */
-	  conditionClass: function (element, className, bool) {
-	    return (bool ? CSSCore.addClass : CSSCore.removeClass)(element, className);
-	  },
-
-	  /**
-	   * Tests whether the element has the class specified.
-	   *
-	   * @param {DOMNode|DOMWindow} element the element to set the class on
-	   * @param {string} className the CSS className
-	   * @return {boolean} true if the element has the class, false if not
-	   */
-	  hasClass: function (element, className) {
-	    !!/\s/.test(className) ?  true ? invariant(false, 'CSS.hasClass takes only a single class name.') : invariant(false) : undefined;
-	    if (element.classList) {
-	      return !!className && element.classList.contains(className);
-	    }
-	    return (' ' + element.className + ' ').indexOf(' ' + className + ' ') > -1;
-	  }
-
-	};
-
-	module.exports = CSSCore;
-
-/***/ },
-/* 225 */
-/***/ function(module, exports, __webpack_require__) {
-
-	/**
-	 * Copyright 2013-2015, Facebook, Inc.
-	 * All rights reserved.
-	 *
-	 * This source code is licensed under the BSD-style license found in the
-	 * LICENSE file in the root directory of this source tree. An additional grant
-	 * of patent rights can be found in the PATENTS file in the same directory.
-	 *
-	 * @providesModule ReactTransitionEvents
-	 */
-
-	'use strict';
-
-	var ExecutionEnvironment = __webpack_require__(9);
-
-	/**
-	 * EVENT_NAME_MAP is used to determine which event fired when a
-	 * transition/animation ends, based on the style property used to
-	 * define that event.
-	 */
-	var EVENT_NAME_MAP = {
-	  transitionend: {
-	    'transition': 'transitionend',
-	    'WebkitTransition': 'webkitTransitionEnd',
-	    'MozTransition': 'mozTransitionEnd',
-	    'OTransition': 'oTransitionEnd',
-	    'msTransition': 'MSTransitionEnd'
-	  },
-
-	  animationend: {
-	    'animation': 'animationend',
-	    'WebkitAnimation': 'webkitAnimationEnd',
-	    'MozAnimation': 'mozAnimationEnd',
-	    'OAnimation': 'oAnimationEnd',
-	    'msAnimation': 'MSAnimationEnd'
-	  }
-	};
-
-	var endEvents = [];
-
-	function detectEvents() {
-	  var testEl = document.createElement('div');
-	  var style = testEl.style;
-
-	  // On some platforms, in particular some releases of Android 4.x,
-	  // the un-prefixed "animation" and "transition" properties are defined on the
-	  // style object but the events that fire will still be prefixed, so we need
-	  // to check if the un-prefixed events are useable, and if not remove them
-	  // from the map
-	  if (!('AnimationEvent' in window)) {
-	    delete EVENT_NAME_MAP.animationend.animation;
-	  }
-
-	  if (!('TransitionEvent' in window)) {
-	    delete EVENT_NAME_MAP.transitionend.transition;
-	  }
-
-	  for (var baseEventName in EVENT_NAME_MAP) {
-	    var baseEvents = EVENT_NAME_MAP[baseEventName];
-	    for (var styleName in baseEvents) {
-	      if (styleName in style) {
-	        endEvents.push(baseEvents[styleName]);
-	        break;
-	      }
-	    }
-	  }
-	}
-
-	if (ExecutionEnvironment.canUseDOM) {
-	  detectEvents();
-	}
-
-	// We use the raw {add|remove}EventListener() call because EventListener
-	// does not know how to remove event listeners and we really should
-	// clean up. Also, these events are not triggered in older browsers
-	// so we should be A-OK here.
-
-	function addEventListener(node, eventName, eventListener) {
-	  node.addEventListener(eventName, eventListener, false);
-	}
-
-	function removeEventListener(node, eventName, eventListener) {
-	  node.removeEventListener(eventName, eventListener, false);
-	}
-
-	var ReactTransitionEvents = {
-	  addEndEventListener: function (node, eventListener) {
-	    if (endEvents.length === 0) {
-	      // If CSS transitions are not supported, trigger an "end animation"
-	      // event immediately.
-	      window.setTimeout(eventListener, 0);
-	      return;
-	    }
-	    endEvents.forEach(function (endEvent) {
-	      addEventListener(node, endEvent, eventListener);
-	    });
-	  },
-
-	  removeEndEventListener: function (node, eventListener) {
-	    if (endEvents.length === 0) {
-	      return;
-	    }
-	    endEvents.forEach(function (endEvent) {
-	      removeEventListener(node, endEvent, eventListener);
-	    });
-	  }
-	};
-
-	module.exports = ReactTransitionEvents;
-
-/***/ },
-/* 226 */
-/***/ function(module, exports, __webpack_require__) {
-
-	/**
-	 * Copyright 2015, Facebook, Inc.
-	 * All rights reserved.
-	 *
-	 * This source code is licensed under the BSD-style license found in the
-	 * LICENSE file in the root directory of this source tree. An additional grant
-	 * of patent rights can be found in the PATENTS file in the same directory.
-	 *
-	 * @providesModule ReactFragment
-	 */
-
-	'use strict';
-
-	var ReactChildren = __webpack_require__(110);
-	var ReactElement = __webpack_require__(42);
-
-	var emptyFunction = __webpack_require__(15);
-	var invariant = __webpack_require__(13);
-	var warning = __webpack_require__(25);
-
-	/**
-	 * We used to allow keyed objects to serve as a collection of ReactElements,
-	 * or nested sets. This allowed us a way to explicitly key a set a fragment of
-	 * components. This is now being replaced with an opaque data structure.
-	 * The upgrade path is to call React.addons.createFragment({ key: value }) to
-	 * create a keyed fragment. The resulting data structure is an array.
-	 */
-
-	var numericPropertyRegex = /^\d+$/;
-
-	var warnedAboutNumeric = false;
-
-	var ReactFragment = {
-	  // Wrap a keyed object in an opaque proxy that warns you if you access any
-	  // of its properties.
-	  create: function (object) {
-	    if (typeof object !== 'object' || !object || Array.isArray(object)) {
-	       true ? warning(false, 'React.addons.createFragment only accepts a single object. Got: %s', object) : undefined;
-	      return object;
-	    }
-	    if (ReactElement.isValidElement(object)) {
-	       true ? warning(false, 'React.addons.createFragment does not accept a ReactElement ' + 'without a wrapper object.') : undefined;
-	      return object;
-	    }
-
-	    !(object.nodeType !== 1) ?  true ? invariant(false, 'React.addons.createFragment(...): Encountered an invalid child; DOM ' + 'elements are not valid children of React components.') : invariant(false) : undefined;
-
-	    var result = [];
-
-	    for (var key in object) {
-	      if (true) {
-	        if (!warnedAboutNumeric && numericPropertyRegex.test(key)) {
-	           true ? warning(false, 'React.addons.createFragment(...): Child objects should have ' + 'non-numeric keys so ordering is preserved.') : undefined;
-	          warnedAboutNumeric = true;
-	        }
-	      }
-	      ReactChildren.mapIntoWithKeyPrefixInternal(object[key], result, key, emptyFunction.thatReturnsArgument);
-	    }
-
-	    return result;
-	  }
-	};
-
-	module.exports = ReactFragment;
-
-/***/ },
-/* 227 */
-/***/ function(module, exports, __webpack_require__) {
-
-	/**
-	 * Copyright 2013-2015, Facebook, Inc.
-	 * All rights reserved.
-	 *
-	 * This source code is licensed under the BSD-style license found in the
-	 * LICENSE file in the root directory of this source tree. An additional grant
-	 * of patent rights can be found in the PATENTS file in the same directory.
-	 *
-	 * @typechecks static-only
-	 * @providesModule cloneWithProps
-	 */
-
-	'use strict';
-
-	var ReactElement = __webpack_require__(42);
-	var ReactPropTransferer = __webpack_require__(228);
-
-	var keyOf = __webpack_require__(79);
-	var warning = __webpack_require__(25);
-
-	var CHILDREN_PROP = keyOf({ children: null });
-
-	var didDeprecatedWarn = false;
-
-	/**
-	 * Sometimes you want to change the props of a child passed to you. Usually
-	 * this is to add a CSS class.
-	 *
-	 * @param {ReactElement} child child element you'd like to clone
-	 * @param {object} props props you'd like to modify. className and style will be
-	 * merged automatically.
-	 * @return {ReactElement} a clone of child with props merged in.
-	 * @deprecated
-	 */
-	function cloneWithProps(child, props) {
-	  if (true) {
-	     true ? warning(didDeprecatedWarn, 'cloneWithProps(...) is deprecated. ' + 'Please use React.cloneElement instead.') : undefined;
-	    didDeprecatedWarn = true;
-	     true ? warning(!child.ref, 'You are calling cloneWithProps() on a child with a ref. This is ' + 'dangerous because you\'re creating a new child which will not be ' + 'added as a ref to its parent.') : undefined;
-	  }
-
-	  var newProps = ReactPropTransferer.mergeProps(props, child.props);
-
-	  // Use `child.props.children` if it is provided.
-	  if (!newProps.hasOwnProperty(CHILDREN_PROP) && child.props.hasOwnProperty(CHILDREN_PROP)) {
-	    newProps.children = child.props.children;
-	  }
-
-	  // The current API doesn't retain _owner, which is why this
-	  // doesn't use ReactElement.cloneAndReplaceProps.
-	  return ReactElement.createElement(child.type, newProps);
-	}
-
-	module.exports = cloneWithProps;
-
-/***/ },
-/* 228 */
-/***/ function(module, exports, __webpack_require__) {
-
-	/**
-	 * Copyright 2013-2015, Facebook, Inc.
-	 * All rights reserved.
-	 *
-	 * This source code is licensed under the BSD-style license found in the
-	 * LICENSE file in the root directory of this source tree. An additional grant
-	 * of patent rights can be found in the PATENTS file in the same directory.
-	 *
-	 * @providesModule ReactPropTransferer
-	 */
-
-	'use strict';
-
-	var assign = __webpack_require__(39);
-	var emptyFunction = __webpack_require__(15);
-	var joinClasses = __webpack_require__(229);
-
-	/**
-	 * Creates a transfer strategy that will merge prop values using the supplied
-	 * `mergeStrategy`. If a prop was previously unset, this just sets it.
-	 *
-	 * @param {function} mergeStrategy
-	 * @return {function}
-	 */
-	function createTransferStrategy(mergeStrategy) {
-	  return function (props, key, value) {
-	    if (!props.hasOwnProperty(key)) {
-	      props[key] = value;
-	    } else {
-	      props[key] = mergeStrategy(props[key], value);
-	    }
-	  };
-	}
-
-	var transferStrategyMerge = createTransferStrategy(function (a, b) {
-	  // `merge` overrides the first object's (`props[key]` above) keys using the
-	  // second object's (`value`) keys. An object's style's existing `propA` would
-	  // get overridden. Flip the order here.
-	  return assign({}, b, a);
-	});
-
-	/**
-	 * Transfer strategies dictate how props are transferred by `transferPropsTo`.
-	 * NOTE: if you add any more exceptions to this list you should be sure to
-	 * update `cloneWithProps()` accordingly.
-	 */
-	var TransferStrategies = {
-	  /**
-	   * Never transfer `children`.
-	   */
-	  children: emptyFunction,
-	  /**
-	   * Transfer the `className` prop by merging them.
-	   */
-	  className: createTransferStrategy(joinClasses),
-	  /**
-	   * Transfer the `style` prop (which is an object) by merging them.
-	   */
-	  style: transferStrategyMerge
-	};
-
-	/**
-	 * Mutates the first argument by transferring the properties from the second
-	 * argument.
-	 *
-	 * @param {object} props
-	 * @param {object} newProps
-	 * @return {object}
-	 */
-	function transferInto(props, newProps) {
-	  for (var thisKey in newProps) {
-	    if (!newProps.hasOwnProperty(thisKey)) {
-	      continue;
-	    }
-
-	    var transferStrategy = TransferStrategies[thisKey];
-
-	    if (transferStrategy && TransferStrategies.hasOwnProperty(thisKey)) {
-	      transferStrategy(props, thisKey, newProps[thisKey]);
-	    } else if (!props.hasOwnProperty(thisKey)) {
-	      props[thisKey] = newProps[thisKey];
-	    }
-	  }
-	  return props;
-	}
-
-	/**
-	 * ReactPropTransferer are capable of transferring props to another component
-	 * using a `transferPropsTo` method.
-	 *
-	 * @class ReactPropTransferer
-	 */
-	var ReactPropTransferer = {
-
-	  /**
-	   * Merge two props objects using TransferStrategies.
-	   *
-	   * @param {object} oldProps original props (they take precedence)
-	   * @param {object} newProps new props to merge in
-	   * @return {object} a new object containing both sets of props merged.
-	   */
-	  mergeProps: function (oldProps, newProps) {
-	    return transferInto(assign({}, oldProps), newProps);
-	  }
-
-	};
-
-	module.exports = ReactPropTransferer;
-
-/***/ },
-/* 229 */
-/***/ function(module, exports) {
-
-	/**
-	 * Copyright 2013-2015, Facebook, Inc.
-	 * All rights reserved.
-	 *
-	 * This source code is licensed under the BSD-style license found in the
-	 * LICENSE file in the root directory of this source tree. An additional grant
-	 * of patent rights can be found in the PATENTS file in the same directory.
-	 *
-	 * @providesModule joinClasses
-	 * @typechecks static-only
-	 */
-
-	'use strict';
-
-	/**
-	 * Combines multiple className strings into one.
-	 * http://jsperf.com/joinclasses-args-vs-array
-	 *
-	 * @param {...?string} className
-	 * @return {string}
-	 */
-	function joinClasses(className /*, ... */) {
-	  if (!className) {
-	    className = '';
-	  }
-	  var nextClass;
-	  var argLength = arguments.length;
-	  if (argLength > 1) {
-	    for (var ii = 1; ii < argLength; ii++) {
-	      nextClass = arguments[ii];
-	      if (nextClass) {
-	        className = (className ? className + ' ' : '') + nextClass;
-	      }
-	    }
-	  }
-	  return className;
-	}
-
-	module.exports = joinClasses;
-
-/***/ },
-/* 230 */
-/***/ function(module, exports, __webpack_require__) {
-
-	/**
-	 * Copyright 2013-2015, Facebook, Inc.
-	 * All rights reserved.
-	 *
-	 * This source code is licensed under the BSD-style license found in the
-	 * LICENSE file in the root directory of this source tree. An additional grant
-	 * of patent rights can be found in the PATENTS file in the same directory.
-	 *
-	 * @providesModule update
-	 */
-
-	/* global hasOwnProperty:true */
-
-	'use strict';
-
-	var assign = __webpack_require__(39);
-	var keyOf = __webpack_require__(79);
-	var invariant = __webpack_require__(13);
-	var hasOwnProperty = ({}).hasOwnProperty;
-
-	function shallowCopy(x) {
-	  if (Array.isArray(x)) {
-	    return x.concat();
-	  } else if (x && typeof x === 'object') {
-	    return assign(new x.constructor(), x);
-	  } else {
-	    return x;
-	  }
-	}
-
-	var COMMAND_PUSH = keyOf({ $push: null });
-	var COMMAND_UNSHIFT = keyOf({ $unshift: null });
-	var COMMAND_SPLICE = keyOf({ $splice: null });
-	var COMMAND_SET = keyOf({ $set: null });
-	var COMMAND_MERGE = keyOf({ $merge: null });
-	var COMMAND_APPLY = keyOf({ $apply: null });
-
-	var ALL_COMMANDS_LIST = [COMMAND_PUSH, COMMAND_UNSHIFT, COMMAND_SPLICE, COMMAND_SET, COMMAND_MERGE, COMMAND_APPLY];
-
-	var ALL_COMMANDS_SET = {};
-
-	ALL_COMMANDS_LIST.forEach(function (command) {
-	  ALL_COMMANDS_SET[command] = true;
-	});
-
-	function invariantArrayCase(value, spec, command) {
-	  !Array.isArray(value) ?  true ? invariant(false, 'update(): expected target of %s to be an array; got %s.', command, value) : invariant(false) : undefined;
-	  var specValue = spec[command];
-	  !Array.isArray(specValue) ?  true ? invariant(false, 'update(): expected spec of %s to be an array; got %s. ' + 'Did you forget to wrap your parameter in an array?', command, specValue) : invariant(false) : undefined;
-	}
-
-	function update(value, spec) {
-	  !(typeof spec === 'object') ?  true ? invariant(false, 'update(): You provided a key path to update() that did not contain one ' + 'of %s. Did you forget to include {%s: ...}?', ALL_COMMANDS_LIST.join(', '), COMMAND_SET) : invariant(false) : undefined;
-
-	  if (hasOwnProperty.call(spec, COMMAND_SET)) {
-	    !(Object.keys(spec).length === 1) ?  true ? invariant(false, 'Cannot have more than one key in an object with %s', COMMAND_SET) : invariant(false) : undefined;
-
-	    return spec[COMMAND_SET];
-	  }
-
-	  var nextValue = shallowCopy(value);
-
-	  if (hasOwnProperty.call(spec, COMMAND_MERGE)) {
-	    var mergeObj = spec[COMMAND_MERGE];
-	    !(mergeObj && typeof mergeObj === 'object') ?  true ? invariant(false, 'update(): %s expects a spec of type \'object\'; got %s', COMMAND_MERGE, mergeObj) : invariant(false) : undefined;
-	    !(nextValue && typeof nextValue === 'object') ?  true ? invariant(false, 'update(): %s expects a target of type \'object\'; got %s', COMMAND_MERGE, nextValue) : invariant(false) : undefined;
-	    assign(nextValue, spec[COMMAND_MERGE]);
-	  }
-
-	  if (hasOwnProperty.call(spec, COMMAND_PUSH)) {
-	    invariantArrayCase(value, spec, COMMAND_PUSH);
-	    spec[COMMAND_PUSH].forEach(function (item) {
-	      nextValue.push(item);
-	    });
-	  }
-
-	  if (hasOwnProperty.call(spec, COMMAND_UNSHIFT)) {
-	    invariantArrayCase(value, spec, COMMAND_UNSHIFT);
-	    spec[COMMAND_UNSHIFT].forEach(function (item) {
-	      nextValue.unshift(item);
-	    });
-	  }
-
-	  if (hasOwnProperty.call(spec, COMMAND_SPLICE)) {
-	    !Array.isArray(value) ?  true ? invariant(false, 'Expected %s target to be an array; got %s', COMMAND_SPLICE, value) : invariant(false) : undefined;
-	    !Array.isArray(spec[COMMAND_SPLICE]) ?  true ? invariant(false, 'update(): expected spec of %s to be an array of arrays; got %s. ' + 'Did you forget to wrap your parameters in an array?', COMMAND_SPLICE, spec[COMMAND_SPLICE]) : invariant(false) : undefined;
-	    spec[COMMAND_SPLICE].forEach(function (args) {
-	      !Array.isArray(args) ?  true ? invariant(false, 'update(): expected spec of %s to be an array of arrays; got %s. ' + 'Did you forget to wrap your parameters in an array?', COMMAND_SPLICE, spec[COMMAND_SPLICE]) : invariant(false) : undefined;
-	      nextValue.splice.apply(nextValue, args);
-	    });
-	  }
-
-	  if (hasOwnProperty.call(spec, COMMAND_APPLY)) {
-	    !(typeof spec[COMMAND_APPLY] === 'function') ?  true ? invariant(false, 'update(): expected spec of %s to be a function; got %s.', COMMAND_APPLY, spec[COMMAND_APPLY]) : invariant(false) : undefined;
-	    nextValue = spec[COMMAND_APPLY](nextValue);
-	  }
-
-	  for (var k in spec) {
-	    if (!(ALL_COMMANDS_SET.hasOwnProperty(k) && ALL_COMMANDS_SET[k])) {
-	      nextValue[k] = update(value[k], spec[k]);
-	    }
-	  }
-
-	  return nextValue;
-	}
-
-	module.exports = update;
-
-/***/ },
-/* 231 */
-/***/ function(module, exports, __webpack_require__) {
-
-	/**
-	 * Copyright 2013-2015, Facebook, Inc.
-	 * All rights reserved.
-	 *
-	 * This source code is licensed under the BSD-style license found in the
-	 * LICENSE file in the root directory of this source tree. An additional grant
-	 * of patent rights can be found in the PATENTS file in the same directory.
-	 *
-	 * @providesModule ReactTestUtils
-	 */
-
-	'use strict';
-
-	var EventConstants = __webpack_require__(30);
-	var EventPluginHub = __webpack_require__(31);
-	var EventPropagators = __webpack_require__(73);
-	var React = __webpack_require__(3);
-	var ReactDOM = __webpack_require__(4);
-	var ReactElement = __webpack_require__(42);
-	var ReactBrowserEventEmitter = __webpack_require__(29);
-	var ReactCompositeComponent = __webpack_require__(63);
-	var ReactInstanceHandles = __webpack_require__(45);
-	var ReactInstanceMap = __webpack_require__(47);
-	var ReactMount = __webpack_require__(28);
-	var ReactUpdates = __webpack_require__(54);
-	var SyntheticEvent = __webpack_require__(77);
-
-	var assign = __webpack_require__(39);
-	var emptyObject = __webpack_require__(58);
-	var findDOMNode = __webpack_require__(91);
-	var invariant = __webpack_require__(13);
-
-	var topLevelTypes = EventConstants.topLevelTypes;
-
-	function Event(suffix) {}
-
-	/**
-	 * @class ReactTestUtils
-	 */
-
-	function findAllInRenderedTreeInternal(inst, test) {
-	  if (!inst || !inst.getPublicInstance) {
-	    return [];
-	  }
-	  var publicInst = inst.getPublicInstance();
-	  var ret = test(publicInst) ? [publicInst] : [];
-	  var currentElement = inst._currentElement;
-	  if (ReactTestUtils.isDOMComponent(publicInst)) {
-	    var renderedChildren = inst._renderedChildren;
-	    var key;
-	    for (key in renderedChildren) {
-	      if (!renderedChildren.hasOwnProperty(key)) {
-	        continue;
-	      }
-	      ret = ret.concat(findAllInRenderedTreeInternal(renderedChildren[key], test));
-	    }
-	  } else if (ReactElement.isValidElement(currentElement) && typeof currentElement.type === 'function') {
-	    ret = ret.concat(findAllInRenderedTreeInternal(inst._renderedComponent, test));
-	  }
-	  return ret;
-	}
-
-	/**
-	 * Todo: Support the entire DOM.scry query syntax. For now, these simple
-	 * utilities will suffice for testing purposes.
-	 * @lends ReactTestUtils
-	 */
-	var ReactTestUtils = {
-	  renderIntoDocument: function (instance) {
-	    var div = document.createElement('div');
-	    // None of our tests actually require attaching the container to the
-	    // DOM, and doing so creates a mess that we rely on test isolation to
-	    // clean up, so we're going to stop honoring the name of this method
-	    // (and probably rename it eventually) if no problems arise.
-	    // document.documentElement.appendChild(div);
-	    return ReactDOM.render(instance, div);
-	  },
-
-	  isElement: function (element) {
-	    return ReactElement.isValidElement(element);
-	  },
-
-	  isElementOfType: function (inst, convenienceConstructor) {
-	    return ReactElement.isValidElement(inst) && inst.type === convenienceConstructor;
-	  },
-
-	  isDOMComponent: function (inst) {
-	    return !!(inst && inst.nodeType === 1 && inst.tagName);
-	  },
-
-	  isDOMComponentElement: function (inst) {
-	    return !!(inst && ReactElement.isValidElement(inst) && !!inst.tagName);
-	  },
-
-	  isCompositeComponent: function (inst) {
-	    if (ReactTestUtils.isDOMComponent(inst)) {
-	      // Accessing inst.setState warns; just return false as that'll be what
-	      // this returns when we have DOM nodes as refs directly
-	      return false;
-	    }
-	    return inst != null && typeof inst.render === 'function' && typeof inst.setState === 'function';
-	  },
-
-	  isCompositeComponentWithType: function (inst, type) {
-	    if (!ReactTestUtils.isCompositeComponent(inst)) {
-	      return false;
-	    }
-	    var internalInstance = ReactInstanceMap.get(inst);
-	    var constructor = internalInstance._currentElement.type;
-
-	    return constructor === type;
-	  },
-
-	  isCompositeComponentElement: function (inst) {
-	    if (!ReactElement.isValidElement(inst)) {
-	      return false;
-	    }
-	    // We check the prototype of the type that will get mounted, not the
-	    // instance itself. This is a future proof way of duck typing.
-	    var prototype = inst.type.prototype;
-	    return typeof prototype.render === 'function' && typeof prototype.setState === 'function';
-	  },
-
-	  isCompositeComponentElementWithType: function (inst, type) {
-	    var internalInstance = ReactInstanceMap.get(inst);
-	    var constructor = internalInstance._currentElement.type;
-
-	    return !!(ReactTestUtils.isCompositeComponentElement(inst) && constructor === type);
-	  },
-
-	  getRenderedChildOfCompositeComponent: function (inst) {
-	    if (!ReactTestUtils.isCompositeComponent(inst)) {
-	      return null;
-	    }
-	    var internalInstance = ReactInstanceMap.get(inst);
-	    return internalInstance._renderedComponent.getPublicInstance();
-	  },
-
-	  findAllInRenderedTree: function (inst, test) {
-	    if (!inst) {
-	      return [];
-	    }
-	    !ReactTestUtils.isCompositeComponent(inst) ?  true ? invariant(false, 'findAllInRenderedTree(...): instance must be a composite component') : invariant(false) : undefined;
-	    return findAllInRenderedTreeInternal(ReactInstanceMap.get(inst), test);
-	  },
-
-	  /**
-	   * Finds all instance of components in the rendered tree that are DOM
-	   * components with the class name matching `className`.
-	   * @return {array} an array of all the matches.
-	   */
-	  scryRenderedDOMComponentsWithClass: function (root, classNames) {
-	    if (!Array.isArray(classNames)) {
-	      classNames = classNames.split(/\s+/);
-	    }
-	    return ReactTestUtils.findAllInRenderedTree(root, function (inst) {
-	      if (ReactTestUtils.isDOMComponent(inst)) {
-	        var className = inst.className;
-	        if (typeof className !== 'string') {
-	          // SVG, probably.
-	          className = inst.getAttribute('class') || '';
-	        }
-	        var classList = className.split(/\s+/);
-	        return classNames.every(function (name) {
-	          return classList.indexOf(name) !== -1;
-	        });
-	      }
-	      return false;
-	    });
-	  },
-
-	  /**
-	   * Like scryRenderedDOMComponentsWithClass but expects there to be one result,
-	   * and returns that one result, or throws exception if there is any other
-	   * number of matches besides one.
-	   * @return {!ReactDOMComponent} The one match.
-	   */
-	  findRenderedDOMComponentWithClass: function (root, className) {
-	    var all = ReactTestUtils.scryRenderedDOMComponentsWithClass(root, className);
-	    if (all.length !== 1) {
-	      throw new Error('Did not find exactly one match ' + '(found: ' + all.length + ') for class:' + className);
-	    }
-	    return all[0];
-	  },
-
-	  /**
-	   * Finds all instance of components in the rendered tree that are DOM
-	   * components with the tag name matching `tagName`.
-	   * @return {array} an array of all the matches.
-	   */
-	  scryRenderedDOMComponentsWithTag: function (root, tagName) {
-	    return ReactTestUtils.findAllInRenderedTree(root, function (inst) {
-	      return ReactTestUtils.isDOMComponent(inst) && inst.tagName.toUpperCase() === tagName.toUpperCase();
-	    });
-	  },
-
-	  /**
-	   * Like scryRenderedDOMComponentsWithTag but expects there to be one result,
-	   * and returns that one result, or throws exception if there is any other
-	   * number of matches besides one.
-	   * @return {!ReactDOMComponent} The one match.
-	   */
-	  findRenderedDOMComponentWithTag: function (root, tagName) {
-	    var all = ReactTestUtils.scryRenderedDOMComponentsWithTag(root, tagName);
-	    if (all.length !== 1) {
-	      throw new Error('Did not find exactly one match for tag:' + tagName);
-	    }
-	    return all[0];
-	  },
-
-	  /**
-	   * Finds all instances of components with type equal to `componentType`.
-	   * @return {array} an array of all the matches.
-	   */
-	  scryRenderedComponentsWithType: function (root, componentType) {
-	    return ReactTestUtils.findAllInRenderedTree(root, function (inst) {
-	      return ReactTestUtils.isCompositeComponentWithType(inst, componentType);
-	    });
-	  },
-
-	  /**
-	   * Same as `scryRenderedComponentsWithType` but expects there to be one result
-	   * and returns that one result, or throws exception if there is any other
-	   * number of matches besides one.
-	   * @return {!ReactComponent} The one match.
-	   */
-	  findRenderedComponentWithType: function (root, componentType) {
-	    var all = ReactTestUtils.scryRenderedComponentsWithType(root, componentType);
-	    if (all.length !== 1) {
-	      throw new Error('Did not find exactly one match for componentType:' + componentType + ' (found ' + all.length + ')');
-	    }
-	    return all[0];
-	  },
-
-	  /**
-	   * Pass a mocked component module to this method to augment it with
-	   * useful methods that allow it to be used as a dummy React component.
-	   * Instead of rendering as usual, the component will become a simple
-	   * <div> containing any provided children.
-	   *
-	   * @param {object} module the mock function object exported from a
-	   *                        module that defines the component to be mocked
-	   * @param {?string} mockTagName optional dummy root tag name to return
-	   *                              from render method (overrides
-	   *                              module.mockTagName if provided)
-	   * @return {object} the ReactTestUtils object (for chaining)
-	   */
-	  mockComponent: function (module, mockTagName) {
-	    mockTagName = mockTagName || module.mockTagName || 'div';
-
-	    module.prototype.render.mockImplementation(function () {
-	      return React.createElement(mockTagName, null, this.props.children);
-	    });
-
-	    return this;
-	  },
-
-	  /**
-	   * Simulates a top level event being dispatched from a raw event that occurred
-	   * on an `Element` node.
-	   * @param {Object} topLevelType A type from `EventConstants.topLevelTypes`
-	   * @param {!Element} node The dom to simulate an event occurring on.
-	   * @param {?Event} fakeNativeEvent Fake native event to use in SyntheticEvent.
-	   */
-	  simulateNativeEventOnNode: function (topLevelType, node, fakeNativeEvent) {
-	    fakeNativeEvent.target = node;
-	    ReactBrowserEventEmitter.ReactEventListener.dispatchEvent(topLevelType, fakeNativeEvent);
-	  },
-
-	  /**
-	   * Simulates a top level event being dispatched from a raw event that occurred
-	   * on the `ReactDOMComponent` `comp`.
-	   * @param {Object} topLevelType A type from `EventConstants.topLevelTypes`.
-	   * @param {!ReactDOMComponent} comp
-	   * @param {?Event} fakeNativeEvent Fake native event to use in SyntheticEvent.
-	   */
-	  simulateNativeEventOnDOMComponent: function (topLevelType, comp, fakeNativeEvent) {
-	    ReactTestUtils.simulateNativeEventOnNode(topLevelType, findDOMNode(comp), fakeNativeEvent);
-	  },
-
-	  nativeTouchData: function (x, y) {
-	    return {
-	      touches: [{ pageX: x, pageY: y }]
-	    };
-	  },
-
-	  createRenderer: function () {
-	    return new ReactShallowRenderer();
-	  },
-
-	  Simulate: null,
-	  SimulateNative: {}
-	};
-
-	/**
-	 * @class ReactShallowRenderer
-	 */
-	var ReactShallowRenderer = function () {
-	  this._instance = null;
-	};
-
-	ReactShallowRenderer.prototype.getRenderOutput = function () {
-	  return this._instance && this._instance._renderedComponent && this._instance._renderedComponent._renderedOutput || null;
-	};
-
-	var NoopInternalComponent = function (element) {
-	  this._renderedOutput = element;
-	  this._currentElement = element;
-	};
-
-	NoopInternalComponent.prototype = {
-
-	  mountComponent: function () {},
-
-	  receiveComponent: function (element) {
-	    this._renderedOutput = element;
-	    this._currentElement = element;
-	  },
-
-	  unmountComponent: function () {},
-
-	  getPublicInstance: function () {
-	    return null;
-	  }
-	};
-
-	var ShallowComponentWrapper = function () {};
-	assign(ShallowComponentWrapper.prototype, ReactCompositeComponent.Mixin, {
-	  _instantiateReactComponent: function (element) {
-	    return new NoopInternalComponent(element);
-	  },
-	  _replaceNodeWithMarkupByID: function () {},
-	  _renderValidatedComponent: ReactCompositeComponent.Mixin._renderValidatedComponentWithoutOwnerOrContext
-	});
-
-	ReactShallowRenderer.prototype.render = function (element, context) {
-	  !ReactElement.isValidElement(element) ?  true ? invariant(false, 'ReactShallowRenderer render(): Invalid component element.%s', typeof element === 'function' ? ' Instead of passing a component class, make sure to instantiate ' + 'it by passing it to React.createElement.' : '') : invariant(false) : undefined;
-	  !(typeof element.type !== 'string') ?  true ? invariant(false, 'ReactShallowRenderer render(): Shallow rendering works only with custom ' + 'components, not primitives (%s). Instead of calling `.render(el)` and ' + 'inspecting the rendered output, look at `el.props` directly instead.', element.type) : invariant(false) : undefined;
-
-	  if (!context) {
-	    context = emptyObject;
-	  }
-	  var transaction = ReactUpdates.ReactReconcileTransaction.getPooled(false);
-	  this._render(element, transaction, context);
-	  ReactUpdates.ReactReconcileTransaction.release(transaction);
-	};
-
-	ReactShallowRenderer.prototype.unmount = function () {
-	  if (this._instance) {
-	    this._instance.unmountComponent();
-	  }
-	};
-
-	ReactShallowRenderer.prototype._render = function (element, transaction, context) {
-	  if (this._instance) {
-	    this._instance.receiveComponent(element, transaction, context);
-	  } else {
-	    var rootID = ReactInstanceHandles.createReactRootID();
-	    var instance = new ShallowComponentWrapper(element.type);
-	    instance.construct(element);
-
-	    instance.mountComponent(rootID, transaction, context);
-
-	    this._instance = instance;
-	  }
-	};
-
-	/**
-	 * Exports:
-	 *
-	 * - `ReactTestUtils.Simulate.click(Element/ReactDOMComponent)`
-	 * - `ReactTestUtils.Simulate.mouseMove(Element/ReactDOMComponent)`
-	 * - `ReactTestUtils.Simulate.change(Element/ReactDOMComponent)`
-	 * - ... (All keys from event plugin `eventTypes` objects)
-	 */
-	function makeSimulator(eventType) {
-	  return function (domComponentOrNode, eventData) {
-	    var node;
-	    if (ReactTestUtils.isDOMComponent(domComponentOrNode)) {
-	      node = findDOMNode(domComponentOrNode);
-	    } else if (domComponentOrNode.tagName) {
-	      node = domComponentOrNode;
-	    }
-
-	    var dispatchConfig = ReactBrowserEventEmitter.eventNameDispatchConfigs[eventType];
-
-	    var fakeNativeEvent = new Event();
-	    fakeNativeEvent.target = node;
-	    // We don't use SyntheticEvent.getPooled in order to not have to worry about
-	    // properly destroying any properties assigned from `eventData` upon release
-	    var event = new SyntheticEvent(dispatchConfig, ReactMount.getID(node), fakeNativeEvent, node);
-	    assign(event, eventData);
-
-	    if (dispatchConfig.phasedRegistrationNames) {
-	      EventPropagators.accumulateTwoPhaseDispatches(event);
-	    } else {
-	      EventPropagators.accumulateDirectDispatches(event);
-	    }
-
-	    ReactUpdates.batchedUpdates(function () {
-	      EventPluginHub.enqueueEvents(event);
-	      EventPluginHub.processEventQueue(true);
-	    });
-	  };
-	}
-
-	function buildSimulators() {
-	  ReactTestUtils.Simulate = {};
-
-	  var eventType;
-	  for (eventType in ReactBrowserEventEmitter.eventNameDispatchConfigs) {
-	    /**
-	     * @param {!Element|ReactDOMComponent} domComponentOrNode
-	     * @param {?object} eventData Fake event data to use in SyntheticEvent.
-	     */
-	    ReactTestUtils.Simulate[eventType] = makeSimulator(eventType);
-	  }
-	}
-
-	// Rebuild ReactTestUtils.Simulate whenever event plugins are injected
-	var oldInjectEventPluginOrder = EventPluginHub.injection.injectEventPluginOrder;
-	EventPluginHub.injection.injectEventPluginOrder = function () {
-	  oldInjectEventPluginOrder.apply(this, arguments);
-	  buildSimulators();
-	};
-	var oldInjectEventPlugins = EventPluginHub.injection.injectEventPluginsByName;
-	EventPluginHub.injection.injectEventPluginsByName = function () {
-	  oldInjectEventPlugins.apply(this, arguments);
-	  buildSimulators();
-	};
-
-	buildSimulators();
-
-	/**
-	 * Exports:
-	 *
-	 * - `ReactTestUtils.SimulateNative.click(Element/ReactDOMComponent)`
-	 * - `ReactTestUtils.SimulateNative.mouseMove(Element/ReactDOMComponent)`
-	 * - `ReactTestUtils.SimulateNative.mouseIn/ReactDOMComponent)`
-	 * - `ReactTestUtils.SimulateNative.mouseOut(Element/ReactDOMComponent)`
-	 * - ... (All keys from `EventConstants.topLevelTypes`)
-	 *
-	 * Note: Top level event types are a subset of the entire set of handler types
-	 * (which include a broader set of "synthetic" events). For example, onDragDone
-	 * is a synthetic event. Except when testing an event plugin or React's event
-	 * handling code specifically, you probably want to use ReactTestUtils.Simulate
-	 * to dispatch synthetic events.
-	 */
-
-	function makeNativeSimulator(eventType) {
-	  return function (domComponentOrNode, nativeEventData) {
-	    var fakeNativeEvent = new Event(eventType);
-	    assign(fakeNativeEvent, nativeEventData);
-	    if (ReactTestUtils.isDOMComponent(domComponentOrNode)) {
-	      ReactTestUtils.simulateNativeEventOnDOMComponent(eventType, domComponentOrNode, fakeNativeEvent);
-	    } else if (domComponentOrNode.tagName) {
-	      // Will allow on actual dom nodes.
-	      ReactTestUtils.simulateNativeEventOnNode(eventType, domComponentOrNode, fakeNativeEvent);
-	    }
-	  };
-	}
-
-	Object.keys(topLevelTypes).forEach(function (eventType) {
-	  // Event type is stored as 'topClick' - we transform that to 'click'
-	  var convenienceName = eventType.indexOf('top') === 0 ? eventType.charAt(3).toLowerCase() + eventType.substr(4) : eventType;
-	  /**
-	   * @param {!Element|ReactDOMComponent} domComponentOrNode
-	   * @param {?Event} nativeEventData Fake native event to use in SyntheticEvent.
-	   */
-	  ReactTestUtils.SimulateNative[convenienceName] = makeNativeSimulator(eventType);
-	});
-
-	module.exports = ReactTestUtils;
+	exports['default'] = Preview;
+	module.exports = exports['default'];
 
 /***/ }
 /******/ ]);

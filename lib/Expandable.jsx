@@ -7,6 +7,8 @@ export default class Expandable extends React.Component{
     constructor(props, state){
         super(props, state);
 
+        console.log("INITIATE EXPANDABLE");
+
         this.state = {
             isOpen:                 false,
             forceClose:             false,
@@ -42,6 +44,7 @@ export default class Expandable extends React.Component{
 
     render(){
         const style     = Style.styles();
+        console.log("PEW PEW");
         const children  = this.buildChildren();
 
         return (
@@ -160,6 +163,7 @@ export default class Expandable extends React.Component{
 
         const children = React.Children.map(this.props.children, (child, index) => {
             //calculate child item width
+            console.log("child", child);
             const colWidth = (100 / this.state.currentItemRowCount) + "%";
             const lastComponent = (index === this.props.children.length - 1 ? true : false);
 

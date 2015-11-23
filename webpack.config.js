@@ -12,19 +12,25 @@ let webpackConfig = {
                 test: /\.jsx?$/,
                 exclude: /(node_modules|bower_components)/,
                 loader: 'babel-loader',
-                query:{
+                /*query:{
                     presets : ["es2015", 'react', "stage-0"]
-                }
+                }*/
             }
         ]
     },
+    /*externals: {
+        react: 'React'
+    },*/
     plugins: [
         new webpack.DefinePlugin({
             "process.env": {
                 NODE_ENV: JSON.stringify("development")
             }
         })
-    ]
+    ],
+    /*resolve: {
+        extensions: ['', '.jsx', '.js']
+    }*/
 };
 
 module.exports = webpackConfig;
