@@ -10,11 +10,11 @@ var _react = require('react');
 
 var _react2 = _interopRequireDefault(_react);
 
-var _Preview = require('./Preview.jsx');
+var _Preview = require('../Preview');
 
 var _Preview2 = _interopRequireDefault(_Preview);
 
-var _style = require('./css/style.js');
+var _style = require('../css/style.js');
 
 var _style2 = _interopRequireDefault(_style);
 

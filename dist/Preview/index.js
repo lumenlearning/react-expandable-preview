@@ -18,7 +18,7 @@ var _lodash = require('lodash');
 
 var _lodash2 = _interopRequireDefault(_lodash);
 
-var _style = require('./css/style.js');
+var _style = require('../css/style.js');
 
 var _style2 = _interopRequireDefault(_style);
 
