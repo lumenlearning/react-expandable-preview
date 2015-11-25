@@ -52,12 +52,12 @@ class Babelize{
                 if((~file.indexOf('.jsx')) || (~file.indexOf('.js'))){
                     var outputFilename;
                     //transform file and output to new dir.
-                    if(~file.indexOf('.jsx')){
+                    /*if(~file.indexOf('.jsx')){
                         outputFilename = file.split('.jsx', 1) + '.js';
                     }
-                    else{
+                    else{*/
                         outputFilename = file;
-                    }
+                    //}
 
                     babel.transformFile(options.inputDir + '/' + file, (err, result)=>{
                         if(err) throw new Error(err);

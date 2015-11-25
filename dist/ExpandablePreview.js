@@ -3,9 +3,9 @@
 Object.defineProperty(exports, '__esModule', {
   value: true
 });
-var Expandable = require('./Expandable.js');
+var Expandable = require('./Expandable.jsx');
 exports.Expandable = Expandable;
-var Item = require('./Item.js');
+var Item = require('./Item.jsx');
 exports.Item = Item;
-var Preview = require('./Preview.js');
+var Preview = require('./Preview.jsx');
 exports.Preview = Preview;
