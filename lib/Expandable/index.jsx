@@ -1,7 +1,7 @@
 import React        from 'react';
 import _            from 'lodash';
 
-import Style        from './css/style.js';
+import Style        from '../css/style.js';
 
 export default class Expandable extends React.Component{
     constructor(props, state){
