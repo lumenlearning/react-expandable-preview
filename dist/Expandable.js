@@ -1,18 +1,10 @@
 'use strict';
 
-Object.defineProperty(exports, '__esModule', {
+var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
+
+Object.defineProperty(exports, "__esModule", {
     value: true
 });
-
-var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ('value' in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
-
-var _get = function get(_x, _x2, _x3) { var _again = true; _function: while (_again) { var object = _x, property = _x2, receiver = _x3; _again = false; if (object === null) object = Function.prototype; var desc = Object.getOwnPropertyDescriptor(object, property); if (desc === undefined) { var parent = Object.getPrototypeOf(object); if (parent === null) { return undefined; } else { _x = parent; _x2 = property; _x3 = receiver; _again = true; desc = parent = undefined; continue _function; } } else if ('value' in desc) { return desc.value; } else { var getter = desc.get; if (getter === undefined) { return undefined; } return getter.call(receiver); } } };
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError('Cannot call a class as a function'); } }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== 'function' && superClass !== null) { throw new TypeError('Super expression must either be null or a function, not ' + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
 var _react = require('react');
 
@@ -22,9 +14,17 @@ var _lodash = require('lodash');
 
 var _lodash2 = _interopRequireDefault(_lodash);
 
-var _cssStyleJs = require('./css/style.js');
+var _style = require('./css/style.js');
 
-var _cssStyleJs2 = _interopRequireDefault(_cssStyleJs);
+var _style2 = _interopRequireDefault(_style);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
 var Expandable = (function (_React$Component) {
     _inherits(Expandable, _React$Component);
@@ -32,29 +32,30 @@ var Expandable = (function (_React$Component) {
     function Expandable(props, state) {
         _classCallCheck(this, Expandable);
 
-        _get(Object.getPrototypeOf(Expandable.prototype), 'constructor', this).call(this, props, state);
+        var _this4 = _possibleConstructorReturn(this, Object.getPrototypeOf(Expandable).call(this, props, state));
 
         console.log("INITIATE EXPANDABLE");
 
-        this.state = {
+        _this4.state = {
             isOpen: false,
             forceClose: false,
             rowIndex: null,
             childIndex: null,
-            sItemCount: this.props.smallRowItemCount || 1,
-            mItemCount: this.props.mediumRowItemCount || 2,
-            lItemCount: this.props.largeRowItemCount || 3,
-            xlItemCount: this.props.xlargeRowItemCount || 4,
-            xxlItemCount: this.props.xxlargeRowItemCount || 5,
-            beforePreviewOpen: this.props.beforePreviewOpen || function () {},
-            afterPreviewOpen: this.props.afterPreviewOpen || function () {},
+            sItemCount: _this4.props.smallRowItemCount || 1,
+            mItemCount: _this4.props.mediumRowItemCount || 2,
+            lItemCount: _this4.props.largeRowItemCount || 3,
+            xlItemCount: _this4.props.xlargeRowItemCount || 4,
+            xxlItemCount: _this4.props.xxlargeRowItemCount || 5,
+            beforePreviewOpen: _this4.props.beforePreviewOpen || function () {},
+            afterPreviewOpen: _this4.props.afterPreviewOpen || function () {},
             currentItemRowCount: 2
         };
 
-        this.handleClick = this.handleClick.bind(this);
-        this.handleResize = this.handleResize.bind(this);
-        this.getWindowSize = this.getWindowSize.bind(this);
-        this.previewCloseCallback = this.previewCloseCallback.bind(this);
+        _this4.handleClick = _this4.handleClick.bind(_this4);
+        _this4.handleResize = _this4.handleResize.bind(_this4);
+        _this4.getWindowSize = _this4.getWindowSize.bind(_this4);
+        _this4.previewCloseCallback = _this4.previewCloseCallback.bind(_this4);
+        return _this4;
     }
 
     _createClass(Expandable, [{
@@ -74,11 +75,11 @@ var Expandable = (function (_React$Component) {
     }, {
         key: 'render',
         value: function render() {
-            var style = _cssStyleJs2['default'].styles();
+            var style = _style2.default.styles();
             console.log("PEW PEW");
             var children = this.buildChildren();
 
-            return _react2['default'].createElement(
+            return _react2.default.createElement(
                 'ul',
                 { className: 'small-12_columns', style: style.ulExpandable },
                 children
@@ -96,6 +97,7 @@ var Expandable = (function (_React$Component) {
         }
 
         //custom functions here.
+
     }, {
         key: 'handleClick',
         value: function handleClick(e) {
@@ -143,7 +145,7 @@ var Expandable = (function (_React$Component) {
             console.log("set preview index", isOpen, this.state.forceClose, this.state.childIndex);
             var target = e.currentTarget;
             var parent = target.parentNode;
-            var children = _lodash2['default'].toArray(parent.children);
+            var children = _lodash2.default.toArray(parent.children);
 
             var total = 0;
             var hasTarget = false;
@@ -204,13 +206,13 @@ var Expandable = (function (_React$Component) {
 
             var preview = null;
 
-            var children = _react2['default'].Children.map(this.props.children, function (child, index) {
+            var children = _react2.default.Children.map(this.props.children, function (child, index) {
                 //calculate child item width
                 console.log("child", child);
                 var colWidth = 100 / _this3.state.currentItemRowCount + "%";
                 var lastComponent = index === _this3.props.children.length - 1 ? true : false;
 
-                var ListComponent = _react2['default'].cloneElement(child, {
+                var ListComponent = _react2.default.cloneElement(child, {
                     colWidth: colWidth,
                     onClick: _this3.handleClick,
                     lastComponent: lastComponent
@@ -224,7 +226,7 @@ var Expandable = (function (_React$Component) {
                     var arr = [0, 1];
 
                     return arr.map(function (arrItem, aIndex) {
-                        return aIndex == 0 ? ListComponent : _react2['default'].cloneElement(preview, { onClick: _this3.handleClick, isOpen: _this3.state.isOpen, forceClose: _this3.state.forceClose, previewCloseCallback: _this3.previewCloseCallback });
+                        return aIndex == 0 ? ListComponent : _react2.default.cloneElement(preview, { onClick: _this3.handleClick, isOpen: _this3.state.isOpen, forceClose: _this3.state.forceClose, previewCloseCallback: _this3.previewCloseCallback });
                     });
                 }
 
@@ -269,7 +271,6 @@ var Expandable = (function (_React$Component) {
     }]);
 
     return Expandable;
-})(_react2['default'].Component);
+})(_react2.default.Component);
 
-exports['default'] = Expandable;
-module.exports = exports['default'];
+exports.default = Expandable;

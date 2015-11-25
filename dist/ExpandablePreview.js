@@ -1,11 +1,8 @@
 'use strict';
 
-Object.defineProperty(exports, '__esModule', {
+Object.defineProperty(exports, "__esModule", {
   value: true
 });
-var Expandable = require('./Expandable.jsx');
-exports.Expandable = Expandable;
-var Item = require('./Item.jsx');
-exports.Item = Item;
-var Preview = require('./Preview.jsx');
-exports.Preview = Preview;
+var Expandable = exports.Expandable = require('./Expandable.jsx');
+var Item = exports.Item = require('./Item.jsx');
+var Preview = exports.Preview = require('./Preview.jsx');
