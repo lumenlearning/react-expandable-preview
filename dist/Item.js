@@ -18,7 +18,7 @@ var _react = require('react');
 
 var _react2 = _interopRequireDefault(_react);
 
-var _PreviewJsx = require('./Preview.jsx');
+var _PreviewJsx = require('./Preview.js');
 
 var _PreviewJsx2 = _interopRequireDefault(_PreviewJsx);
 
