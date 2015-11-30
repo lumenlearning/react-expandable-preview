@@ -3,7 +3,7 @@
 import React                from 'react';
 import ReactDOM             from 'react-dom';
 import _                    from 'lodash';
-import Styles               from '../css/style.js';
+import Styles               from './css/style';
 
 
 export default class Preview extends React.Component{

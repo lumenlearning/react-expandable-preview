@@ -1,6 +1,6 @@
 import React                    from 'react';
-import Preview                  from '../Preview';
-import Styles                   from '../css/style.js';
+import Preview                  from './Preview';
+import Styles                   from './css/style';
 
 import _                        from 'lodash';
 
