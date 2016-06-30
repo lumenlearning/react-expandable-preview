@@ -89,12 +89,21 @@ npm install react-expandable-preview --save
       - Type: String
       - Description: Simple string title you want the preview to display when it expands.
       
-####4. Todo / In Progress:
+####4. Demo Instructions
+  to setup the demo follow the steps below:
+  1. clone or download this repo into a directory of your choice.
+  2. in the root directory of this repo type: `npm install`
+  3. next run webpack by typing: `webpack` 
+    - Note: if an error occurs at this stage type: `npm install webpack -g`. this will allow you to run webpack as a command.
+  4. next start the small HTTP server by typing: `npm start`
+  5. finally navigate to the example in your browser by going to: `localhost:3001`
+  
+  note: This demo will run only with Node version 4.0.0 and later.
+      
+####5. Todo / In Progress:
 
   - Animated open / close (90% complete)
   - Custom grid widths (75% complete)
   - Additional callback support. (30% complete)
-  - Custom styling support. (30% complete)
-  - Live Demo. (0% complete)
-  
+  - Custom styling support. (30% complete)  
   

@@ -1,5 +1,5 @@
 import React                    from 'react';
-import Preview                  from './Preview';
+import Preview                  from './Preview.jsx';
 import Styles                   from './css/style';
 
 import _                        from 'lodash';

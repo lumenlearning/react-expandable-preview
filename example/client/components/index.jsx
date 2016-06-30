@@ -1,6 +1,6 @@
 import React            from 'react';
 
-import {Expandable, Item, Preview} from '../../../dist/index.js';
+import {Expandable, Item, Preview} from '../../../lib/index.js';
 
 /*import Expandable   from '../../../lib/Expandable.jsx'
 import Item         from '../../../lib/Item.jsx'

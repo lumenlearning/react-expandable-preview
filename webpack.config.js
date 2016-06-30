@@ -9,9 +9,9 @@ let webpackConfig = {
     module:{
         loaders: [
             {
-                test: /\.jsx?$/,
+                test: /(\.jsx$|\.js$)/,
                 exclude: /(node_modules|bower_components)/,
-                loader: 'babel-loader',
+                loaders: ['babel'],
                 /*query:{
                     presets : ["es2015", 'react', "stage-0"]
                 }*/

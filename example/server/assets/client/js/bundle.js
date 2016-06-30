@@ -46,13 +46,13 @@
 
 	'use strict';
 
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
+	var _router = __webpack_require__(1);
 
-	var _routerJsx = __webpack_require__(1);
+	var _router2 = _interopRequireDefault(_router);
 
-	var _routerJsx2 = _interopRequireDefault(_routerJsx);
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-	var Router = new _routerJsx2['default']();
+	var Router = new _router2.default();
 
 	console.log(Router);
 	Router.run();
@@ -61,18 +61,17 @@
 /* 1 */
 /***/ function(module, exports, __webpack_require__) {
 
-	//import dependencies.
 	'use strict';
 
-	Object.defineProperty(exports, '__esModule', {
+	Object.defineProperty(exports, "__esModule", {
 	    value: true
 	});
 
-	var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ('value' in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }(); //import dependencies.
 
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
 
-	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError('Cannot call a class as a function'); } }
+	//import Components
+
 
 	var _react = __webpack_require__(2);
 
@@ -82,13 +81,15 @@
 
 	var _reactDom2 = _interopRequireDefault(_reactDom);
 
-	//import Components
+	var _index = __webpack_require__(159);
 
-	var _componentsIndexJsx = __webpack_require__(159);
+	var _index2 = _interopRequireDefault(_index);
 
-	var _componentsIndexJsx2 = _interopRequireDefault(_componentsIndexJsx);
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-	var ReactRouter = (function () {
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	var ReactRouter = function () {
 	    function ReactRouter() {
 	        _classCallCheck(this, ReactRouter);
 	    }
@@ -97,16 +98,15 @@
 	        key: 'run',
 	        value: function run() {
 
-	            _reactDom2['default'].render(_react2['default'].createElement(_componentsIndexJsx2['default'], null), document.getElementById("App"));
+	            _reactDom2.default.render(_react2.default.createElement(_index2.default, null), document.getElementById("App"));
 	        }
 	    }]);
 
 	    return ReactRouter;
-	})();
+	}();
 
-	exports['default'] = ReactRouter;
+	exports.default = ReactRouter;
 	;
-	module.exports = exports['default'];
 
 /***/ },
 /* 2 */
@@ -1020,7 +1020,7 @@
 	 * will remain to ensure logic does not differ in production.
 	 */
 
-	var invariant = function (condition, format, a, b, c, d, e, f) {
+	function invariant(condition, format, a, b, c, d, e, f) {
 	  if (true) {
 	    if (format === undefined) {
 	      throw new Error('invariant requires an error message argument');
@@ -1034,15 +1034,16 @@
 	    } else {
 	      var args = [a, b, c, d, e, f];
 	      var argIndex = 0;
-	      error = new Error('Invariant Violation: ' + format.replace(/%s/g, function () {
+	      error = new Error(format.replace(/%s/g, function () {
 	        return args[argIndex++];
 	      }));
+	      error.name = 'Invariant Violation';
 	    }
 
 	    error.framesToPop = 1; // we don't care about invariant's own frame
 	    throw error;
 	  }
-	};
+	}
 
 	module.exports = invariant;
 
@@ -7875,6 +7876,10 @@
 	  }
 	};
 
+	function registerNullComponentID() {
+	  ReactEmptyComponentRegistry.registerNullComponentID(this._rootNodeID);
+	}
+
 	var ReactEmptyComponent = function (instantiate) {
 	  this._currentElement = null;
 	  this._rootNodeID = null;
@@ -7883,7 +7888,7 @@
 	assign(ReactEmptyComponent.prototype, {
 	  construct: function (element) {},
 	  mountComponent: function (rootID, transaction, context) {
-	    ReactEmptyComponentRegistry.registerNullComponentID(rootID);
+	    transaction.getReactMountReady().enqueue(registerNullComponentID, this);
 	    this._rootNodeID = rootID;
 	    return ReactReconciler.mountComponent(this._renderedComponent, rootID, transaction, context);
 	  },
@@ -9229,6 +9234,7 @@
 	 */
 	var EventInterface = {
 	  type: null,
+	  target: null,
 	  // currentTarget is set when dispatching; no use in copying it here
 	  currentTarget: emptyFunction.thatReturnsNull,
 	  eventPhase: null,
@@ -9262,8 +9268,6 @@
 	  this.dispatchConfig = dispatchConfig;
 	  this.dispatchMarker = dispatchMarker;
 	  this.nativeEvent = nativeEvent;
-	  this.target = nativeEventTarget;
-	  this.currentTarget = nativeEventTarget;
 
 	  var Interface = this.constructor.Interface;
 	  for (var propName in Interface) {
@@ -9274,7 +9278,11 @@
 	    if (normalize) {
 	      this[propName] = normalize(nativeEvent);
 	    } else {
-	      this[propName] = nativeEvent[propName];
+	      if (propName === 'target') {
+	        this.target = nativeEventTarget;
+	      } else {
+	        this[propName] = nativeEvent[propName];
+	      }
 	    }
 	  }
 
@@ -10436,8 +10444,8 @@
 	     */
 	    // autoCapitalize and autoCorrect are supported in Mobile Safari for
 	    // keyboard hints.
-	    autoCapitalize: null,
-	    autoCorrect: null,
+	    autoCapitalize: MUST_USE_ATTRIBUTE,
+	    autoCorrect: MUST_USE_ATTRIBUTE,
 	    // autoSave allows WebKit/Blink to persist values of input fields on page reloads
 	    autoSave: null,
 	    // color is for Safari mask-icon link
@@ -10468,9 +10476,7 @@
 	    httpEquiv: 'http-equiv'
 	  },
 	  DOMPropertyNames: {
-	    autoCapitalize: 'autocapitalize',
 	    autoComplete: 'autocomplete',
-	    autoCorrect: 'autocorrect',
 	    autoFocus: 'autofocus',
 	    autoPlay: 'autoplay',
 	    autoSave: 'autosave',
@@ -13118,7 +13124,10 @@
 	      }
 	    });
 
-	    nativeProps.children = content;
+	    if (content) {
+	      nativeProps.children = content;
+	    }
+
 	    return nativeProps;
 	  }
 
@@ -13541,7 +13550,7 @@
 	    var value = LinkedValueUtils.getValue(props);
 
 	    if (value != null) {
-	      updateOptions(this, props, value);
+	      updateOptions(this, Boolean(props.multiple), value);
 	    }
 	  }
 	}
@@ -16567,11 +16576,14 @@
 	 * @typechecks
 	 */
 
+	/* eslint-disable fb-www/typeof-undefined */
+
 	/**
 	 * Same as document.activeElement but wraps in a try-catch block. In IE it is
 	 * not safe to call document.activeElement if there is nothing focused.
 	 *
-	 * The activeElement will be null only if the document or document body is not yet defined.
+	 * The activeElement will be null only if the document or document body is not
+	 * yet defined.
 	 */
 	'use strict';
 
@@ -16579,7 +16591,6 @@
 	  if (typeof document === 'undefined') {
 	    return null;
 	  }
-
 	  try {
 	    return document.activeElement || document.body;
 	  } catch (e) {
@@ -18318,7 +18329,9 @@
 	  'setValueForProperty': 'update attribute',
 	  'setValueForAttribute': 'update attribute',
 	  'deleteValueForProperty': 'remove attribute',
-	  'dangerouslyReplaceNodeWithMarkupByID': 'replace'
+	  'setValueForStyles': 'update styles',
+	  'replaceNodeWithMarkup': 'replace',
+	  'updateTextContent': 'set textContent'
 	};
 
 	function getTotalTime(measurements) {
@@ -18510,18 +18523,23 @@
 	'use strict';
 
 	var performance = __webpack_require__(145);
-	var curPerformance = performance;
+
+	var performanceNow;
 
 	/**
 	 * Detect if we can use `window.performance.now()` and gracefully fallback to
 	 * `Date.now()` if it doesn't exist. We need to support Firefox < 15 for now
 	 * because of Facebook's testing infrastructure.
 	 */
-	if (!curPerformance || !curPerformance.now) {
-	  curPerformance = Date;
+	if (performance.now) {
+	  performanceNow = function () {
+	    return performance.now();
+	  };
+	} else {
+	  performanceNow = function () {
+	    return Date.now();
+	  };
 	}
-
-	var performanceNow = curPerformance.now.bind(curPerformance);
 
 	module.exports = performanceNow;
 
@@ -18570,7 +18588,7 @@
 
 	'use strict';
 
-	module.exports = '0.14.3';
+	module.exports = '0.14.8';
 
 /***/ },
 /* 147 */
@@ -19541,208 +19559,209 @@
 
 	'use strict';
 
-	Object.defineProperty(exports, '__esModule', {
+	Object.defineProperty(exports, "__esModule", {
 	    value: true
 	});
 
-	var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ('value' in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
-
-	var _get = function get(_x, _x2, _x3) { var _again = true; _function: while (_again) { var object = _x, property = _x2, receiver = _x3; _again = false; if (object === null) object = Function.prototype; var desc = Object.getOwnPropertyDescriptor(object, property); if (desc === undefined) { var parent = Object.getPrototypeOf(object); if (parent === null) { return undefined; } else { _x = parent; _x2 = property; _x3 = receiver; _again = true; desc = parent = undefined; continue _function; } } else if ('value' in desc) { return desc.value; } else { var getter = desc.get; if (getter === undefined) { return undefined; } return getter.call(receiver); } } };
-
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
-
-	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError('Cannot call a class as a function'); } }
-
-	function _inherits(subClass, superClass) { if (typeof superClass !== 'function' && superClass !== null) { throw new TypeError('Super expression must either be null or a function, not ' + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
 	var _react = __webpack_require__(2);
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _distIndexJs = __webpack_require__(160);
+	var _index = __webpack_require__(160);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
 	/*import Expandable   from '../../../lib/Expandable.jsx'
 	import Item         from '../../../lib/Item.jsx'
 	import Preview      from '../../../lib/Preview.jsx';*/
 
-	var Index = (function (_React$Component) {
+	var Index = function (_React$Component) {
 	    _inherits(Index, _React$Component);
 
 	    function Index(props, state) {
 	        _classCallCheck(this, Index);
 
-	        _get(Object.getPrototypeOf(Index.prototype), 'constructor', this).call(this, props, state);
+	        var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(Index).call(this, props, state));
 
-	        this.state = {};
+	        _this.state = {};
+	        return _this;
 	    }
 
 	    _createClass(Index, [{
 	        key: 'render',
 	        value: function render() {
 
-	            console.log("RENDER INDEX", _distIndexJs.Expandable, _distIndexJs.Item, _distIndexJs.Preview);
+	            console.log("RENDER INDEX", _index.Expandable, _index.Item, _index.Preview);
 
-	            return _react2['default'].createElement(
+	            return _react2.default.createElement(
 	                'div',
 	                { style: { width: "100%" } },
-	                _react2['default'].createElement(
-	                    _distIndexJs.Expandable,
+	                _react2.default.createElement(
+	                    _index.Expandable,
 	                    { colWidth: 4 },
-	                    _react2['default'].createElement(
-	                        _distIndexJs.Item,
+	                    _react2.default.createElement(
+	                        _index.Item,
 	                        {
-	                            previewComponent: _react2['default'].createElement(
-	                                _distIndexJs.Preview,
+	                            previewComponent: _react2.default.createElement(
+	                                _index.Preview,
 	                                { title: 'The Role of Business' },
-	                                _react2['default'].createElement(
+	                                _react2.default.createElement(
 	                                    'p',
 	                                    null,
-	                                    _react2['default'].createElement(
+	                                    _react2.default.createElement(
 	                                        'span',
 	                                        null,
 	                                        'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eius itaque minima perferendis ratione. Aut beatae ea recusandae similique tempore vero voluptates? Assumenda autem dolore nesciunt quas similique ut voluptatem voluptatum?'
 	                                    ),
-	                                    _react2['default'].createElement(
+	                                    _react2.default.createElement(
 	                                        'span',
 	                                        null,
 	                                        'A amet asperiores debitis dolorem harum hic id illo inventore labore minus, molestiae neque nulla, praesentium qui quo recusandae suscipit. Ad deleniti ducimus ipsum odit officiis placeat porro quam ut.'
 	                                    ),
-	                                    _react2['default'].createElement(
+	                                    _react2.default.createElement(
 	                                        'span',
 	                                        null,
 	                                        'A adipisci, architecto blanditiis consequatur consequuntur deserunt doloremque eos et hic illum impedit incidunt ipsum itaque laborum minus nihil quae ratione recusandae reprehenderit rerum tenetur ullam unde, velit veniam voluptates.'
 	                                    ),
-	                                    _react2['default'].createElement(
+	                                    _react2.default.createElement(
 	                                        'span',
 	                                        null,
 	                                        'A accusantium aspernatur aut cum, ea eius ex facilis laborum maiores quae recusandae repellendus, tenetur? Atque beatae iure ullam? Autem illo inventore ipsum minus obcaecati quae quasi quidem reiciendis ut.'
 	                                    ),
-	                                    _react2['default'].createElement(
+	                                    _react2.default.createElement(
 	                                        'span',
 	                                        null,
 	                                        'Architecto autem laudantium velit. Autem dolorem doloremque eligendi est eum illum impedit incidunt ipsam magni placeat provident quas quos reiciendis sapiente vero voluptas, voluptate! Architecto dolor magnam molestias mollitia quas!'
 	                                    ),
-	                                    _react2['default'].createElement(
+	                                    _react2.default.createElement(
 	                                        'span',
 	                                        null,
 	                                        'Asperiores consequuntur dolor error eum ipsa nam non perferendis, rerum. Aperiam assumenda consequuntur cumque eaque earum eligendi facere hic iste libero natus nesciunt obcaecati placeat possimus, sequi sunt voluptas voluptatem.'
 	                                    ),
-	                                    _react2['default'].createElement(
+	                                    _react2.default.createElement(
 	                                        'span',
 	                                        null,
 	                                        'Commodi facere perspiciatis sequi? Aliquam amet commodi dolor est explicabo fugiat impedit ipsam laudantium nulla, omnis porro possimus quia recusandae saepe soluta totam ullam, velit. Asperiores maxime molestias nemo voluptatum?'
 	                                    ),
-	                                    _react2['default'].createElement(
+	                                    _react2.default.createElement(
 	                                        'span',
 	                                        null,
 	                                        'Accusamus adipisci, aliquam aliquid animi cumque dicta dolor dolores, doloribus id ipsam magni placeat quaerat quam quas reiciendis totam ullam ut? Cumque eius fuga fugiat modi non placeat tempora ullam!'
 	                                    ),
-	                                    _react2['default'].createElement(
+	                                    _react2.default.createElement(
 	                                        'span',
 	                                        null,
 	                                        'Accusamus ad aliquid beatae blanditiis corporis cum debitis distinctio doloribus eum explicabo, inventore magni modi, molestias nam nesciunt nisi perspiciatis possimus quaerat quibusdam quo quod repudiandae ullam unde vel vero.'
 	                                    ),
-	                                    _react2['default'].createElement(
+	                                    _react2.default.createElement(
 	                                        'span',
 	                                        null,
 	                                        'Amet dolorem ducimus eius enim eos, esse, ex expedita fugit ipsam libero modi molestias nemo neque numquam omnis perferendis quam quas quo reiciendis sequi similique sint soluta, totam vero voluptate!'
 	                                    ),
-	                                    _react2['default'].createElement(
+	                                    _react2.default.createElement(
 	                                        'span',
 	                                        null,
 	                                        'Error, modi, nostrum! Aperiam architecto ea esse illo neque odit omnis reprehenderit voluptas. Animi architecto delectus dicta fugiat iste optio quaerat reiciendis repellendus unde voluptates? Aliquam ducimus mollitia repellat unde.'
 	                                    ),
-	                                    _react2['default'].createElement(
+	                                    _react2.default.createElement(
 	                                        'span',
 	                                        null,
 	                                        'A at fugit necessitatibus optio placeat quae quia saepe sit voluptas voluptatem? Accusantium atque corporis cum cupiditate deserunt esse, facere incidunt laboriosam, non numquam optio provident sequi temporibus vitae, voluptas!'
 	                                    ),
-	                                    _react2['default'].createElement(
+	                                    _react2.default.createElement(
 	                                        'span',
 	                                        null,
 	                                        'Ab autem commodi cupiditate delectus ea eligendi error est eum in ipsam, maiores molestiae nihil obcaecati odit, placeat porro possimus quidem sapiente sed tempore tenetur ullam ut veritatis voluptates voluptatibus?'
 	                                    ),
-	                                    _react2['default'].createElement(
+	                                    _react2.default.createElement(
 	                                        'span',
 	                                        null,
 	                                        'At deleniti porro quis. Aliquid, esse, ullam? Ab aliquam aperiam beatae commodi cum cumque error eum, excepturi incidunt libero neque nisi, officiis omnis praesentium quaerat quis repellendus veritatis vitae voluptate!'
 	                                    ),
-	                                    _react2['default'].createElement(
+	                                    _react2.default.createElement(
 	                                        'span',
 	                                        null,
 	                                        'Corporis earum molestiae quas voluptates! Ab architecto blanditiis consectetur delectus dolor earum ipsa, maiores optio quidem rem repellendus, reprehenderit, saepe unde voluptates voluptatum? Accusantium aliquid consequuntur nihil quod veritatis, voluptas.'
 	                                    ),
-	                                    _react2['default'].createElement(
+	                                    _react2.default.createElement(
 	                                        'span',
 	                                        null,
 	                                        'Ab accusantium animi aperiam assumenda atque beatae consectetur, consequatur cumque cupiditate deserunt dignissimos dolorum ducimus exercitationem facilis magnam maiores minima pariatur placeat quas qui quia quibusdam quos rem veniam veritatis!'
 	                                    ),
-	                                    _react2['default'].createElement(
+	                                    _react2.default.createElement(
 	                                        'span',
 	                                        null,
 	                                        'Minima quas, quos? Laborum necessitatibus nisi, obcaecati officia omnis repudiandae voluptatum? A adipisci assumenda aut delectus ex fugiat illum, in iste itaque laborum minima officiis possimus quas quos repudiandae, tenetur?'
 	                                    ),
-	                                    _react2['default'].createElement(
+	                                    _react2.default.createElement(
 	                                        'span',
 	                                        null,
 	                                        'Alias aliquid, beatae blanditiis dolor eaque error exercitationem expedita ipsa iure labore maxime, mollitia nihil nisi quis quo quod, sapiente totam voluptatum! Aliquid deleniti dolorem ipsa magni officiis recusandae repudiandae.'
 	                                    ),
-	                                    _react2['default'].createElement(
+	                                    _react2.default.createElement(
 	                                        'span',
 	                                        null,
 	                                        'Aperiam magni natus sequi. Adipisci amet cum dolorem dolores excepturi explicabo facilis ipsum magnam molestiae perspiciatis quas quibusdam quisquam, reiciendis rerum, saepe sapiente temporibus totam ullam unde voluptas. A, aut.'
 	                                    ),
-	                                    _react2['default'].createElement(
+	                                    _react2.default.createElement(
 	                                        'span',
 	                                        null,
 	                                        'A accusamus accusantium aliquam asperiores consequuntur deserunt dolorum, ducimus eos, ex ipsa laboriosam minima modi mollitia nemo optio praesentium quae quia quis rem voluptate. Facilis ipsa ipsam saepe sapiente similique!'
 	                                    ),
-	                                    _react2['default'].createElement(
+	                                    _react2.default.createElement(
 	                                        'span',
 	                                        null,
 	                                        'Amet dignissimos enim eos ipsa. Accusantium at impedit nesciunt nobis porro ratione sequi veritatis? Cum cumque ea illum molestiae nobis nostrum placeat quibusdam? Asperiores deserunt dolore hic odio! Repellendus, totam.'
 	                                    ),
-	                                    _react2['default'].createElement(
+	                                    _react2.default.createElement(
 	                                        'span',
 	                                        null,
 	                                        'Ab adipisci dignissimos dolor eaque eligendi et fugit, harum hic in ipsam, nobis nostrum numquam quibusdam quis recusandae sequi, vero voluptatum. Accusantium debitis distinctio dolorum impedit, incidunt praesentium quia vitae.'
 	                                    ),
-	                                    _react2['default'].createElement(
+	                                    _react2.default.createElement(
 	                                        'span',
 	                                        null,
 	                                        'Atque deleniti fugiat nostrum sapiente ullam? Accusamus adipisci, aliquam animi consequuntur dolorum, ducimus enim nemo neque nesciunt, porro temporibus ut veniam voluptas? Animi consequuntur fuga, perferendis placeat quos sapiente voluptatem?'
 	                                    ),
-	                                    _react2['default'].createElement(
+	                                    _react2.default.createElement(
 	                                        'span',
 	                                        null,
 	                                        'Accusantium dignissimos eaque, facere ipsam iure recusandae veritatis? At, modi, placeat. Aliquid architecto assumenda consectetur debitis dicta dolor eaque est, eveniet excepturi expedita harum laboriosam quo, quos, temporibus tenetur ullam?'
 	                                    ),
-	                                    _react2['default'].createElement(
+	                                    _react2.default.createElement(
 	                                        'span',
 	                                        null,
 	                                        'Dolor dolores ea eum illo impedit inventore iusto, laborum laudantium nostrum praesentium provident quaerat quasi quibusdam quo rem tempora vero. Expedita nesciunt odio possimus quis vel. Aut mollitia reprehenderit repudiandae.'
 	                                    ),
-	                                    _react2['default'].createElement(
+	                                    _react2.default.createElement(
 	                                        'span',
 	                                        null,
 	                                        'Accusantium aperiam dolorem earum eius harum hic itaque molestiae, nisi officia porro provident quisquam quo ratione sit sunt tempora tempore temporibus velit? Assumenda consectetur esse facere laboriosam laborum nesciunt ratione!'
 	                                    ),
-	                                    _react2['default'].createElement(
+	                                    _react2.default.createElement(
 	                                        'span',
 	                                        null,
 	                                        'Accusamus, aliquam aliquid, animi aut deleniti dicta distinctio dolor ducimus esse et eveniet harum incidunt ipsum iusto optio perspiciatis provident quae, quam qui quibusdam quod quos recusandae. Facere, sed velit.'
 	                                    ),
-	                                    _react2['default'].createElement(
+	                                    _react2.default.createElement(
 	                                        'span',
 	                                        null,
 	                                        'Consequuntur doloribus esse facere ipsa labore libero modi officia quibusdam quod recusandae reiciendis, sed similique sint! Assumenda beatae cumque cupiditate esse nemo perspiciatis quibusdam quos rem, sunt tenetur veritatis voluptatibus.'
 	                                    ),
-	                                    _react2['default'].createElement(
+	                                    _react2.default.createElement(
 	                                        'span',
 	                                        null,
 	                                        'Cumque itaque labore quasi tempore vero? A, beatae deserunt doloremque eveniet facilis id illum in iure laborum magnam, maiores maxime nemo placeat sapiente tenetur? Ab asperiores delectus incidunt magnam qui.'
 	                                    ),
-	                                    _react2['default'].createElement(
+	                                    _react2.default.createElement(
 	                                        'span',
 	                                        null,
 	                                        'Aspernatur, corporis fugit illum ipsam numquam soluta? A ab architecto eum fugiat nam, numquam officia ullam voluptate voluptatibus? Blanditiis deleniti dignissimos distinctio eligendi error fugiat illo nihil, quo sit voluptate!'
@@ -19750,23 +19769,23 @@
 	                                )
 	                            )
 	                        },
-	                        _react2['default'].createElement('img', { src: 'https://placekitten.com/300/201', alt: '' })
+	                        _react2.default.createElement('img', { src: 'https://placekitten.com/300/201', alt: '' })
 	                    ),
-	                    _react2['default'].createElement(
-	                        _distIndexJs.Item,
+	                    _react2.default.createElement(
+	                        _index.Item,
 	                        {
-	                            previewComponent: _react2['default'].createElement(
-	                                _distIndexJs.Preview,
+	                            previewComponent: _react2.default.createElement(
+	                                _index.Preview,
 	                                { title: 'Why is Business content so boring?' },
-	                                _react2['default'].createElement(
+	                                _react2.default.createElement(
 	                                    'div',
 	                                    { className: 'small-6 columns' },
-	                                    _react2['default'].createElement('img', { src: 'https://placekitten.com/300/201', alt: '' })
+	                                    _react2.default.createElement('img', { src: 'https://placekitten.com/300/201', alt: '' })
 	                                ),
-	                                _react2['default'].createElement(
+	                                _react2.default.createElement(
 	                                    'div',
 	                                    { className: 'small-6 columns' },
-	                                    _react2['default'].createElement(
+	                                    _react2.default.createElement(
 	                                        'p',
 	                                        null,
 	                                        'MORE Placeholder Text Goes here to describe some arbitrary image or content or what ever we want.'
@@ -19774,23 +19793,23 @@
 	                                )
 	                            )
 	                        },
-	                        _react2['default'].createElement('img', { src: 'https://placekitten.com/300/201', alt: '' })
+	                        _react2.default.createElement('img', { src: 'https://placekitten.com/300/201', alt: '' })
 	                    ),
-	                    _react2['default'].createElement(
-	                        _distIndexJs.Item,
+	                    _react2.default.createElement(
+	                        _index.Item,
 	                        {
-	                            previewComponent: _react2['default'].createElement(
-	                                _distIndexJs.Preview,
+	                            previewComponent: _react2.default.createElement(
+	                                _index.Preview,
 	                                { title: 'Component of the night' },
-	                                _react2['default'].createElement(
+	                                _react2.default.createElement(
 	                                    'div',
 	                                    { className: 'small-6 columns' },
-	                                    _react2['default'].createElement('img', { src: 'https://placekitten.com/300/201', alt: '' })
+	                                    _react2.default.createElement('img', { src: 'https://placekitten.com/300/201', alt: '' })
 	                                ),
-	                                _react2['default'].createElement(
+	                                _react2.default.createElement(
 	                                    'div',
 	                                    { className: 'small-6 columns' },
-	                                    _react2['default'].createElement(
+	                                    _react2.default.createElement(
 	                                        'p',
 	                                        null,
 	                                        'Whats going on here!? Where am I? Am I expanded or not!? Everything is so dark I can\'t tell.... aww thats a cute kitten'
@@ -19798,23 +19817,23 @@
 	                                )
 	                            )
 	                        },
-	                        _react2['default'].createElement('img', { src: 'https://placekitten.com/300/201', alt: '' })
+	                        _react2.default.createElement('img', { src: 'https://placekitten.com/300/201', alt: '' })
 	                    ),
-	                    _react2['default'].createElement(
-	                        _distIndexJs.Item,
+	                    _react2.default.createElement(
+	                        _index.Item,
 	                        {
-	                            previewComponent: _react2['default'].createElement(
-	                                _distIndexJs.Preview,
+	                            previewComponent: _react2.default.createElement(
+	                                _index.Preview,
 	                                { title: 'Business Ethics: Good or Bad?' },
-	                                _react2['default'].createElement(
+	                                _react2.default.createElement(
 	                                    'div',
 	                                    { className: 'small-6 columns' },
-	                                    _react2['default'].createElement('img', { src: 'https://placekitten.com/300/201', alt: '' })
+	                                    _react2.default.createElement('img', { src: 'https://placekitten.com/300/201', alt: '' })
 	                                ),
-	                                _react2['default'].createElement(
+	                                _react2.default.createElement(
 	                                    'div',
 	                                    { className: 'small-6 columns' },
-	                                    _react2['default'].createElement(
+	                                    _react2.default.createElement(
 	                                        'p',
 	                                        null,
 	                                        'Placeholder Text Goes here to describe some arbitrary image or content or what ever we want.'
@@ -19822,23 +19841,23 @@
 	                                )
 	                            )
 	                        },
-	                        _react2['default'].createElement('img', { src: 'https://placekitten.com/300/201', alt: '' })
+	                        _react2.default.createElement('img', { src: 'https://placekitten.com/300/201', alt: '' })
 	                    ),
-	                    _react2['default'].createElement(
-	                        _distIndexJs.Item,
+	                    _react2.default.createElement(
+	                        _index.Item,
 	                        {
-	                            previewComponent: _react2['default'].createElement(
-	                                _distIndexJs.Preview,
+	                            previewComponent: _react2.default.createElement(
+	                                _index.Preview,
 	                                { title: 'Business Analytics: BI or BS?' },
-	                                _react2['default'].createElement(
+	                                _react2.default.createElement(
 	                                    'div',
 	                                    { className: 'small-6 columns' },
-	                                    _react2['default'].createElement('img', { src: 'https://placekitten.com/300/201', alt: '' })
+	                                    _react2.default.createElement('img', { src: 'https://placekitten.com/300/201', alt: '' })
 	                                ),
-	                                _react2['default'].createElement(
+	                                _react2.default.createElement(
 	                                    'div',
 	                                    { className: 'small-6 columns' },
-	                                    _react2['default'].createElement(
+	                                    _react2.default.createElement(
 	                                        'p',
 	                                        null,
 	                                        'MORE Placeholder Text Goes here to describe some arbitrary image or content or what ever we want.'
@@ -19846,23 +19865,23 @@
 	                                )
 	                            )
 	                        },
-	                        _react2['default'].createElement('img', { src: 'https://placekitten.com/300/201', alt: '' })
+	                        _react2.default.createElement('img', { src: 'https://placekitten.com/300/201', alt: '' })
 	                    ),
-	                    _react2['default'].createElement(
-	                        _distIndexJs.Item,
+	                    _react2.default.createElement(
+	                        _index.Item,
 	                        {
-	                            previewComponent: _react2['default'].createElement(
-	                                _distIndexJs.Preview,
+	                            previewComponent: _react2.default.createElement(
+	                                _index.Preview,
 	                                { title: 'Component of the twilight' },
-	                                _react2['default'].createElement(
+	                                _react2.default.createElement(
 	                                    'div',
 	                                    { className: 'small-6 columns' },
-	                                    _react2['default'].createElement('img', { src: 'https://placekitten.com/300/201', alt: '' })
+	                                    _react2.default.createElement('img', { src: 'https://placekitten.com/300/201', alt: '' })
 	                                ),
-	                                _react2['default'].createElement(
+	                                _react2.default.createElement(
 	                                    'div',
 	                                    { className: 'small-6 columns' },
-	                                    _react2['default'].createElement(
+	                                    _react2.default.createElement(
 	                                        'p',
 	                                        null,
 	                                        'Whats going on here!? Where am I? Am I expanded or not!? Everything is so dark I can\'t tell.... aww thats a cute kitten'
@@ -19870,23 +19889,23 @@
 	                                )
 	                            )
 	                        },
-	                        _react2['default'].createElement('img', { src: 'https://placekitten.com/300/201', alt: '' })
+	                        _react2.default.createElement('img', { src: 'https://placekitten.com/300/201', alt: '' })
 	                    ),
-	                    _react2['default'].createElement(
-	                        _distIndexJs.Item,
+	                    _react2.default.createElement(
+	                        _index.Item,
 	                        {
-	                            previewComponent: _react2['default'].createElement(
-	                                _distIndexJs.Preview,
+	                            previewComponent: _react2.default.createElement(
+	                                _index.Preview,
 	                                { title: '90\'s music: Great or Greatest' },
-	                                _react2['default'].createElement(
+	                                _react2.default.createElement(
 	                                    'div',
 	                                    { className: 'small-6 columns' },
-	                                    _react2['default'].createElement('img', { src: 'https://placekitten.com/300/201', alt: '' })
+	                                    _react2.default.createElement('img', { src: 'https://placekitten.com/300/201', alt: '' })
 	                                ),
-	                                _react2['default'].createElement(
+	                                _react2.default.createElement(
 	                                    'div',
 	                                    { className: 'small-6 columns' },
-	                                    _react2['default'].createElement(
+	                                    _react2.default.createElement(
 	                                        'p',
 	                                        null,
 	                                        'Placeholder Text Goes here to describe some arbitrary image or content or what ever we want.'
@@ -19894,23 +19913,23 @@
 	                                )
 	                            )
 	                        },
-	                        _react2['default'].createElement('img', { src: 'https://placekitten.com/300/201', alt: '' })
+	                        _react2.default.createElement('img', { src: 'https://placekitten.com/300/201', alt: '' })
 	                    ),
-	                    _react2['default'].createElement(
-	                        _distIndexJs.Item,
+	                    _react2.default.createElement(
+	                        _index.Item,
 	                        {
-	                            previewComponent: _react2['default'].createElement(
-	                                _distIndexJs.Preview,
+	                            previewComponent: _react2.default.createElement(
+	                                _index.Preview,
 	                                { title: 'I\'m just a poor Dillon' },
-	                                _react2['default'].createElement(
+	                                _react2.default.createElement(
 	                                    'div',
 	                                    { className: 'small-6 columns' },
-	                                    _react2['default'].createElement('img', { src: 'https://placekitten.com/300/201', alt: '' })
+	                                    _react2.default.createElement('img', { src: 'https://placekitten.com/300/201', alt: '' })
 	                                ),
-	                                _react2['default'].createElement(
+	                                _react2.default.createElement(
 	                                    'div',
 	                                    { className: 'small-6 columns' },
-	                                    _react2['default'].createElement(
+	                                    _react2.default.createElement(
 	                                        'p',
 	                                        null,
 	                                        'From a poor Dillony. He\'s just a poor bryan, from a poor bryanily.'
@@ -19918,19 +19937,18 @@
 	                                )
 	                            )
 	                        },
-	                        _react2['default'].createElement('img', { src: 'https://placekitten.com/300/201', alt: '' })
+	                        _react2.default.createElement('img', { src: 'https://placekitten.com/300/201', alt: '' })
 	                    )
 	                )
 	            );
-	        }
-	        //render method
+	        } //render method
+
 	    }]);
 
 	    return Index;
-	})(_react2['default'].Component);
+	}(_react2.default.Component);
 
-	exports['default'] = Index;
-	module.exports = exports['default'];
+	exports.default = Index;
 
 /***/ },
 /* 160 */
@@ -19941,9 +19959,29 @@
 	Object.defineProperty(exports, "__esModule", {
 	  value: true
 	});
-	var Expandable = exports.Expandable = __webpack_require__(161);
-	var Item = exports.Item = __webpack_require__(165);
-	var Preview = exports.Preview = __webpack_require__(166);
+	exports.Preview = exports.Item = exports.Expandable = undefined;
+
+	var _Expandable = __webpack_require__(161);
+
+	var _Expandable2 = _interopRequireDefault(_Expandable);
+
+	var _Item = __webpack_require__(165);
+
+	var _Item2 = _interopRequireDefault(_Item);
+
+	var _Preview = __webpack_require__(166);
+
+	var _Preview2 = _interopRequireDefault(_Preview);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	exports.Expandable = _Expandable2.default;
+	exports.Item = _Item2.default;
+	exports.Preview = _Preview2.default;
+
+	/*export const Expandable = require('./Expandable.jsx');
+	export const Item = require('./Item.jsx');
+	export const Preview = require('./Preview.jsx');*/
 
 /***/ },
 /* 161 */
@@ -19951,19 +19989,11 @@
 
 	'use strict';
 
-	var _createClass = (function () {
-	    function defineProperties(target, props) {
-	        for (var i = 0; i < props.length; i++) {
-	            var descriptor = props[i];descriptor.enumerable = descriptor.enumerable || false;descriptor.configurable = true;if ("value" in descriptor) descriptor.writable = true;Object.defineProperty(target, descriptor.key, descriptor);
-	        }
-	    }return function (Constructor, protoProps, staticProps) {
-	        if (protoProps) defineProperties(Constructor.prototype, protoProps);if (staticProps) defineProperties(Constructor, staticProps);return Constructor;
-	    };
-	})();
-
 	Object.defineProperty(exports, "__esModule", {
 	    value: true
 	});
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
 	var _react = __webpack_require__(2);
 
@@ -19977,58 +20007,44 @@
 
 	var _style2 = _interopRequireDefault(_style);
 
-	function _interopRequireDefault(obj) {
-	    return obj && obj.__esModule ? obj : { "default": obj };
-	}
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-	function _classCallCheck(instance, Constructor) {
-	    if (!(instance instanceof Constructor)) {
-	        throw new TypeError("Cannot call a class as a function");
-	    }
-	}
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-	function _possibleConstructorReturn(self, call) {
-	    if (!self) {
-	        throw new ReferenceError("this hasn't been initialised - super() hasn't been called");
-	    }return call && (typeof call === "object" || typeof call === "function") ? call : self;
-	}
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
 
-	function _inherits(subClass, superClass) {
-	    if (typeof superClass !== "function" && superClass !== null) {
-	        throw new TypeError("Super expression must either be null or a function, not " + typeof superClass);
-	    }subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } });if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass;
-	}
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-	var Expandable = (function (_React$Component) {
+	var Expandable = function (_React$Component) {
 	    _inherits(Expandable, _React$Component);
 
 	    function Expandable(props, state) {
 	        _classCallCheck(this, Expandable);
 
-	        var _this4 = _possibleConstructorReturn(this, Object.getPrototypeOf(Expandable).call(this, props, state));
+	        var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(Expandable).call(this, props, state));
 
 	        console.log("INITIATE EXPANDABLE");
 
-	        _this4.state = {
+	        _this.state = {
 	            isOpen: false,
 	            forceClose: false,
 	            rowIndex: null,
 	            childIndex: null,
-	            sItemCount: _this4.props.smallRowItemCount || 1,
-	            mItemCount: _this4.props.mediumRowItemCount || 2,
-	            lItemCount: _this4.props.largeRowItemCount || 3,
-	            xlItemCount: _this4.props.xlargeRowItemCount || 4,
-	            xxlItemCount: _this4.props.xxlargeRowItemCount || 5,
-	            beforePreviewOpen: _this4.props.beforePreviewOpen || function () {},
-	            afterPreviewOpen: _this4.props.afterPreviewOpen || function () {},
+	            sItemCount: _this.props.smallRowItemCount || 1,
+	            mItemCount: _this.props.mediumRowItemCount || 2,
+	            lItemCount: _this.props.largeRowItemCount || 3,
+	            xlItemCount: _this.props.xlargeRowItemCount || 4,
+	            xxlItemCount: _this.props.xxlargeRowItemCount || 5,
+	            beforePreviewOpen: _this.props.beforePreviewOpen || function () {},
+	            afterPreviewOpen: _this.props.afterPreviewOpen || function () {},
 	            currentItemRowCount: 2
 	        };
 
-	        _this4.handleClick = _this4.handleClick.bind(_this4);
-	        _this4.handleResize = _this4.handleResize.bind(_this4);
-	        _this4.getWindowSize = _this4.getWindowSize.bind(_this4);
-	        _this4.previewCloseCallback = _this4.previewCloseCallback.bind(_this4);
-	        return _this4;
+	        _this.handleClick = _this.handleClick.bind(_this);
+	        _this.handleResize = _this.handleResize.bind(_this);
+	        _this.getWindowSize = _this.getWindowSize.bind(_this);
+	        _this.previewCloseCallback = _this.previewCloseCallback.bind(_this);
+	        return _this;
 	    }
 
 	    _createClass(Expandable, [{
@@ -20048,11 +20064,15 @@
 	    }, {
 	        key: 'render',
 	        value: function render() {
-	            var style = _style2["default"].styles();
+	            var style = _style2.default.styles();
 	            console.log("PEW PEW");
 	            var children = this.buildChildren();
 
-	            return _react2["default"].createElement('ul', { className: 'small-12_columns', style: style.ulExpandable }, children);
+	            return _react2.default.createElement(
+	                'ul',
+	                { className: 'small-12_columns', style: style.ulExpandable },
+	                children
+	            );
 	        }
 	    }, {
 	        key: 'componentDidMount',
@@ -20109,12 +20129,12 @@
 	    }, {
 	        key: 'setPreviewIndex',
 	        value: function setPreviewIndex(e, isOpen) {
-	            var _this = this;
+	            var _this2 = this;
 
 	            console.log("set preview index", isOpen, this.state.forceClose, this.state.childIndex);
 	            var target = e.currentTarget;
 	            var parent = target.parentNode;
-	            var children = _lodash2["default"].toArray(parent.children);
+	            var children = _lodash2.default.toArray(parent.children);
 
 	            var total = 0;
 	            var hasTarget = false;
@@ -20127,8 +20147,8 @@
 	            children.forEach(function (child, index) {
 	                total++;
 
-	                if (child == target && index === _this.state.childIndex && isOpen) {
-	                    return _this.closePreview();
+	                if (child == target && index === _this2.state.childIndex && isOpen) {
+	                    return _this2.closePreview();
 	                }
 
 	                if (!hasTarget && child == target) {
@@ -20136,14 +20156,14 @@
 	                    childIndex = index;
 	                }
 
-	                if (total == _this.state.currentItemRowCount && hasTarget || total < _this.state.currentItemRowCount && hasTarget && index == children.length - 1) {
-	                    return _this.setState({
+	                if (total == _this2.state.currentItemRowCount && hasTarget || total < _this2.state.currentItemRowCount && hasTarget && index == children.length - 1) {
+	                    return _this2.setState({
 	                        isOpen: true,
 	                        forceClose: false,
 	                        rowIndex: index,
 	                        childIndex: childIndex
 	                    });
-	                } else if (total == _this.state.currentItemRowCount) {
+	                } else if (total == _this2.state.currentItemRowCount) {
 	                    total = 0;
 	                }
 	            }); // ./forEach
@@ -20158,10 +20178,10 @@
 	    }, {
 	        key: 'previewCloseCallback',
 	        value: function previewCloseCallback() {
-	            var _this2 = this;
+	            var _this3 = this;
 
 	            setTimeout(function () {
-	                _this2.setState({
+	                _this3.setState({
 	                    isOpen: false,
 	                    forceClose: false,
 	                    index: -1
@@ -20171,31 +20191,31 @@
 	    }, {
 	        key: 'buildChildren',
 	        value: function buildChildren() {
-	            var _this3 = this;
+	            var _this4 = this;
 
 	            var preview = null;
 
-	            var children = _react2["default"].Children.map(this.props.children, function (child, index) {
+	            var children = _react2.default.Children.map(this.props.children, function (child, index) {
 	                //calculate child item width
 	                console.log("child", child);
-	                var colWidth = 100 / _this3.state.currentItemRowCount + "%";
-	                var lastComponent = index === _this3.props.children.length - 1 ? true : false;
+	                var colWidth = 100 / _this4.state.currentItemRowCount + "%";
+	                var lastComponent = index === _this4.props.children.length - 1 ? true : false;
 
-	                var ListComponent = _react2["default"].cloneElement(child, {
+	                var ListComponent = _react2.default.cloneElement(child, {
 	                    colWidth: colWidth,
-	                    onClick: _this3.handleClick,
+	                    onClick: _this4.handleClick,
 	                    lastComponent: lastComponent
 	                });
 
-	                if (index === _this3.state.childIndex) {
+	                if (index === _this4.state.childIndex) {
 	                    preview = child.props.previewComponent;
 	                }
 
-	                if (_this3.state.isOpen && index === _this3.state.rowIndex && preview !== null) {
+	                if (_this4.state.isOpen && index === _this4.state.rowIndex && preview !== null) {
 	                    var arr = [0, 1];
 
 	                    return arr.map(function (arrItem, aIndex) {
-	                        return aIndex == 0 ? ListComponent : _react2["default"].cloneElement(preview, { onClick: _this3.handleClick, isOpen: _this3.state.isOpen, forceClose: _this3.state.forceClose, previewCloseCallback: _this3.previewCloseCallback });
+	                        return aIndex == 0 ? ListComponent : _react2.default.cloneElement(preview, { onClick: _this4.handleClick, isOpen: _this4.state.isOpen, forceClose: _this4.state.forceClose, previewCloseCallback: _this4.previewCloseCallback });
 	                    });
 	                }
 
@@ -20240,9 +20260,9 @@
 	    }]);
 
 	    return Expandable;
-	})(_react2["default"].Component);
+	}(_react2.default.Component);
 
-	exports["default"] = Expandable;
+	exports.default = Expandable;
 
 /***/ },
 /* 162 */
@@ -32624,27 +32644,15 @@
 
 	"use strict";
 
-	var _createClass = (function () {
-	    function defineProperties(target, props) {
-	        for (var i = 0; i < props.length; i++) {
-	            var descriptor = props[i];descriptor.enumerable = descriptor.enumerable || false;descriptor.configurable = true;if ("value" in descriptor) descriptor.writable = true;Object.defineProperty(target, descriptor.key, descriptor);
-	        }
-	    }return function (Constructor, protoProps, staticProps) {
-	        if (protoProps) defineProperties(Constructor.prototype, protoProps);if (staticProps) defineProperties(Constructor, staticProps);return Constructor;
-	    };
-	})();
-
 	Object.defineProperty(exports, "__esModule", {
 	    value: true
 	});
 
-	function _classCallCheck(instance, Constructor) {
-	    if (!(instance instanceof Constructor)) {
-	        throw new TypeError("Cannot call a class as a function");
-	    }
-	}
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-	exports["default"] = new ((function () {
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	exports.default = new (function () {
 	    function Style() {
 	        _classCallCheck(this, Style);
 
@@ -32738,7 +32746,7 @@
 	    }]);
 
 	    return Style;
-	})())();
+	}())();
 
 /***/ },
 /* 165 */
@@ -32746,19 +32754,11 @@
 
 	'use strict';
 
-	var _createClass = (function () {
-	    function defineProperties(target, props) {
-	        for (var i = 0; i < props.length; i++) {
-	            var descriptor = props[i];descriptor.enumerable = descriptor.enumerable || false;descriptor.configurable = true;if ("value" in descriptor) descriptor.writable = true;Object.defineProperty(target, descriptor.key, descriptor);
-	        }
-	    }return function (Constructor, protoProps, staticProps) {
-	        if (protoProps) defineProperties(Constructor.prototype, protoProps);if (staticProps) defineProperties(Constructor, staticProps);return Constructor;
-	    };
-	})();
-
 	Object.defineProperty(exports, "__esModule", {
 	    value: true
 	});
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
 	var _react = __webpack_require__(2);
 
@@ -32776,29 +32776,15 @@
 
 	var _lodash2 = _interopRequireDefault(_lodash);
 
-	function _interopRequireDefault(obj) {
-	    return obj && obj.__esModule ? obj : { "default": obj };
-	}
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-	function _classCallCheck(instance, Constructor) {
-	    if (!(instance instanceof Constructor)) {
-	        throw new TypeError("Cannot call a class as a function");
-	    }
-	}
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-	function _possibleConstructorReturn(self, call) {
-	    if (!self) {
-	        throw new ReferenceError("this hasn't been initialised - super() hasn't been called");
-	    }return call && (typeof call === "object" || typeof call === "function") ? call : self;
-	}
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
 
-	function _inherits(subClass, superClass) {
-	    if (typeof superClass !== "function" && superClass !== null) {
-	        throw new TypeError("Super expression must either be null or a function, not " + typeof superClass);
-	    }subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } });if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass;
-	}
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-	var Item = (function (_React$Component) {
+	var Item = function (_React$Component) {
 	    _inherits(Item, _React$Component);
 
 	    function Item(props, state) {
@@ -32822,22 +32808,26 @@
 	        key: 'render',
 	        value: function render() {
 	            console.log("RENDER ITEM");
-	            var styles = _style2["default"].styles();
+	            var styles = _style2.default.styles();
 	            var className = "li-expandable";
 	            /*const children = React.Children.map(this.props.children, (child, index)=>{
 	                 return React.cloneElement(child, {});
 	             });*/
 
-	            var liExpandable = _lodash2["default"].merge(styles.liExpandable, { width: this.props.colWidth });
+	            var liExpandable = _lodash2.default.merge(styles.liExpandable, { width: this.props.colWidth });
 
-	            return _react2["default"].createElement('li', { className: className, onClick: this.props.onClick, 'data-col-width': this.props.colWidth, style: liExpandable }, this.props.children);
+	            return _react2.default.createElement(
+	                'li',
+	                { className: className, onClick: this.props.onClick, 'data-col-width': this.props.colWidth, style: liExpandable },
+	                this.props.children
+	            );
 	        }
 	    }]);
 
 	    return Item;
-	})(_react2["default"].Component);
+	}(_react2.default.Component);
 
-	exports["default"] = Item;
+	exports.default = Item;
 
 /***/ },
 /* 166 */
@@ -32845,19 +32835,11 @@
 
 	"use strict";
 
-	var _createClass = (function () {
-	    function defineProperties(target, props) {
-	        for (var i = 0; i < props.length; i++) {
-	            var descriptor = props[i];descriptor.enumerable = descriptor.enumerable || false;descriptor.configurable = true;if ("value" in descriptor) descriptor.writable = true;Object.defineProperty(target, descriptor.key, descriptor);
-	        }
-	    }return function (Constructor, protoProps, staticProps) {
-	        if (protoProps) defineProperties(Constructor.prototype, protoProps);if (staticProps) defineProperties(Constructor, staticProps);return Constructor;
-	    };
-	})();
-
 	Object.defineProperty(exports, "__esModule", {
 	    value: true
 	});
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
 	var _react = __webpack_require__(2);
 
@@ -32875,29 +32857,15 @@
 
 	var _style2 = _interopRequireDefault(_style);
 
-	function _interopRequireDefault(obj) {
-	    return obj && obj.__esModule ? obj : { "default": obj };
-	}
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-	function _classCallCheck(instance, Constructor) {
-	    if (!(instance instanceof Constructor)) {
-	        throw new TypeError("Cannot call a class as a function");
-	    }
-	}
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-	function _possibleConstructorReturn(self, call) {
-	    if (!self) {
-	        throw new ReferenceError("this hasn't been initialised - super() hasn't been called");
-	    }return call && (typeof call === "object" || typeof call === "function") ? call : self;
-	}
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
 
-	function _inherits(subClass, superClass) {
-	    if (typeof superClass !== "function" && superClass !== null) {
-	        throw new TypeError("Super expression must either be null or a function, not " + typeof superClass);
-	    }subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } });if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass;
-	}
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-	var Preview = (function (_React$Component) {
+	var Preview = function (_React$Component) {
 	    _inherits(Preview, _React$Component);
 
 	    function Preview(props, state) {
@@ -32918,18 +32886,48 @@
 	        key: 'previewStructure',
 	        value: function previewStructure() {
 	            var that = this;
-	            var styles = _style2["default"].styles();
+	            var styles = _style2.default.styles();
 	            var styleProp = typeof this.props.style !== 'undefined' ? this.props.styles : {};
 
-	            var liPreview = _lodash2["default"].merge(styles.liPreview, styleProp.liPreview || {}, { maxHeight: this.state.maxHeight, overflow: this.state.overflow });
-	            var divPreviewInner = _lodash2["default"].merge(styles.divPreviewInner, styleProp.divPreviewInner || {});
-	            var divPreviewHeader = _lodash2["default"].merge(styles.divPreviewHeader, styleProp.divPreviewHeader || {});
-	            var h2PreviewTitle = _lodash2["default"].merge(styles.h2PreviewTitle, styleProp.h2PreviewTitle || {});
-	            var spanPreviewClose = _lodash2["default"].merge(styles.spanPreviewClose, styleProp.spanPreviewClose || {});
-	            var aNullTag = _lodash2["default"].merge(styles.aNullTag, styleProp.aNullTag || {});
-	            var divPreviewContent = _lodash2["default"].merge(styles.divPreviewContent, styleProp.divPreviewContent || {});
+	            var liPreview = _lodash2.default.merge(styles.liPreview, styleProp.liPreview || {}, { maxHeight: this.state.maxHeight, overflow: this.state.overflow });
+	            var divPreviewInner = _lodash2.default.merge(styles.divPreviewInner, styleProp.divPreviewInner || {});
+	            var divPreviewHeader = _lodash2.default.merge(styles.divPreviewHeader, styleProp.divPreviewHeader || {});
+	            var h2PreviewTitle = _lodash2.default.merge(styles.h2PreviewTitle, styleProp.h2PreviewTitle || {});
+	            var spanPreviewClose = _lodash2.default.merge(styles.spanPreviewClose, styleProp.spanPreviewClose || {});
+	            var aNullTag = _lodash2.default.merge(styles.aNullTag, styleProp.aNullTag || {});
+	            var divPreviewContent = _lodash2.default.merge(styles.divPreviewContent, styleProp.divPreviewContent || {});
 
-	            return _react2["default"].createElement('li', { className: 'li-preview', ref: 'preview', style: liPreview }, _react2["default"].createElement('div', { className: 'div-preview-inner', style: divPreviewInner }, _react2["default"].createElement('div', { className: 'div-preview-header', style: divPreviewHeader }, _react2["default"].createElement('h2', { className: 'h2-preview-title', style: h2PreviewTitle }, that.props.title), _react2["default"].createElement('span', { className: 'span-preview-close', style: spanPreviewClose, onClick: this.props.onClick }, _react2["default"].createElement('a', { classname: 'a-null-tag', style: aNullTag }, 'X'))), _react2["default"].createElement('div', { className: 'div-preview-content', style: divPreviewContent }, that.props.children)));
+	            return _react2.default.createElement(
+	                'li',
+	                { className: 'li-preview', ref: 'preview', style: liPreview },
+	                _react2.default.createElement(
+	                    'div',
+	                    { className: 'div-preview-inner', style: divPreviewInner },
+	                    _react2.default.createElement(
+	                        'div',
+	                        { className: 'div-preview-header', style: divPreviewHeader },
+	                        _react2.default.createElement(
+	                            'h2',
+	                            { className: 'h2-preview-title', style: h2PreviewTitle },
+	                            that.props.title
+	                        ),
+	                        _react2.default.createElement(
+	                            'span',
+	                            { className: 'span-preview-close', style: spanPreviewClose, onClick: this.props.onClick },
+	                            _react2.default.createElement(
+	                                'a',
+	                                { classname: 'a-null-tag', style: aNullTag },
+	                                'X'
+	                            )
+	                        )
+	                    ),
+	                    _react2.default.createElement(
+	                        'div',
+	                        { className: 'div-preview-content', style: divPreviewContent },
+	                        that.props.children
+	                    )
+	                )
+	            );
 	        } //previewStructure()
 
 	    }, {
@@ -33003,16 +33001,16 @@
 	    }, {
 	        key: 'findMaxHeight',
 	        value: function findMaxHeight() {
-	            var previewNode = _reactDom2["default"].findDOMNode(this.refs.preview);
+	            var previewNode = _reactDom2.default.findDOMNode(this.refs.preview);
 
 	            return previewNode.scrollHeight + "px";
 	        }
 	    }]);
 
 	    return Preview;
-	})(_react2["default"].Component);
+	}(_react2.default.Component);
 
-	exports["default"] = Preview;
+	exports.default = Preview;
 
 /***/ }
 /******/ ]);
